@@ -13,6 +13,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
 
+const { default: graphQLProxy } = require('@shopify/koa-shopify-graphql-proxy');
 const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY} = process.env;
 
 const server = new Koa();
@@ -37,6 +38,8 @@ app.prepare().then(() => {
             }
         })
     );
+
+    server.use(graphQLProxy());
     server.use(verifyRequest());
     server.use(async (ctx) => {
         await handle(ctx.req, ctx.res);
