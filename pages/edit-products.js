@@ -6,7 +6,10 @@ import {
     Layout,
     Page,
     PageActions,
-    TextField
+    TextField,
+    Banner,
+    Frame,
+    Toast
 } from '@shopify/polaris';
 import store from 'store-js';
 import gql from 'graphql-tag';
@@ -30,7 +33,8 @@ class EditProduct extends React.Component {
     state = {
         discount: '',
         price: '',
-        variantId: ''
+        variantId: '',
+        showToast: false
     };
 
     componentDidMount() {
@@ -43,9 +47,23 @@ class EditProduct extends React.Component {
         return (
             <Mutation mutation={UPDATE_PRICE}>
                 {(handleSubmit, {error, data}) => {
+                    const showError = error && (
+                        <Banner status="critical">{error.message}</Banner>
+                    );
+                    const showToast = data && data.productVariantUpdate && (
+                        <Toast
+                            content="Sucessfully updated"
+                            onDismiss={() => this.setState({ showToast: false })}
+                        />
+                    );
                     return(
+                        <Frame>
                     <Page>
                         <Layout>
+                            {showToast}
+                            <Layout.Section>
+                                {showError}
+                            </Layout.Section>
                             <Layout.Section>
                                 <DisplayText size="large">{name}</DisplayText>
                                 <Form>
@@ -77,7 +95,12 @@ class EditProduct extends React.Component {
                                             {
                                                 content: 'Save',
                                                 onAction: () => {
-                                                    console.log('submitted');
+                                                    handleSubmit({
+                                                        variables: { input: {
+                                                                id: variantId,
+                                                                price: discount,
+                                                            } },
+                                                    });
                                                 }
                                             }
                                         ]}
@@ -91,6 +114,7 @@ class EditProduct extends React.Component {
                             </Layout.Section>
                         </Layout>
                     </Page>
+                        </Frame>
                     )}}
             </Mutation>
         );
