@@ -1,14 +1,27 @@
 import {Layout, Page, TextStyle, EmptyState} from '@shopify/polaris'
 import {TitleBar, ResourcePicker} from '@shopify/app-bridge-react';
 import ResourceListWithProducts from "../components/ResourceList";
+import Cookies from 'js-cookie'
 import store from 'store-js'
+import {Toast} from "@shopify/app-bridge/actions";
+import {createApp} from "@shopify/app-bridge";
 
 const img = 'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
+
+const app = createApp({
+    apiKey: API_KEY,
+    shopOrigin: Cookies.get("shopOrigin")
+});
 
 class Initial extends React.Component {
     state = {
         open: false
     };
+
+    componentDidMount() {
+        Toast.create(app, {message: 'yoyoyo', duration: 3000}).dispatch(Toast.Action.SHOW)
+    }
+
     handleSelection = (resources) => {
         const idsFromResources = resources.selection.map((product) => product.id);
         this.setState({open: false});
