@@ -7,6 +7,7 @@ import {Provider} from "@shopify/app-bridge-react";
 import Cookies from 'js-cookie'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+import axios from "axios"
 
 const client = new ApolloClient({
     fetchOptions: {
@@ -15,6 +16,16 @@ const client = new ApolloClient({
 });
 
 class MyApp extends App{
+    componentDidMount(){
+        axios.post('/admin/api/2020-04/script_tags.json', {
+            "script-tag":{
+                "event": 'onload',
+                "src": 'https://lil-proxy.herokuapp.com/static/sample.js'
+            }
+        }).then(response => response)
+            .catch(res => res)
+    }
+
     render(){
         const config = { apiKey: API_KEY, shopOrigin: Cookies.get("shopOrigin"), forceRedirect: true };
         return(
