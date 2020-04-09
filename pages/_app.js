@@ -17,13 +17,6 @@ const client = new ApolloClient({
 
 class MyApp extends App{
     componentDidMount(){
-        axios.post('/admin/api/2020-04/script_tags.json', {
-            "script-tag":{
-                "event": 'onload',
-                "src": 'https://lil-proxy.herokuapp.com/static/sample.js'
-            }
-        }).then(response => response)
-            .catch(res => res)
     }
 
     render(){
