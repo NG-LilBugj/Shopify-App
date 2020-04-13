@@ -1,5 +1,6 @@
 import gql from "graphql-tag"
 import {useQuery, useMutation} from "@apollo/react-hooks"
+import {Button, Card, Layout, Page, ResourceList} from "@shopify/polaris";
 
 const CREATE_SCRIPT_TAG = gql`
     mutation scriptTagCreate($input: ScriptTagInput!) {
@@ -52,32 +53,80 @@ const Scripts = () => {
 
 
     return (
-        <div>
-            <h1>Introduction to script tags</h1>
+        <Page>
+            <Layout>
+                <Layout.Section>
+                    <Card title={"Timebar"}>
 
-            {!!data && data.scriptTags.edges.map(i => <div key={i.node.id}>{i.node.src}</div>)};
-
-            <button type={'primary'}
-                    onClick={() => {
-                        createScript({
-                            variables: {
-                                input: {
-                                    src: "https://648619a7.ngrok.io/script.js", displayScope: "ALL"
-                                },
-                                refetchQueries: [{query: QUERY_SCRIPTTAGS}]
-                            }
-                        })
-                    }
-                    }>Add script</button>
-            <button onClick={() => {
-                deleteScript({
-                    variables: {
-                        id: data.scriptTags.edges[0].node.id,
-                        refetchQueries: [{query: QUERY_SCRIPTTAGS}]
-                    }
-                })
-            }}>Delete script</button>
-        </div>
+                    </Card>
+                </Layout.Section>
+                {!data && <Layout.Section>
+                    <Card title={"Create Timebar"} sectioned>
+                        <Button
+                            primary
+                            size={"slim"}
+                            type={"submit"}
+                            onClick={() => {
+                                createScript({
+                                    variables: {
+                                        input: {
+                                            src: "https://47c3aa5c.ngrok.io/script.js", displayScope: "ALL"
+                                        },
+                                        refetchQueries: [{query: QUERY_SCRIPTTAGS}]
+                                    }
+                                })
+                            }}
+                        >
+                            Create Bar
+                        </Button>
+                    </Card>
+                </Layout.Section>}
+                {!!data && <Layout.Section>
+                    <Card title={"Delete Timebar"} sectioned>
+                        <Button
+                            primary
+                            size={"slim"}
+                            type={"submit"}
+                            onClick={() => {
+                                deleteScript({
+                                    variables: {
+                                        id: data.scriptTags.edges[0].node.id,
+                                        refetchQueries: [{query: QUERY_SCRIPTTAGS}]
+                                    }
+                                })
+                            }}>
+                            Delete Bar
+                        </Button>
+                    </Card>
+                </Layout.Section>}
+                <Layout.Section>
+                    <Card title={'Bars'} sectioned>
+                        <ResourceList
+                            showHeader
+                            resourceName={'Bar'}
+                            items={data.scriptTags.edges}
+                            renderItem={item => {
+                                return (
+                                    <ResourceList.Item
+                                        id={item.id}
+                                    >
+                                        <Stack>
+                                            <Stack.Item>
+                                                <p>
+                                                    {item.node.id}
+                                                </p>
+                                            </Stack.Item>
+                                            <Stack.Item>
+                                            </Stack.Item>
+                                        </Stack>
+                                    </ResourceList.Item>
+                                )
+                            }}
+                        />
+                    </Card>
+                </Layout.Section>
+            </Layout>
+        </Page>
     )
 };
 

@@ -1,27 +1,52 @@
 
     console.log('FFFFFFFFFFFFFFFFFFFFF');
 
-alert("syka blyat");
+
 
     let div = document.createElement('div');
     div.className = "alert";
-    div.innerHTML = "<div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
-        "    <span class=\"days countdown-time\">1</span>\n" +
-        "    <span class=\"countdown-text\">Days</span>\n" +
+    div.innerHTML = "<div style=\"display: flex; justify-content: center; align-items: center ;width: 40%; height: 100% \">" +
+        "<div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
+        "<div style=\"display: flex; justify-content: space-between\">" +
+        "    <div style=\"border-radius: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 25px\"><span class=\"days-countdown-time-first\">1</span></div>\n" +
+        "    <div style=\"border-radius: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 25px\"><span class=\"days-countdown-time-second\">1</span></div>\n" +
+        "</div>" +
+        "    <span class=\"countdown-text\" style=\"font-size: 10px\">Days</span>\n" +
         "  </div>\n" +
         "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
-        "    <span class=\"hours countdown-time\">2</span>\n" +
-        "    <span class=\"countdown-text\">Hours</span>\n" +
+        "<div style=\"display: flex; justify-content: space-between\">" +
+        "    <div style=\"border-radius: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 25px\"><span class=\"hours-countdown-time-first\">2</span></div>\n" +
+        "    <div style=\"border-radius: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 25px\"><span class=\"hours-countdown-time-second\">2</span></div>\n" +
+        "</div>" +
+        "    <span class=\"countdown-text\" style=\"font-size: 10px\">Hours</span>\n" +
         "  </div>\n" +
+        "<span style=\"font-size: 30px; font-weight: bolder\">:</span>" +
         "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
-        "    <span class=\"minutes countdown-time\">3</span>\n" +
-        "    <span class=\"countdown-text\">Minutes</span>\n" +
+        "<div style=\"display: flex; justify-content: space-between\">" +
+        "    <div style=\"border-radius: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 25px\"><span class=\"minutes-countdown-time-first\">3</span></div>\n" +
+        "    <div style=\"border-radius: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 25px\"><span class=\"minutes-countdown-time-second\">3</span></div>\n" +
+        "</div>" +
+        "    <span class=\"countdown-text\" style=\"font-size: 10px\">Minutes</span>\n" +
         "  </div>\n" +
+        "<span style=\"font-size: 30px; font-weight: bolder \">:</span>" +
         "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
-        "    <span class=\"seconds countdown-time\">4</span>\n" +
-        "    <span class=\"countdown-text\">Seconds</span>\n" +
-        "  </div>\n";
-    div.style.cssText = "font-family: sans-serif; color: #88d; display: flex; justify-content: space-around;font-weight: 100; text-align: center; font-size: 30px;";
+        "<div style=\"display: flex; justify-content: space-between\">" +
+        "    <div style=\"border-radius: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 25px\"><span class=\"seconds-countdown-time-first\">4</span></div>\n" +
+        "    <div style=\"border-radius: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 25px\"><span class=\"seconds-countdown-time-second\">4</span></div>\n" +
+        "</div>" +
+        "    <span class=\"countdown-text\" style=\"font-size: 10px\">Seconds</span>\n" +
+        "  </div>" +
+        "</div>\n";
+    div.style.cssText = "background-color: #ccd; " +
+        "display: flex; " +
+        "justify-content: " +
+        "space-around;" +
+        "text-align: center; " +
+        "height: 100px; " +
+        "font-size: 24px; " +
+        "font-weight: 700" +
+        "color: rgb(65, 65, 106); " +
+        "font-family:-apple-system, BlinkMacSystemFont, \"San Francisco\", Roboto, \"Segoe UI\", \"Helvetica Neue\", sans-serif;\n";
     div.id = 'countdown';
     document.body.prepend(div);
 
@@ -42,18 +67,28 @@ alert("syka blyat");
 
     function initializeClock(id, endtime) {
         var clock = document.getElementById(id);
-        var daysSpan = clock.querySelector('.days');
-        var hoursSpan = clock.querySelector('.hours');
-        var minutesSpan = clock.querySelector('.minutes');
-        var secondsSpan = clock.querySelector('.seconds');
+        var daysSpanTeens = clock.querySelector('.days-countdown-time-first');
+        var hoursSpanTeens = clock.querySelector('.hours-countdown-time-first');
+        var minutesSpanTeens = clock.querySelector('.minutes-countdown-time-first');
+        var secondsSpanTeens = clock.querySelector('.seconds-countdown-time-first');
+        var daysSpanZeroes = clock.querySelector('.days-countdown-time-second');
+        var hoursSpanZeroes = clock.querySelector('.hours-countdown-time-second');
+        var minutesSpanZeroes = clock.querySelector('.minutes-countdown-time-second');
+        var secondsSpanZeroes = clock.querySelector('.seconds-countdown-time-second');
+
+        debugger
 
         function updateClock() {
             var t = getTimeRemaining(endtime);
 
-            daysSpan.innerHTML = t.days;
-            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+            daysSpanTeens.innerHTML = `${Math.floor(t.days/10)}`;
+            daysSpanZeroes.innerHTML = `${t.days % 10}`;
+            hoursSpanTeens.innerHTML = `${Math.floor(t.hours/10)}`;
+            hoursSpanZeroes.innerHTML = `${t.hours % 10}`;
+            minutesSpanTeens.innerHTML = `${Math.floor(t.minutes/10)}`;
+            minutesSpanZeroes.innerHTML = `${t.minutes % 10}`;
+            secondsSpanTeens.innerHTML = `${Math.floor(t.seconds/10)}`;
+            secondsSpanZeroes.innerHTML = `${t.seconds % 10}`;
 
             if (t.total <= 0) {
                 clearInterval(timeinterval);
