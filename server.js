@@ -9,6 +9,7 @@ const lusca = require('koa-lusca');
 const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
 const {verifyRequest} = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
+const storage = require('/storage.js');
 
 dotenv.config();
 
@@ -41,7 +42,8 @@ router.get('/api/scripts', async (ctx) => {
 router.post('api/scripts', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
-
+        storage.includeScript(body);
+        ctx.body = 'Script added'
     }
     catch (e) {
         console.log(e)
