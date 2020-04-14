@@ -1,7 +1,10 @@
 
     console.log('FFFFFFFFFFFFFFFFFFFFF');
 
-
+fetch('https://.../api/scripts')
+    .then(res => res.json())
+    .then(res => res.data)
+    .catch(error => {console.log(error)});
 
     let div = document.createElement('div');
     div.className = "alert";

@@ -1,6 +1,9 @@
 require('isomorphic-fetch');
 const dotenv = require('dotenv');
 const Koa = require('koa');
+const KoaRouter = require('koa-router');
+const koaBody = require('koa-body');
+const cors = require('cors');
 const next = require('next');
 const lusca = require('koa-lusca');
 const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
@@ -19,6 +22,34 @@ const {ApiVersion} = require('@shopify/koa-shopify-graphql-proxy');
 const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY} = process.env;
 
 const server = new Koa();
+const router = new KoaRouter();
+
+server.use(cors());
+router.get('/api/scripts', async (ctx) => {
+    try {
+        ctx.body = {
+            status: 'success',
+            data: {
+                name: '+++'
+            }
+        }
+    }
+    catch (e) {
+        console.log(e)
+    }
+});
+router.post('api/scripts', koaBody(), async (ctx) => {
+    try {
+        const body = ctx.request.body;
+
+    }
+    catch (e) {
+        console.log(e)
+    }
+});
+
+server.use(router.allowedMethods());
+server.use(router.routes());
 
 app.prepare().then(() => {
 
@@ -44,6 +75,7 @@ app.prepare().then(() => {
 
     server.use(graphQLProxy({version: ApiVersion.January20}));
     server.use(verifyRequest());
+
     server.use(async (ctx) => {
         await handle(ctx.req, ctx.res);
         ctx.respond = false;
