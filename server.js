@@ -3,13 +3,11 @@ const dotenv = require('dotenv');
 const Koa = require('koa');
 const KoaRouter = require('koa-router');
 const koaBody = require('koa-body');
-const cors = require('cors');
 const next = require('next');
 const lusca = require('koa-lusca');
 const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
 const {verifyRequest} = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
-const storage = require('/storage.js');
 
 dotenv.config();
 
@@ -25,13 +23,20 @@ const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY} = process.env;
 const server = new Koa();
 const router = new KoaRouter();
 
-server.use(cors());
+const local = [
+    {
+        name: 'ddd',
+        startDate: 'sample1',
+        endDate: 'sample2'
+    }
+];
+
 router.get('/api/scripts', async (ctx) => {
     try {
         ctx.body = {
             status: 'success',
             data: {
-                name: '+++'
+                ...local[1]
             }
         }
     }
@@ -39,11 +44,21 @@ router.get('/api/scripts', async (ctx) => {
         console.log(e)
     }
 });
-router.post('api/scripts', koaBody(), async (ctx) => {
+router.post('/api/scripts', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
-        storage.includeScript(body);
-        ctx.body = 'Script added'
+        //storage.includeScript(body);
+        local.push(body);
+        ctx.body = 'Config added'
+    }
+    catch (e) {
+        console.log(e)
+    }
+});
+router.delete('/api/scripts', koaBody(), async (ctx) => {
+    try{
+        local.pop();
+        ctx.body = 'Timer deleted'
     }
     catch (e) {
         console.log(e)
