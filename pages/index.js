@@ -133,13 +133,13 @@ const Initial = () => {
         createScript({
             variables: {
                 input: {
-                    src: "https://46e37398.ngrok.io/script.js",
+                    src: "https://d7fc8e16.ngrok.io/script.js",
                     displayScope: "ALL"
                 },
                 refetchQueries: [{query: QUERY_SCRIPTTAGS}]
             }
         });
-        let res = await axios.post('https://46e37398.ngrok.io/api/scripts',
+        let res = await axios.post('https://d7fc8e16.ngrok.io/api/scripts',
             {
                 name,
                 startDate: selectedStartDate,
@@ -160,7 +160,7 @@ const Initial = () => {
                 refetchQueries: [{query: QUERY_SCRIPTTAGS}]
             }
         });
-        axios.delete('https://46e37398.ngrok.io/api/scripts').then(res => {console.log(res)})
+        axios.delete('https://d7fc8e16.ngrok.io/api/scripts').then(res => {console.log(res)})
     };
 
     if (!!loading) return <h1>LOADING...</h1>;

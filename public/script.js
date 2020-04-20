@@ -1,7 +1,7 @@
 
     console.log('FFFFFFFFFFFFFFFFFFFFF');
 
- fetch('https://cors-anywhere.herokuapp.com/https://ca92bd70.ngrok.io/api/scripts')
+ fetch('https://cors-anywhere.herokuapp.com/https://d7fc8e16.ngrok.io/api/scripts')
      .then(res => res.json())
      .then(res => renderTimer(res.data))
      .catch(error => {console.log(error)});
