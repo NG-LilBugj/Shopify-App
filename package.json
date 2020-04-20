@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
     "@shopify/app-bridge-react": "^1.17.0",
     "@shopify/koa-shopify-auth": "^3.1.56",
     "@shopify/koa-shopify-graphql-proxy": "^3.3.0",
@@ -25,6 +26,7 @@
     "flameguard": "^1.0.9",
     "frameguard": "^3.1.0",
     "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.1",
     "koa": "^2.11.0",

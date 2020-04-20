@@ -11,7 +11,7 @@ import {
     ResourceList, Stack,
     TextField, Popover, RangeSlider
 } from "@shopify/polaris";
-import {useCallback, useState} from "react";
+import {useCallback, useState, useEffect} from "react";
 import Link from 'next/link'
 import axios from 'axios'
 
@@ -56,7 +56,16 @@ const QUERY_SCRIPTTAGS = gql`
 `;
 
 const Initial = () => {
+    useEffect(() => {
+        const fetchData = async () => {
+            let res = await axios.get('https://d7fc8e16.ngrok.io/api/scripts');
+            debugger
+            return res.data
+        };
+        fetchConfig(fetchData())
+    }, []);
 
+    const [config, fetchConfig] = useState(false);
     const [createScript] = useMutation(CREATE_SCRIPT_TAG);
     const [deleteScript] = useMutation(DELETE_SCRIPT_TAG);
     const {loading, error, data} = useQuery(QUERY_SCRIPTTAGS);
@@ -103,7 +112,6 @@ const Initial = () => {
         alpha: 1
     });
 
-    debugger
     const handleChange = useCallback(
         (_checked, newValue) => setValue(newValue),
         [],
@@ -163,15 +171,23 @@ const Initial = () => {
         axios.delete('https://d7fc8e16.ngrok.io/api/scripts').then(res => {console.log(res)})
     };
 
-    if (!!loading) return <h1>LOADING...</h1>;
+    if (!!loading) return <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+        fontSize: '30px',
+        fontWeight: '700'
+    }}>LOADING...</div>;
     if (!!error) return <div>{error.message}</div>;
-
+debugger
     return (
         <Page>
             {!initBar && <Layout>
                 {!(data.scriptTags.edges.length) && <Layout.Section>
                     <EmptyState
-                        heading={"Time Banner"}
+                        heading={"Sale Banner"}
                         image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
                         <Button
                             primary
@@ -181,19 +197,19 @@ const Initial = () => {
                                 setInitBar(true)
                             }}
                         >
-                            Create Bar
+                            Create Banner
                         </Button>
                     </EmptyState>
                 </Layout.Section>}
                 {!!(data.scriptTags.edges.length) && <Layout.Section>
-                    <Card title={"Delete Timebar"} sectioned>
-                        <p>{data.scriptTags.edges[0].id}</p>
+                    <Card title={"Existing Banner:"} sectioned>
+                        <p>{config.data?config.data.name:""}</p>
                         <Button
                             primary
                             size={"slim"}
                             type={"submit"}
                             onClick={deleteSubmit}>
-                            Delete Bar
+                            Delete Banner
                         </Button>
                     </Card>
                 </Layout.Section>}
@@ -202,7 +218,7 @@ const Initial = () => {
                 <Layout.Section>
                     <Card title={'Banner name:'} sectioned>
                         <TextField
-                            label={'name'}
+                            label={'Name'}
                             value={name}
                             onChange={(value) => {setName(value)}}
                             error={(!name)?'Please enter name':''}
