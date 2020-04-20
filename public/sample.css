@@ -1,0 +1,40 @@
+.swing-top-fwd {
+    background-color: darkblue;
+    width: 800px;
+    height: 700px;
+    min-width: 80%;
+    font-size: 40px;
+    color: white;
+    /*animation-duration: 1s;*/
+    /*animation-iteration-count: infinite;*/
+    /*animation-name: square;*/
+}
+
+@-webkit-keyframes square {
+    0% {
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+    }
+    100% {
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+        -webkit-transform-origin: top;
+        transform-origin: top;
+    }
+}
+@keyframes square {
+    0% {
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+    }
+    100% {
+        transform: matrix(1 ,1, 2 ,1 ,1, 0);
+    }
+    /*100% {*/
+    /*    -webkit-transform: rotateX(-180deg);*/
+    /*    transform: rotateX(-180deg);*/
+    /*}*/
+}
+

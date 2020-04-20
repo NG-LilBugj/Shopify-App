@@ -9,8 +9,6 @@ const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
 const {verifyRequest} = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
 
-const axios = require('axios');
-
 dotenv.config();
 
 const port = parseInt(process.env.PORT, 10) || 3000;
