@@ -9,6 +9,8 @@ const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
 const {verifyRequest} = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
 
+const axios = require('axios');
+
 dotenv.config();
 
 const port = parseInt(process.env.PORT, 10) || 3000;
@@ -23,20 +25,14 @@ const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY} = process.env;
 const server = new Koa();
 const router = new KoaRouter();
 
-const local = [
-    {
-        name: 'ddd',
-        startDate: 'sample1',
-        endDate: 'sample2'
-    }
-];
+const local = [];
 
 router.get('/api/scripts', async (ctx) => {
     try {
         ctx.body = {
             status: 'success',
             data: {
-                ...local[1]
+                ...local[0]
             }
         }
     }

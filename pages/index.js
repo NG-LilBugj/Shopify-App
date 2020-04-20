@@ -12,6 +12,7 @@ import {
     TextField, Popover, RangeSlider
 } from "@shopify/polaris";
 import {useCallback, useState} from "react";
+import Link from 'next/link'
 import axios from 'axios'
 
 const CREATE_SCRIPT_TAG = gql`
@@ -60,7 +61,7 @@ const Initial = () => {
     const [deleteScript] = useMutation(DELETE_SCRIPT_TAG);
     const {loading, error, data} = useQuery(QUERY_SCRIPTTAGS);
     const [initBar, setInitBar] = useState(false);
-    const [name, setName] = useState('');
+    const [name, setName] = useState('Timer');
 
     const [{month, year}, setDate] = useState({
         month: 4,
@@ -89,8 +90,18 @@ const Initial = () => {
     const [value, setValue] = useState('Top');
     const [checked, setChecked] = useState(false);
 
-    const [bgColor, setBgColor] = useState('#41416A');
-    const [borderColor, setBorderColor] = useState('#ffffff');
+    const [bgColor, setBgColor] = useState({
+        hue: 1,
+        saturation: 1,
+        brightness: 1,
+        alpha: 1
+    });
+    const [borderColor, setBorderColor] = useState({
+        hue: 1,
+        saturation: 1,
+        brightness: 1,
+        alpha: 1
+    });
 
     debugger
     const handleChange = useCallback(
@@ -140,7 +151,6 @@ const Initial = () => {
                 borderColor,
             });
         console.log(res);
-        setInitBar(false);
     };
 
     const deleteSubmit = () => {
@@ -177,6 +187,7 @@ const Initial = () => {
                 </Layout.Section>}
                 {!!(data.scriptTags.edges.length) && <Layout.Section>
                     <Card title={"Delete Timebar"} sectioned>
+                        <p>{data.scriptTags.edges[0].id}</p>
                         <Button
                             primary
                             size={"slim"}
@@ -194,7 +205,7 @@ const Initial = () => {
                             label={'name'}
                             value={name}
                             onChange={(value) => {setName(value)}}
-                            error={(!value)?'Please enter name':''}
+                            error={(!name)?'Please enter name':''}
                         />
                     </Card>
                     <Card title={'Start time'} sectioned>
@@ -250,7 +261,8 @@ const Initial = () => {
                                          fluidContent={true} sectioned>
                                     <ColorPicker color={bgColor} onChange={setBgColor}/>
                                 </Popover>
-                                <div style={{width: '40px', height: '40px', backgroundColor: borderColor, marginTop: '10px'}}/>
+                                <div style={{width: '100%', height: '40px', borderRadius: '5px',
+                                    backgroundColor: `hsla(${bgColor.hue}, ${bgColor.saturation*100}%, ${bgColor.brightness*100}%, ${bgColor.alpha})`, marginTop: '10px'}}/>
                             </div>
                             <div>
                                 <RangeSlider
@@ -269,11 +281,13 @@ const Initial = () => {
                                          fluidContent={true} sectioned>
                                     <ColorPicker color={borderColor} onChange={setBorderColor}/>
                                 </Popover>
-                                <div style={{width: '40px', height: '40px', backgroundColor: borderColor, marginTop: '10px'}}/>
+                                <div style={{width: '100%', height: '40px', borderRadius: '5px',
+                                    backgroundColor: `hsla(${borderColor.hue}, ${borderColor.saturation*100}%, ${borderColor.brightness*100}%, ${borderColor.alpha})`, marginTop: '10px'}}/>
                             </div>
                         </div>
                     </Card>
                     <div style={{marginTop: '25px'}}>
+                        <Link href={'/success'}>
                         <Button
                             primary
                             size={"large"}
@@ -283,6 +297,7 @@ const Initial = () => {
                         >
                             Save
                         </Button>
+                        </Link>
                     </div>
                 </Layout.Section>
             </Layout>}

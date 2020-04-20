@@ -1,7 +1,7 @@
 
     console.log('FFFFFFFFFFFFFFFFFFFFF');
 
- fetch('https://cors-anywhere.herokuapp.com/https://46e37398.ngrok.io/api/scripts')
+ fetch('https://cors-anywhere.herokuapp.com/https://ca92bd70.ngrok.io/api/scripts')
      .then(res => res.json())
      .then(res => renderTimer(res.data))
      .catch(error => {console.log(error)});
@@ -15,7 +15,9 @@
             return `${hue}, ${saturation*100}%, ${brightness*100}%, ${alpha}`
         };
 
-        div.innerHTML = "<div style=\"font-size: 40px; display: flex; align-items: center; justify-content: center; width: 30%\">Hurry Up!</div></div><div style=\"display: flex; justify-content: center; align-items: center ;width: 40%; height: 100% \">" +
+        let position = data.sticky?"sticky":"static";
+
+        div.innerHTML = "<div style=\"font-size: 40px; font-weight: 700; display: flex; align-items: center; justify-content: center; width: 30%\">Hurry Up!</div><div style=\"display: flex; justify-content: center; align-items: center ;width: 40%; height: 100% \">" +
             "<div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between; margin-right: 12px\">\n" +
             "<div style=\"display: flex; justify-content: space-between\">" +
             "    <div style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"days-countdown-time-first\">1</span></div>\n" +
@@ -53,11 +55,13 @@
             "space-around;" +
             "text-align: center; " +
             "height: 100px; " +
-            (data.sticky?"position: sticky":"") +
-            `border: ${data.borderSize} solid hsla(${decodeColors(data.borderColor)})` +
+            `border: ${data.borderSize}px solid hsla(${decodeColors(data.borderColor)});` +
             "font-size: 24px; " +
-            "font-weight: 700" +
+            "font-weight: 700;" +
             "color: rgb(65, 65, 106); " +
+            "z-index: 12; " +
+            "top: 0px; " +
+            `position: ${position||"sticky"};` +
             "font-family:-apple-system, BlinkMacSystemFont, \"San Francisco\", Roboto, \"Segoe UI\", \"Helvetica Neue\", sans-serif;\n";
         div.id = 'countdown';
         (data.position !== "Bottom") ? document.body.prepend(div):document.body.append(div);
