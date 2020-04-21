@@ -58,7 +58,7 @@ const QUERY_SCRIPTTAGS = gql`
 const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
-            let res = await axios.get('https://d7fc8e16.ngrok.io/api/scripts');
+            let res = await axios.get('http://shopify-sale-banner.us-west-1.elasticbeanstalk.com/api/scripts');
             debugger
             return res.data
         };
@@ -141,13 +141,13 @@ const Initial = () => {
         createScript({
             variables: {
                 input: {
-                    src: "https://d7fc8e16.ngrok.io/script.js",
+                    src: "http://shopify-sale-banner.us-west-1.elasticbeanstalk.com/script.js",
                     displayScope: "ALL"
                 },
                 refetchQueries: [{query: QUERY_SCRIPTTAGS}]
             }
         });
-        let res = await axios.post('https://d7fc8e16.ngrok.io/api/scripts',
+        let res = await axios.post('http://shopify-sale-banner.us-west-1.elasticbeanstalk.com/api/scripts',
             {
                 name,
                 startDate: selectedStartDate,
@@ -168,7 +168,7 @@ const Initial = () => {
                 refetchQueries: [{query: QUERY_SCRIPTTAGS}]
             }
         });
-        axios.delete('https://d7fc8e16.ngrok.io/api/scripts').then(res => {console.log(res)})
+        axios.delete('http://shopify-sale-banner.us-west-1.elasticbeanstalk.com/api/scripts').then(res => {console.log(res)})
     };
 
     if (!!loading) return <div style={{
