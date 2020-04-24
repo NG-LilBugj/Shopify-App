@@ -8,11 +8,11 @@ import Cookies from 'js-cookie'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 
-// const client = new ApolloClient({
-//     fetchOptions: {
-//         credentials: 'include'
-//     }
-// });
+const client = new ApolloClient({
+     fetchOptions: {
+         credentials: 'include'
+     }
+});
 
 class MyApp extends App{
     componentDidMount(){
@@ -28,9 +28,9 @@ class MyApp extends App{
                 </Head>
                 <Provider config={config}>
                 <AppProvider i18n={translations}>
-                    {/*<ApolloProvider client={client}>*/}
+                    <ApolloProvider client={client}>
                 <this.props.Component {...this.props.pageProps}/>
-                    {/*</ApolloProvider>*/}
+                    </ApolloProvider>
                 </AppProvider>
                 </Provider>
             </React.Fragment>
