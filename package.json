@@ -11,7 +11,7 @@
     "dev": "node server.js",
     "start": "node server.js",
     "build": "next build",
-    "heroku-postbuild": "npm run start"
+    "heroku-postbuild": "node server.js"
   },
   "keywords": [],
   "author": "",
