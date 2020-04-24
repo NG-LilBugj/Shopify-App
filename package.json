@@ -8,8 +8,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "node server.js -p $PORT",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js -p $PORT"
+    "start": "NODE_ENV=production node server.js -p $PORT && next build"
   },
   "keywords": [],
   "author": "",
