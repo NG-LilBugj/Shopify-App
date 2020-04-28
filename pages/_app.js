@@ -7,11 +7,11 @@ import {Provider} from "@shopify/app-bridge-react";
 import Cookies from 'js-cookie'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+import fetch from "node-fetch";
 
 const client = new ApolloClient({
-      fetchOptions: {
-          credentials: 'include'
-      }
+      uri: 'http://localhost:8000/graphql',
+    fetch: fetch
  });
 
 class MyApp extends App{
