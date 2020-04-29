@@ -21,7 +21,7 @@ const Initial = () => {
             return res.data
         };
         const fetchScript = async () => {
-            let scriptRes = await axios.get('https://cors-anywhere.herokuapp.com/https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
+            let scriptRes = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
             debugger
             return scriptRes.data.script_tags
         };
