@@ -16,11 +16,11 @@ import axios from 'axios'
 const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
-            let res = await axios.get('http://shopify-sale-banner.us-west-1.elasticbeanstalk.com/api/scripts');
+            let res = await axios.get('https://nahku-b-tahke.myshopify.com/api/scripts');
             return res.data
         };
         const fetchScript = async () => {
-            let scriptRes = await axios.get('https://nahku_b_tanke.myshopify.com/admin/api/2020-04/script_tags.json');
+            let scriptRes = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
             return scriptRes.data.script_tags
         };
         fetchConfig(fetchData());
@@ -98,15 +98,15 @@ const Initial = () => {
     );
 
     const handleSubmit = async () => {
-        let scriptRes = axios.post('https://nahku_b_tanke.myshopify.com/admin/api/2020-04/script_tags.json',
+        let scriptRes = axios.post('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json',
             {
                 "script_tag": {
                     "event" : "onload",
-                    "src": "https://lil-shopify.herokuapp.com"
+                    "src": "https://nahku-b-tahke.myshopify.com/script.js"
                 }
             });
         console.log(scriptRes);
-        let res = await axios.post('http://shopify-sale-banner.us-west-1.elasticbeanstalk.com/api/scripts',
+        let res = await axios.post('https://nahku-b-tahke.myshopify.com/api/scripts',
             {
                 name,
                 startDate: selectedStartDate,
@@ -122,7 +122,7 @@ const Initial = () => {
 
     const deleteSubmit = () => {
         axios.delete(`https://nahku_b_tanke.myshopify.com/admin/api/2020-04/script_tags/${scriptData[0].id}`).then(res => {console.log(res)});
-        axios.delete('http://shopify-sale-banner.us-west-1.elasticbeanstalk.com/api/scripts').then(res => {console.log(res)})
+        axios.delete('https://nahku-b-tahke.myshopify.com/api/scripts').then(res => {console.log(res)})
     };
 
     return (
