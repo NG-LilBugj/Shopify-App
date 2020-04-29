@@ -1,3 +1,5 @@
+import axios from "axios";
+
 require('isomorphic-fetch');
 const dotenv = require('dotenv');
 const Koa = require('koa');
@@ -94,6 +96,8 @@ app.prepare().then(() => {
         ctx.respond = false;
         ctx.res.statusCode = 200;
     });
+
+    axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json').then(res => {console.log(res)})
 
     server.listen(port, () => {
         console.log(`App is ready on port ${port}`)

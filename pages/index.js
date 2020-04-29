@@ -12,48 +12,6 @@ import {
 import {useCallback, useState, useEffect} from "react";
 import Link from 'next/link'
 import axios from 'axios'
-import {gql} from "graphql-tag";
-import {Query, Mutation} from "react-apollo";
-
-const CREATE_SCRIPT_TAG = gql`
-    mutation scriptTagCreate($input: ScriptTagInput!) {
-        scriptTagCreate(input: $input) {
-            scriptTag {
-                id
-            }
-            userErrors {
-                field
-                message
-            }
-        }
-    }       
-`;
-
-const DELETE_SCRIPT_TAG = gql`
-    mutation scriptTagDelete($id: ID!) {
-        scriptTagDelete(id: $id) {
-            deletedScriptTagId
-            userErrors {
-                field
-                message
-            }
-        }
-    }
-`;
-
-const QUERY_SCRIPTTAGS = gql`
-    query {
-        scriptTags(first: 5) {
-            edges {
-                node {
-                    id
-                    src
-                    displayScope
-                }
-            }
-        }
-    }
-`;
 
 const Initial = () => {
     useEffect(() => {
@@ -61,9 +19,15 @@ const Initial = () => {
             let res = await axios.get('https://lil-shopify.herokuapp.com/api/scripts');
             return res.data
         };
+        const fetchScript = async () => {
+            let scriptRes = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
+            return scriptRes.data.script_tags
+        };
         fetchConfig(fetchData());
+        setScriptData(fetchScript())
     }, []);
 
+    const [scriptData, setScriptData] = useState(false);
     const [config, fetchConfig] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
@@ -157,171 +121,145 @@ const Initial = () => {
     };
 
     const deleteSubmit = () => {
+        axios.delete(`https://nahku_b_tanke.myshopify.com/admin/api/2020-04/script_tags/${scriptData[0].id}`).then(res => {console.log(res)});
         axios.delete('https://lil-shopify.herokuapp.com/api/scripts').then(res => {console.log(res)})
     };
 
     return (
         <Page>
-            <Query query={QUERY_SCRIPTTAGS}>
-                {({loading, error, data}) => {
-                    if (!!loading) return <div>Loading...</div>;
-                    if (!!error) return <div>{error.message}</div>;
-                    return (
-                    <div>{
-                        !initBar && <Layout>
-                            {!(data.sccriptTags.edges.length) && <Layout.Section>
-                                <EmptyState
-                                    heading={"Sale Banner"}
-                                    image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
-                                    <Button
-                                        primary
-                                        size={"slim"}
-                                        type={"submit"}
-                                        onClick={() => {
-                                            setInitBar(true)
-                                        }}
-                                    >
-                                        Create Banner
-                                    </Button>
-                                </EmptyState>
-                            </Layout.Section>}
-                            {!!(data.sccriptTags.edges.length) && <Layout.Section>
-                                <Card title={"Existing Banner:"} sectioned>
-                                    <p>{config.data ? config.data.name : ""}</p>
-                                    <Button
-                                        primary
-                                        size={"slim"}
-                                        type={"submit"}
-                                        onClick={deleteSubmit}>
-                                        Delete Banner
-                                    </Button>
-                                </Card>
-                            </Layout.Section>}
-                        </Layout>
-                    }
-                    {
-                        initBar && <Layout>
-                            <Layout.Section>
-                                <Card title={'Banner name:'} sectioned>
-                                    <TextField
-                                        label={'Name'}
-                                        value={name}
-                                        onChange={(value) => {
-                                            setName(value)
-                                        }}
-                                        error={(!name) ? 'Please enter name' : ''}
-                                    />
-                                </Card>
-                                <Card title={'Start time'} sectioned>
-                                    <DatePicker
-                                        month={month}
-                                        year={year}
-                                        onChange={setSelectedStartDate}
-                                        onMonthChange={handleMonthChange}
-                                        selected={selectedStartDate}
-                                    />
-                                </Card>
-                                <Card title={'End Time'} sectioned>
-                                    <DatePicker
-                                        month={endMonth}
-                                        year={endYear}
-                                        onChange={setSelectedEndDate}
-                                        onMonthChange={handleEndMonthChange}
-                                        selected={selectedEndDate}
-                                        size={'slim'}
-                                    />
-                                </Card>
-                                <Card title={'Timer display'} sectioned>
-                                    <Stack vertical>
-                                        <RadioButton
-                                            label="Top"
-                                            helpText="Displays timer at the top of the store."
-                                            checked={value === 'Top'}
-                                            id={'Top'}
-                                            name="Top"
-                                            onChange={handleChange}
-                                        />
-                                        <RadioButton
-                                            label="Bottom"
-                                            helpText="Displays timer at the bottom of the store."
-                                            id="Bottom"
-                                            name="Bottom"
-                                            checked={value === 'Bottom'}
-                                            onChange={handleChange}
-                                        />
-                                    </Stack>
-                                    <Checkbox
-                                        label="Display sticky"
-                                        checked={checked}
-                                        onChange={(newChecked) => {
-                                            setChecked(newChecked)
-                                        }}
-                                    />
-                                </Card>
-                                <Card title={'Timer design'} sectioned>
-                                    <div style={{display: 'flex', justifyContent: 'space-around', width: '100%'}}>
-                                        <div>
-                                            <p style={{marginBottom: '10px'}}>Background color:</p>
+            {!initBar && <Layout>
+                {!(scriptData.length) && <Layout.Section>
+                    <EmptyState
+                        heading={"Sale Banner"}
+                        image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
+                        <Button
+                            primary
+                            size={"slim"}
+                            type={"submit"}
+                            onClick={() => {
+                                setInitBar(true)
+                            }}
+                        >
+                            Create Banner
+                        </Button>
+                    </EmptyState>
+                </Layout.Section>}
+                {!!(scriptData.length) && <Layout.Section>
+                    <Card title={"Existing Banner:"} sectioned>
+                        <p>{config.data?config.data.name:""}</p>
+                        <Button
+                            primary
+                            size={"slim"}
+                            type={"submit"}
+                            onClick={deleteSubmit}>
+                            Delete Banner
+                        </Button>
+                    </Card>
+                </Layout.Section>}
+            </Layout>}
+            {initBar && <Layout>
+                <Layout.Section>
+                    <Card title={'Banner name:'} sectioned>
+                        <TextField
+                            label={'Name'}
+                            value={name}
+                            onChange={(value) => {setName(value)}}
+                            error={(!name)?'Please enter name':''}
+                        />
+                    </Card>
+                    <Card title={'Start time'} sectioned>
+                        <DatePicker
+                            month={month}
+                            year={year}
+                            onChange={setSelectedStartDate}
+                            onMonthChange={handleMonthChange}
+                            selected={selectedStartDate}
+                        />
+                    </Card>
+                    <Card title={'End Time'} sectioned>
+                        <DatePicker
+                            month={endMonth}
+                            year={endYear}
+                            onChange={setSelectedEndDate}
+                            onMonthChange={handleEndMonthChange}
+                            selected={selectedEndDate}
+                            size={'slim'}
+                        />
+                    </Card>
+                    <Card title={'Timer display'} sectioned>
+                        <Stack vertical>
+                            <RadioButton
+                                label="Top"
+                                helpText="Displays timer at the top of the store."
+                                checked={value === 'Top'}
+                                id={'Top'}
+                                name="Top"
+                                onChange={handleChange}
+                            />
+                            <RadioButton
+                                label="Bottom"
+                                helpText="Displays timer at the bottom of the store."
+                                id="Bottom"
+                                name="Bottom"
+                                checked={value === 'Bottom'}
+                                onChange={handleChange}
+                            />
+                        </Stack>
+                        <Checkbox
+                            label="Display sticky"
+                            checked={checked}
+                            onChange={(newChecked) => {setChecked(newChecked)}}
+                        />
+                    </Card>
+                    <Card title={'Timer design'} sectioned>
+                        <div style={{display: 'flex', justifyContent:'space-around',width: '100%'}}>
+                            <div>
+                                <p style={{marginBottom: '10px'}}>Background color:</p>
 
-                                            <Popover active={popoverActive} activator={activator}
-                                                     onClose={togglePopoverActive}
-                                                     fluidContent={true} sectioned>
-                                                <ColorPicker color={bgColor} onChange={setBgColor}/>
-                                            </Popover>
-                                            <div style={{
-                                                width: '100%',
-                                                height: '40px',
-                                                borderRadius: '5px',
-                                                backgroundColor: `hsla(${bgColor.hue}, ${bgColor.saturation * 100}%, ${bgColor.brightness * 100}%, ${bgColor.alpha})`,
-                                                marginTop: '10px'
-                                            }}/>
-                                        </div>
-                                        <div>
-                                            <RangeSlider
-                                                label="Border size:"
-                                                value={rangeValue}
-                                                onChange={handleRangeSliderChange}
-                                                min={0}
-                                                max={12}
-                                                output
-                                            />
-                                        </div>
-                                        <div>
-                                            <p style={{marginBottom: '10px'}}>Border color:</p>
+                                <Popover active={popoverActive} activator={activator} onClose={togglePopoverActive}
+                                         fluidContent={true} sectioned>
+                                    <ColorPicker color={bgColor} onChange={setBgColor}/>
+                                </Popover>
+                                <div style={{width: '100%', height: '40px', borderRadius: '5px',
+                                    backgroundColor: `hsla(${bgColor.hue}, ${bgColor.saturation*100}%, ${bgColor.brightness*100}%, ${bgColor.alpha})`, marginTop: '10px'}}/>
+                            </div>
+                            <div>
+                                <RangeSlider
+                                    label="Border size:"
+                                    value={rangeValue}
+                                    onChange={handleRangeSliderChange}
+                                    min={0}
+                                    max={12}
+                                    output
+                                />
+                            </div>
+                            <div>
+                                <p style={{marginBottom: '10px'}}>Border color:</p>
 
-                                            <Popover active={borderPopover} activator={borderActivator}
-                                                     onClose={toggleBorderPopover}
-                                                     fluidContent={true} sectioned>
-                                                <ColorPicker color={borderColor} onChange={setBorderColor}/>
-                                            </Popover>
-                                            <div style={{
-                                                width: '100%',
-                                                height: '40px',
-                                                borderRadius: '5px',
-                                                backgroundColor: `hsla(${borderColor.hue}, ${borderColor.saturation * 100}%, ${borderColor.brightness * 100}%, ${borderColor.alpha})`,
-                                                marginTop: '10px'
-                                            }}/>
-                                        </div>
-                                    </div>
-                                </Card>
-                                <div style={{marginTop: '25px'}}>
-                                    <Link href={'/success'}>
-                                        <Button
-                                            primary
-                                            size={"large"}
-                                            type={"submit"}
-                                            onClick={handleSubmit}
-                                            disabled={!name}
-                                        >
-                                            Save
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </Layout.Section>
-                        </Layout>
-                    }</div>)
-                }}
-            </Query>
+                                <Popover active={borderPopover} activator={borderActivator} onClose={toggleBorderPopover}
+                                         fluidContent={true} sectioned>
+                                    <ColorPicker color={borderColor} onChange={setBorderColor}/>
+                                </Popover>
+                                <div style={{width: '100%', height: '40px', borderRadius: '5px',
+                                    backgroundColor: `hsla(${borderColor.hue}, ${borderColor.saturation*100}%, ${borderColor.brightness*100}%, ${borderColor.alpha})`, marginTop: '10px'}}/>
+                            </div>
+                        </div>
+                    </Card>
+                    <div style={{marginTop: '25px'}}>
+                        <Link href={'/success'}>
+                            <Button
+                                primary
+                                size={"large"}
+                                type={"submit"}
+                                onClick={handleSubmit}
+                                disabled={!name}
+                            >
+                                Save
+                            </Button>
+                        </Link>
+                    </div>
+                </Layout.Section>
+            </Layout>}
         </Page>
     )
 };
