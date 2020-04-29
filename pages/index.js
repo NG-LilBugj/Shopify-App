@@ -1,10 +1,55 @@
+import gql from "graphql-tag"
 import {EmptyState, Page} from "@shopify/polaris";
+import {useQuery} from "@apollo/react-hooks";
+
+const CREATE_SCRIPT_TAG = gql`
+    mutation scriptTagCreate($input: ScriptTagInput!) {
+        scriptTagCreate(input: $input) {
+            scriptTag {
+                id
+            }
+            userErrors {
+                field
+                message
+            }
+        }
+    }
+`;
+
+const DELETE_SCRIPT_TAG = gql`
+    mutation scriptTagDelete($id: ID!) {
+        scriptTagDelete(id: $id) {
+            deletedScriptTagId
+            userErrors {
+                field
+                message
+            }
+        }
+    }
+`;
+
+const QUERY_SCRIPTTAGS = gql`
+    query {
+        scriptTags(first: 5) {
+            edges {
+                node {
+                    id
+                    src
+                    displayScope
+                }
+            }
+        }
+    }
+`;
 
 const Initial = () => {
+    const {loading, error, data} = useQuery(QUERY_SCRIPTTAGS);
+    if (!!loading) return <div>Loading...</div>;
+    if (!!error) return  <p>{error.message}</p>;
     return(
         <Page>
            <EmptyState image={'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg'}
-                       heading={'Hello World'}
+                       heading={`Hello World, ${data.scriptTags.edges.length}`}
            >
            </EmptyState>
         </Page>
