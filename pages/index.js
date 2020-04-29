@@ -16,11 +16,11 @@ import axios from 'axios'
 const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
-            let res = await axios.get('https://nahku-b-tahke.myshopify.com/api/scripts');
+            let res = await axios.get('https://lil-shopify.herokuapp.com/api/scripts');
             return res.data
         };
         const fetchScript = async () => {
-            let scriptRes = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
+            let scriptRes = await axios.get('https://cors-anywhere.herokuapp.com/https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
             return scriptRes.data.script_tags
         };
         fetchConfig(fetchData());
@@ -102,11 +102,11 @@ const Initial = () => {
             {
                 "script_tag": {
                     "event" : "onload",
-                    "src": "https://nahku-b-tahke.myshopify.com/script.js"
+                    "src": "https://lil-shopify.herokuapp.com/script.js"
                 }
             });
         console.log(scriptRes);
-        let res = await axios.post('https://nahku-b-tahke.myshopify.com/api/scripts',
+        let res = await axios.post('https://lil-shopify.herokuapp.com/api/scripts',
             {
                 name,
                 startDate: selectedStartDate,
@@ -122,7 +122,7 @@ const Initial = () => {
 
     const deleteSubmit = () => {
         axios.delete(`https://nahku_b_tanke.myshopify.com/admin/api/2020-04/script_tags/${scriptData[0].id}`).then(res => {console.log(res)});
-        axios.delete('https://nahku-b-tahke.myshopify.com/api/scripts').then(res => {console.log(res)})
+        axios.delete('https://lil-shopify.herokuapp.com/api/scripts').then(res => {console.log(res)})
     };
 
     return (
