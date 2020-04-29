@@ -1,6 +1,7 @@
 require('isomorphic-fetch');
 const dotenv = require('dotenv');
 const Koa = require('koa');
+const cors = require('koa-cors');
 const KoaRouter = require('koa-router');
 const koaBody = require('koa-body');
 const next = require('next');
@@ -61,6 +62,7 @@ router.delete('/api/scripts', koaBody(), async (ctx) => {
 
 server.use(router.allowedMethods());
 server.use(router.routes());
+server.use(cors());
 
 app.prepare().then(() => {
 
