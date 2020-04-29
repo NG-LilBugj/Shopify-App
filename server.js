@@ -9,7 +9,6 @@ const lusca = require('koa-lusca');
 const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
 const {verifyRequest} = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
-const axios = require('axios');
 
 dotenv.config();
 
@@ -96,7 +95,6 @@ app.prepare().then(() => {
         ctx.res.statusCode = 200;
     });
 
-    axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json').then(res => {local.push(res.data)});
 
     server.listen(port, () => {
         console.log(`App is ready on port ${port}`)
