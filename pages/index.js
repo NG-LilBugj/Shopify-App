@@ -43,13 +43,10 @@ const QUERY_SCRIPTTAGS = gql`
 `;
 
 const Initial = () => {
-    const {loading, error, data} = useQuery(QUERY_SCRIPTTAGS);
-    if (!!loading) return <div>Loading...</div>;
-    if (!!error) return  <p>{error.message}</p>;
     return(
         <Page>
            <EmptyState image={'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg'}
-                       heading={`Hello World, ${data.scriptTags.edges.length}`}
+                       heading={`Hello World`}
            >
            </EmptyState>
         </Page>
