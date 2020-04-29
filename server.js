@@ -97,7 +97,7 @@ app.prepare().then(() => {
         ctx.res.statusCode = 200;
     });
 
-    axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json').then(res => {console.log(res)})
+    axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json').then(res => {local.push(res.data)})
 
     server.listen(port, () => {
         console.log(`App is ready on port ${port}`)
