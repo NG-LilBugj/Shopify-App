@@ -17,17 +17,15 @@ const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
             let res = await axios.get('https://lil-shopify.herokuapp.com/api/scripts');
-            return res.data
+            return res.data.script
         };
         const fetchScript = async () => {
             let scriptRes = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
             return scriptRes.data.script_tags
         };
-        setScriptData(fetchScript());
         fetchConfig(fetchData());
     }, []);
 
-    const [scriptData, setScriptData] = useState(false);
     const [config, fetchConfig] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
@@ -121,7 +119,7 @@ const Initial = () => {
     };
 
     const deleteSubmit = () => {
-        axios.delete(`https://nahku_b_tanke.myshopify.com/admin/api/2020-04/script_tags/${scriptData[0].id}`).then(res => {console.log(res)});
+        axios.delete(`https://nahku_b_tanke.myshopify.com/admin/api/2020-04/script_tags/${config[0].id}`).then(res => {console.log(res)});
         axios.delete('https://lil-shopify.herokuapp.com/api/scripts').then(res => {console.log(res)})
     };
 
@@ -130,7 +128,7 @@ const Initial = () => {
             {!initBar && <Layout>
                 {!(config.length) && <Layout.Section>
                     <EmptyState
-                        heading={`Sale Banner, ${scriptData.length}`}
+                        heading={`Sale Banner, ${config.length}`}
                         image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
                         <Button
                             primary
