@@ -17,12 +17,10 @@ const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
             let res = await axios.get('https://lil-shopify.herokuapp.com/api/scripts');
-            debugger
             return res.data
         };
         const fetchScript = async () => {
             let scriptRes = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
-            debugger
             return scriptRes.data.script_tags
         };
         setScriptData(fetchScript());

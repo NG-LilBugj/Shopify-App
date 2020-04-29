@@ -9,6 +9,7 @@ const lusca = require('koa-lusca');
 const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
 const {verifyRequest} = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
+const axios = require('axios');
 
 dotenv.config();
 
@@ -59,6 +60,8 @@ router.delete('/api/scripts', koaBody(), async (ctx) => {
         console.log(e)
     }
 });
+
+axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json').then(res=>{console.log(res)});
 
 server.use(router.allowedMethods());
 server.use(router.routes());
