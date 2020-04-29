@@ -132,7 +132,7 @@ const Initial = () => {
             {!initBar && <Layout>
                 {!(config.length) && <Layout.Section>
                     <EmptyState
-                        heading={"Sale Banner"}
+                        heading={`Sale Banner, ${scriptData.length}`}
                         image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
                         <Button
                             primary
