@@ -29,12 +29,14 @@ const config = [];
 
 router.get('/api/scripts', async (ctx) => {
     try {
-        //let script = await
+        let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {headers: {
+                cookie: "new_admin=1; _abv=0; new_theme_editor_disabled.sig=c0lGzzh0MFBQ5fCQTfz7yqvtriw; new_theme_editor_disabled=1; _master_udr=eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTXpsbU1UWm1aQzB5TVdOaUxUUXlOVEl0T1dZd1pTMDVaV1F3TkdWa1pEazNNalFHT2daRlJnPT0iLCJleHAiOiIyMDIyLTA0LTE3VDEwOjEwOjE5LjgzN1oiLCJwdXIiOiJjb29raWUuX21hc3Rlcl91ZHIifX0%3D--57bc5c71790e40f7a51583a27a221e5f0ce239a3; koa.sid=C93SEA4vr0mbs-0Mlr2YUdpvis5rlpor; koa.sid.sig=4SAC_N-73E9glZv1FqdOU28L8eo; _secure_admin_session_id_csrf=7c5635120d1c905325aa155036053931; _secure_admin_session_id=7c5635120d1c905325aa155036053931; __ssid=f9bb3c7f-4320-4709-a682-adcc06c21884; _y=5572fde9-0fdb-4201-9a38-2a1ab9a8d812; _shopify_y=5572fde9-0fdb-4201-9a38-2a1ab9a8d812; _shopify_fs=2020-03-04T12%3A23%3A43.307Z; _ab=1; secure_customer_sig=; _abv=0; _ga=GA1.2.2144947374.1584373127; cart_sig=; _orig_referrer=; _landing_page=%2Fadmin%2Fapps%2Fsample-app-359; _ab_session=l0h4cCIEFZGEMrNfGp7NOJy2xMtOSAH0H3XLSIVRKRtfbNH989%2BF9oHz%2FdZwLsWLGj40dEgtMtfe2s0QPtLn22opsh72EJxTbjV9pvp6wyB08Fc1LztTMem08WN8iK1S6r5g22I%3D--MCDUDXYHykQ50LOG--WP3VGQPflpSQFsU2TlYbIg%3D%3D; __cfduid=d2ceddf3b32a76b873b43d3be368424ff1588230958"
+            }});
         ctx.body = {
             status: 'success',
             data: {
                 config: config[0],
-                //script: script.data.script_tags
+                script: script.data.script_tags
             }
         }
     }
@@ -67,9 +69,9 @@ server.use(router.allowedMethods());
 server.use(router.routes());
 server.use(cors());
 
-axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {headers: {
-        cookie: "new_admin=1; _abv=0; new_theme_editor_disabled.sig=c0lGzzh0MFBQ5fCQTfz7yqvtriw; new_theme_editor_disabled=1; _master_udr=eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTXpsbU1UWm1aQzB5TVdOaUxUUXlOVEl0T1dZd1pTMDVaV1F3TkdWa1pEazNNalFHT2daRlJnPT0iLCJleHAiOiIyMDIyLTA0LTE3VDEwOjEwOjE5LjgzN1oiLCJwdXIiOiJjb29raWUuX21hc3Rlcl91ZHIifX0%3D--57bc5c71790e40f7a51583a27a221e5f0ce239a3; koa.sid=C93SEA4vr0mbs-0Mlr2YUdpvis5rlpor; koa.sid.sig=4SAC_N-73E9glZv1FqdOU28L8eo; _secure_admin_session_id_csrf=7c5635120d1c905325aa155036053931; _secure_admin_session_id=7c5635120d1c905325aa155036053931; __ssid=f9bb3c7f-4320-4709-a682-adcc06c21884; _y=5572fde9-0fdb-4201-9a38-2a1ab9a8d812; _shopify_y=5572fde9-0fdb-4201-9a38-2a1ab9a8d812; _shopify_fs=2020-03-04T12%3A23%3A43.307Z; _ab=1; secure_customer_sig=; _abv=0; _ga=GA1.2.2144947374.1584373127; cart_sig=; _orig_referrer=; _landing_page=%2Fadmin%2Fapps%2Fsample-app-359; _ab_session=l0h4cCIEFZGEMrNfGp7NOJy2xMtOSAH0H3XLSIVRKRtfbNH989%2BF9oHz%2FdZwLsWLGj40dEgtMtfe2s0QPtLn22opsh72EJxTbjV9pvp6wyB08Fc1LztTMem08WN8iK1S6r5g22I%3D--MCDUDXYHykQ50LOG--WP3VGQPflpSQFsU2TlYbIg%3D%3D; __cfduid=d2ceddf3b32a76b873b43d3be368424ff1588230958"
-    }}).then(res => {console.log(res.data)});
+ axios.delete('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/124745547911.json', {headers: {
+         cookie: "new_admin=1; _abv=0; new_theme_editor_disabled.sig=c0lGzzh0MFBQ5fCQTfz7yqvtriw; new_theme_editor_disabled=1; _master_udr=eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTXpsbU1UWm1aQzB5TVdOaUxUUXlOVEl0T1dZd1pTMDVaV1F3TkdWa1pEazNNalFHT2daRlJnPT0iLCJleHAiOiIyMDIyLTA0LTE3VDEwOjEwOjE5LjgzN1oiLCJwdXIiOiJjb29raWUuX21hc3Rlcl91ZHIifX0%3D--57bc5c71790e40f7a51583a27a221e5f0ce239a3; koa.sid=C93SEA4vr0mbs-0Mlr2YUdpvis5rlpor; koa.sid.sig=4SAC_N-73E9glZv1FqdOU28L8eo; _secure_admin_session_id_csrf=7c5635120d1c905325aa155036053931; _secure_admin_session_id=7c5635120d1c905325aa155036053931; __ssid=f9bb3c7f-4320-4709-a682-adcc06c21884; _y=5572fde9-0fdb-4201-9a38-2a1ab9a8d812; _shopify_y=5572fde9-0fdb-4201-9a38-2a1ab9a8d812; _shopify_fs=2020-03-04T12%3A23%3A43.307Z; _ab=1; secure_customer_sig=; _abv=0; _ga=GA1.2.2144947374.1584373127; cart_sig=; _orig_referrer=; _landing_page=%2Fadmin%2Fapps%2Fsample-app-359; _ab_session=l0h4cCIEFZGEMrNfGp7NOJy2xMtOSAH0H3XLSIVRKRtfbNH989%2BF9oHz%2FdZwLsWLGj40dEgtMtfe2s0QPtLn22opsh72EJxTbjV9pvp6wyB08Fc1LztTMem08WN8iK1S6r5g22I%3D--MCDUDXYHykQ50LOG--WP3VGQPflpSQFsU2TlYbIg%3D%3D; __cfduid=d2ceddf3b32a76b873b43d3be368424ff1588230958"
+     }}).then(res => {console.log(res.data)});
 
 app.prepare().then(() => {
 
