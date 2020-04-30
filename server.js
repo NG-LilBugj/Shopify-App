@@ -29,10 +29,7 @@ const config = [];
 
 router.get('/api/script', async (ctx) => {
     try {
-        let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {headers: {
-                "X-Shopify-Access-Token": accessStore.accessToken
-            }});
-        console.log(`accessToken: ${accessStore.accessToken}`);
+        let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
         ctx.body = {
             status: 'success',
             data: {
@@ -95,6 +92,9 @@ app.prepare().then(() => {
             scopes: ['read_products','write_products','read_script_tags','write_script_tags'],
             afterAuth(ctx){
                 const {shop, accessToken} = ctx.session;
+                ctx.set({
+                    "X-Shopify-Access-Token": accessToken
+                });
                 console.log(`originAccessToken: ${accessToken}`);
                 ctx.cookies.set('shopOrigin', shop, {
                     httpOnly: false,
