@@ -35,7 +35,7 @@ router.get('/api/script', async (ctx) => {
         ctx.body = {
             status: 'success',
             data: {
-                //config: config[0],
+                config: config[0],
                 //script: script.data.script_tags
                 message: "ping"
             }
