@@ -35,14 +35,22 @@ router.get('/api/script', async (ctx) => {
         ctx.body = {
             status: 'success',
             data: {
-                config: config[0],
-                script: script.data.script_tags
+                //config: config[0],
+                //script: script.data.script_tags
+                message: "ping"
             }
         }
     }
     catch (e) {
         console.log(e)
     }
+});
+router.get('api/ping', (ctx) => {
+   ctx.body = {
+       data: {
+           message: "hi"
+       }
+   }
 });
 router.post('/api/script', koaBody(), async (ctx) => {
     try {

@@ -16,7 +16,7 @@ import axios from 'axios'
 const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
-            let res = await axios.get('https://lil-shopify.herokuapp.com/api');
+            let res = await axios.get('https://lil-shopify.herokuapp.com/api/script');
             debugger
             return !!res.data.script.length
         };
