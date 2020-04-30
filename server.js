@@ -30,19 +30,9 @@ const config = [];
 
 router.get('/api/script', async (ctx) => {
     try {
-        request.post('https://nahku-b-tahke.myshopify.com/admin/oauth/access_token', {json: {
-                client_id: SHOPIFY_API_KEY,
-                client_secret: SHOPIFY_API_SECRET_KEY,
-            }})
-            .then((accessTokenResponse) => {
-                let accessToken = accessTokenResponse.access_token;
-                console.log('shop token ' + accessToken);
-                accessStore.addToken(accessToken)
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-        let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
+        let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {
+            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+        });
         ctx.body = {
             status: 'success',
             data: {
@@ -106,14 +96,12 @@ app.prepare().then(() => {
             afterAuth(ctx){
                 accessStore.addToken(ctx.session.accessToken);
                 const {shop, accessToken} = ctx.session;
-                ctx.set('X-Shopify-Access-Token',accessToken);
-                console.log(`originAccessToken: ${accessToken}`);
                 ctx.cookies.set('shopOrigin', shop, {
                     httpOnly: false,
                     secure: true,
                     sameSite: 'none'
                 });
-
+                ctx.cookies.set('accessToken', accessToken);
                 ctx.redirect('/');
             }
         })
