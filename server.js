@@ -92,9 +92,7 @@ app.prepare().then(() => {
             scopes: ['read_products','write_products','read_script_tags','write_script_tags'],
             afterAuth(ctx){
                 const {shop, accessToken} = ctx.session;
-                ctx.set({
-                    "X-Shopify-Access-Token": accessToken
-                });
+
                 console.log(`originAccessToken: ${accessToken}`);
                 ctx.cookies.set('shopOrigin', shop, {
                     httpOnly: false,
