@@ -30,6 +30,18 @@ const config = [];
 
 router.get('/api/script', async (ctx) => {
     try {
+        request.post('https://nahku-b-tahke.myshopify.com/admin/oauth/access_token', {json: {
+                client_id: SHOPIFY_API_KEY,
+                client_secret: SHOPIFY_API_SECRET_KEY,
+            }})
+            .then((accessTokenResponse) => {
+                let accessToken = accessTokenResponse.access_token;
+                console.log('shop token ' + accessToken);
+                accessStore.addToken(accessToken)
+            })
+            .catch((error) => {
+                console.log(error)
+            });
         let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
         ctx.body = {
             status: 'success',
@@ -50,21 +62,6 @@ router.get('api/ping', (ctx) => {
            message: "hi"
        }
    }
-});
-router.get('auth', (ctx) => {
-    request.post('https://nahku-b-tahke.myshopify.com/admin/oauth/access_token', {json: {
-            client_id: SHOPIFY_API_KEY,
-            client_secret: SHOPIFY_API_SECRET_KEY,
-            code: ctx.query.code
-        }})
-        .then((accessTokenResponse) => {
-            let accessToken = accessTokenResponse.access_token;
-            console.log('shop token ' + accessToken);
-            accessStore.addToken(accessToken)
-        })
-        .catch((error) => {
-            console.log(error)
-        });
 });
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
