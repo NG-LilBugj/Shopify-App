@@ -17,7 +17,8 @@ const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
             let res = await axios.get('https://lil-shopify.herokuapp.com/api/scripts');
-            return res.data.script
+            debugger
+            return !!res.data.script.length
         };
         const fetchScript = async () => {
             let scriptRes = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
@@ -126,9 +127,9 @@ const Initial = () => {
     return (
         <Page>
             {!initBar && <Layout>
-                {!(config.length) && <Layout.Section>
+                {!(config) && <Layout.Section>
                     <EmptyState
-                        heading={`Sale Banner, ${config.length}`}
+                        heading={`Sale Banner`}
                         image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
                         <Button
                             primary
@@ -142,9 +143,9 @@ const Initial = () => {
                         </Button>
                     </EmptyState>
                 </Layout.Section>}
-                {!!(config.length) && <Layout.Section>
+                {!!(config) && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
-                        <p>{config.data?config.data.name:""}</p>
+                        {/*<p>{config.data?config.data.name:""}</p>*/}
                         <Button
                             primary
                             size={"slim"}
