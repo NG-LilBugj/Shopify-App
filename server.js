@@ -27,7 +27,7 @@ const router = new KoaRouter();
 
 const config = [];
 
-router.get('/api/scripts', async (ctx) => {
+router.get('/api/script', async (ctx) => {
     try {
         // let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {headers: {
         //         "X-Shopify-Access-Token": accessStore.accessToken
@@ -44,7 +44,7 @@ router.get('/api/scripts', async (ctx) => {
         console.log(e)
     }
 });
-router.post('/api/scripts', koaBody(), async (ctx) => {
+router.post('/api/script', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
         //storage.includeScript(body);
@@ -55,7 +55,7 @@ router.post('/api/scripts', koaBody(), async (ctx) => {
         console.log(e)
     }
 });
-router.delete('/api/scripts', koaBody(), async (ctx) => {
+router.delete('/api/script', koaBody(), async (ctx) => {
     try{
         config.pop();
         ctx.body = 'Timer deleted'

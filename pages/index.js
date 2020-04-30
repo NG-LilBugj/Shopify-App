@@ -16,7 +16,7 @@ import axios from 'axios'
 const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
-            let res = await axios.get('https://lil-shopify.herokuapp.com/api/scripts');
+            let res = await axios.get('https://lil-shopify.herokuapp.com/api/script');
             debugger
             return !!res.data.script.length
         };
@@ -105,7 +105,7 @@ const Initial = () => {
                 }
             });
         console.log(scriptRes);
-        let res = await axios.post('https://lil-shopify.herokuapp.com/api/scripts',
+        let res = await axios.post('https://lil-shopify.herokuapp.com/api/script',
             {
                 name,
                 startDate: selectedStartDate,
@@ -121,7 +121,7 @@ const Initial = () => {
 
     const deleteSubmit = () => {
         axios.delete(`https://nahku_b_tanke.myshopify.com/admin/api/2020-04/script_tags/${config[0].id}`).then(res => {console.log(res)});
-        axios.delete('https://lil-shopify.herokuapp.com/api/scripts').then(res => {console.log(res)})
+        axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {console.log(res)})
     };
 
     return (
