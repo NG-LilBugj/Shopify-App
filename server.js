@@ -29,9 +29,9 @@ const config = [];
 
 router.get('/api/scripts', async (ctx) => {
     try {
-        let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {headers: {
-                "X-Shopify-Access-Token": accessStore.accessToken
-            }});
+        // let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {headers: {
+        //         "X-Shopify-Access-Token": accessStore.accessToken
+        //     }});
         ctx.body = {
             status: 'success',
             data: {
