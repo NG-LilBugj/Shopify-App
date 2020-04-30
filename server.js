@@ -30,14 +30,14 @@ const config = [];
 
 router.get('/api/script', async (ctx) => {
     try {
-        let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {
-            "cookie": ctx.cookies.get('accessToken')
-        });
+        //let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {
+        //    "cookie": ctx.cookies.get('accessToken')
+        //});
         ctx.body = {
             status: 'success',
             data: {
                 config: config[0],
-                script: script.data.script_tags,
+                script: ctx.cookie.get('shopOrigin'),
                 message: accessStore.accessToken
             }
         }
