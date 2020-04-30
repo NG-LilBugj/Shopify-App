@@ -48,10 +48,9 @@ router.get('/api/script', async (ctx) => {
 });
 router.get('api/ping', (ctx) => {
    ctx.body = {
-       data: {
-           message: "hi"
-       }
+       cookie: ctx.cookies.get('shopOrigin')
    }
+
 });
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
