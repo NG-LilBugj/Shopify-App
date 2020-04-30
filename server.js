@@ -37,7 +37,7 @@ router.get('/api/script', async (ctx) => {
             status: 'success',
             data: {
                 config: config[0],
-                script: ctx.cookie.get('shopOrigin'),
+                script: ctx.cookies.get('shopOrigin'),
                 message: accessStore.accessToken
             }
         }
