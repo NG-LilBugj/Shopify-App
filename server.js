@@ -111,6 +111,8 @@ app.prepare().then(() => {
     );
 
     server.use(graphQLProxy({version: ApiVersion.January20}));
+
+    server.use(router.routes());
     server.use(verifyRequest());
 
     server.use(async (ctx) => {
