@@ -16,8 +16,7 @@ import axios from 'axios'
 const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
-            let res = await axios.get('https://cors-anywhere.herokuapp.com/https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
-            debugger
+            let res = await axios.get('https://lil-shopify.herokuapp.com/api/script');
             return !!res.data.script.length
         };
         const fetchScript = async () => {
