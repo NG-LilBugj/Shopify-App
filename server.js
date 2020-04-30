@@ -31,7 +31,7 @@ const config = [];
 router.get('/api/script', async (ctx) => {
     try {
         let script = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {
-            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+            "cookie": ctx.cookies.get('accessToken')
         });
         ctx.body = {
             status: 'success',
