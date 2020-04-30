@@ -6,10 +6,11 @@ const KoaRouter = require('koa-router');
 const koaBody = require('koa-body');
 const next = require('next');
 const lusca = require('koa-lusca');
-const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
+const createShopifyAuth = require('@shopify/koa-shopify-auth');
 const {verifyRequest} = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
 const axios = require('axios');
+const request = require('request-promise');
 
 dotenv.config();
 
@@ -49,6 +50,21 @@ router.get('api/ping', (ctx) => {
            message: "hi"
        }
    }
+});
+router.get('auth', (ctx) => {
+    request.post('https://nahku-b-tahke.myshopify.com/admin/oauth/access_token', {json: {
+            client_id: SHOPIFY_API_KEY,
+            client_secret: SHOPIFY_API_SECRET_KEY,
+            code: ctx.query.code
+        }})
+        .then((accessTokenResponse) => {
+            let accessToken = accessTokenResponse.access_token;
+            console.log('shop token ' + accessToken);
+            accessStore.addToken(accessToken)
+        })
+        .catch((error) => {
+            console.log(error)
+        });
 });
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
