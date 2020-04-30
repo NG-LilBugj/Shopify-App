@@ -100,6 +100,7 @@ app.prepare().then(() => {
                     secure: true,
                     sameSite: 'none'
                 });
+                console.log(`originAccessToken: ${accessToken}`);
                 accessStore.addToken(accessToken);
 
                 ctx.redirect('/');
