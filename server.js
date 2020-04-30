@@ -100,7 +100,7 @@ app.prepare().then(() => {
                     secure: true,
                     sameSite: 'none'
                 });
-                ctx.cookies.set('accessToken', accessToken);
+                ctx.cookies.set('accessToken', accessToken, {httpOnly: false});
                 ctx.redirect('/');
             }
         })
