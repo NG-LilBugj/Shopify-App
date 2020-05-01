@@ -29,30 +29,36 @@ const router = new KoaRouter();
 const config = [];
 
 router.get('/api/script', async (ctx) => {
-    axios.get(
-        `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
-    { headers: {
-            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-        }
-        })
-        .then(res => {
-            ctx.body = {
-                status: 'success',
-                data: {
-                    config: config[0],
-                    script: res.data,
-                    message: accessStore.accessToken
+    try {
+        axios.get(
+            `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
+            {
+                headers: {
+                    "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                 }
-            }
-        })
-        .catch(e => {
-            console.log(e);
-            ctx.body = {
-                status: 'failed',
-                error: 'Cannot load data from Shopify API',
-                error_message: e.headers
-            }
-        })
+            })
+            .then(res => {
+                ctx.body = {
+                    status: 'success',
+                    data: {
+                        config: config[0],
+                        script: res.data,
+                        message: accessStore.accessToken
+                    }
+                }
+            })
+            .catch(e => {
+                console.log(e);
+                ctx.body = {
+                    status: 'failed',
+                    error: 'Cannot load data from Shopify API',
+                    error_message: e.headers
+                }
+            })
+    }
+    catch (e) {
+        console.log(e)
+    }
 });
 router.get('api/ping', (ctx) => {
     ctx.body = {
