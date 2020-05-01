@@ -30,7 +30,7 @@ const config = [];
 
 router.get('/api/script', async (ctx) => {
     try {
-        let script = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
+        let script = await fetch(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
         });
         ctx.body = {
