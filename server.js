@@ -29,11 +29,9 @@ const router = new KoaRouter();
 const config = [];
 
 router.get('/api/script', async (ctx) => {
-    request({
-        uri: `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, qs: {
-            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-        }, headers: {
-            'User-Agent': 'Request-Promise',
+    axios.get(
+        `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
+    { headers: {
             "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
         }
         })
@@ -48,7 +46,12 @@ router.get('/api/script', async (ctx) => {
             }
         })
         .catch(e => {
-            console.log(e)
+            console.log(e);
+            ctx.body = {
+                status: 'failed',
+                error: 'Cannot load data from Shopify API',
+                error_message: e.headers
+            }
         })
 });
 router.get('api/ping', (ctx) => {
