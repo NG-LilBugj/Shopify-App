@@ -30,17 +30,19 @@ const config = [];
 
 router.get('/api/script', async (ctx) => {
     try {
-        let script = await fetch(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
+        fetch(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-        });
-        ctx.body = {
-            status: 'success',
-            data: {
-                config: config[0],
-                script: script.data,
-                message: accessStore.accessToken
+        }).then(res => {
+            ctx.body = {
+                status: 'success',
+                data: {
+                    config: config[0],
+                    script: res.data,
+                    message: accessStore.accessToken
+                }
             }
-        }
+        })
+            .catch(e => {console.log(e)})
     }
     catch (e) {
         console.log(e)
