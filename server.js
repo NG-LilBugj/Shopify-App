@@ -33,7 +33,8 @@ router.get('/api/script', async (ctx) => {
         uri: `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, qs: {
             "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
         }, headers: {
-            'User-Agent': 'Request-Promise'
+            'User-Agent': 'Request-Promise',
+            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
         }
         })
         .then(res => {
