@@ -19,9 +19,9 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
 
-const { default: graphQLProxy } = require('@shopify/koa-shopify-graphql-proxy');
+const {default: graphQLProxy} = require('@shopify/koa-shopify-graphql-proxy');
 const {ApiVersion} = require('@shopify/koa-shopify-graphql-proxy');
-const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY} = process.env;
+const {SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY} = process.env;
 
 const server = new Koa();
 const router = new KoaRouter();
@@ -29,10 +29,14 @@ const router = new KoaRouter();
 const config = [];
 
 router.get('/api/script', async (ctx) => {
-    try {
-        fetch(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
-           "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-        }).then(res => {
+    request({
+        uri: `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, qs: {
+            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+        }, headers: {
+            'User-Agent': 'Request-Promise'
+        }
+        })
+        .then(res => {
             ctx.body = {
                 status: 'success',
                 data: {
@@ -42,16 +46,14 @@ router.get('/api/script', async (ctx) => {
                 }
             }
         })
-            .catch(e => {console.log(e)})
-    }
-    catch (e) {
-        console.log(e)
-    }
+        .catch(e => {
+            console.log(e)
+        })
 });
 router.get('api/ping', (ctx) => {
-   ctx.body = {
-       cookie: ctx.cookies.get('shopOrigin')
-   }
+    ctx.body = {
+        cookie: ctx.cookies.get('shopOrigin')
+    }
 
 });
 router.post('/api/script', koaBody(), async (ctx) => {
@@ -60,17 +62,15 @@ router.post('/api/script', koaBody(), async (ctx) => {
         //storage.includeScript(body);
         config.push(body);
         ctx.body = 'Config added'
-    }
-    catch (e) {
+    } catch (e) {
         console.log(e)
     }
 });
 router.delete('/api/script', koaBody(), async (ctx) => {
-    try{
+    try {
         config.pop();
         ctx.body = 'Timer deleted'
-    }
-    catch (e) {
+    } catch (e) {
         console.log(e)
     }
 });
@@ -93,8 +93,8 @@ app.prepare().then(() => {
         createShopifyAuth({
             apiKey: SHOPIFY_API_KEY,
             secret: SHOPIFY_API_SECRET_KEY,
-            scopes: ['read_products','write_products','read_script_tags','write_script_tags'],
-            afterAuth(ctx){
+            scopes: ['read_products', 'write_products', 'read_script_tags', 'write_script_tags'],
+            afterAuth(ctx) {
                 accessStore.addToken(ctx.session.accessToken);
                 const {shop, accessToken} = ctx.session;
                 ctx.cookies.set('shopOrigin', shop, {
