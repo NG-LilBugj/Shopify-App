@@ -135,6 +135,7 @@ const Initial = () => {
                 {!!config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
                         {/*<p>{config.data?config.data.name:""}</p>*/}
+                        <Link href={'/success'}>
                         <Button
                             primary
                             size={"slim"}
@@ -142,6 +143,7 @@ const Initial = () => {
                             onClick={deleteSubmit}>
                             Delete Banner
                         </Button>
+                        </Link>
                     </Card>
                 </Layout.Section>}
             </Layout>}
