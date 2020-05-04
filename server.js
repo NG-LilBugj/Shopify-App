@@ -68,6 +68,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
             }
         })
             .then(res => {
+                console.log(res);
                 config.push({...body, id: res.data.script_tag.id});
                 ctx.body = {message: 'Config added', data: res.data}
             });
