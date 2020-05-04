@@ -82,7 +82,7 @@ router.delete('/api/script', koaBody(), async (ctx) => {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }
-        }).catch(err => console.log(err));
+        }).then(res => console.log(res));
         ctx.body = 'Timer deleted'
     } catch (e) {
         console.log(e)
