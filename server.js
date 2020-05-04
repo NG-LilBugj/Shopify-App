@@ -37,16 +37,15 @@ router.get('/api/script', async (ctx) => {
                     "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                 }
             });
-                ctx.body = {
-                    status: 'success',
-                    data: {
-                        config: config[0],
-                        script: res.data,
-                        message: accessStore.accessToken
-                    }
-                }
-    }
-    catch (e) {
+        ctx.body = {
+            status: 'success',
+            data: {
+                config: config[0],
+                script: res.data,
+                message: ctx.cookies.get('shopOrigin')
+            }
+        }
+    } catch (e) {
         console.log(e)
     }
 });
@@ -59,9 +58,17 @@ router.get('api/ping', (ctx) => {
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
-        //storage.includeScript(body);
-        config.push(body);
-        ctx.body = 'Config added'
+        let res = await axios.post('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {
+            "script_tag": {
+                "event": "onload",
+                "src": "https://lil-shopify.herokuapp.com/script.js",
+                "display_scope": "all"
+            }
+        }, {
+            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+        });
+        config.push({...body, id: res.script_tag.id});
+        ctx.body = {message: 'Config added', data: res}
     } catch (e) {
         console.log(e)
     }
@@ -69,6 +76,9 @@ router.post('/api/script', koaBody(), async (ctx) => {
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         config.pop();
+        axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/${config[0].id}`, {
+            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+        }).catch(err => console.log(err));
         ctx.body = 'Timer deleted'
     } catch (e) {
         console.log(e)
@@ -114,7 +124,6 @@ app.prepare().then(() => {
 
     server.use(graphQLProxy({version: ApiVersion.January20}));
 
-    server.use(router.routes());
     server.use(verifyRequest());
 
     server.use(async (ctx) => {

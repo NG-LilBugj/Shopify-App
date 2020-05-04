@@ -17,7 +17,7 @@ const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
             let res = await axios.get('https://lil-shopify.herokuapp.com/api/script');
-            return !!res.data.script.length
+            return !!res.data.script.script_tags.length
         };
         const fetchScript = async () => {
             let scriptRes = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
@@ -96,14 +96,6 @@ const Initial = () => {
     );
 
     const handleSubmit = async () => {
-        let scriptRes = axios.post('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json',
-            {
-                "script_tag": {
-                    "event" : "onload",
-                    "src": "https://lil-shopify.herokuapp.com/script.js"
-                }
-            });
-        console.log(scriptRes);
         let res = await axios.post('https://lil-shopify.herokuapp.com/api/script',
             {
                 name,
@@ -119,14 +111,13 @@ const Initial = () => {
     };
 
     const deleteSubmit = () => {
-        axios.delete(`https://nahku_b_tanke.myshopify.com/admin/api/2020-04/script_tags/${config[0].id}`).then(res => {console.log(res)});
         axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {console.log(res)})
     };
 
     return (
         <Page>
             {!initBar && <Layout>
-                {!(config) && <Layout.Section>
+                {!config && <Layout.Section>
                     <EmptyState
                         heading={`Sale Banner`}
                         image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
@@ -142,7 +133,7 @@ const Initial = () => {
                         </Button>
                     </EmptyState>
                 </Layout.Section>}
-                {!!(config) && <Layout.Section>
+                {config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
                         {/*<p>{config.data?config.data.name:""}</p>*/}
                         <Button
