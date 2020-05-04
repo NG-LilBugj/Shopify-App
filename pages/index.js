@@ -12,12 +12,17 @@ import {
 import {useCallback, useState, useEffect} from "react";
 import Link from 'next/link'
 import axios from 'axios'
+import preloader from '../assets/Eclipse-1s-200px (1).svg'
 
 const Initial = () => {
     useEffect(() => {
-        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {fetchConfig(res.data.config)});
+        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
+            fetchConfig(res.data.config);
+            setLoading(false)
+        });
     }, []);
 
+    const [isLoading, setLoading] = useState(true);
     const [config, fetchConfig] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
@@ -103,9 +108,12 @@ const Initial = () => {
     };
 
     const deleteSubmit = () => {
-        axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {console.log(res)})
+        axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {
+            console.log(res)
+        })
     };
-    return (
+    if (isLoading) return <Page><Layout><img src={preloader} alt={'preloader'}/></Layout></Page>;
+    else return (
         <Page>
             {!initBar && <Layout>
                 {!config && <Layout.Section>
@@ -128,13 +136,13 @@ const Initial = () => {
                     <Card title={"Existing Banner:"} sectioned>
                         {/*<p>{config.data?config.data.name:""}</p>*/}
                         <Link href={'/success'}>
-                        <Button
-                            primary
-                            size={"slim"}
-                            type={"submit"}
-                            onClick={deleteSubmit}>
-                            Delete Banner
-                        </Button>
+                            <Button
+                                primary
+                                size={"slim"}
+                                type={"submit"}
+                                onClick={deleteSubmit}>
+                                Delete Banner
+                            </Button>
                         </Link>
                     </Card>
                 </Layout.Section>}
@@ -145,8 +153,10 @@ const Initial = () => {
                         <TextField
                             label={'Name'}
                             value={name}
-                            onChange={(value) => {setName(value)}}
-                            error={(!name)?'Please enter name':''}
+                            onChange={(value) => {
+                                setName(value)
+                            }}
+                            error={(!name) ? 'Please enter name' : ''}
                         />
                     </Card>
                     <Card title={'Start time'} sectioned>
@@ -190,11 +200,13 @@ const Initial = () => {
                         <Checkbox
                             label="Display sticky"
                             checked={checked}
-                            onChange={(newChecked) => {setChecked(newChecked)}}
+                            onChange={(newChecked) => {
+                                setChecked(newChecked)
+                            }}
                         />
                     </Card>
                     <Card title={'Timer design'} sectioned>
-                        <div style={{display: 'flex', justifyContent:'space-around',width: '100%'}}>
+                        <div style={{display: 'flex', justifyContent: 'space-around', width: '100%'}}>
                             <div>
                                 <p style={{marginBottom: '10px'}}>Background color:</p>
 
@@ -202,8 +214,13 @@ const Initial = () => {
                                          fluidContent={true} sectioned>
                                     <ColorPicker color={bgColor} onChange={setBgColor}/>
                                 </Popover>
-                                <div style={{width: '100%', height: '40px', borderRadius: '5px',
-                                    backgroundColor: `hsla(${bgColor.hue}, ${bgColor.saturation*100}%, ${bgColor.brightness*100}%, ${bgColor.alpha})`, marginTop: '10px'}}/>
+                                <div style={{
+                                    width: '100%',
+                                    height: '40px',
+                                    borderRadius: '5px',
+                                    backgroundColor: `hsla(${bgColor.hue}, ${bgColor.saturation * 100}%, ${bgColor.brightness * 100}%, ${bgColor.alpha})`,
+                                    marginTop: '10px'
+                                }}/>
                             </div>
                             <div>
                                 <RangeSlider
@@ -218,12 +235,18 @@ const Initial = () => {
                             <div>
                                 <p style={{marginBottom: '10px'}}>Border color:</p>
 
-                                <Popover active={borderPopover} activator={borderActivator} onClose={toggleBorderPopover}
+                                <Popover active={borderPopover} activator={borderActivator}
+                                         onClose={toggleBorderPopover}
                                          fluidContent={true} sectioned>
                                     <ColorPicker color={borderColor} onChange={setBorderColor}/>
                                 </Popover>
-                                <div style={{width: '100%', height: '40px', borderRadius: '5px',
-                                    backgroundColor: `hsla(${borderColor.hue}, ${borderColor.saturation*100}%, ${borderColor.brightness*100}%, ${borderColor.alpha})`, marginTop: '10px'}}/>
+                                <div style={{
+                                    width: '100%',
+                                    height: '40px',
+                                    borderRadius: '5px',
+                                    backgroundColor: `hsla(${borderColor.hue}, ${borderColor.saturation * 100}%, ${borderColor.brightness * 100}%, ${borderColor.alpha})`,
+                                    marginTop: '10px'
+                                }}/>
                             </div>
                         </div>
                     </Card>
@@ -242,6 +265,7 @@ const Initial = () => {
                     </div>
                 </Layout.Section>
             </Layout>}
+
         </Page>
     )
 };

@@ -1,7 +1,7 @@
 
     console.log('FFFFFFFFFFFFFFFFFFFFF');
 
- fetch('https://cors-anywhere.herokuapp.com/http://shopify-sale-banner.us-west-1.elasticbeanstalk.com/api/scripts')
+ fetch('https://lil-shopify.herokuapp.com/api/scripts')
      .then(res => res.json())
      .then(res => renderTimer(res.data))
      .catch(error => {console.log(error)});
