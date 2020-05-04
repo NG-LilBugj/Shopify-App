@@ -24,6 +24,7 @@ const Initial = () => {
             return scriptRes.data.script_tags
         };
         fetchConfig(fetchData());
+        console.log(!!config)
     }, []);
 
     const [config, fetchConfig] = useState(false);
@@ -113,7 +114,6 @@ const Initial = () => {
     const deleteSubmit = () => {
         axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {console.log(res)})
     };
-    console.log(!!config);
     return (
         <Page>
             {!initBar && <Layout>
