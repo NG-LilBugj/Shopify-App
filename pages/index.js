@@ -26,7 +26,7 @@ const Initial = () => {
         fetchConfig(fetchData());
     }, []);
 
-    const [config, fetchConfig] = useState(false);
+    const [config, fetchConfig] = useState(true);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
 
@@ -115,7 +115,7 @@ const Initial = () => {
     };
     return (
         <Page>
-            {!initBar && console.log(!!config) && <Layout>
+            {!initBar && <Layout>
                 {!config && <Layout.Section>
                     <EmptyState
                         heading={`Sale Banner`}
