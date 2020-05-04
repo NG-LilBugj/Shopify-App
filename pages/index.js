@@ -24,7 +24,6 @@ const Initial = () => {
             return scriptRes.data.script_tags
         };
         fetchConfig(fetchData());
-        console.log(!!config)
     }, []);
 
     const [config, fetchConfig] = useState(false);
@@ -116,7 +115,7 @@ const Initial = () => {
     };
     return (
         <Page>
-            {!initBar && <Layout>
+            {!initBar && console.log(!!config) && <Layout>
                 {!config && <Layout.Section>
                     <EmptyState
                         heading={`Sale Banner`}
