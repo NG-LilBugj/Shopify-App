@@ -12,7 +12,7 @@ import {
 import {useCallback, useState, useEffect} from "react";
 import Link from 'next/link'
 import axios from 'axios'
-import preloader from '../assets/Eclipse-1s-200px (1).svg'
+import preloader from '../assets/Eclipse-1s-200px.gif'
 
 const Initial = () => {
     useEffect(() => {
