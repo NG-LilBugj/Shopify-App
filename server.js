@@ -39,11 +39,9 @@ router.get('/api/script', async (ctx) => {
             });
         ctx.body = {
             status: 'success',
-            data: {
-                config: config[0],
-                script: res.data,
-                message: ctx.cookies.get('shopOrigin')
-            }
+            config: config[0],
+            script: res.data,
+            message: ctx.cookies.get('shopOrigin')
         }
     } catch (e) {
         console.log(e)
