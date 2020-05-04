@@ -43,7 +43,7 @@ router.get('/api/script', async (ctx) => {
             script: (!!res.data.script_tags
                 .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js').length)?res.data.script_tags
                 .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js')
-                .map(t => {return {...t, name: config.find(e => e.id === t.id)}}) : null
+                .map(t => {return {...t, name: config.find(e => e.id === t.id).name}}) : null
             ,
             message: ctx.cookies.get('shopOrigin')
         }
