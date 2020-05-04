@@ -78,7 +78,12 @@ router.post('/api/script', koaBody(), async (ctx) => {
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         config.pop();
-        axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/125893378183.json`, {
+        axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/125892001927.json`, {
+            headers: {
+                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+            }
+        }).then(res => console.log(res));
+        axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/125891215495.json`, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }
