@@ -56,7 +56,7 @@ router.get('api/ping', (ctx) => {
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
-        let res = await axios.post('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {
+        axios.post('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {
             "script_tag": {
                 "event": "onload",
                 "src": "https://lil-shopify.herokuapp.com/script.js",
@@ -66,10 +66,11 @@ router.post('/api/script', koaBody(), async (ctx) => {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }
-        });
-        config.push({...body, id: res.script_tag.id});
-        console.log(res);
-        ctx.body = {message: 'Config added', data: res}
+        })
+            .then(res => console.log(res))
+            .catch(e => console.log(e));
+        //config.push({...body, id: res.script_tag.id});
+        ctx.body = {message: 'Config added'}
     } catch (e) {
         console.log(e)
     }
