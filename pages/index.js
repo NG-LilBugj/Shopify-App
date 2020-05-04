@@ -16,7 +16,6 @@ import axios from 'axios'
 const Initial = () => {
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {fetchConfig(res.data.config)});
-        fetchConfig(fetchData());
     }, []);
 
     const [config, fetchConfig] = useState(false);
