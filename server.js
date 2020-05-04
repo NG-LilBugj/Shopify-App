@@ -78,7 +78,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         config.pop();
-        axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/125893378183`, {
+        axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/125893378183.json`, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }
