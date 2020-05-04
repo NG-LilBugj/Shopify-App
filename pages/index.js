@@ -17,6 +17,7 @@ const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
             let res = await axios.get('https://lil-shopify.herokuapp.com/api/script');
+            console.log(res.data);
             return !!res.data.script.script_tags.length
         };
         const fetchScript = async () => {
