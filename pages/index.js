@@ -128,7 +128,7 @@ const Initial = () => {
                 </Layout.Section>}
                 {!!scriptData.config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
-                        <p>{scriptData.script?scriptData.script[0].name:""}</p>
+                        <p>{scriptData.script?scriptData.script[0].configData.name:""}</p>
                         <Link href={'/success'}>
                             <Button
                                 primary
