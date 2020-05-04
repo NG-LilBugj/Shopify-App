@@ -17,7 +17,6 @@ const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
             let res = await axios.get('https://lil-shopify.herokuapp.com/api/script');
-            console.log(res.data);
             return !!res.data.script.script_tags.length
         };
         const fetchScript = async () => {
@@ -114,7 +113,7 @@ const Initial = () => {
     const deleteSubmit = () => {
         axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {console.log(res)})
     };
-
+    console.log(!config);
     return (
         <Page>
             {!initBar && <Layout>
