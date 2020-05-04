@@ -116,7 +116,7 @@ const Initial = () => {
     return (
         <Page>
             {!initBar && <Layout>
-                {!!config && <Layout.Section>
+                {!config && <Layout.Section>
                     <EmptyState
                         heading={`Sale Banner`}
                         image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
@@ -132,7 +132,7 @@ const Initial = () => {
                         </Button>
                     </EmptyState>
                 </Layout.Section>}
-                {!config && <Layout.Section>
+                {!!config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
                         {/*<p>{config.data?config.data.name:""}</p>*/}
                         <Button

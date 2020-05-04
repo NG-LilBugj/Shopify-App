@@ -67,10 +67,10 @@ router.post('/api/script', koaBody(), async (ctx) => {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }
         })
-            .then(res => console.log(res))
-            .catch(e => console.log(e));
-        //config.push({...body, id: res.script_tag.id});
-        ctx.body = {message: 'Config added'}
+            .then(res => {
+                config.push({...body, id: res.data.script_tag.id});
+                ctx.body = {message: 'Config added', data: res.data}
+            });
     } catch (e) {
         console.log(e)
     }
@@ -78,7 +78,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         config.pop();
-        axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/${config[0].id}`, {
+        axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/125893378183`, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }
