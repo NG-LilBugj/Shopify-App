@@ -17,9 +17,7 @@ const Initial = () => {
     useEffect(() => {
         const fetchData = async () => {
             let res = await axios.get('https://lil-shopify.herokuapp.com/api/script');
-            console.log(!!res.data.script.script_tags.length);
-            console.log(res.data.script.script_tags.length);
-            return !!res.data.script.script_tags.length
+            return res.data.script.script_tags.length
         };
         const fetchScript = async () => {
             let scriptRes = await axios.get('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json');
@@ -115,8 +113,7 @@ const Initial = () => {
     const deleteSubmit = () => {
         axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {console.log(res)})
     };
-    console.log(!config);
-    console.log(config);
+    console.log(!!config);
     return (
         <Page>
             {!initBar && <Layout>
@@ -136,7 +133,7 @@ const Initial = () => {
                         </Button>
                     </EmptyState>
                 </Layout.Section>}
-                {config && <Layout.Section>
+                {!!config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
                         {/*<p>{config.data?config.data.name:""}</p>*/}
                         <Button
