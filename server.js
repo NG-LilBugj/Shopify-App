@@ -65,7 +65,9 @@ router.post('/api/script', koaBody(), async (ctx) => {
                 "display_scope": "all"
             }
         }, {
-            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+            headers: {
+                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+            }
         });
         config.push({...body, id: res.script_tag.id});
         ctx.body = {message: 'Config added', data: res}
@@ -77,7 +79,9 @@ router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         config.pop();
         axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/${config[0].id}`, {
-            "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+            headers: {
+                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+            }
         }).catch(err => console.log(err));
         ctx.body = 'Timer deleted'
     } catch (e) {
