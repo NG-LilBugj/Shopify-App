@@ -30,14 +30,13 @@ const config = [];
 
 router.get('/api/script', async (ctx) => {
     try {
-        axios.get(
-            `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
+        let res = await axios.get(
+            `https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json`,
             {
                 headers: {
                     "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                 }
-            })
-            .then(res => {
+            });
                 ctx.body = {
                     status: 'success',
                     data: {
@@ -46,15 +45,6 @@ router.get('/api/script', async (ctx) => {
                         message: accessStore.accessToken
                     }
                 }
-            })
-            .catch(e => {
-                console.log(e);
-                ctx.body = {
-                    status: 'failed',
-                    error: 'Cannot load data from Shopify API',
-                    error_message: e.headers
-                }
-            })
     }
     catch (e) {
         console.log(e)
