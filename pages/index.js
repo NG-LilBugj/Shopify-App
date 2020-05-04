@@ -115,6 +115,8 @@ const Initial = () => {
     const deleteSubmit = () => {
         axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {console.log(res)})
     };
+    console.log(!config);
+    console.log(config);
     return (
         <Page>
             {!initBar && <Layout>
