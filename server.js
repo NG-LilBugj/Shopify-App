@@ -31,7 +31,7 @@ const config = [];
 router.get('/api/script', async (ctx) => {
     try {
         let res = await axios.get(
-            `https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json`,
+            `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
             {
                 headers: {
                     "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
@@ -40,7 +40,11 @@ router.get('/api/script', async (ctx) => {
         ctx.body = {
             status: 'success',
             config: res.data.script_tags.some(t => t.src === 'https://lil-shopify.herokuapp.com/script.js'),
-            script: res.data,
+            script: (!!res.data.script_tags
+                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js').length)?res.data.script_tags
+                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js')
+                .map(t => {return {...t, name: config.find(e => e.id === t.id)}}) : null
+            ,
             message: ctx.cookies.get('shopOrigin')
         }
     } catch (e) {
@@ -56,7 +60,7 @@ router.get('api/ping', (ctx) => {
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
-        axios.post('https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags.json', {
+        axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
             "script_tag": {
                 "event": "onload",
                 "src": "https://lil-shopify.herokuapp.com/script.js",
@@ -79,7 +83,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         let elem = config.pop();
-        axios.delete(`https://nahku-b-tahke.myshopify.com/admin/api/2020-04/script_tags/${elem.id}.json`, {
+        axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${elem.id}.json`, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }

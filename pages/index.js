@@ -15,10 +15,10 @@ import axios from 'axios'
 
 const Initial = () => {
     useEffect(() => {
-        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {fetchConfig(res.data.config)});
+        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {fetchData(res.data)});
     }, []);
 
-    const [config, fetchConfig] = useState(false);
+    const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
 
@@ -110,7 +110,7 @@ const Initial = () => {
     return (
         <Page>
             {!initBar && <Layout>
-                {!config && <Layout.Section>
+                {!scriptData.config && <Layout.Section>
                     <EmptyState
                         heading={`Sale Banner`}
                         image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
@@ -126,9 +126,9 @@ const Initial = () => {
                         </Button>
                     </EmptyState>
                 </Layout.Section>}
-                {!!config && <Layout.Section>
+                {!!scriptData.config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
-                        {/*<p>{config.data?config.data.name:""}</p>*/}
+                        <p>{scriptData.script?scriptData.script[0].name:""}</p>
                         <Link href={'/success'}>
                             <Button
                                 primary
