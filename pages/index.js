@@ -12,17 +12,12 @@ import {
 import {useCallback, useState, useEffect} from "react";
 import Link from 'next/link'
 import axios from 'axios'
-import preloader from '../assets/Eclipse-1s-200px.gif'
 
 const Initial = () => {
     useEffect(() => {
-        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
-            fetchConfig(res.data.config);
-            setLoading(false)
-        });
+        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {fetchConfig(res.data.config)});
     }, []);
 
-    const [isLoading, setLoading] = useState(true);
     const [config, fetchConfig] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
@@ -112,8 +107,7 @@ const Initial = () => {
             console.log(res)
         })
     };
-    if (isLoading) return <Page><Layout><img src={preloader} alt={'preloader'}/></Layout></Page>;
-    else return (
+    return (
         <Page>
             {!initBar && <Layout>
                 {!config && <Layout.Section>
