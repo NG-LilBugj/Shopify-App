@@ -3,7 +3,7 @@ fetch('https://lil-shopify.herokuapp.com/auth')
     .catch(e => console.log(e));
 fetch('https://lil-shopify.herokuapp.com/api/config')
      .then(res => res.json())
-     .then(res => renderTimer(res.data))
+     .then(res => console.log(res))
      .catch(error => {console.log(error)});
 
     const renderTimer = (data) => {
