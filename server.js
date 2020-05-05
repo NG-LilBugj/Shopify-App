@@ -56,11 +56,6 @@ router.get('api/config', (ctx) => {
         ...config[0]
     }
 });
-router.get('auth', (ctx) => {
-   ctx.body = {
-       ...config[0]
-   }
-});
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
@@ -87,7 +82,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         let elem = config.pop();
-        axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${elem.id}.json`, {
+        axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/125999186055.json`, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }

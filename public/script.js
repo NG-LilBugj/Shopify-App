@@ -1,6 +1,23 @@
 fetch('https://lil-shopify.herokuapp.com/auth')
      .then(res => res.json())
-     .then(res => console.log(res))
+     .then(res => {res.data.name?renderTimer(res.data):renderTimer({
+         endDate: { end:"Fri Jun 12 2020 00:00:00 GMT-0300" },
+         position: "Top",
+         sticky: true,
+         backGroundColor: {
+             hue: 275,
+             brightness: 1,
+             saturation: 0.35,
+             alpha: 1
+         },
+         borderSize: 0,
+         borderColor: {
+             hue: 1,
+             brightness: 1,
+             saturation: 1,
+             alpha: 0.1
+         },
+     })})
      .catch(error => {console.log(error)});
 
     const renderTimer = (data) => {
