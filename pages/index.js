@@ -136,12 +136,12 @@ const Initial = () => {
                 </Layout.Section>}
                 {!!scriptData.config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
-                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
+                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px', borderRadius: "10px", border: "1px solid black"}}>
                             <p>Banner name:</p>
                             <p>Actions:</p>
                         </div>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
-                        <p>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</p>
+                        <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
                         <Link href={'/'}>
                             <Button
                                 primary
