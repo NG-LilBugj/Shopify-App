@@ -147,7 +147,7 @@ const Initial = () => {
                                 Delete Banner
                             </Button>
                         </Link>
-                            <img style={{width: '64px', length: '64px', borderRadius: '32px'}} src={'https://img.icons8.com/cotton/2x/delete-sign--v2.png'} alt={'delete'}/>
+                            <img style={{width: '64px', height: '64px', borderRadius: '32px'}} src={'https://img.icons8.com/cotton/2x/delete-sign--v2.png'} alt={'delete'}/>
                         </div>
                     </Card>
                 </Layout.Section>}
