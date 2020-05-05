@@ -7,7 +7,7 @@ import {
     Page, InlineError,
     RadioButton,
     ResourceList, Stack,
-    TextField, Popover, RangeSlider
+    TextField, Popover, RangeSlider, Spinner
 } from "@shopify/polaris";
 import {useCallback, useState, useEffect} from "react";
 import Link from 'next/link'
@@ -15,9 +15,13 @@ import axios from 'axios'
 
 const Initial = () => {
     useEffect(() => {
-        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {fetchData(res.data)});
+        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
+            fetchData(res.data);
+            setLoading(false);
+        });
     }, []);
 
+    const [isLoading, setLoading] = useState(true);
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
@@ -109,7 +113,9 @@ const Initial = () => {
             console.log(res)
         })
     };
-    return (
+
+    if (isLoading) return <Page><Layout><Spinner accessibilityLabel="Spinner example" size="large" color="" /></Layout></Page>;
+    else return (
         <Page>
             {!initBar && <Layout>
                 {!scriptData.config && <Layout.Section>
