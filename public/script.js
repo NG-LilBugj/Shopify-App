@@ -1,4 +1,7 @@
- fetch('https://lil-shopify.herokuapp.com/api/config')
+fetch('https://lil-shopify.herokuapp.com/auth')
+    .then(res => res.console.log(res))
+    .catch(e => console.log(e));
+fetch('https://lil-shopify.herokuapp.com/api/config')
      .then(res => res.json())
      .then(res => renderTimer(res.data))
      .catch(error => {console.log(error)});
