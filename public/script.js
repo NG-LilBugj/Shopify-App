@@ -1,5 +1,5 @@
 fetch('https://lil-shopify.herokuapp.com/api/config')
-     .then(res => {res.data.name?renderTimer(res.data):renderTimer({
+     .then(res => {res.data?renderTimer(res.data):renderTimer({
          endDate: { end:"Fri Jun 12 2020 00:00:00 GMT-0300" },
          position: "Top",
          sticky: true,
