@@ -111,7 +111,10 @@ const Initial = () => {
     const deleteSubmit = () => {
         axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {
             console.log(res)
-        })
+        });
+        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
+            fetchData(res.data);
+        });
     };
 
     if (isLoading) return <Page><Layout><Spinner accessibilityLabel="Spinner example" size="large" color="" /></Layout></Page>;
@@ -142,7 +145,6 @@ const Initial = () => {
                         </div>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
                         <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
-                        <Link href={'/'}>
                             <Button
                                 primary
                                 size={"slim"}
@@ -150,7 +152,6 @@ const Initial = () => {
                                 onClick={deleteSubmit}>
                                 Delete Banner
                             </Button>
-                        </Link>
                         </div>
                     </Card>
                 </Layout.Section>}
