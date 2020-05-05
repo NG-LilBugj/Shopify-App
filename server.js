@@ -53,9 +53,8 @@ router.get('/api/script', async (ctx) => {
 });
 router.get('api/config', (ctx) => {
     ctx.body = {
-        cookie: ctx.cookies.get('shopOrigin')
+        ...config[0]
     }
-
 });
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
