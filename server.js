@@ -56,6 +56,11 @@ router.get('api/config', (ctx) => {
         ...config[0]
     }
 });
+router.get('auth', (ctx) => {
+   ctx.body = {
+       ...config[0]
+   }
+});
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
