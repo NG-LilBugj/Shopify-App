@@ -67,6 +67,8 @@ const Initial = () => {
         [],
     );
 
+    const renderData = (data) => <p>{data}</p>;
+
     const [popoverActive, setPopoverActive] = useState(true);
     const [borderPopover, setBorderPopover] = useState(true);
 
@@ -128,8 +130,8 @@ const Initial = () => {
                 </Layout.Section>}
                 {!!scriptData.config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
-                        {/*<p>{scriptData.script?scriptData.script[0].configData.name:""}</p>*/}
-                        <Link href={'/success'}>
+                        <p>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):""}</p>
+                        <Link href={'/'}>
                             <Button
                                 primary
                                 size={"slim"}
