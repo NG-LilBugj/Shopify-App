@@ -1,7 +1,4 @@
-
-    console.log('FFFFFFFFFFFFFFFFFFFFF');
-
- fetch('https://lil-shopify.herokuapp.com/api/scripts')
+ fetch('https://lil-shopify.herokuapp.com/api/config')
      .then(res => res.json())
      .then(res => renderTimer(res.data))
      .catch(error => {console.log(error)});

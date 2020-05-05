@@ -51,7 +51,7 @@ router.get('/api/script', async (ctx) => {
         console.log(e)
     }
 });
-router.get('api/ping', (ctx) => {
+router.get('api/config', (ctx) => {
     ctx.body = {
         cookie: ctx.cookies.get('shopOrigin')
     }
@@ -83,7 +83,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         let elem = config.pop();
-        axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${elem.id}.json`, {
+        axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/125929914503.json`, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }
