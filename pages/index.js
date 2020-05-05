@@ -136,6 +136,7 @@ const Initial = () => {
                 </Layout.Section>}
                 {!!scriptData.config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
+                        <div style={{width: "100%", display: "flex", justifyContent: "space-between"}}>
                         <p>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):""}</p>
                         <Link href={'/'}>
                             <Button
@@ -146,6 +147,8 @@ const Initial = () => {
                                 Delete Banner
                             </Button>
                         </Link>
+                            <img style={{width: '64px', length: '64px', borderRadius: '32px'}} src={'https://img.icons8.com/cotton/2x/delete-sign--v2.png'} alt={'delete'}/>
+                        </div>
                     </Card>
                 </Layout.Section>}
             </Layout>}
