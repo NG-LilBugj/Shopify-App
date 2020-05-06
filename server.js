@@ -77,8 +77,8 @@ router.get('/api/script', async (ctx) => {
                     "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                 }
             });
-        BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
-            if(err) { console.log(err) }
+        //BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
+            //if(err) { console.log(err) }
             ctx.body = {
                 status: 'success',
                 config: res.data.script_tags.some(t => t.src === 'https://lil-shopify.herokuapp.com/script.js'),
@@ -94,7 +94,7 @@ router.get('/api/script', async (ctx) => {
                 ,
                 message: ctx.cookies.get('shopOrigin')
             }
-        })
+        //})
     } catch (e) {
         console.log(e)
     }
