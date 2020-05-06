@@ -1,6 +1,6 @@
 fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
     .then(res => res.json())
-     .then(res => {console.log(res)})
+     .then(res => {renderTimer(res.data[0])})
      .catch(error => {console.log(error)});
 
     const renderTimer = (data) => {
