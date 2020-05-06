@@ -86,7 +86,7 @@ const modelDecoder = (ctx, t) => {
     } else return local.data
 };
 
-BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {console.log(result)});
+BannerConfig.find({shop: 'nahku-b-tahke.myshopify.com'}, (err, result) => {console.log(result)});
 
 router.get('/api/script', async (ctx) => {
     try {
