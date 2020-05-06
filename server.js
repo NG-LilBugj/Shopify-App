@@ -69,6 +69,7 @@ let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
 const modelDecoder = (ctx, t) => {
     let local = {
+        data: {},
         dataEraser(data) {
             this.data = data
         }
@@ -77,7 +78,7 @@ const modelDecoder = (ctx, t) => {
         if (err) console.log(err);
         else local.dataEraser(result)
     });
-    if (local.data.isArray) {
+    if (Array.isArray(local.data)) {
         return local.data.find(e => e.id === t.id)
     } else return local.data
 };
