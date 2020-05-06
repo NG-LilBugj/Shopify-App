@@ -87,9 +87,10 @@ let customConfig = new BannerConfig({
         alpha: 0.1,
     }
 });
-customConfig.save()
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+// customConfig.save()
+//     .then(res => console.log(res))
+//     .catch(err => console.log(err));
+console.log(BannerConfig.find());
 //////
 const config = [];
 
