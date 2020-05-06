@@ -77,10 +77,10 @@ const modelDecoder = (ctx, t) => {
     BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
         if (err) console.log(err);
         else {
-            console.log(`erase this ${result}`);
             local.dataEraser(result)
         }
     });
+    console.log(`finally data here, ${local.data}`)
     if (Array.isArray(local.data)) {
         return local.data.find(e => e.id === t.id)
     } else return local.data
