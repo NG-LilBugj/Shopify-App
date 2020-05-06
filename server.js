@@ -68,6 +68,33 @@ let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
 //test
 let customConfig = new BannerConfig({
+    id: 1,
+    shop: "nun.my.com",
+    name: "Testing",
+    startDate: "111",
+    endDate: { end:"Fri Jun 12 2020 00:00:00 GMT-0300" },
+    position: "Top",
+    sticky: true,
+    backGroundColor: {
+        hue: 275,
+        saturation: 0.83,
+        brightness: 1,
+        alpha: 1
+    },
+    borderSize: 0,
+    borderColor: {
+        hue: 1,
+        saturation: 1,
+        brightness: 1,
+        alpha: 0.1,
+    }
+});
+ customConfig.save()
+     .then(res => console.log(res))
+     .catch(err => console.log(err));
+let secondConfig = new BannerConfig({
+    id: 2,
+    shop: "nun.my.com",
     name: "Test",
     startDate: "111",
     endDate: { end:"Fri Jun 12 2020 00:00:00 GMT-0300" },
@@ -87,14 +114,10 @@ let customConfig = new BannerConfig({
         alpha: 0.1,
     }
 });
-// customConfig.save()
-//     .then(res => console.log(res))
-//     .catch(err => console.log(err));
-BannerConfig.findOne({name: "Test"}, (err, res) => {
-    if(err) console.log(err);
-    else console.log(res)
-});
-//////
+secondConfig.save()
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+
 const config = [];
 
 router.get('/api/script', async (ctx) => {
