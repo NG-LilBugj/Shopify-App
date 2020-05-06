@@ -37,6 +37,7 @@
     "koa-lusca": "^2.2.0",
     "koa-router": "^8.0.8",
     "koa-session": "^5.13.1",
+    "mongoose": "^5.9.12",
     "next": "^9.2.2",
     "node-fetch": "^2.6.0",
     "react": "^16.13.0",

@@ -5,8 +5,8 @@ fetch('https://lil-shopify.herokuapp.com/api/config')
          sticky: true,
          backGroundColor: {
              hue: 275,
-             brightness: 0.35,
-             saturation: 1,
+             brightness: 1,
+             saturation: 0.83,
              alpha: 1
          },
          borderSize: 0,

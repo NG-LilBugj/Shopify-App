@@ -4,6 +4,21 @@ const Koa = require('koa');
 const cors = require('koa-cors');
 const KoaRouter = require('koa-router');
 const koaBody = require('koa-body');
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    server: {
+        socketOptions: {keepAlive: 100000}
+    }
+}, (err) => {
+    if(err){
+        console.log('Some problem occurred' + err)
+    }
+    else {
+        console.log('Connection established')
+    }
+});
+
 const next = require('next');
 const lusca = require('koa-lusca');
 const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
@@ -13,6 +28,9 @@ const axios = require('axios');
 const request = require('request-promise');
 
 dotenv.config();
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
 
 const port = process.env.PORT || 8000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -26,6 +44,53 @@ const {SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY} = process.env;
 const server = new Koa();
 const router = new KoaRouter();
 
+const bannerSchema = new mongoose.Schema({
+    name: String,
+    startDate: String,
+    endDate: {end: String},
+    position: String,
+    sticky: Boolean,
+    backGroundColor: {
+        hue: Number,
+        saturation: Number,
+        brightness: Number,
+        alpha: Number
+    },
+    borderSize: Number,
+    borderColor: {
+        hue: Number,
+        saturation: Number,
+        brightness: Number,
+        alpha: Number
+    }
+});
+let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
+
+//test
+let customConfig = new BannerConfig({
+    name: "Test",
+    startDate: "111",
+    endDate: { end:"Fri Jun 12 2020 00:00:00 GMT-0300" },
+    position: "Top",
+    sticky: true,
+    backGroundColor: {
+        hue: 275,
+        saturation: 0.83,
+        brightness: 1,
+        alpha: 1
+    },
+    borderSize: 0,
+    borderColor: {
+        hue: 1,
+        saturation: 1,
+        brightness: 1,
+        alpha: 0.1,
+    }
+});
+customConfig.save()
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+//////
 const config = [];
 
 router.get('/api/script', async (ctx) => {
