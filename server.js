@@ -69,14 +69,17 @@ let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
 const modelDecoder = (ctx, t) => {
     let local = {
-        dataEraser(data) {
+        dataEraser: (data) => {
             console.log(`data is ${data}`);
             this.data = data
         }
     };
     BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
         if (err) console.log(err);
-        else local.dataEraser(result)
+        else {
+            console.log(`erase this ${result}`);
+            local.dataEraser(result)
+        }
     });
     if (Array.isArray(local.data)) {
         return local.data.find(e => e.id === t.id)
