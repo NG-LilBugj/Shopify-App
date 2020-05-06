@@ -67,22 +67,15 @@ const bannerSchema = new mongoose.Schema({
 });
 let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
-let local = [];
-
-const modelDecoder = (ctx, t) => {
-    BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
-        if (err) console.log(err);
-        else {
-            local.push(result)
-        }
-    });
-    console.log(`finally data here, ${local[0]}`);
-    if (Array.isArray(local[0])) {
-        return local[0].find(e => e.id === t.id)
-    } else return local[0]
+const modelDecoder = (ctx) => {
+    return new Promise((res, rej) => {
+        const config = BannerConfig.find({shop: ctx.cookies.get('shopOrigin')});
+        config.exec((err, conf) => {
+            if (err) {rej(err)}
+            else res(conf)
+        })
+    })
 };
-
-BannerConfig.find({shop: 'nahku-b-tahke.myshopify.com'}, (err, result) => {console.log(result)});
 
 router.get('/api/script', async (ctx) => {
     try {
@@ -93,6 +86,8 @@ router.get('/api/script', async (ctx) => {
                     "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                 }
             });
+        let confData = await modelDecoder(ctx);
+        console.log(confData);
         ctx.body = {
             status: 'success',
             config: res.data.script_tags.some(t => t.src === 'https://lil-shopify.herokuapp.com/script.js'),
@@ -102,7 +97,7 @@ router.get('/api/script', async (ctx) => {
                 .map(t => {
                     return {
                         ...t,
-                        configData: modelDecoder(ctx, t)
+                        configData: confData
                     }
                 }) : null
             ,
