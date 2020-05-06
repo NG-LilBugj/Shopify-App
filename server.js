@@ -45,6 +45,8 @@ const server = new Koa();
 const router = new KoaRouter();
 
 const bannerSchema = new mongoose.Schema({
+    id: Number,
+    shop: String,
     name: String,
     startDate: String,
     endDate: {end: String},
