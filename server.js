@@ -90,7 +90,7 @@ let customConfig = new BannerConfig({
 // customConfig.save()
 //     .then(res => console.log(res))
 //     .catch(err => console.log(err));
-console.log(BannerConfig.find());
+console.log(BannerConfig.find({name: "Test"}));
 //////
 const config = [];
 
