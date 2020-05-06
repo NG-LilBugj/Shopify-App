@@ -69,6 +69,7 @@ let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
 const modelDecoder = (ctx, t) => {
     let local = {
+        data: null,
         dataEraser(data) {
             console.log(`data is ${data}`);
             this.data = data
