@@ -48,7 +48,7 @@ const bannerSchema = new mongoose.Schema({
     id: Number,
     shop: String,
     name: String,
-    startDate: String,
+    startDate: {start: String},
     endDate: {end: String},
     position: String,
     sticky: Boolean,
@@ -77,17 +77,24 @@ router.get('/api/script', async (ctx) => {
                     "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                 }
             });
-        ctx.body = {
-            status: 'success',
-            config: res.data.script_tags.some(t => t.src === 'https://lil-shopify.herokuapp.com/script.js'),
-            script: (!!res.data.script_tags
-                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js').length)?res.data.script_tags
-                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js')
-                .map(t => {return {...t, configData: BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => result)
-                        .find(e => e.id === t.id)}}) : null
-            ,
-            message: ctx.cookies.get('shopOrigin')
-        }
+        BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
+            console.log(err);
+            ctx.body = {
+                status: 'success',
+                config: res.data.script_tags.some(t => t.src === 'https://lil-shopify.herokuapp.com/script.js'),
+                script: (!!res.data.script_tags
+                    .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js').length) ? res.data.script_tags
+                    .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js')
+                    .map(t => {
+                        return {
+                            ...t,
+                            configData: result.find(e => e.id === t.id)
+                        }
+                    }) : null
+                ,
+                message: ctx.cookies.get('shopOrigin')
+            }
+        })
     } catch (e) {
         console.log(e)
     }
