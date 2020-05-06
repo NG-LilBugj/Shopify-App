@@ -78,7 +78,7 @@ router.get('/api/script', async (ctx) => {
                 }
             });
         BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
-            console.log(err);
+            if(err) { console.log(err) }
             ctx.body = {
                 status: 'success',
                 config: res.data.script_tags.some(t => t.src === 'https://lil-shopify.herokuapp.com/script.js'),
@@ -88,7 +88,7 @@ router.get('/api/script', async (ctx) => {
                     .map(t => {
                         return {
                             ...t,
-                            configData: result.find(e => e.id === t.id)
+                            configData: null//result.find(e => e.id === t.id)
                         }
                     }) : null
                 ,
