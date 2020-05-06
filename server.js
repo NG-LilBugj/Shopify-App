@@ -11,10 +11,9 @@ mongoose.connect(process.env.MONGODB_URI, {
         socketOptions: {keepAlive: 100000}
     }
 }, (err) => {
-    if(err){
+    if (err) {
         console.log('Some problem occurred' + err)
-    }
-    else {
+    } else {
         console.log('Connection established')
     }
 });
@@ -68,6 +67,21 @@ const bannerSchema = new mongoose.Schema({
 });
 let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
+const modelDecoder = (ctx, t) => {
+    let local = {
+        dataEraser(data) {
+            this.data = data
+        }
+    };
+    BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
+        if (err) console.log(err);
+        else local.dataEraser(result)
+    });
+    if (local.data.isArray) {
+        return local.data.find(e => e.id === t.id)
+    } else return local.data
+};
+
 router.get('/api/script', async (ctx) => {
     try {
         let res = await axios.get(
@@ -77,24 +91,21 @@ router.get('/api/script', async (ctx) => {
                     "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                 }
             });
-        //BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
-            //if(err) { console.log(err) }
-            ctx.body = {
-                status: 'success',
-                config: res.data.script_tags.some(t => t.src === 'https://lil-shopify.herokuapp.com/script.js'),
-                script: (!!res.data.script_tags
-                    .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js').length) ? res.data.script_tags
-                    .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js')
-                    .map(t => {
-                        return {
-                            ...t,
-                            configData: null//result.find(e => e.id === t.id)
-                        }
-                    }) : null
-                ,
-                message: ctx.cookies.get('shopOrigin')
-            }
-        //})
+        ctx.body = {
+            status: 'success',
+            config: res.data.script_tags.some(t => t.src === 'https://lil-shopify.herokuapp.com/script.js'),
+            script: (!!res.data.script_tags
+                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js').length) ? res.data.script_tags
+                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js')
+                .map(t => {
+                    return {
+                        ...t,
+                        configData: modelDecoder(ctx, t)
+                    }
+                }) : null
+            ,
+            message: ctx.cookies.get('shopOrigin')
+        }
     } catch (e) {
         console.log(e)
     }
@@ -130,15 +141,15 @@ router.post('/api/script', koaBody(), async (ctx) => {
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         BannerConfig.findOne({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-           if(err) console.log(err);
-           else {
-               BannerConfig.deleteOne(res, (err) => console.log(err));
-               axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${res.id}.json`, {
-                   headers: {
-                       "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-                   }
-               }).then(res => console.log(res));
-           }
+            if (err) console.log(err);
+            else {
+                BannerConfig.deleteOne(res, (err) => console.log(err));
+                axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${res.id}.json`, {
+                    headers: {
+                        "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+                    }
+                }).then(res => console.log(res));
+            }
         });
         ctx.body = 'Timer deleted'
     } catch (e) {
