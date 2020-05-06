@@ -68,60 +68,6 @@ const bannerSchema = new mongoose.Schema({
 });
 let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
-//test
-let customConfig = new BannerConfig({
-    id: 1,
-    shop: "nun.my.com",
-    name: "Testing",
-    startDate: "111",
-    endDate: { end:"Fri Jun 12 2020 00:00:00 GMT-0300" },
-    position: "Top",
-    sticky: true,
-    backGroundColor: {
-        hue: 275,
-        saturation: 0.83,
-        brightness: 1,
-        alpha: 1
-    },
-    borderSize: 0,
-    borderColor: {
-        hue: 1,
-        saturation: 1,
-        brightness: 1,
-        alpha: 0.1,
-    }
-});
- customConfig.save()
-     .then(res => console.log(res))
-     .catch(err => console.log(err));
-let secondConfig = new BannerConfig({
-    id: 2,
-    shop: "nun.my.com",
-    name: "Test",
-    startDate: "111",
-    endDate: { end:"Fri Jun 12 2020 00:00:00 GMT-0300" },
-    position: "Top",
-    sticky: true,
-    backGroundColor: {
-        hue: 275,
-        saturation: 0.83,
-        brightness: 1,
-        alpha: 1
-    },
-    borderSize: 0,
-    borderColor: {
-        hue: 1,
-        saturation: 1,
-        brightness: 1,
-        alpha: 0.1,
-    }
-});
-secondConfig.save()
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-
-const config = [];
-
 router.get('/api/script', async (ctx) => {
     try {
         let res = await axios.get(
@@ -137,17 +83,13 @@ router.get('/api/script', async (ctx) => {
             script: (!!res.data.script_tags
                 .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js').length)?res.data.script_tags
                 .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js')
-                .map(t => {return {...t, configData: config.find(e => e.id === t.id)}}) : null
+                .map(t => {return {...t, configData: BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => result)
+                        .find(e => e.id === t.id)}}) : null
             ,
             message: ctx.cookies.get('shopOrigin')
         }
     } catch (e) {
         console.log(e)
-    }
-});
-router.get('api/config', (ctx) => {
-    ctx.body = {
-        ...config[0]
     }
 });
 router.post('/api/script', koaBody(), async (ctx) => {
@@ -166,7 +108,12 @@ router.post('/api/script', koaBody(), async (ctx) => {
         })
             .then(res => {
                 console.log(res);
-                config.push({...body, id: res.data.script_tag.id});
+                let customConfig = new BannerConfig({
+                    ...body,
+                    id: res.data.script_tag.id,
+                    shop: ctx.cookies.get('shopOrigin'),
+                });
+                customConfig.save().catch(e => console.log(e))
             });
         ctx.body = {message: 'Config added'}
     } catch (e) {
@@ -175,12 +122,17 @@ router.post('/api/script', koaBody(), async (ctx) => {
 });
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
-        let elem = config.pop();
-        axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${elem.id}.json`, {
-            headers: {
-                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-            }
-        }).then(res => console.log(res));
+        BannerConfig.findOne({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+           if(err) console.log(err);
+           else {
+               BannerConfig.deleteOne(res, (err) => console.log(err));
+               axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${res.id}.json`, {
+                   headers: {
+                       "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+                   }
+               }).then(res => console.log(res));
+           }
+        });
         ctx.body = 'Timer deleted'
     } catch (e) {
         console.log(e)
@@ -190,12 +142,6 @@ router.delete('/api/script', koaBody(), async (ctx) => {
 server.use(router.allowedMethods());
 server.use(router.routes());
 server.use(cors());
-
-const accessStore = {
-    addToken(token) {
-        this.accessToken = token
-    }
-};
 
 app.prepare().then(() => {
 
@@ -207,7 +153,6 @@ app.prepare().then(() => {
             secret: SHOPIFY_API_SECRET_KEY,
             scopes: ['read_products', 'write_products', 'read_script_tags', 'write_script_tags'],
             afterAuth(ctx) {
-                accessStore.addToken(ctx.session.accessToken);
                 const {shop, accessToken} = ctx.session;
                 ctx.cookies.set('shopOrigin', shop, {
                     httpOnly: false,
@@ -225,7 +170,6 @@ app.prepare().then(() => {
     );
 
     server.use(graphQLProxy({version: ApiVersion.January20}));
-
     server.use(verifyRequest());
 
     server.use(async (ctx) => {
