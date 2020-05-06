@@ -67,8 +67,9 @@ const bannerSchema = new mongoose.Schema({
 });
 let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
+let local = [];
+
 const modelDecoder = (ctx, t) => {
-    let local = [];
     BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, result) => {
         if (err) console.log(err);
         else {
@@ -78,7 +79,7 @@ const modelDecoder = (ctx, t) => {
     console.log(`finally data here, ${local[0]}`);
     if (Array.isArray(local[0])) {
         return local[0].find(e => e.id === t.id)
-    } else return local[0].data
+    } else return local[0]
 };
 
 BannerConfig.find({shop: 'nahku-b-tahke.myshopify.com'}, (err, result) => {console.log(result)});
