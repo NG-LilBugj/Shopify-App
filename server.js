@@ -97,7 +97,7 @@ router.get('/api/script', async (ctx) => {
                 .map(t => {
                     return {
                         ...t,
-                        configData: confData
+                        configData: confData.find(e => t.id === e.id)
                     }
                 }) : null
             ,
