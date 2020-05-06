@@ -69,7 +69,7 @@ let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
 const modelDecoder = (ctx, t) => {
     let local = {
-        dataEraser: (data) => {
+        dataEraser(data) {
             console.log(`data is ${data}`);
             this.data = data
         }
@@ -80,7 +80,7 @@ const modelDecoder = (ctx, t) => {
             local.dataEraser(result)
         }
     });
-    console.log(`finally data here, ${local.data}`)
+    console.log(`finally data here, ${local.data}`);
     if (Array.isArray(local.data)) {
         return local.data.find(e => e.id === t.id)
     } else return local.data
