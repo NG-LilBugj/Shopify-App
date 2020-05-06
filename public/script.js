@@ -1,4 +1,4 @@
-fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
+fetch(`https://lil-proxy.herokuapp.com/api/settings`)
      .then(res => {console.log(res)})
      .catch(error => {console.log(error)});
 
