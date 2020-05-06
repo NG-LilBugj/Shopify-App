@@ -1,22 +1,5 @@
 fetch(`https://lil-proxy.herokuapp.com/config?shop=${window.location}`)
-     .then(res => {res.data?renderTimer(res.data):renderTimer({
-         endDate: { end:"Fri Jun 12 2020 00:00:00 GMT-0300" },
-         position: "Top",
-         sticky: true,
-         backGroundColor: {
-             hue: 275,
-             brightness: 1,
-             saturation: 0.83,
-             alpha: 1
-         },
-         borderSize: 0,
-         borderColor: {
-             hue: 1,
-             brightness: 1,
-             saturation: 1,
-             alpha: 0.1
-         },
-     })})
+     .then(res => {renderTimer(res[0])})
      .catch(error => {console.log(error)});
 
     const renderTimer = (data) => {
