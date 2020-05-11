@@ -19,12 +19,12 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 const next = require('next');
-const lusca = require('koa-lusca');
 const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
 const {verifyRequest} = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
 const axios = require('axios');
-const request = require('request-promise');
+const DBAccess = require('./dbAccess');
+const rep = require('./repository');
 
 dotenv.config();
 
@@ -43,39 +43,9 @@ const {SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY} = process.env;
 const server = new Koa();
 const router = new KoaRouter();
 
-const bannerSchema = new mongoose.Schema({
-    id: Number,
-    shop: String,
-    name: String,
-    startDate: {start: String},
-    endDate: {end: String},
-    position: String,
-    sticky: Boolean,
-    backGroundColor: {
-        hue: Number,
-        saturation: Number,
-        brightness: Number,
-        alpha: Number
-    },
-    borderSize: Number,
-    borderColor: {
-        hue: Number,
-        saturation: Number,
-        brightness: Number,
-        alpha: Number
-    }
-});
-let BannerConfig = mongoose.model('bannerConfig', bannerSchema);
+let BannerConfig = DBAccess.BannerConfig;
 
-const modelDecoder = (ctx) => {
-    return new Promise((res, rej) => {
-        const config = BannerConfig.find({shop: ctx.cookies.get('shopOrigin')});
-        config.exec((err, conf) => {
-            if (err) {rej(err)}
-            else res(conf)
-        })
-    })
-};
+const modelDecoder = rep.decoder;
 
 router.get('/api/script', async (ctx) => {
     try {
