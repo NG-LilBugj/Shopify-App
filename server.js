@@ -38,7 +38,8 @@ const handle = app.getRequestHandler();
 
 const {default: graphQLProxy} = require('@shopify/koa-shopify-graphql-proxy');
 const {ApiVersion} = require('@shopify/koa-shopify-graphql-proxy');
-const {SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY} = process.env;
+const {receiveWebhook, registerWebhook} = require('@shopify/koa-shopify-webhooks');
+const {SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY, HOST} = process.env;
 
 const server = new Koa();
 const router = new KoaRouter();
@@ -137,7 +138,7 @@ app.prepare().then(() => {
             apiKey: SHOPIFY_API_KEY,
             secret: SHOPIFY_API_SECRET_KEY,
             scopes: ['read_script_tags', 'write_script_tags'],
-            afterAuth(ctx) {
+            async afterAuth(ctx) {
                 const {shop, accessToken} = ctx.session;
                 ctx.cookies.set('shopOrigin', shop, {
                     httpOnly: false,
@@ -149,15 +150,58 @@ app.prepare().then(() => {
                     secure: true,
                     sameSite: 'none'
                 });
+
+                const registrationCustomersRedact = await registerWebhook({
+                    address: `${HOST}/webhooks/customers/redact`,
+                    topic: 'CUSTOMERS_REDACT',
+                    accessToken,
+                    shop,
+                    apiVersion: ApiVersion.January20
+                });
+                const registrationShopRedact = await registerWebhook({
+                    address: `${HOST}/webhooks/shop/redact`,
+                    topic: 'SHOP_REDACT',
+                    accessToken,
+                    shop,
+                    apiVersion: ApiVersion.January20
+                });
+                const registrationCustomersDataRequest = await registerWebhook({
+                    address: `${HOST}/webhooks/customers/data_request`,
+                    topic: 'CUSTOMERS_DATA_REQUEST',
+                    accessToken,
+                    shop,
+                    apiVersion: ApiVersion.January20
+                });
+
+                if (registrationCustomersDataRequest.success && registrationCustomersRedact.success && registrationShopRedact.success){
+                    console.log('Successfully registered webhooks!')
+                } else {
+                    console.log('Failed to register some or all webhooks',
+                        registrationShopRedact.result,
+                        registrationCustomersRedact.result,
+                        registrationCustomersDataRequest.result)
+                }
                 ctx.redirect('/');
             }
         })
     );
 
-    server.use(graphQLProxy({version: ApiVersion.January20}));
-    server.use(verifyRequest());
+    const webhook = receiveWebhook({secret: SHOPIFY_API_SECRET_KEY});
 
-    server.use(async (ctx) => {
+    router.post('webhooks/customers/redact', webhook, (ctx) => {
+        console.log('received webhook:', ctx.state.webhook)
+    });
+
+    router.post('webhooks/shop/redact', webhook, (ctx) => {
+        console.log('received webhook:', ctx.state.webhook)
+    });
+
+    router.post('webhooks/customers/data_request', webhook, (ctx) => {
+        console.log('received webhook:', ctx.state.webhook)
+    });
+
+    server.use(graphQLProxy({version: ApiVersion.January20}));
+    router.get('*', verifyRequest(), async(ctx) => {
         await handle(ctx.req, ctx.res);
         ctx.respond = false;
         ctx.res.statusCode = 200;
