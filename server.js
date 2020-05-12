@@ -201,10 +201,11 @@ app.prepare().then(() => {
     });
 
     server.use(graphQLProxy({version: ApiVersion.January20}));
-    router.get('*', verifyRequest(), async(ctx) => {
-        await handle(ctx.req, ctx.res);
-        ctx.respond = false;
-        ctx.res.statusCode = 200;
+    server.use(verifyRequest());
+    server.use(async (ctx) => {
+       await handle(ctx.req, ctx.res);
+       ctx.respond = false;
+       ctx.res.statusCode = 200;
     });
 
 
