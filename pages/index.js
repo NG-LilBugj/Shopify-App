@@ -147,6 +147,7 @@ const Initial = () => {
                         <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
                             <Button
                                 primary
+                                destructive
                                 size={"slim"}
                                 type={"submit"}
                                 onClick={deleteSubmit}>

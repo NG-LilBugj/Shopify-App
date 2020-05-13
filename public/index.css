@@ -1,0 +1,65 @@
+.first-sign {
+    font-size: 40px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%
+}
+.last-sign {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%
+}
+
+.inner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%
+}
+
+.countdown-number {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 12px
+}
+.countdown-text {
+    font-size: 10px;
+}
+
+.numbers-container {
+    display: flex;
+    justify-content: space-between
+}
+.number-place {
+    border-radius: 6px;
+    font-size: 32px;
+    font-weight: 600;
+    box-shadow: #0b0f27 0 0 8px;
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: #fff;
+    color: rgb(65, 65, 106);
+    width: 35px
+}
+
+@media screen and (max-width: 800px) {
+    .number-place {
+        border-radius: 3px;
+        font-size: 16px;
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 18px
+    }
+    .first-sign{
+        font-size: 22px;
+    }
+    .last-sign{
+        font-size: 15px;
+    }
+}

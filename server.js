@@ -150,27 +150,6 @@ app.prepare().then(() => {
                     secure: true,
                     sameSite: 'none'
                 });
-                // const registrationCustomersRedact = await registerWebhook({
-                //     address: `${HOST}/webhooks/customers/redact`,
-                //     topic: 'CUSTOMERS_REDACT',
-                //     accessToken,
-                //     shop,
-                //     apiVersion: ApiVersion.January20
-                // });
-                // const registrationShopRedact = await registerWebhook({
-                //     address: `${HOST}/webhooks/shop/redact`,
-                //     topic: 'SHOP_REDACT',
-                //     accessToken,
-                //     shop,
-                //     apiVersion: ApiVersion.January20
-                // });
-                // const registrationCustomersDataRequest = await registerWebhook({
-                //     address: `${HOST}/webhooks/customers/data_request`,
-                //     topic: 'CUSTOMERS_DATA_REQUEST',
-                //     accessToken,
-                //     shop,
-                //     apiVersion: ApiVersion.January20
-                // });
 
                 ctx.redirect('/');
             }

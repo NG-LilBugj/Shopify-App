@@ -7,6 +7,14 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
         let div = document.createElement('div');
         div.className = "alert";
 
+        let link = document.createElement('link');
+        link.id = 'lil-css';
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://lil-shopify.herokuapp.com/index.css';
+        link.media = 'all';
+        document.head.append(link);
+
         const decodeColors = (model) => {
             let {hue, saturation, brightness, alpha} = model;
             return `${hue}, ${saturation*100}%, ${brightness*100}%, ${alpha}`
@@ -14,38 +22,38 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
 
         let position = data.sticky?"sticky":"static";
 
-        div.innerHTML = "<div style=\"font-size: 40px; font-weight: 700; display: flex; align-items: center; justify-content: center; width: 30%\">Hurry Up!</div><div style=\"display: flex; justify-content: center; align-items: center ;width: 40%; height: 100% \">" +
+        div.innerHTML = "<div class=\'first-sign\' style=\"font-size: 40px; font-weight: 700; display: flex; align-items: center; justify-content: center; width: 30%\">Hurry Up!</div><div class=\'inner-container\' style=\"display: flex; justify-content: center; align-items: center ;width: 40%; height: 100% \">" +
             "<div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between; margin-right: 12px\">\n" +
-            "<div style=\"display: flex; justify-content: space-between\">" +
-            "    <div style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"days-countdown-time-first\">1</span></div>\n" +
-            "    <div style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"days-countdown-time-second\">1</span></div>\n" +
+            "<div class=\'numbers-container\' style=\"display: flex; justify-content: space-between\">" +
+            "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"days-countdown-time-first\">1</span></div>\n" +
+            "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"days-countdown-time-second\">1</span></div>\n" +
             "</div>" +
             "    <span class=\"countdown-text\" style=\"font-size: 10px\">Days</span>\n" +
             "  </div>\n" +
             "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
-            "<div style=\"display: flex; justify-content: space-between\">" +
-            "    <div style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"hours-countdown-time-first\">2</span></div>\n" +
-            "    <div style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"hours-countdown-time-second\">2</span></div>\n" +
+            "<div class=\'numbers-container\' style=\"display: flex; justify-content: space-between\">" +
+            "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"hours-countdown-time-first\">2</span></div>\n" +
+            "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"hours-countdown-time-second\">2</span></div>\n" +
             "</div>" +
             "    <span class=\"countdown-text\" style=\"font-size: 10px\">Hours</span>\n" +
             "  </div>\n" +
             "<span style=\"font-size: 30px; position: relative;bottom: 8px;font-weight: 900\">:</span>" +
             "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
-            "<div style=\"display: flex; justify-content: space-between\">" +
-            "    <div style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"minutes-countdown-time-first\">3</span></div>\n" +
-            "    <div style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"minutes-countdown-time-second\">3</span></div>\n" +
+            "<div class=\'numbers-container\' style=\"display: flex; justify-content: space-between\">" +
+            "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"minutes-countdown-time-first\">3</span></div>\n" +
+            "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"minutes-countdown-time-second\">3</span></div>\n" +
             "</div>" +
             "    <span class=\"countdown-text\" style=\"font-size: 10px\">Minutes</span>\n" +
             "  </div>\n" +
             "<span style=\"font-size: 30px; position: relative; bottom: 8px; font-weight: 900 \">:</span>" +
             "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
-            "<div style=\"display: flex; justify-content: space-between\">" +
-            "    <div style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"seconds-countdown-time-first\">4</span></div>\n" +
-            "    <div style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"seconds-countdown-time-second\">4</span></div>\n" +
+            "<div class=\'numbers-container\' style=\"display: flex; justify-content: space-between\">" +
+            "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"seconds-countdown-time-first\">4</span></div>\n" +
+            "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"seconds-countdown-time-second\">4</span></div>\n" +
             "</div>" +
             "    <span class=\"countdown-text\" style=\"font-size: 10px\">Seconds</span>\n" +
             "  </div>" +
-            "</div><div style=\"font-size: 30px; display: flex; align-items: center; justify-content: center; width: 30%\">Flash sale!</div>\n";
+            "</div><div class=\'last-sign\' style=\"font-size: 30px; display: flex; align-items: center; justify-content: center; width: 30%\">Flash sale!</div>\n";
         div.style.cssText = `background-color: hsla(${decodeColors(data.backGroundColor)}); ` +
             "display: flex; " +
             "justify-content: " +
@@ -109,6 +117,8 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
             updateClock();
             var timeinterval = setInterval(updateClock, 1000);
         }
+
+        console.log(data.endDate.end - data.startDate.start);
 
         var deadline = data.endDate.end;
         setTimeout(() => {
