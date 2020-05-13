@@ -7,13 +7,13 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
         let div = document.createElement('div');
         div.className = "alert";
 
-        // let link = document.createElement('link');
-        // link.id = 'lil-css';
-        // link.rel = 'stylesheet';
-        // link.type = 'text/css';
-        // link.href = 'https://lil-shopify.herokuapp.com/index.css';
-        // link.media = 'all';
-        // document.head.append(link);
+        let link = document.createElement('link');
+        link.id = 'lil-css';
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://lil-shopify.herokuapp.com/index.css';
+        link.media = 'all';
+        document.head.append(link);
 
         const decodeColors = (model) => {
             let {hue, saturation, brightness, alpha} = model;
@@ -118,7 +118,7 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
             var timeinterval = setInterval(updateClock, 1000);
         }
 
-        console.log(data.endDate.end - data.startDate.start);
+        //console.log(data.endDate.end - data.startDate.start);
 
         var deadline = data.endDate.end;
         setTimeout(() => {
