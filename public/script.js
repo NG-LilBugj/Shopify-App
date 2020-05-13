@@ -37,7 +37,7 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
             "</div>" +
             "    <span class=\"countdown-text\" style=\"font-size: 10px\">Hours</span>\n" +
             "  </div>\n" +
-            "<span style=\"font-size: 30px; position: relative;bottom: 8px;font-weight: 900\">:</span>" +
+            "<span style=\"font-size: 30px; position: relative;bottom: 8px; right: 4px;font-weight: 900\">:</span>" +
             "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
             "<div class=\'numbers-container\' style=\"display: flex; justify-content: space-between\">" +
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"minutes-countdown-time-first\">3</span></div>\n" +
@@ -45,7 +45,7 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
             "</div>" +
             "    <span class=\"countdown-text\" style=\"font-size: 10px\">Minutes</span>\n" +
             "  </div>\n" +
-            "<span style=\"font-size: 30px; position: relative; bottom: 8px; font-weight: 900 \">:</span>" +
+            "<span style=\"font-size: 30px; position: relative; bottom: 8px; right: 4px; font-weight: 900 \">:</span>" +
             "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
             "<div class=\'numbers-container\' style=\"display: flex; justify-content: space-between\">" +
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"seconds-countdown-time-first\">4</span></div>\n" +
