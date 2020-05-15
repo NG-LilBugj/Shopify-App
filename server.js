@@ -61,10 +61,10 @@ router.get('/api/script', async (ctx) => {
         console.log(confData);
         ctx.body = {
             status: 'success',
-            config: res.data.script_tags.some(t => t.src === 'https://lil-shopify.herokuapp.com/script.js'),
+            config: res.data.script_tags.some(t => t.src === 'https://lil-storage.herokuapp.com/static/script.js'),
             script: (!!res.data.script_tags
-                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js').length) ? res.data.script_tags
-                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js')
+                .filter(t => t.src === 'https://lil-storage.herokuapp.com/static/script.js').length) ? res.data.script_tags
+                .filter(t => t.src === 'https://lil-storage.herokuapp.com/static/script.js')
                 .map(t => {
                     return {
                         ...t,
@@ -84,7 +84,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
         axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
             "script_tag": {
                 "event": "onload",
-                "src": "https://lil-shopify.herokuapp.com/script.js",
+                "src": "https://lil-storage.herokuapp.com/static/script.js",
                 "display_scope": "all"
             }
         }, {

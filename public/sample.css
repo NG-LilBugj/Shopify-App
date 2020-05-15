@@ -1,40 +1,31 @@
-.swing-top-fwd {
-    background-color: darkblue;
-    width: 800px;
-    height: 700px;
-    min-width: 80%;
-    font-size: 40px;
-    color: white;
-    /*animation-duration: 1s;*/
-    /*animation-iteration-count: infinite;*/
-    /*animation-name: square;*/
+.flip-horizontal-bottom {
+    width: 100px;
+    height: 140px;
+    background-color: #0b0f27;
+    font-size: 28px;
+    -webkit-animation: flip-horizontal-bottom 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: flip-horizontal-bottom 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation-iteration-count: infinite;
 }
 
-@-webkit-keyframes square {
+@-webkit-keyframes flip-horizontal-bottom {
     0% {
         -webkit-transform: rotateX(0);
         transform: rotateX(0);
-        -webkit-transform-origin: top;
-        transform-origin: top;
     }
     100% {
-        -webkit-transform: rotateX(180deg);
-        transform: rotateX(180deg);
-        -webkit-transform-origin: top;
-        transform-origin: top;
+        -webkit-transform: rotateX(-180deg);
+        transform: rotateX(-180deg);
     }
 }
-@keyframes square {
+@keyframes flip-horizontal-bottom {
     0% {
         -webkit-transform: rotateX(0);
         transform: rotateX(0);
     }
     100% {
-        transform: matrix(1 ,1, 2 ,1 ,1, 0);
+        -webkit-transform: rotateX(-180deg);
+        transform: rotateX(-180deg);
     }
-    /*100% {*/
-    /*    -webkit-transform: rotateX(-180deg);*/
-    /*    transform: rotateX(-180deg);*/
-    /*}*/
 }
 

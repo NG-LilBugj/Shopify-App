@@ -139,7 +139,7 @@ const Initial = () => {
                 </Layout.Section>}
                 {!!scriptData.config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
-                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px', borderRadius: "10px", border: "1px solid black"}}>
+                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
                             <p>Banner name:</p>
                             <p>Actions:</p>
                         </div>
