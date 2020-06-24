@@ -10,5 +10,15 @@ const modelDecoder = (ctx) => {
         })
     })
 };
+const getter = () => {
+    return new Promise((res, rej) => {
+        const arr = BannerConfig.find();
+        config.exec((err, conf) => {
+            if (err) {rej(err)}
+            else res(conf)
+        })
+    })
+};
 
 module.exports.decoder = modelDecoder;
+module.exports.getter = getter;

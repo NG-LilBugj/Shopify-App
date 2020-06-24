@@ -47,6 +47,9 @@ const router = new KoaRouter();
 let BannerConfig = DBAccess.BannerConfig;
 
 const modelDecoder = rep.decoder;
+const getter = rep.getter;
+
+console.log(getter());
 
 router.get('/api/script', async (ctx) => {
     try {
