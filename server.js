@@ -49,7 +49,12 @@ let BannerConfig = DBAccess.BannerConfig;
 const modelDecoder = rep.decoder;
 const getter = rep.getter;
 
-console.log(getter());
+const testFetch = async () => {
+    return await getter();
+};
+
+console.log(testFetch());
+
 
 router.get('/api/script', async (ctx) => {
     try {
