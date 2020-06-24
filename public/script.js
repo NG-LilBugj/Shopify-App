@@ -1,6 +1,9 @@
 fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
     .then(res => res.json())
-     .then(res => {renderTimer(res.data[0])})
+     .then(res => {
+         renderTimer(res.data[0]);
+         console.log(Date.parse(res.data.endDate.end) - Date.parse(new Date()));
+     })
      .catch(error => {console.log(error)});
 
     const renderTimer = (data) => {
@@ -28,14 +31,14 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"days-countdown-time-first\">1</span></div>\n" +
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"days-countdown-time-second\">1</span></div>\n" +
             "</div>" +
-            "    <span class=\"countdown-text\" style=\"font-size: 10px\">Days</span>\n" +
+            "    <span class=\"countdown-text\">Days</span>\n" +
             "  </div>\n" +
             "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
             "<div class=\'numbers-container\' style=\"display: flex; justify-content: space-between\">" +
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"hours-countdown-time-first\">2</span></div>\n" +
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"hours-countdown-time-second\">2</span></div>\n" +
             "</div>" +
-            "    <span class=\"countdown-text\" style=\"font-size: 10px\">Hours</span>\n" +
+            "    <span class=\"countdown-text\">Hours</span>\n" +
             "  </div>\n" +
             "<span style=\"font-size: 30px; position: relative;bottom: 8px; right: 6px;font-weight: 900\">:</span>" +
             "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
@@ -43,7 +46,7 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"minutes-countdown-time-first\">3</span></div>\n" +
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"minutes-countdown-time-second\">3</span></div>\n" +
             "</div>" +
-            "    <span class=\"countdown-text\" style=\"font-size: 10px\">Minutes</span>\n" +
+            "    <span class=\"countdown-text\">Minutes</span>\n" +
             "  </div>\n" +
             "<span style=\"font-size: 30px; position: relative; bottom: 8px; right: 6px; font-weight: 900 \">:</span>" +
             "  <div class=\"countdown-number\" style=\"display: flex; flex-direction: column; justify-content: space-between\">\n" +
@@ -51,9 +54,9 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"seconds-countdown-time-first\">4</span></div>\n" +
             "    <div class='\number-place'\ style=\"border-radius: 6px; font-size: 32px; font-weight: 600; box-shadow: #0b0f27 0 0 8px;margin-left: 4px; margin-right: 4px; background-color: #fff; color: rgb(65, 65, 106); width: 35px\"><span class=\"seconds-countdown-time-second\">4</span></div>\n" +
             "</div>" +
-            "    <span class=\"countdown-text\" style=\"font-size: 10px\">Seconds</span>\n" +
+            "    <span class=\"countdown-text\">Seconds</span>\n" +
             "  </div>" +
-            "</div><div class=\'last-sign\' style=\"font-size: 30px; display: flex; align-items: center; justify-content: center; width: 30%\">Flash sale!</div>\n";
+            "</div><div class=\'last-sign\'>Flash sale!</div>\n";
         div.style.cssText = `background-color: hsla(${decodeColors(data.backGroundColor)}); ` +
             "display: flex; " +
             "justify-content: " +
@@ -117,8 +120,6 @@ fetch(`https://lil-proxy.herokuapp.com/api/settings?shop=${window.location}`)
             updateClock();
             var timeinterval = setInterval(updateClock, 1000);
         }
-
-        //console.log(data.endDate.end - data.startDate.start);
 
         var deadline = data.endDate.end;
         setTimeout(() => {
