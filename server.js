@@ -71,8 +71,8 @@ router.get('/api/script', async (ctx) => {
             status: 'success',
             config: res.data.script_tags.some(t => t.src === 'https://lil-storage.herokuapp.com/static/script.js'),
             script: (!!res.data.script_tags
-                .filter(t => t.src === 'https://lil-storage.herokuapp.com/static/script.js').length) ? res.data.script_tags
-                .filter(t => t.src === 'https://lil-storage.herokuapp.com/static/script.js')
+                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js').length) ? res.data.script_tags
+                .filter(t => t.src === 'https://lil-shopify.herokuapp.com/script.js')
                 .map(t => {
                     return {
                         ...t,
