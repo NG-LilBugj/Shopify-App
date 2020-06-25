@@ -224,7 +224,7 @@ const Initial = () => {
                             <RadioButton
                                 label="All"
                                 helpText="Displays timer at all pages."
-                                checked={renderValue === 'Top'}
+                                checked={renderValue === 'all'}
                                 id={'all'}
                                 name="all"
                                 onChange={handleRenderValueChange}
@@ -242,7 +242,7 @@ const Initial = () => {
                                 helpText="Displays timer at the order status page."
                                 id="order_status"
                                 name="order_status"
-                                checked={renderValue === 'online_store'}
+                                checked={renderValue === 'order_status'}
                                 onChange={handleRenderValueChange}
                             />
                         </Stack>
