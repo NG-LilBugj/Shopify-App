@@ -51,6 +51,7 @@ const Initial = () => {
     );
 
     const [value, setValue] = useState('Top');
+    const [renderValue, setRenderValue] = useState('all');
     const [checked, setChecked] = useState(false);
 
     const [bgColor, setBgColor] = useState({
@@ -69,6 +70,10 @@ const Initial = () => {
     const handleChange = useCallback(
         (_checked, newValue) => setValue(newValue),
         [],
+    );
+    const handleRenderValueChange = useCallback(
+        (_checked, newValue) => setRenderValue(newValue),
+        []
     );
 
     const renderData = (data) => <p>{data}</p>;
@@ -100,6 +105,7 @@ const Initial = () => {
                 startDate: selectedStartDate,
                 endDate: selectedEndDate,
                 position: value,
+                display: renderValue,
                 sticky: checked,
                 backGroundColor: bgColor,
                 borderSize: rangeValue,
@@ -214,6 +220,32 @@ const Initial = () => {
                                 setChecked(newChecked)
                             }}
                         />
+                        <Stack vertical>
+                            <RadioButton
+                                label="All"
+                                helpText="Displays timer at all pages."
+                                checked={renderValue === 'Top'}
+                                id={'all'}
+                                name="all"
+                                onChange={handleRenderValueChange}
+                            />
+                            <RadioButton
+                                label="Store"
+                                helpText="Displays timer at the pages of store."
+                                id="online_store"
+                                name="online_store"
+                                checked={renderValue === 'online_store'}
+                                onChange={handleRenderValueChange}
+                            />
+                            <RadioButton
+                                label="Order"
+                                helpText="Displays timer at the order status page."
+                                id="order_status"
+                                name="order_status"
+                                checked={renderValue === 'online_store'}
+                                onChange={handleRenderValueChange}
+                            />
+                        </Stack>
                     </Card>
                     <Card title={'Timer design'} sectioned>
                         <div style={{display: 'flex', justifyContent: 'space-around', width: '100%'}}>
