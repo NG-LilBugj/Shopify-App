@@ -332,7 +332,7 @@ const Initial = () => {
                             error={(!secondText) ? 'Please enter text' : ''}
                         />
                     </Card>
-                    <Card title={'Utils'}>
+                    <Card title={'Utils'} sectioned>
                         <Stack vertical>
                         <Checkbox
                             label="Repeat timer when it ends"
