@@ -14,13 +14,17 @@ const bannerSchema = new mongoose.Schema({
         brightness: Number,
         alpha: Number
     },
+    bannerHeight: Number,
     borderSize: Number,
     borderColor: {
         hue: Number,
         saturation: Number,
         brightness: Number,
         alpha: Number
-    }
+    },
+    isRepeatable: Boolean,
+    firstText: String,
+    secondText: String,
 });
 const BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 
