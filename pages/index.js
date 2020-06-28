@@ -280,7 +280,7 @@ const Initial = () => {
                                 <RangeSlider
                                     label="Banner height:"
                                     value={heightValue}
-                                    onChange={handleRangeSliderChange}
+                                    onChange={handleHeightSliderChange}
                                     min={30}
                                     max={90}
                                     output
