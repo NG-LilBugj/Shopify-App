@@ -25,6 +25,8 @@ const Initial = () => {
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
+    const [firstText, setFirstText] = useState('Hurry Up!');
+    const [secondText, setSecondText] = useState('Flash Sale');
 
     const [{month, year}, setDate] = useState({
         month: 4,
@@ -53,6 +55,7 @@ const Initial = () => {
     const [value, setValue] = useState('Top');
     const [renderValue, setRenderValue] = useState('all');
     const [checked, setChecked] = useState(false);
+    const [isRepeatable, setRepeat] = useState(false);
 
     const [bgColor, setBgColor] = useState({
         hue: 1,
@@ -92,10 +95,15 @@ const Initial = () => {
     </Button>;
 
     const [rangeValue, setRangeValue] = useState(0);
+    const [heightValue, setHeightValue] = useState(0);
 
     const handleRangeSliderChange = useCallback(
         (value) => setRangeValue(value),
         [],
+    );
+    const handleHeightSliderChange = useCallback(
+        (value) => setHeightValue(value),
+        []
     );
 
     const handleSubmit = async () => {
@@ -108,8 +116,12 @@ const Initial = () => {
                 display: renderValue,
                 sticky: checked,
                 backGroundColor: bgColor,
+                bannerHeight: heightValue,
                 borderSize: rangeValue,
                 borderColor,
+                isRepeatable,
+                firstText,
+                secondText
             });
         console.log(res);
     };
@@ -266,6 +278,16 @@ const Initial = () => {
                             </div>
                             <div>
                                 <RangeSlider
+                                    label="Banner height:"
+                                    value={heightValue}
+                                    onChange={handleRangeSliderChange}
+                                    min={30}
+                                    max={90}
+                                    output
+                                />
+                            </div>
+                            <div>
+                                <RangeSlider
                                     label="Border size:"
                                     value={rangeValue}
                                     onChange={handleRangeSliderChange}
@@ -291,6 +313,33 @@ const Initial = () => {
                                 }}/>
                             </div>
                         </div>
+                    </Card>
+                    <Card title={'Banner texts:'} sectioned>
+                        <TextField
+                            label={'First text'}
+                            value={firstText}
+                            onChange={(value) => {
+                                setFirstText(value)
+                            }}
+                            error={(!firstText) ? 'Please enter text' : ''}
+                        />
+                        <TextField
+                            label={'Second text'}
+                            value={secondText}
+                            onChange={(value) => {
+                                setSecondText(value)
+                            }}
+                            error={(!secondText) ? 'Please enter text' : ''}
+                        />
+                    </Card>
+                    <Card title={'Utils'}>
+                        <Checkbox
+                            label="Repeat timer when it ends"
+                            checked={isRepeatable}
+                            onChange={(newChecked) => {
+                                setRepeat(newChecked)
+                            }}
+                        />
                     </Card>
                     <div style={{marginTop: '25px'}}>
                         <Link href={'/success'}>
