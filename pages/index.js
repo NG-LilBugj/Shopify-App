@@ -333,6 +333,7 @@ const Initial = () => {
                         />
                     </Card>
                     <Card title={'Utils'}>
+                        <Stack vertical>
                         <Checkbox
                             label="Repeat timer when it ends"
                             checked={isRepeatable}
@@ -340,6 +341,7 @@ const Initial = () => {
                                 setRepeat(newChecked)
                             }}
                         />
+                        </Stack>
                     </Card>
                     <div style={{marginTop: '25px'}}>
                         <Link href={'/success'}>
