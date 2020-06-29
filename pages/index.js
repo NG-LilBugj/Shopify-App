@@ -12,6 +12,7 @@ import {
 import {useCallback, useState, useEffect} from "react";
 import Link from 'next/link'
 import axios from 'axios'
+import DesignSection from "../components/design";
 
 const Initial = () => {
     useEffect(() => {
@@ -22,6 +23,7 @@ const Initial = () => {
     }, []);
 
     const [isLoading, setLoading] = useState(true);
+    const [isMainConfig, setConfigMenu] = useState(true);
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
@@ -176,7 +178,7 @@ const Initial = () => {
                 </Layout.Section>}
             </Layout>}
             {initBar && <Layout>
-                <Layout.Section>
+                {isMainConfig ? <Layout.Section>
                     <Card title={'Banner name:'} sectioned>
                         <TextField
                             label={'Name'}
@@ -259,79 +261,6 @@ const Initial = () => {
                             />
                         </Stack>
                     </Card>
-                    <Card title={'Timer design'} sectioned>
-                        <div style={{display: 'flex', justifyContent: 'space-around', width: '100%'}}>
-                            <div>
-                                <p style={{marginBottom: '10px'}}>Background color:</p>
-
-                                <Popover active={popoverActive} activator={activator} onClose={togglePopoverActive}
-                                         fluidContent={true} sectioned>
-                                    <ColorPicker color={bgColor} onChange={setBgColor}/>
-                                </Popover>
-                                <div style={{
-                                    width: '100%',
-                                    height: '40px',
-                                    borderRadius: '5px',
-                                    backgroundColor: `hsla(${bgColor.hue}, ${bgColor.saturation * 100}%, ${bgColor.brightness * 100}%, ${bgColor.alpha})`,
-                                    marginTop: '10px'
-                                }}/>
-                            </div>
-                            <div>
-                                <RangeSlider
-                                    label="Banner height:"
-                                    value={heightValue}
-                                    onChange={handleHeightSliderChange}
-                                    min={30}
-                                    max={90}
-                                    output
-                                />
-                            </div>
-                            <div>
-                                <RangeSlider
-                                    label="Border size:"
-                                    value={rangeValue}
-                                    onChange={handleRangeSliderChange}
-                                    min={0}
-                                    max={12}
-                                    output
-                                />
-                            </div>
-                            <div>
-                                <p style={{marginBottom: '10px'}}>Border color:</p>
-
-                                <Popover active={borderPopover} activator={borderActivator}
-                                         onClose={toggleBorderPopover}
-                                         fluidContent={true} sectioned>
-                                    <ColorPicker color={borderColor} onChange={setBorderColor}/>
-                                </Popover>
-                                <div style={{
-                                    width: '100%',
-                                    height: '40px',
-                                    borderRadius: '5px',
-                                    backgroundColor: `hsla(${borderColor.hue}, ${borderColor.saturation * 100}%, ${borderColor.brightness * 100}%, ${borderColor.alpha})`,
-                                    marginTop: '10px'
-                                }}/>
-                            </div>
-                        </div>
-                    </Card>
-                    <Card title={'Banner texts:'} sectioned>
-                        <TextField
-                            label={'First text'}
-                            value={firstText}
-                            onChange={(value) => {
-                                setFirstText(value)
-                            }}
-                            error={(!firstText) ? 'Please enter text' : ''}
-                        />
-                        <TextField
-                            label={'Second text'}
-                            value={secondText}
-                            onChange={(value) => {
-                                setSecondText(value)
-                            }}
-                            error={(!secondText) ? 'Please enter text' : ''}
-                        />
-                    </Card>
                     <Card title={'Utils'} sectioned>
                         <Stack vertical>
                         <Checkbox
@@ -343,20 +272,51 @@ const Initial = () => {
                         />
                         </Stack>
                     </Card>
-                    <div style={{marginTop: '25px'}}>
-                        <Link href={'/success'}>
-                            <Button
-                                primary
-                                size={"large"}
-                                type={"submit"}
-                                onClick={handleSubmit}
-                                disabled={!name}
-                            >
-                                Save
-                            </Button>
-                        </Link>
-                    </div>
                 </Layout.Section>
+                :
+                    <DesignSection
+                        {popoverActive}
+                        {activator}
+                        {togglePopoverActive}
+                        {bgColor}
+                        {setBgColor}
+                        heightValue={heightValue}
+                        {handleHeightSliderChange}
+                        {rangeValue}
+                        {handleRangeSliderChange}
+                        {borderColor}
+                        {borderActivator}
+                        {borderPopover}
+                        {toggleBorderPopover}
+                        {setBorderColor}
+                        {setBorderPopover}
+                        {firstText}
+                        {setFirstText}
+                        {secondText}
+                        {setSecondText}
+                    />}
+                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px'}}>
+                    <Button
+                        primary
+                        size={"large"}
+                        type={"submit"}
+                        onClick={setConfigMenu}
+                        disabled={!name}
+                    >
+                        Banner design
+                    </Button>
+                    <Link href={'/success'}>
+                        <Button
+                            primary
+                            size={"large"}
+                            type={"submit"}
+                            onClick={handleSubmit}
+                            disabled={!name}
+                        >
+                            Save
+                        </Button>
+                    </Link>
+                </div>
             </Layout>}
 
         </Page>
