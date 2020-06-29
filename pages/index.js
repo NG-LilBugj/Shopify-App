@@ -97,7 +97,7 @@ const Initial = () => {
     </Button>;
 
     const [rangeValue, setRangeValue] = useState(0);
-    const [heightValue, setHeightValue] = useState(0);
+    const [heightValue, setHeightValue] = useState(100);
 
     const handleRangeSliderChange = useCallback(
         (value) => setRangeValue(value),
