@@ -180,6 +180,17 @@ const Initial = () => {
             {initBar && <Layout>
                 <Layout.Section>
                 {isMainConfig ? <Layout.Section>
+                    {isMainConfig && <div style={{display: 'flex', justifyContent: 'end', width: '100%'}}>
+                            <Button
+                                primary
+                                size={"large"}
+                                type={"submit"}
+                                onClick={() => setConfigMenu(!isMainConfig)}
+                                disabled={!name}
+                            >
+                                {isMainConfig ? 'Banner design' : 'Settings'}
+                            </Button>
+                        </div>}
                     <Card title={'Banner name:'} sectioned>
                         <TextField
                             label={'Name'}
@@ -296,7 +307,7 @@ const Initial = () => {
                         secondText={secondText}
                         setSecondText={setSecondText}
                     />}
-                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px', marginLeft: '15px'}}>
                     <Button
                         primary
                         size={"large"}

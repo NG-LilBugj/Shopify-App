@@ -26,8 +26,8 @@ const DesignSection = (props) => {
                             label="Banner height:"
                             value={props.heightValue}
                             onChange={props.handleHeightSliderChange}
-                            min={30}
-                            max={90}
+                            min={60}
+                            max={150}
                             output
                         />
                     </div>
