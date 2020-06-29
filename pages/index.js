@@ -178,6 +178,7 @@ const Initial = () => {
                 </Layout.Section>}
             </Layout>}
             {initBar && <Layout>
+                <Layout.Section>
                 {isMainConfig ? <Layout.Section>
                     <Card title={'Banner name:'} sectioned>
                         <TextField
@@ -300,10 +301,10 @@ const Initial = () => {
                         primary
                         size={"large"}
                         type={"submit"}
-                        onClick={setConfigMenu}
+                        onClick={() => setConfigMenu(!isMainConfig)}
                         disabled={!name}
                     >
-                        Banner design
+                        {isMainConfig ? 'Banner design' : 'Settings'}
                     </Button>
                     <Link href={'/success'}>
                         <Button
@@ -317,6 +318,7 @@ const Initial = () => {
                         </Button>
                     </Link>
                 </div>
+                </Layout.Section>
             </Layout>}
 
         </Page>
