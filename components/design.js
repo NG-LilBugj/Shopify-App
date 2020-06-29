@@ -5,8 +5,8 @@ const DesignSection = (props) => {
     return(
         <Layout.Section>
             <Card title={'Timer design'} sectioned>
-                <div style={{display: 'flex', justifyContent: 'space-around', width: '100%'}}>
-                    <div style={{minWidth: '90px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', width: '100%'}}>
+                    <div>
                         <p style={{marginBottom: '10px'}}>Background color:</p>
 
                         <Popover active={props.popoverActive} activator={props.activator} onClose={props.togglePopoverActive}
@@ -21,7 +21,7 @@ const DesignSection = (props) => {
                             marginTop: '10px'
                         }}/>
                     </div>
-                    <div style={{minWidth: '90px'}}>
+                    <div>
                         <RangeSlider
                             label="Banner height:"
                             value={props.heightValue}
@@ -31,7 +31,7 @@ const DesignSection = (props) => {
                             output
                         />
                     </div>
-                    <div style={{minWidth: '90px'}}>
+                    <div>
                         <RangeSlider
                             label="Border size:"
                             value={props.rangeValue}
@@ -41,7 +41,7 @@ const DesignSection = (props) => {
                             output
                         />
                     </div>
-                    <div style={{minWidth: '90px'}}>
+                    <div>
                         <p style={{marginBottom: '10px'}}>Border color:</p>
 
                         <Popover active={props.borderPopover} activator={props.borderActivator}
