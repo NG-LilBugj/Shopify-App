@@ -181,9 +181,12 @@ const Initial = () => {
                 <Layout.Section>
                 {isMainConfig ? <Layout.Section>
                     {isMainConfig && <div style={{display: 'flex', justifyContent: 'flex-end', width: '100%', marginBottom: '25px'}}>
+                        <div style={{fontSize: '24px', fontFamily: 'italic', fontWeight: '600'}}>
+                            Customize your banner!
+                        </div>
                             <Button
                                 primary
-                                size={"large"}
+                                size={"medium"}
                                 type={"submit"}
                                 onClick={() => setConfigMenu(!isMainConfig)}
                                 disabled={!name}
