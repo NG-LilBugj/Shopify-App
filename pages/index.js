@@ -180,7 +180,7 @@ const Initial = () => {
             {initBar && <Layout>
                 <Layout.Section>
                 {isMainConfig ? <Layout.Section>
-                    {isMainConfig && <div style={{display: 'flex', justifyContent: 'end', width: '100%'}}>
+                    {isMainConfig && <div style={{display: 'flex', justifyContent: 'flex-end', width: '100%', marginBottom: '25px'}}>
                             <Button
                                 primary
                                 size={"large"}
@@ -307,7 +307,7 @@ const Initial = () => {
                         secondText={secondText}
                         setSecondText={setSecondText}
                     />}
-                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px', marginLeft: '15px'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px', marginLeft: '20px'}}>
                     <Button
                         primary
                         size={"large"}
