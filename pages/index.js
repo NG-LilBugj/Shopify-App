@@ -275,25 +275,25 @@ const Initial = () => {
                 </Layout.Section>
                 :
                     <DesignSection
-                        {popoverActive}
-                        {activator}
-                        {togglePopoverActive}
-                        {bgColor}
-                        {setBgColor}
+                        popoverActive={popoverActive}
+                        activator={activator}
+                        togglePopoverActive={togglePopoverActive}
+                        bgColor={bgColor}
+                        setBgColor={setBgColor}
                         heightValue={heightValue}
-                        {handleHeightSliderChange}
-                        {rangeValue}
-                        {handleRangeSliderChange}
-                        {borderColor}
-                        {borderActivator}
-                        {borderPopover}
-                        {toggleBorderPopover}
-                        {setBorderColor}
-                        {setBorderPopover}
-                        {firstText}
-                        {setFirstText}
-                        {secondText}
-                        {setSecondText}
+                        handleHeightSliderChange={handleHeightSliderChange}
+                        rangeValue={rangeValue}
+                        handleRangeSliderChange={handleRangeSliderChange}
+                        borderColor={borderColor}
+                        borderActivator={borderActivator}
+                        borderPopover={borderPopover}
+                        toggleBorderPopover={toggleBorderPopover}
+                        setBorderColor={setBorderColor}
+                        setBorderPopover={setBorderPopover}
+                        firstText={firstText}
+                        setFirstText={setFirstText}
+                        secondText={secondText}
+                        setSecondText={setSecondText}
                     />}
                 <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px'}}>
                     <Button
