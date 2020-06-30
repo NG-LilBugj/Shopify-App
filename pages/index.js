@@ -110,7 +110,7 @@ const Initial = () => {
         <TextField
             disabled
         label={'Start Date'}
-        value={Date.parse(selectedStartDate.start)}
+        value={selectedStartDate.start.toLocaleString()}
         error={(startError) ? 'Please enter date' : ''}
     /></div>;
     const endDateText = <TextField
