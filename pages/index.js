@@ -110,16 +110,16 @@ const Initial = () => {
         <TextField
             disabled
         label={'Start Date'}
-        value={selectedStartDate.start.toLocaleString()}
+        value={selectedStartDate.start.toLocaleDateString()}
         error={(startError) ? 'Please enter date' : ''}
     /></div>;
-    const endDateText = <TextField
-        disabled
-        label={'Start Date'}
-        value={selectedStartDate.start}
-        onClick={toggleEndPopover}
-        error={(endError) ? 'Please enter date' : ''}
-    />;
+    const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
+        <TextField
+            disabled
+            label={'End Date'}
+            value={selectedEndDate.end.toLocaleDateString()}
+            error={(endError) ? 'Please enter date' : ''}
+        /></div>;
 
 
     const [rangeValue, setRangeValue] = useState(0);
@@ -241,23 +241,18 @@ const Initial = () => {
                                 selected={selectedStartDate}
                             />
                         </Popover>
-                        {/*<DatePicker*/}
-                        {/*    month={month}*/}
-                        {/*    year={year}*/}
-                        {/*    onChange={setSelectedStartDate}*/}
-                        {/*    onMonthChange={handleMonthChange}*/}
-                        {/*    selected={selectedStartDate}*/}
-                        {/*/>*/}
                     </Card>
                     <Card title={'End Time'} sectioned>
+                        <Popover active={endDatePopover} activator={endDateText} onClose={toggleEndPopover}
+                        fluidContent={true} sectioned>
                         <DatePicker
                             month={endMonth}
                             year={endYear}
                             onChange={setSelectedEndDate}
                             onMonthChange={handleEndMonthChange}
                             selected={selectedEndDate}
-                            size={'slim'}
                         />
+                    </Popover>
                     </Card>
                     <Card title={'Timer display'} sectioned>
                         <Stack vertical>
