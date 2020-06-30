@@ -38,7 +38,6 @@ const Initial = () => {
         endMonth: 6,
         endYear: 2020
     });
-    debugger
     const [selectedStartDate, setSelectedStartDate] = useState({
         start: new Date(),
     });
@@ -111,7 +110,7 @@ const Initial = () => {
         <TextField
             disabled
         label={'Start Date'}
-        value={selectedStartDate}
+        value={selectedStartDate.start}
         error={(startError) ? 'Please enter date' : ''}
     /></div>;
     const endDateText = <TextField
