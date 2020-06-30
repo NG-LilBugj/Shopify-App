@@ -114,7 +114,7 @@ const Initial = () => {
     /></div>;
     const endDateText = <TextField
         label={'Start Date'}
-        value={selectedStartDate}
+        value={selectedStartDate.start}
         onClick={toggleEndPopover}
         error={(endError) ? 'Please enter date' : ''}
     />;
