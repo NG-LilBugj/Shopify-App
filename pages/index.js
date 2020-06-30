@@ -89,6 +89,9 @@ const Initial = () => {
     const [startDatePopover, setStartDatePopover] = useState(true);
     const [endDatePopover, setEndDatePopover] = useState(true);
 
+    const [startError, setStartError] = useState('');
+    const [endError, setEndError] = useState('');
+
     const togglePopoverActive = useCallback(() => setPopoverActive(popoverActive => !popoverActive), []);
     const toggleBorderPopover = useCallback(() => setBorderPopover(popoverActive => !popoverActive), []);
 
