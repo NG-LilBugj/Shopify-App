@@ -110,7 +110,7 @@ const Initial = () => {
         <TextField
             disabled
         label={'Start Date'}
-        value={selectedStartDate.start}
+        value={Date.parse(selectedStartDate.start)}
         error={(startError) ? 'Please enter date' : ''}
     /></div>;
     const endDateText = <TextField
