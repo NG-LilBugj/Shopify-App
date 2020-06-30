@@ -86,8 +86,15 @@ const Initial = () => {
     const [popoverActive, setPopoverActive] = useState(true);
     const [borderPopover, setBorderPopover] = useState(true);
 
+    const [startDatePopover, setStartDatePopover] = useState(true);
+    const [endDatePopover, setEndDatePopover] = useState(true);
+
     const togglePopoverActive = useCallback(() => setPopoverActive(popoverActive => !popoverActive), []);
     const toggleBorderPopover = useCallback(() => setBorderPopover(popoverActive => !popoverActive), []);
+
+    const toggleStartPopover = useCallback(() => setStartDatePopover(popoverActive => !popoverActive), []);
+    const toggleEndPopover = useCallback(() => setEndDatePopover(popoverActive => !popoverActive), []);
+
     const activator = <Button onClick={togglePopoverActive} disclosure>
         Background
         color
@@ -95,6 +102,20 @@ const Initial = () => {
     const borderActivator = <Button onClick={toggleBorderPopover} disclosure>
         Border color
     </Button>;
+
+    const startDateText = <TextField
+        label={'Start Date'}
+        value={selectedStartDate}
+        onClick={toggleStartPopover}
+        error={(startError) ? 'Please enter date' : ''}
+    />;
+    const endDateText = <TextField
+        label={'Start Date'}
+        value={selectedStartDate}
+        onClick={toggleEndPopover}
+        error={(endError) ? 'Please enter date' : ''}
+    />;
+
 
     const [rangeValue, setRangeValue] = useState(0);
     const [heightValue, setHeightValue] = useState(100);
@@ -205,13 +226,23 @@ const Initial = () => {
                         />
                     </Card>
                     <Card title={'Start time'} sectioned>
-                        <DatePicker
-                            month={month}
-                            year={year}
-                            onChange={setSelectedStartDate}
-                            onMonthChange={handleMonthChange}
-                            selected={selectedStartDate}
-                        />
+                        <Popover active={startDatePopover} activator={startDateText} onClose={toggleStartPopover}
+                                 fluidContent={true} sectioned>
+                            <DatePicker
+                                month={month}
+                                year={year}
+                                onChange={setSelectedStartDate}
+                                onMonthChange={handleMonthChange}
+                                selected={selectedStartDate}
+                            />
+                        </Popover>
+                        {/*<DatePicker*/}
+                        {/*    month={month}*/}
+                        {/*    year={year}*/}
+                        {/*    onChange={setSelectedStartDate}*/}
+                        {/*    onMonthChange={handleMonthChange}*/}
+                        {/*    selected={selectedStartDate}*/}
+                        {/*/>*/}
                     </Card>
                     <Card title={'End Time'} sectioned>
                         <DatePicker
