@@ -106,12 +106,12 @@ const Initial = () => {
         Border color
     </Button>;
 
-    const startDateText = <TextField
+    const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover}>
+        <TextField
         label={'Start Date'}
         value={selectedStartDate}
-        onClick={toggleStartPopover}
         error={(startError) ? 'Please enter date' : ''}
-    />;
+    /></div>;
     const endDateText = <TextField
         label={'Start Date'}
         value={selectedStartDate}
