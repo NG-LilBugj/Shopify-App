@@ -83,11 +83,11 @@ const Initial = () => {
 
     const renderData = (data) => <p>{data}</p>;
 
-    const [popoverActive, setPopoverActive] = useState(true);
-    const [borderPopover, setBorderPopover] = useState(true);
+    const [popoverActive, setPopoverActive] = useState(false);
+    const [borderPopover, setBorderPopover] = useState(false);
 
-    const [startDatePopover, setStartDatePopover] = useState(true);
-    const [endDatePopover, setEndDatePopover] = useState(true);
+    const [startDatePopover, setStartDatePopover] = useState(false);
+    const [endDatePopover, setEndDatePopover] = useState(false);
 
     const [startError, setStartError] = useState('');
     const [endError, setEndError] = useState('');
