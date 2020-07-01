@@ -31,11 +31,11 @@ const Initial = () => {
     const [secondText, setSecondText] = useState('Flash Sale');
 
     const [{month, year}, setDate] = useState({
-        month: 4,
+        month: 7,
         year: 2020,
     });
     const [{endMonth, endYear}, setSecondDate] = useState({
-        endMonth: 6,
+        endMonth: 8,
         endYear: 2020
     });
     const [selectedStartDate, setSelectedStartDate] = useState({
