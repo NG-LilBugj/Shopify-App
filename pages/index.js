@@ -47,6 +47,7 @@ const Initial = () => {
         end: {
             toLocaleDateString(){return ''},
             getDate(){return 1},
+            getMonth(){return 6},
             getFullYear() {return 2020}
         },
     });
