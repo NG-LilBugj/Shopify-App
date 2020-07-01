@@ -35,6 +35,7 @@ const Initial = () => {
         month: 6,
         year: 2020,
     });
+
     const [{endMonth, endYear}, setSecondDate] = useState({
         endMonth: 7,
         endYear: 2020
@@ -43,8 +44,10 @@ const Initial = () => {
         start: new Date(),
     });
     const [selectedEndDate, setSelectedEndDate] = useState({
-        end: new Date('Wed Aug 08 2020 00:00:00 GMT-0300 (EST)'),
+        end: {toLocaleDateString(){return ''}},
     });
+    //new Date('Wed Aug 08 2020 00:00:00 GMT-0300 (EST)')
+    const [isEndDateTouched, touchEndDate] = useState(false);
 
     const handleMonthChange = useCallback(
         (month, year) => setDate({month, year}),
@@ -82,6 +85,11 @@ const Initial = () => {
         []
     );
 
+    const handleDateTouch = useCallback(
+        () => touchEndDate(true),
+        []
+    );
+
     const renderData = (data) => <p>{data}</p>;
 
     const [popoverActive, setPopoverActive] = useState(false);
@@ -111,14 +119,14 @@ const Initial = () => {
         <TextField
         label={'Start Date'}
         value={selectedStartDate.start.toLocaleDateString()}
-            onFocus={toggleStartPopover}
         error={(startError) ? 'Please enter date' : ''}
     /></div>;
     const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
         <TextField
             label={'End Date'}
             value={selectedEndDate.end.toLocaleDateString()}
-            error={(endError) ? 'Please enter date' : ''}
+            onBlur={handleDateTouch}
+            error={((!(selectedEndDate.end.toLocaleDateString())) && isEndDateTouched) ? 'Please enter date' : ''}
         /></div>;
 
 
