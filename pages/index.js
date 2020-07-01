@@ -113,7 +113,7 @@ const Initial = () => {
         value={selectedStartDate.start.toLocaleDateString()}
         error={(startError) ? 'Please enter date' : ''}
     /></div>;
-    const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
+    const endDateText = <div style={{width: '200px', border: 'none'}} onClick={toggleEndPopover}>
         <TextField
             disabled
             label={'End Date'}
