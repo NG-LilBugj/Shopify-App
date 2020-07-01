@@ -27,6 +27,7 @@ const Initial = () => {
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState('Timer');
+    const [nameError, setNameError] = useState(false);
     const [firstText, setFirstText] = useState('Hurry Up!');
     const [secondText, setSecondText] = useState('Flash Sale');
 
@@ -144,6 +145,11 @@ const Initial = () => {
         }, [switchTouch]
     );
 
+    const handleNameError = useCallback(
+        () => setNameError(true),
+        []
+    );
+
     const handleSubmit = async () => {
         let res = await axios.post('https://lil-shopify.herokuapp.com/api/script',
             {
@@ -233,12 +239,13 @@ const Initial = () => {
                     <Card title={'Banner name:'} sectioned>
                         <TextField
                             label={''}
-                            onFocus={() => alert('sss')}
+                            onBlur={handleNameError}
                             value={name}
+                            placeholder={'Enter name...'}
                             onChange={(value) => {
                                 setName(value)
                             }}
-                            error={(!name) ? 'Please enter name' : ''}
+                            error={((!name) && nameError) ? 'Please enter name' : ''}
                         />
                     </Card>
                     <Card title={'Start time'} sectioned>
