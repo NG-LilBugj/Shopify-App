@@ -137,11 +137,11 @@ const Initial = () => {
 
     const designSwitch = useCallback(
         () => {
-            switchAttempt((switchTouch) => !switchTouch);
+            switchAttempt(true);
             if (!switchTouch){
-            setConfigMenu(!isMainConfig)
+                setConfigMenu(!isMainConfig)
             }
-        }, []
+        }, [switchTouch]
     );
 
     const handleSubmit = async () => {
