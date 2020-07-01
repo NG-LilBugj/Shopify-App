@@ -233,6 +233,7 @@ const Initial = () => {
                     <Card title={'Banner name:'} sectioned>
                         <TextField
                             label={''}
+                            onFocus={() => alert('sss')}
                             value={name}
                             onChange={(value) => {
                                 setName(value)
