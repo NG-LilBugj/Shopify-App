@@ -131,7 +131,7 @@ const Initial = () => {
             label={'End Date'}
             value={selectedEndDate.end.toLocaleDateString()}
             onBlur={handleDateTouch}
-            error={((!(selectedEndDate.end.toLocaleDateString())) && isEndDateTouched && startDatePopover) ? 'Please enter date' : ''}
+            error={((!(selectedEndDate.end.toLocaleDateString())) && isEndDateTouched && !endDatePopover) ? 'Please enter date' : ''}
         /></div>;
 
 
