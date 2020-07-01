@@ -133,6 +133,17 @@ const Initial = () => {
         []
     );
 
+    const [switchTouch, switchAttempt] = useState(false);
+
+    const designSwitch = useCallback(
+        () => {
+            switchAttempt((switchTouch) => !switchTouch);
+            if (!switchTouch){
+            setConfigMenu(!isMainConfig)
+            }
+        }, []
+    );
+
     const handleSubmit = async () => {
         let res = await axios.post('https://lil-shopify.herokuapp.com/api/script',
             {
@@ -213,7 +224,7 @@ const Initial = () => {
                                 primary
                                 size={"medium"}
                                 type={"submit"}
-                                onClick={() => setConfigMenu(!isMainConfig)}
+                                onClick={designSwitch}
                                 disabled={!name}
                             >
                                 {isMainConfig ? 'Banner design' : 'Settings'}
@@ -221,7 +232,7 @@ const Initial = () => {
                         </div>}
                     <Card title={'Banner name:'} sectioned>
                         <TextField
-                            label={'Name'}
+                            label={''}
                             value={name}
                             onChange={(value) => {
                                 setName(value)
