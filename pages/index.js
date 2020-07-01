@@ -26,7 +26,7 @@ const Initial = () => {
     const [isMainConfig, setConfigMenu] = useState(true);
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
-    const [name, setName] = useState('Timer');
+    const [name, setName] = useState('');
     const [nameError, setNameError] = useState(false);
     const [firstText, setFirstText] = useState('Hurry Up!');
     const [secondText, setSecondText] = useState('Flash Sale');
