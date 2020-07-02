@@ -69,7 +69,8 @@ const DesignSection = (props) => {
                     }}
                     error={(!props.firstText) ? 'Please enter text' : ''}
                 />
-                <TextField
+                <div style={{marginTop: '25px'}}>
+                    <TextField
                     label={'Second text'}
                     value={props.secondText}
                     onChange={(value) => {
@@ -77,6 +78,7 @@ const DesignSection = (props) => {
                     }}
                     error={(!props.secondText) ? 'Please enter text' : ''}
                 />
+                </div>
             </Card>
             <Card title={'Banner preview'} sectioned>
                 <div style={{width: '100%', height: props.heightValue, backgroundColor: `hsla(${decodeColors(props.bgColor)})`,
