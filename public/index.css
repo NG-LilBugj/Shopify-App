@@ -30,6 +30,7 @@
 }
 .countdown-text {
     font-size: 10px;
+    text-align: center;
 }
 
 .numbers-container {
@@ -63,5 +64,23 @@
     }
     .last-sign{
         font-size: 15px;
+    }
+    .countdown-text{
+        font-size: 7px;
+    }
+}
+@media screen and (max-width: 540px) {
+    .first-sign{
+        width: 15%
+    }
+    .last-sign{
+        width: 10%
+    }
+    .number-place{
+        font-size: 14px;
+        border-radius: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 15px
     }
 }

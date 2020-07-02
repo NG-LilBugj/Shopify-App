@@ -1,4 +1,5 @@
 import {Card, ColorPicker, Layout, Popover, RangeSlider, TextField} from "@shopify/polaris";
+import '../public/index.css'
 
 
 const DesignSection = (props) => {
@@ -77,8 +78,66 @@ const DesignSection = (props) => {
                     error={(!props.secondText) ? 'Please enter text' : ''}
                 />
             </Card>
+            <Card title={'Banner preview'} sectioned={}>
+                <div style={{width: '100%', height: props.heightValue, backgroundColor: `hsla(${decodeColors(props.backGroundColor)})`,
+                    border: `${props.borderSize}px solid hsla(${decodeColors(props.borderColor)})`, color: 'rgb(65, 65, 106)',
+                    display: 'flex', justifyContent: 'space-around', textAlign: 'between', fontWeight: '700', fontSize: '24px'
+                }}>
+
+                    <div className='first-sign'>{data.firstText || 'Hurry Up!'}</div>
+                    <div className='inner-container'>
+                        <div className="countdown-number">
+                            <div className='numbers-container'>
+                                <div className='number-place'><span className="days-countdown-time-first\">1</span>
+                                </div>
+                                <div className='number-place'><span className="days-countdown-time-second\">1</span>
+                                </div>
+                            </div>
+                            <span className="countdown-text">Days</span>
+                        </div>
+                        <div className="countdown-number">
+                            <div className='numbers-container'>
+                                <div className='number-place'><span className="hours-countdown-time-first">2</span>
+                                </div>
+                                <div className='number-place'><span className="hours-countdown-time-second">2</span>
+                                </div>
+                            </div>
+                            <span className="countdown-text">Hours</span>
+                        </div>
+                        <span
+                            style="font-size: 30px; position: relative;bottom: 8px; right: 6px;font-weight: 900">:</span>
+                        <div className="countdown-number">
+                            <div className='numbers-container'>
+                                <div className='number-place'><span className="minutes-countdown-time-first">3</span>
+                                </div>
+                                <div className='number-place'><span className="minutes-countdown-time-second">3</span>
+                                </div>
+                            </div>
+                            <span className="countdown-text">Minutes</span>
+                        </div>
+                        <span
+                            style="font-size: 30px; position: relative; bottom: 8px; right: 6px; font-weight: 900 \">:</span>
+                        <div className="countdown-number">
+                            <div className='numbers-container'>
+                                <div className='number-place'><span className="seconds-countdown-time-first">4</span>
+                                </div>
+                                <div className='number-place'><span className="seconds-countdown-time-second">4</span>
+                                </div>
+                            </div>
+                            <span className="countdown-text">Seconds</span>
+                        </div>
+                    </div>
+                    <div className='last-sign'>{data.secondText || 'Flash Sale!'}</div>
+
+                </div>
+            </Card>
         </Layout.Section>
     )
+};
+
+const decodeColors = (model) => {
+    let {hue, saturation, brightness, alpha} = model;
+    return `${hue}, ${saturation*100}%, ${brightness*100}%, ${alpha}`
 };
 
 export default DesignSection
