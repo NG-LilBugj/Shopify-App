@@ -82,7 +82,7 @@ const DesignSection = (props) => {
             </Card>
             <Card title={'Banner preview'} sectioned>
                 <div style={{width: '100%', height: props.heightValue, backgroundColor: `hsla(${decodeColors(props.bgColor)})`,
-                    borderColor: `hsla(${decodeColors(props.borderColor)})`, color: 'rgb(65, 65, 106)', borderWidth: `${props.borderSize}px`, border: 'solid',
+                    border: `hsla(${decodeColors(props.borderColor)}) ${props.borderSize}px solid`, color: 'rgb(65, 65, 106)',
                     display: 'flex', justifyContent: 'space-around', textAlign: 'between', fontWeight: '700', fontSize: '24px'
                 }}>
 
