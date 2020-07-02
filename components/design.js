@@ -84,7 +84,7 @@ const DesignSection = (props) => {
                     display: 'flex', justifyContent: 'space-around', textAlign: 'between', fontWeight: '700', fontSize: '24px'
                 }}>
 
-                    <div className='first-sign'>{data.firstText || 'Hurry Up!'}</div>
+                    <div className='first-sign'>{props.firstText || 'Hurry Up!'}</div>
                     <div className='inner-container'>
                         <div className="countdown-number">
                             <div className='numbers-container'>
