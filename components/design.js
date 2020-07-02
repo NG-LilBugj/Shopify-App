@@ -125,7 +125,7 @@ const DesignSection = (props) => {
                             <span className="countdown-text">Seconds</span>
                         </div>
                     </div>
-                    <div className='last-sign'>{data.secondText || 'Flash Sale!'}</div>
+                    <div className='last-sign'>{props.secondText || 'Flash Sale!'}</div>
 
                 </div>
             </Card>
