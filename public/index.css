@@ -47,15 +47,18 @@
 .number-place {
     display: flex;
     justify-content: center;
+    align-items: center;
     border-radius: 6px;
     font-size: 32px;
     font-weight: 600;
     box-shadow: #0b0f27 0 0 8px;
     margin-left: 4px;
     margin-right: 4px;
+    margin-top: 14px;
     background-color: #fff;
     color: rgb(65, 65, 106);
-    width: 35px
+    width: 35px;
+    height: 40px;
 }
 
 @media screen and (max-width: 800px) {
