@@ -122,13 +122,13 @@ const Initial = () => {
 
     const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover}>
         <TextField
-        label={'Start Date'}
+        label={''}
         value={selectedStartDate.start.toLocaleDateString()}
         error={(startError) ? 'Please enter date' : ''}
     /></div>;
     const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
         <TextField
-            label={'End Date'}
+            label={''}
             value={selectedEndDate.end.toLocaleDateString()}
             onBlur={handleDateTouch}
             error={((!(selectedEndDate.end.toLocaleDateString())) && isEndDateTouched && !endDatePopover) ? 'Please enter date' : ''}
@@ -261,7 +261,7 @@ const Initial = () => {
                             error={((!name) && nameError) ? 'Please enter name' : ''}
                         />
                     </Card>
-                    <Card title={'Start time'} sectioned>
+                    <Card title={'Start date'} sectioned>
                         <Popover active={startDatePopover} activator={startDateText} onClose={toggleStartPopover}
                                  fluidContent={true} sectioned>
                             <DatePicker
@@ -273,7 +273,7 @@ const Initial = () => {
                             />
                         </Popover>
                     </Card>
-                    <Card title={'End Time'} sectioned>
+                    <Card title={'End date'} sectioned>
                         <Popover active={endDatePopover} activator={endDateText} onClose={toggleEndPopover}
                         fluidContent={true} sectioned>
                         <DatePicker
