@@ -13,6 +13,7 @@ import {useCallback, useState, useEffect} from "react";
 import Link from 'next/link'
 import axios from 'axios'
 import DesignSection from "../components/design";
+import PrimaryDesign from "../components/primary";
 
 const Initial = () => {
     useEffect(() => {
@@ -249,106 +250,36 @@ const Initial = () => {
                                 {isMainConfig ? 'Banner design' : 'Settings'}
                             </Button>
                         </div>}
-                    <Card title={'Banner name:'} sectioned>
-                        <TextField
-                            label={''}
-                            onBlur={handleNameError}
-                            value={name}
-                            placeholder={'Enter name...'}
-                            onChange={(value) => {
-                                setName(value)
-                            }}
-                            error={((!name) && nameError) ? 'Please enter name' : ''}
-                        />
-                    </Card>
-                    <Card title={'Start date'} sectioned>
-                        <Popover active={startDatePopover} activator={startDateText} onClose={toggleStartPopover}
-                                 fluidContent={true} sectioned>
-                            <DatePicker
-                                month={month}
-                                year={year}
-                                onChange={setSelectedStartDate}
-                                onMonthChange={handleMonthChange}
-                                selected={selectedStartDate}
-                            />
-                        </Popover>
-                    </Card>
-                    <Card title={'End date'} sectioned>
-                        <Popover active={endDatePopover} activator={endDateText} onClose={toggleEndPopover}
-                        fluidContent={true} sectioned>
-                        <DatePicker
-                            month={endMonth}
-                            year={endYear}
-                            onChange={setSelectedEndDate}
-                            onMonthChange={handleEndMonthChange}
-                            selected={selectedEndDate}
-                        />
-                    </Popover>
-                    </Card>
-                    <Card title={'Timer display'} sectioned>
-                        <Stack vertical>
-                            <RadioButton
-                                label="Top"
-                                helpText="Displays timer at the top of the store."
-                                checked={value === 'Top'}
-                                id={'Top'}
-                                name="Top"
-                                onChange={handleChange}
-                            />
-                            <RadioButton
-                                label="Bottom"
-                                helpText="Displays timer at the bottom of the store."
-                                id="Bottom"
-                                name="Bottom"
-                                checked={value === 'Bottom'}
-                                onChange={handleChange}
-                            />
-                        </Stack>
-                        <Checkbox
-                            label="Display sticky"
-                            checked={checked}
-                            onChange={(newChecked) => {
-                                setChecked(newChecked)
-                            }}
-                        />
-                        <Stack vertical>
-                            <RadioButton
-                                label="All"
-                                helpText="Displays timer at all pages."
-                                checked={renderValue === 'all'}
-                                id={'all'}
-                                name="all"
-                                onChange={handleRenderValueChange}
-                            />
-                            <RadioButton
-                                label="Store"
-                                helpText="Displays timer at the pages of store."
-                                id="online_store"
-                                name="online_store"
-                                checked={renderValue === 'online_store'}
-                                onChange={handleRenderValueChange}
-                            />
-                            <RadioButton
-                                label="Order"
-                                helpText="Displays timer at the order status page."
-                                id="order_status"
-                                name="order_status"
-                                checked={renderValue === 'order_status'}
-                                onChange={handleRenderValueChange}
-                            />
-                        </Stack>
-                    </Card>
-                    <Card title={'Utils'} sectioned>
-                        <Stack vertical>
-                        <Checkbox
-                            label="Repeat timer when it ends"
-                            checked={isRepeatable}
-                            onChange={(newChecked) => {
-                                setRepeat(newChecked)
-                            }}
-                        />
-                        </Stack>
-                    </Card>
+                    <PrimaryDesign
+                        name={name}
+                        setName={setName}
+                        nameError={nameError}
+                        setNameError={setNameError}
+                        handleNameError={handleNameError}
+                        startDatePopover={startDatePopover}
+                        startDateText={startDateText}
+                        toggleStartPopover={toggleStartPopover}
+                        setSelectedStartDate={setSelectedStartDate}
+                        month={month}
+                        year={year}
+                        handleMonthChange={handleMonthChange}
+                        endDatePopover={endDatePopover}
+                        endDateText={endDateText}
+                        toggleEndPopover={toggleEndPopover}
+                        endMonth={endMonth}
+                        endYear={endYear}
+                        setSelectedEndDate={setSelectedEndDate}
+                        handleEndMonthChange={handleEndMonthChange}
+                        selectedEndDate={selectedEndDate}
+                        value={value}
+                        handleChange={handleChange}
+                        checked={checked}
+                        setChecked={setChecked}
+                        renderValue={renderValue}
+                        handleRenderValueChange={handleRenderValueChange}
+                        isRepeatable={isRepeatable}
+                        setRepeat={setRepeat}
+                    />
                 </Layout.Section>
                 :
                     <DesignSection
