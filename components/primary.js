@@ -131,14 +131,13 @@ const PrimaryDesign = (props) => {
             {(renderProduct) && <Card sectioned>
                 <Stack>
                     <Button
-                        primary
                         size={"large"}
                         type={"submit"}
                         onClick={() => setProducts(true)}
                     >
                         Browse products
                     </Button>
-                    {(props.product.name) && <div>
+                    {(props.product.name) && <div style={{width: '240px'}}>
                         <Thumbnail
                             source={props.product.photo}
                             alt={props.product.name}

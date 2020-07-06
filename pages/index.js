@@ -247,7 +247,6 @@ const Initial = () => {
                             Customize your banner!
                         </div>
                             <Button
-                                primary
                                 size={"medium"}
                                 type={"submit"}
                                 onClick={designSwitch}
@@ -313,7 +312,6 @@ const Initial = () => {
                     />}
                 <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px', marginLeft: '20px'}}>
                     <Button
-                        primary
                         size={"large"}
                         type={"submit"}
                         onClick={() => setConfigMenu(!isMainConfig)}
