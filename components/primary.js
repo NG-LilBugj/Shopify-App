@@ -1,4 +1,15 @@
-import {Button, Card, Checkbox, DatePicker, Layout, Popover, RadioButton, Stack, TextField} from "@shopify/polaris";
+import {
+    Button,
+    Card,
+    Checkbox,
+    DatePicker,
+    Layout,
+    Popover,
+    RadioButton,
+    ResourcePicker,
+    Stack,
+    TextField
+} from "@shopify/polaris";
 import {useState} from "react";
 
 
