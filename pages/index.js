@@ -135,6 +135,12 @@ const Initial = () => {
             error={((!(selectedEndDate.end.toLocaleDateString())) && isEndDateTouched && !endDatePopover) ? 'Please enter date' : ''}
         /></div>;
 
+    const [product, pickProduct] = useState({
+        name: '',
+        handle: '',
+        id: '',
+        photo: ''
+    });
 
     const [rangeValue, setRangeValue] = useState(0);
     const [heightValue, setHeightValue] = useState(100);
@@ -279,6 +285,8 @@ const Initial = () => {
                         handleRenderValueChange={handleRenderValueChange}
                         isRepeatable={isRepeatable}
                         setRepeat={setRepeat}
+                        product={product}
+                        pickProduct={pickProduct}
                     />
                 </Layout.Section>
                 :

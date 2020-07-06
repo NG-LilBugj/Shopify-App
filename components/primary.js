@@ -7,7 +7,7 @@ import {
     Popover,
     RadioButton,
     Stack,
-    TextField
+    TextField, Thumbnail
 } from "@shopify/polaris";
 import {ResourcePicker} from "@shopify/app-bridge-react";
 import {useState} from "react";
@@ -130,14 +130,24 @@ const PrimaryDesign = (props) => {
             </Card>
             {(renderProduct) && <Card sectioned>
                 <Stack>
-                   <Button
-                       primary
-                       size={"large"}
-                       type={"submit"}
-                       onClick={() => setProducts(true)}
-                   >
-                       Browse products
-                   </Button>
+                    <Button
+                        primary
+                        size={"large"}
+                        type={"submit"}
+                        onClick={() => setProducts(true)}
+                    >
+                        Browse products
+                    </Button>
+                    {(props.product.name) && <div>
+                        <Thumbnail
+                            source={props.product.photo}
+                            alt={props.product.name}
+                        />
+                        <div>
+                            {props.product.name}
+                        </div>
+                    </div>
+                    }
                 </Stack>
             </Card>}
             <Card title={'Utils'} sectioned>
