@@ -15,13 +15,13 @@ import {useState} from "react";
 
 const PrimaryDesign = (props) => {
 
-    const [isProductsOpen, setProducts] = useState(false);
+    const [isProductsOpen, setProducts] = useState(true);
     const [renderProduct, setProductRender] = useState(false);
 
     const handleSelection = (resources) => {
-        const idsFromResources = resources.selection.map((product) => product.handle);
+        //const idsFromResources = resources.selection.map((product) => product.handle);
         setProducts(false);
-        console.log(idsFromResources)
+        console.log(resources)
     };
 
     return(
