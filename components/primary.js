@@ -6,16 +6,16 @@ import {
     Layout,
     Popover,
     RadioButton,
-    ResourcePicker,
     Stack,
     TextField
 } from "@shopify/polaris";
+import {ResourcePicker} from "@shopify/app-bridge-react";
 import {useState} from "react";
 
 
 const PrimaryDesign = (props) => {
 
-    const [isProductsOpen, setProducts] = useState(true);
+    const [isProductsOpen, setProducts] = useState(false);
     const [renderProduct, setProductRender] = useState(false);
 
     const handleSelection = (resources) => {
