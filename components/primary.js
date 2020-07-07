@@ -139,8 +139,8 @@ const PrimaryDesign = (props) => {
                     >
                         Browse products
                     </Button>
-                    {(props.products[0].title) && props.products.map(p => <Product title={p.title} photo={p.images[0].originalSrc}/>)
-                    }
+                    {/*{(props.products[0].title) && props.products.map(p => <Product title={p.title} photo={p.images[0].originalSrc}/>)}*/}
+                    {console.log(props.products)}
                 </Stack>
             </Card>}
             <Card title={'Utils'} sectioned>
