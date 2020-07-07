@@ -135,17 +135,7 @@ const Initial = () => {
             error={((!(selectedEndDate.end.toLocaleDateString())) && isEndDateTouched && !endDatePopover) ? 'Please enter date' : ''}
         /></div>;
 
-    const [products, pickProducts] = useState([
-        {
-            title: '',
-            handle: '',
-            images: [
-                {
-                    originalSrc: ''
-                }
-            ]
-        }
-    ]);
+    const [products, pickProducts] = useState([]);
 
     const [rangeValue, setRangeValue] = useState(0);
     const [heightValue, setHeightValue] = useState(100);
@@ -158,6 +148,10 @@ const Initial = () => {
         (value) => setHeightValue(value),
         []
     );
+
+    const [isLinkActive, activateLink] = useState(false);
+    const [linkText, setLinkText] = useState('Get discount!');
+    const [href, setHref] = useState('https://');
 
     const [switchTouch, switchAttempt] = useState(false);
 
@@ -314,6 +308,12 @@ const Initial = () => {
                         setFirstText={setFirstText}
                         secondText={secondText}
                         setSecondText={setSecondText}
+                        isLinkActive={isLinkActive}
+                        activateLink={activateLink}
+                        linkText={linkText}
+                        setLinkText={setLinkText}
+                        href={href}
+                        setHref={setHref}
                     />}
                 <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px', marginLeft: '20px'}}>
                     <Button

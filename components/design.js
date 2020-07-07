@@ -1,4 +1,4 @@
-import {Card, ColorPicker, Layout, Popover, RangeSlider, TextField} from "@shopify/polaris";
+import {Card, Checkbox, ColorPicker, Layout, Popover, RangeSlider, TextField} from "@shopify/polaris";
 import '../public/index.css'
 
 
@@ -79,6 +79,33 @@ const DesignSection = (props) => {
                     error={(!props.secondText) ? 'Please enter text' : ''}
                 />
                 </div>
+            </Card>
+            <Card sectioned>
+                <Checkbox
+                    label={'Discount link'}
+                    value={props.isLinkActive}
+                    onChange={(newChecked) => {
+                        props.activateLink(newChecked)
+                    }}
+                />
+                {props.isLinkActive && <div style={{height: '60px'}}>
+                <TextField
+                    label={'Title:'}
+                    value={props.linkText}
+                    onChange={(value) => {
+                        props.setLinkText(value)
+                    }}
+                    error={(!props.linkText) ? 'Please enter text' : ''}
+                />
+                <TextField
+                    label={'Link:'}
+                    value={props.href}
+                    onChange={(value) => {
+                        props.setHref(value)
+                    }}
+                    error={(!props.href) ? 'Please enter text' : ''}
+                />
+                </div>}
             </Card>
             <Card title={'Banner preview'} sectioned>
                 <div style={{width: '100%', height: props.heightValue, backgroundColor: `hsla(${decodeColors(props.bgColor)})`,
