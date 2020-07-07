@@ -11,6 +11,7 @@ import {
 } from "@shopify/polaris";
 import {ResourcePicker} from "@shopify/app-bridge-react";
 import {useState} from "react";
+import Product from "./product";
 
 
 const PrimaryDesign = (props) => {
@@ -19,9 +20,10 @@ const PrimaryDesign = (props) => {
     const [renderProduct, setProductRender] = useState(false);
 
     const handleSelection = (resources) => {
-        //const idsFromResources = resources.selection.map((product) => product.handle);
+        props.pickProduct(resources.selection);
+        //const idsFromResources = resources.selection.map((products) => products.handle);
         setProducts(false);
-        console.log(resources)
+        console.log(resources.selection)
     };
 
     return(
@@ -121,7 +123,7 @@ const PrimaryDesign = (props) => {
                     />
                 </Stack>
                 <Checkbox
-                    label={"Display at certain product"}
+                    label={"Display at certain products"}
                     checked={renderProduct}
                     onChange={(newChecked) => {
                         setProductRender(newChecked)
@@ -137,15 +139,7 @@ const PrimaryDesign = (props) => {
                     >
                         Browse products
                     </Button>
-                    {(props.product.name) && <div style={{width: '240px'}}>
-                        <Thumbnail
-                            source={props.product.photo}
-                            alt={props.product.name}
-                        />
-                        <div>
-                            {props.product.name}
-                        </div>
-                    </div>
+                    {(props.products[0].title) && props.products.map(p => <Product title={p.title} photo={p.images[0].originalSrc}/>)
                     }
                 </Stack>
             </Card>}
