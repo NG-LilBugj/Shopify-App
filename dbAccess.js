@@ -25,6 +25,9 @@ const bannerSchema = new mongoose.Schema({
     isRepeatable: Boolean,
     firstText: String,
     secondText: String,
+    isLinkActive: Boolean,
+    linkText: String,
+    href: String
 });
 const BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 

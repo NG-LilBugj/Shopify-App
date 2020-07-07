@@ -184,7 +184,10 @@ const Initial = () => {
                 borderColor,
                 isRepeatable,
                 firstText,
-                secondText
+                secondText,
+                isLinkActive,
+                linkText,
+                href
             });
         console.log(res);
     };
