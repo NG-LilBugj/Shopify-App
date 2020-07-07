@@ -131,9 +131,9 @@ const PrimaryDesign = (props) => {
                     />
             </Card>
             {(renderProduct) && <Card sectioned>
-                <Stack>
+                <Stack vertical>
                     <Button
-                        size={"large"}
+                        size={"medium"}
                         type={"submit"}
                         onClick={() => setProducts(true)}
                     >
