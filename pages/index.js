@@ -289,8 +289,8 @@ const Initial = () => {
                         handleRenderValueChange={handleRenderValueChange}
                         isRepeatable={isRepeatable}
                         setRepeat={setRepeat}
-                        product={products}
-                        pickProduct={pickProducts}
+                        products={products}
+                        pickProducts={pickProducts}
                     />
                 </Layout.Section>
                 :
