@@ -139,7 +139,7 @@ const PrimaryDesign = (props) => {
                     >
                         Browse products
                     </Button>
-                    {(props.products[0].title) && props.products.map(p => <Product pickProducts={props.pickProducts}
+                    {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                         products={props.products} title={p.title} photo={p.images[0].originalSrc} id={p.handle}/>)}
                     {console.log(props.products)}
                 </Stack>
