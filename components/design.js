@@ -83,12 +83,12 @@ const DesignSection = (props) => {
             <Card sectioned>
                 <Checkbox
                     label={'Discount link'}
-                    value={props.isLinkActive}
+                    checked={props.isLinkActive}
                     onChange={(newChecked) => {
                         props.activateLink(newChecked)
                     }}
                 />
-                {props.isLinkActive && <div style={{height: '60px'}}>
+                {props.isLinkActive && <div style={{display: 'flex', flexDirection: 'row', height: '60px'}}>
                 <TextField
                     label={'Title:'}
                     value={props.linkText}
