@@ -185,6 +185,7 @@ const Initial = () => {
                 isRepeatable,
                 firstText,
                 secondText,
+                idsOfProducts: products.map(p => p.handle),
                 isLinkActive,
                 linkText,
                 href
