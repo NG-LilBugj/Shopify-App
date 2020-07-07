@@ -8,7 +8,7 @@ const Product = (props) => {
                 source={props.photo}
                 alt={props.title}
             />
-            <div>
+            <div style={{marginLeft: '10px'}}>
                 {props.title}
             </div>
             <Button
