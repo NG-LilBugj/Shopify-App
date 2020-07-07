@@ -19,7 +19,7 @@ class MyApp extends App{
     }
 
     render(){
-        const config = { apiKey: process.env.API_KEY, shopOrigin: Cookies.get("shopOrigin"), forceRedirect: true };
+        const config = { apiKey: API_KEY, shopOrigin: Cookies.get("shopOrigin"), forceRedirect: true };
         return(
             <React.Fragment>
                 <Head>
