@@ -1,4 +1,4 @@
-import {Thumbnail} from "@shopify/polaris";
+import {Button, Thumbnail} from "@shopify/polaris";
 
 
 const Product = (props) => {
@@ -11,6 +11,12 @@ const Product = (props) => {
             <div>
                 {props.title}
             </div>
+            <Button
+                size={'small'}
+                onClick={() => console.log('removed')}
+            >
+                Remove
+            </Button>
         </div>
     )
 };
