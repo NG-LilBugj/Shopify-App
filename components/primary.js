@@ -20,7 +20,7 @@ const PrimaryDesign = (props) => {
     const [renderProduct, setProductRender] = useState(false);
 
     const handleSelection = (resources) => {
-        props.pickProduct(resources.selection);
+        props.pickProducts(resources.selection);
         //const idsFromResources = resources.selection.map((products) => products.handle);
         setProducts(false);
         console.log(resources.selection)
@@ -139,7 +139,7 @@ const PrimaryDesign = (props) => {
                     >
                         Browse products
                     </Button>
-                    {/*{(props.products[0].title) && props.products.map(p => <Product title={p.title} photo={p.images[0].originalSrc}/>)}*/}
+                    {(props.products[0].title) && props.products.map(p => <Product title={p.title} photo={p.images[0].originalSrc}/>)}
                     {console.log(props.products)}
                 </Stack>
             </Card>}
