@@ -17,6 +17,7 @@ import PrimaryDesign from "../components/primary";
 import * as Scroll from 'react-scroll'
 
 const Initial = () => {
+
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
             fetchData(res.data);
@@ -110,6 +111,12 @@ const Initial = () => {
     const [switchTouch, switchAttempt] = useState(false);
     const [dateError, setDateError] = useState(false);
 
+    const dateCheck = () => {
+        if ((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start) <= 0)){
+            setDateError(true)
+        }
+    };
+
     const togglePopoverActive = useCallback(() => setPopoverActive(popoverActive => !popoverActive), []);
     const toggleBorderPopover = useCallback(() => setBorderPopover(popoverActive => !popoverActive), []);
 
@@ -169,12 +176,6 @@ const Initial = () => {
         () => setNameError(true),
         []
     );
-
-    const dateCheck = () => {
-        if ((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start) <= 0)){
-            setDateError(true)
-        }
-    };
 
     const handleSubmit = async () => {
         let res = await axios.post('https://lil-shopify.herokuapp.com/api/script',
