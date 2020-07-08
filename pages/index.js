@@ -132,13 +132,13 @@ const Initial = () => {
         Border color
     </Button>;
 
-    const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover} onBlur={dateCheck}>
+    const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover}>
         <TextField
         label={''}
         value={selectedStartDate.start.toLocaleDateString()}
         error={(startError && switchTouch) ? 'Please enter date' : ''}
     /></div>;
-    const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover} onBlur={dateCheck}>
+    const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
         <TextField
             label={''}
             value={selectedEndDate.end.toLocaleDateString()}
@@ -298,6 +298,7 @@ const Initial = () => {
                         switchTouch={switchTouch}
                         products={products}
                         pickProducts={pickProducts}
+                        dateCheck={dateCheck}
                     />
                 </Layout.Section>
                 :

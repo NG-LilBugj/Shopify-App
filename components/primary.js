@@ -47,7 +47,7 @@ const PrimaryDesign = (props) => {
                 />
             </Card>
             <Card title={'Start date'} sectioned>
-                <Popover active={props.startDatePopover} activator={props.startDateText} onClose={props.toggleStartPopover}
+                <Popover active={props.startDatePopover} activator={props.startDateText} onClose={props.dateCheck}
                          fluidContent={true} sectioned>
                     <DatePicker
                         month={props.month}
@@ -59,7 +59,7 @@ const PrimaryDesign = (props) => {
                 </Popover>
             </Card>
             <Card title={'End date'} sectioned>
-                <Popover active={props.endDatePopover} activator={props.endDateText} onClose={props.toggleEndPopover}
+                <Popover active={props.endDatePopover} activator={props.endDateText} onClose={props.dateCheck}
                          fluidContent={true} sectioned>
                     <DatePicker
                         month={props.endMonth}
