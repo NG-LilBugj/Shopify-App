@@ -43,7 +43,7 @@ const PrimaryDesign = (props) => {
                     onChange={(value) => {
                         props.setName(value)
                     }}
-                    error={((!props.name) && props.nameError) ? 'Please enter name' : ''}
+                    error={((!props.name) && props.switchTouch) ? 'Please enter name' : ''}
                 />
             </Card>
             <Card title={'Start date'} sectioned>

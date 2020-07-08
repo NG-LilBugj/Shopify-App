@@ -125,14 +125,14 @@ const Initial = () => {
         <TextField
         label={''}
         value={selectedStartDate.start.toLocaleDateString()}
-        error={(startError) ? 'Please enter date' : ''}
+        error={(startError && switchTouch) ? 'Please enter date' : ''}
     /></div>;
     const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
         <TextField
             label={''}
             value={selectedEndDate.end.toLocaleDateString()}
             onBlur={handleDateTouch}
-            error={((!(selectedEndDate.end.toLocaleDateString())) && isEndDateTouched && !endDatePopover) ? 'Please enter date' : ''}
+            error={((!(selectedEndDate.end.toLocaleDateString())) && switchTouch) ? 'Please enter date' : ''}
         /></div>;
 
     const [products, pickProducts] = useState([]);
@@ -159,7 +159,8 @@ const Initial = () => {
         if (!!name) {
             setConfigMenu(!isMainConfig)
         } else {
-            alert('stop')
+            window.scrollTo(0, 0);
+            switchAttempt(true)
         }
     };
 
@@ -285,6 +286,7 @@ const Initial = () => {
                         handleRenderValueChange={handleRenderValueChange}
                         isRepeatable={isRepeatable}
                         setRepeat={setRepeat}
+                        switchTouch={switchTouch}
                         products={products}
                         pickProducts={pickProducts}
                     />
@@ -321,8 +323,7 @@ const Initial = () => {
                     <Button
                         size={"large"}
                         type={"submit"}
-                        onClick={() => setConfigMenu(!isMainConfig)}
-                        disabled={!name}
+                        onClick={designSwitch}
                     >
                         {isMainConfig ? 'Banner design' : 'Settings'}
                     </Button>
