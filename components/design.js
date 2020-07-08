@@ -117,6 +117,7 @@ const DesignSection = (props) => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-evenly',
+                    alignItems: 'center',
                     textAlign: 'between',
                     fontWeight: '700',
                     fontSize: '24px'
