@@ -252,7 +252,6 @@ const Initial = () => {
                                 size={"medium"}
                                 type={"submit"}
                                 onClick={designSwitch}
-                                disabled={!name}
                             >
                                 {isMainConfig ? 'Banner design' : 'Settings'}
                             </Button>
