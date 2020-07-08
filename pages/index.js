@@ -14,6 +14,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import DesignSection from "../components/design";
 import PrimaryDesign from "../components/primary";
+import * as Scroll from 'react-scroll'
 
 const Initial = () => {
     useEffect(() => {
@@ -158,7 +159,7 @@ const Initial = () => {
         if (!!name) {
             setConfigMenu(!isMainConfig)
         } else {
-            window.scrollTo(0, 0);
+            Scroll.animateScroll.scrollToTop();
             switchAttempt(true)
         }
     };
