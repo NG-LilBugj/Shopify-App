@@ -112,8 +112,9 @@ const Initial = () => {
     const [dateError, setDateError] = useState(false);
 
     const dateCheck = () => {
-        if ((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start) <= 0)){
-            setDateError(true)
+        if ((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start) < 0)){
+            setDateError(true);
+            console.log(Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start))
         }
     };
 
