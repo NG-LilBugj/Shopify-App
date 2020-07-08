@@ -170,7 +170,7 @@ const DesignSection = (props) => {
                         </div>
                         <div className='last-sign'>{props.secondText || 'Flash Sale!'}</div>
                     </div>
-                    <a href={props.href} className={'event-link'}>{props.linkText}</a>
+                    {props.isLinkActive && <a href={props.href} className={'event-link'}>{props.linkText}</a>}
                 </div>
             </Card>
         </Layout.Section>
