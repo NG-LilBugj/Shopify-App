@@ -116,6 +116,7 @@ const Initial = () => {
             setDateError(true);
             console.log(Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start))
         }
+        else setDateError(false);
     };
 
     const togglePopoverActive = useCallback(() => setPopoverActive(popoverActive => !popoverActive), []);
