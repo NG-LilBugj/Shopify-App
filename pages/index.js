@@ -108,6 +108,7 @@ const Initial = () => {
     const [startError, setStartError] = useState('');
     const [endError, setEndError] = useState('');
     const [switchTouch, switchAttempt] = useState(false);
+    const [dateError, setDateError] = useState(false);
 
     const togglePopoverActive = useCallback(() => setPopoverActive(popoverActive => !popoverActive), []);
     const toggleBorderPopover = useCallback(() => setBorderPopover(popoverActive => !popoverActive), []);
@@ -123,18 +124,18 @@ const Initial = () => {
         Border color
     </Button>;
 
-    const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover}>
+    const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover} onBlur={dateCheck}>
         <TextField
         label={''}
         value={selectedStartDate.start.toLocaleDateString()}
         error={(startError && switchTouch) ? 'Please enter date' : ''}
     /></div>;
-    const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
+    const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover} onBlur={dateCheck}>
         <TextField
             label={''}
             value={selectedEndDate.end.toLocaleDateString()}
-            onBlur={handleDateTouch}
-            error={((!(selectedEndDate.end.toLocaleDateString())) && switchTouch) ? 'Please enter date' : ''}
+            error={((!(selectedEndDate.end.toLocaleDateString())) && switchTouch) ? 'Please enter date' :
+                (dateError ? 'End date cannot be earlier than start date' : '')}
         /></div>;
 
     const [products, pickProducts] = useState([]);
@@ -168,6 +169,12 @@ const Initial = () => {
         () => setNameError(true),
         []
     );
+
+    const dateCheck = () => {
+        if ((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start) <= 0)){
+            setDateError(true)
+        }
+    };
 
     const handleSubmit = async () => {
         let res = await axios.post('https://lil-shopify.herokuapp.com/api/script',
