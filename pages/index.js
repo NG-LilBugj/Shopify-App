@@ -155,14 +155,13 @@ const Initial = () => {
 
     const [switchTouch, switchAttempt] = useState(false);
 
-    const designSwitch = useCallback(
-        () => {
-            switchAttempt(true);
-            if (!switchTouch){
-                setConfigMenu(!isMainConfig)
-            }
-        }, [switchTouch]
-    );
+    const designSwitch = () => {
+        if (!!name) {
+            setConfigMenu(!isMainConfig)
+        } else {
+            alert('stop')
+        }
+    };
 
     const handleNameError = useCallback(
         () => setNameError(true),
