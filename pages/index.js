@@ -106,6 +106,7 @@ const Initial = () => {
 
     const [startError, setStartError] = useState('');
     const [endError, setEndError] = useState('');
+    const [switchTouch, switchAttempt] = useState(false);
 
     const togglePopoverActive = useCallback(() => setPopoverActive(popoverActive => !popoverActive), []);
     const toggleBorderPopover = useCallback(() => setBorderPopover(popoverActive => !popoverActive), []);
@@ -152,8 +153,6 @@ const Initial = () => {
     const [isLinkActive, activateLink] = useState(false);
     const [linkText, setLinkText] = useState('Get discount!');
     const [href, setHref] = useState('https://');
-
-    const [switchTouch, switchAttempt] = useState(false);
 
     const designSwitch = () => {
         if (!!name) {
