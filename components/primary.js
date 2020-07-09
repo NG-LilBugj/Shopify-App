@@ -39,7 +39,7 @@ const PrimaryDesign = (props) => {
 
     const searchField = (
         <Autocomplete.TextField
-            onChange={updateSearchText}
+            onChange={handleSearchFieldChange}
             label="Tags"
             value={inputSearchValue}
             prefix={<Icon source={SearchMinor} color="inkLighter" />}
@@ -153,7 +153,7 @@ const PrimaryDesign = (props) => {
             </Card>
             {(renderProduct) && <Card sectioned>
                 <Stack vertical>
-                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '640px'}}>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '480px', height: '50px'}}>
                         <Autocomplete
                             onSelect={(value) => console.log(value)}
                             selected={[]}
