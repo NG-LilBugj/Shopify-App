@@ -166,7 +166,7 @@ const Initial = () => {
     const [href, setHref] = useState('https://');
 
     const designSwitch = () => {
-        if (!!name) {
+        if (!!name && !dateError && !!(selectedEndDate.end.toLocaleDateString())) {
             setConfigMenu(!isMainConfig)
         } else {
             Scroll.animateScroll.scrollToTop();
@@ -344,7 +344,7 @@ const Initial = () => {
                             size={"large"}
                             type={"submit"}
                             onClick={handleSubmit}
-                            disabled={!name}
+                            disabled={!name || dateError || !(selectedEndDate.end.toLocaleDateString())}
                         >
                             Save
                         </Button>
