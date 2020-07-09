@@ -153,7 +153,7 @@ const PrimaryDesign = (props) => {
             </Card>
             {(renderProduct) && <Card sectioned>
                 <Stack vertical>
-                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '480px', height: '50px'}}>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '420px', height: '30px'}}>
                         <Autocomplete
                             onSelect={(value) => console.log(value)}
                             selected={[]}
@@ -161,7 +161,7 @@ const PrimaryDesign = (props) => {
                             textField={searchField}
                         />
                     <Button
-                        size={"medium"}
+                        size={"small"}
                         type={"submit"}
                         onClick={() => setProducts(true)}
                     >
