@@ -153,7 +153,7 @@ const PrimaryDesign = (props) => {
             </Card>
             {(renderProduct) && <Card sectioned>
                 <Stack vertical>
-                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '420px', height: '30px'}}>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '420px'}}>
                         <Autocomplete
                             onSelect={(value) => console.log(value)}
                             selected={[]}
