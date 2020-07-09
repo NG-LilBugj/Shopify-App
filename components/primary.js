@@ -1,8 +1,9 @@
 import {
+    Autocomplete,
     Button,
     Card,
     Checkbox,
-    DatePicker,
+    DatePicker, Icon,
     Layout,
     Popover,
     RadioButton,
@@ -10,8 +11,9 @@ import {
     TextField, Thumbnail
 } from "@shopify/polaris";
 import {ResourcePicker} from "@shopify/app-bridge-react";
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import Product from "./product";
+import {SearchMinor} from "@shopify/polaris-icons";
 
 
 const PrimaryDesign = (props) => {
@@ -19,12 +21,31 @@ const PrimaryDesign = (props) => {
     const [isProductsOpen, setProducts] = useState(false);
     const [renderProduct, setProductRender] = useState(false);
 
+    const [inputSearchValue, updateSearchText] = useState('');
+
+    const handleSearchFieldChange = useCallback(
+        (value) => {
+            updateSearchText(value);
+            setProducts(true)
+        }, []
+    );
+
     const handleSelection = (resources) => {
         props.pickProducts(resources.selection);
         //const idsFromResources = resources.selection.map((products) => products.handle);
         setProducts(false);
         console.log(resources.selection)
     };
+
+    const searchField = (
+        <Autocomplete.TextField
+            onChange={updateSearchText}
+            label="Tags"
+            value={inputSearchValue}
+            prefix={<Icon source={SearchMinor} color="inkLighter" />}
+            placeholder="Search"
+        />
+    );
 
     return(
         <>
@@ -132,6 +153,13 @@ const PrimaryDesign = (props) => {
             </Card>
             {(renderProduct) && <Card sectioned>
                 <Stack vertical>
+                    <div style={{display: 'flex', flexDirection: 'row', width: '320px'}}>
+                        <Autocomplete
+                            onSelect={(value) => console.log(value)}
+                            selected={[]}
+                            options={[]}
+                            textField={searchField}
+                        />
                     <Button
                         size={"medium"}
                         type={"submit"}
@@ -139,6 +167,7 @@ const PrimaryDesign = (props) => {
                     >
                         Browse products
                     </Button>
+                    </div>
                     {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                         products={props.products} title={p.title} photo={p.images[0].originalSrc} id={p.handle}/>)}
                     {console.log(props.products)}
