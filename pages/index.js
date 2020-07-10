@@ -44,10 +44,10 @@ const Initial = () => {
         endYear: 2020
     });
 
-    const [selectedStartDate, setSelectedStartDate] = useState(scriptData.config ? scriptData.script[0].configData.startDate : {
+    const [selectedStartDate, setSelectedStartDate] = useState({
         start: new Date(),
     });
-    const [selectedEndDate, setSelectedEndDate] = useState(scriptData.config ? scriptData.script[0].configData.endDate : {
+    const [selectedEndDate, setSelectedEndDate] = useState({
         end: {
             toLocaleDateString(){return ''},
             getDate(){return 1},
