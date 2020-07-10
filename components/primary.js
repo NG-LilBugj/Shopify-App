@@ -52,7 +52,7 @@ const PrimaryDesign = (props) => {
     return(
         <>
             <ResourcePicker
-                resourceType={(props.renderValue === 'collection') ? "Collection" : "Product"}
+                resourceType={(props.renderValue === 'collections') ? "Collection" : "Product"}
                 open={isCollectionsOpen}
                 onSelection={(resources) => console.log(resources)}
                 onCancel={() => setCollections(false)}
