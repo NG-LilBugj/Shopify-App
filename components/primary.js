@@ -52,16 +52,10 @@ const PrimaryDesign = (props) => {
     return(
         <>
             <ResourcePicker
-                resourceType="Collection"
+                resourceType={(props.renderValue === 'collection') ? 'Collection' : 'Product'}
                 open={isCollectionsOpen}
                 onSelection={(resources) => console.log(resources)}
                 onCancel={() => setCollections(false)}
-            />
-            <ResourcePicker
-                resourceType="Product"
-                open={isProductsOpen}
-                onSelection={(resources) => handleSelection(resources)}
-                onCancel={() => setProducts(false)}
             />
             <Card title={'Banner name:'} sectioned>
                 <TextField
