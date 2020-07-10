@@ -168,6 +168,7 @@ const Initial = () => {
     const [href, setHref] = useState(scriptData.config ? scriptData.script[0].configData.href : 'https://');
 
     useEffect(() => {
+        console.log(scriptData);
         setName(scriptData.config ? scriptData.script[0].configData.name : '');
         setFirstText(scriptData.config ? scriptData.script[0].configData.firstText : '');
         setSecondText(scriptData.config ? scriptData.script[0].configData.secondText : '');
