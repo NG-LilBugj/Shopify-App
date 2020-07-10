@@ -55,7 +55,6 @@ const Initial = () => {
             getFullYear() {return 2020}
         },
     });
-    debugger
     //new Date('Wed Aug 08 2020 00:00:00 GMT-0300 (EST)')
     const [isEndDateTouched, touchEndDate] = useState(false);
 
@@ -173,7 +172,7 @@ const Initial = () => {
         setName(scriptData.config ? scriptData.script[0].configData.name : '');
         setFirstText(scriptData.config ? scriptData.script[0].configData.firstText : '');
         setSecondText(scriptData.config ? scriptData.script[0].configData.secondText : '');
-        setSelectedStartDate(scriptData.config ? scriptData.script[0].configData.startDate.start : new Date());
+        setSelectedStartDate(scriptData.config ? scriptData.script[0].configData.startDate.start : {start: new Date()});
         setSelectedEndDate(scriptData.config ? scriptData.script[0].configData.endDate.end :  {
             end: {
                 toLocaleDateString(){return ''},
