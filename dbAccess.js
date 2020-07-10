@@ -7,6 +7,7 @@ const bannerSchema = new mongoose.Schema({
     startDate: {start: String},
     endDate: {end: String},
     position: String,
+    display: String,
     sticky: Boolean,
     backGroundColor: {
         hue: Number,

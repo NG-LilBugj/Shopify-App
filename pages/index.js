@@ -182,7 +182,7 @@ const Initial = () => {
             },
         });
         setValue(scriptData.config ? scriptData.script[0].configData.position : 'Top');
-        setRenderValue(scriptData.config ? scriptData.script[0].configData.display : '');
+        setRenderValue(scriptData.config ? scriptData.script[0].configData.display : 'all');
         setChecked(scriptData.config ? scriptData.script[0].configData.sticky : false);
         setRepeat(scriptData.config ? scriptData.script[0].configData.isRepeatable : false);
         setBgColor(scriptData.config ? scriptData.script[0].configData.backGroundColor : {
@@ -222,28 +222,34 @@ const Initial = () => {
     );
 
     const handleSubmit = async () => {
-        let res = await axios.post('https://lil-shopify.herokuapp.com/api/script',
-            {
-                name,
-                startDate: selectedStartDate,
-                endDate: selectedEndDate,
-                position: value,
-                display: renderValue,
-                sticky: checked,
-                backGroundColor: bgColor,
-                bannerHeight: heightValue,
-                borderSize: rangeValue,
-                borderColor,
-                isRepeatable,
-                firstText,
-                secondText,
-                products: products.map(p => ({title: p.title, photo: p.images[0].originalSrc, id: p.handle})),
-                collections: collections.map(c => ({title: c.title, handle: c.handle})),
-                isLinkActive,
-                linkText,
-                href
-            });
-        console.log(res);
+        const bundle = {
+            name,
+            startDate: selectedStartDate,
+            endDate: selectedEndDate,
+            position: value,
+            display: renderValue,
+            sticky: checked,
+            backGroundColor: bgColor,
+            bannerHeight: heightValue,
+            borderSize: rangeValue,
+            borderColor,
+            isRepeatable,
+            firstText,
+            secondText,
+            products: products.map(p => ({title: p.title, photo: p.images[0].originalSrc, id: p.handle})),
+            collections: collections.map(c => ({title: c.title, handle: c.handle})),
+            isLinkActive,
+            linkText,
+            href
+        };
+        if (scriptData.config){
+            let res = await axios.put('https://lil-shopify.herokuapp.com/api/script', bundle);
+            console.log(res);
+        }
+        else {
+            let res = await axios.post('https://lil-shopify.herokuapp.com/api/script', bundle);
+            console.log(res);
+        }
     };
 
     const deleteSubmit = () => {
