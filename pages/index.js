@@ -168,17 +168,17 @@ const Initial = () => {
     const [href, setHref] = useState(scriptData.config ? scriptData.script[0].configData.href : 'https://');
 
     useEffect(() => {
-        setName(scriptData.script[0].configData.name);
-        setFirstText(scriptData.script[0].configData.firstText);
-        setSecondText(scriptData.script[0].configData.secondText);
-        setSelectedStartDate(scriptData.script[0].configData.startDate);
-        setSelectedEndDate(scriptData.script[0].configData.endDate);
-        setValue(scriptData.script[0].configData.position);
-        setRenderValue(scriptData.script[0].configData.display);
-        setChecked(scriptData.script[0].configData.sticky);
-        setRepeat(scriptData.script[0].configData.isRepeatable);
-        setBgColor(scriptData.script[0].configData.backGroundColor);
-        setBorderColor(scriptData.script[0].configData.borderColor);
+        setName(scriptData.config ? scriptData.script[0].configData.name : '');
+        setFirstText(scriptData.config ? scriptData.script[0].configData.firstText : '');
+        setSecondText(scriptData.config ? scriptData.script[0].configData.secondText : '');
+        setSelectedStartDate(scriptData.config ? scriptData.script[0].configData.startDate : '');
+        setSelectedEndDate(scriptData.config ? scriptData.script[0].configData.endDate :'');
+        setValue(scriptData.config ? scriptData.script[0].configData.position : '');
+        setRenderValue(scriptData.config ? scriptData.script[0].configData.display : '');
+        setChecked(scriptData.config ? scriptData.script[0].configData.sticky : '');
+        setRepeat(scriptData.config ? scriptData.script[0].configData.isRepeatable : '');
+        setBgColor(scriptData.config ? scriptData.script[0].configData.backGroundColor : '');
+        setBorderColor(scriptData.config ? scriptData.script[0].configData.borderColor : '');
         pickProducts(scriptData.config ? scriptData.script[0].configData.products : []);
         pickCollections(scriptData.config ? scriptData.script[0].configData.collections : []);
         setRangeValue(scriptData.config ? scriptData.script[0].configData.borderSize : 0);
