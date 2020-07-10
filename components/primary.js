@@ -51,12 +51,13 @@ const PrimaryDesign = (props) => {
 
     return(
         <>
-            <ResourcePicker
-                resourceType={(props.renderValue === 'collections') ? "Collection" : "Product"}
-                open={isCollectionsOpen}
-                onSelection={(resources) => console.log({resources, value: props.renderValue})}
-                onCancel={() => setCollections(false)}
-            />
+            {(props.renderValue === 'collections' || props.renderValue === 'products') && <ResourcePicker
+                    allowMultiple
+                    resourceType={(props.renderValue === 'collections') ? "Collection" : "Product"}
+                    open={isCollectionsOpen}
+                    onSelection={(resources) => console.log({resources, value: props.renderValue})}
+                    onCancel={() => setCollections(false)}
+                />}
             <Card title={'Banner name:'} sectioned>
                 <TextField
                     label={''}
