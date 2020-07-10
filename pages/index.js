@@ -242,6 +242,7 @@ const Initial = () => {
                         </div>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
                         <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
+                            <div style={{display: 'flex', flexDirection: 'column'}}>
                             <Button
                                 primary
                                 size={"slim"}
@@ -257,6 +258,7 @@ const Initial = () => {
                                 onClick={deleteSubmit}>
                                 Delete Banner
                             </Button>
+                            </div>
                         </div>
                     </Card>
                 </Layout.Section>}
