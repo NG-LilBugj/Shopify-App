@@ -6,11 +6,7 @@ const Collection = (props) => {
 
     return(
         <div style={{display: 'flex', justifyContent: 'space-between', height: '40px'}}>
-            <Thumbnail
-                source={props.photo}
-                alt={props.title}
-            />
-            <div style={{marginLeft: '10px'}}>
+            <div>
                 {props.title}
             </div>
             <Button

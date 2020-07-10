@@ -148,6 +148,7 @@ const Initial = () => {
         /></div>;
 
     const [products, pickProducts] = useState([]);
+    const [collections, pickCollections] = useState([]);
 
     const [rangeValue, setRangeValue] = useState(0);
     const [heightValue, setHeightValue] = useState(100);
@@ -196,6 +197,7 @@ const Initial = () => {
                 firstText,
                 secondText,
                 idsOfProducts: products.map(p => p.handle),
+                idsOfCollections: collections.map(c => c.handle),
                 isLinkActive,
                 linkText,
                 href
@@ -299,6 +301,8 @@ const Initial = () => {
                         switchTouch={switchTouch}
                         products={products}
                         pickProducts={pickProducts}
+                        collections={collections}
+                        pickCollections={pickCollections}
                         dateCheck={dateCheck}
                     />
                 </Layout.Section>

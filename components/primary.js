@@ -14,6 +14,7 @@ import {ResourcePicker} from "@shopify/app-bridge-react";
 import {useCallback, useState} from "react";
 import Product from "./product";
 import {SearchMinor} from "@shopify/polaris-icons";
+import Collection from "./collection";
 
 
 const PrimaryDesign = (props) => {
@@ -32,11 +33,16 @@ const PrimaryDesign = (props) => {
         }, []
     );
 
-    const handleSelection = (resources) => {
+    const handleProductsSelection = (resources) => {
         props.pickProducts(resources.selection);
         //const idsFromResources = resources.selection.map((products) => products.handle);
         setProducts(false);
         console.log(resources.selection)
+    };
+
+    const handleCollectionsSelection = (resources) => {
+        props.pickCollections(resources.selection);
+        setCollections(false);
     };
 
     const searchField = (
@@ -56,8 +62,8 @@ const PrimaryDesign = (props) => {
                     resourceType={(props.renderValue === 'collections') ? "Collection" : "Product"}
                     open={(props.renderValue === 'collections') ? isCollectionsOpen : isProductsOpen}
                     onSelection={(props.renderValue === 'collections') ?
-                        (resources) => console.log({resources, value: props.renderValue}) :
-                        (resources) => handleSelection(resources)}
+                        (resources) => handleCollectionsSelection(resources) :
+                        (resources) => handleProductsSelection(resources)}
                     onCancel={(props.renderValue === 'collections') ?
                         () => setCollections(false) :
                         () => setProducts(false)}
@@ -201,8 +207,8 @@ const PrimaryDesign = (props) => {
                                 Browse collections
                             </Button>
                         </div>
-                        {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
-                                                                                     products={props.products} title={p.title} photo={p.images[0].originalSrc} id={p.handle}/>)}
+                        {(props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
+                                                                                     collections={props.collections} title={c.title} id={c.handle}/>)}
                         {console.log(props.products)}
                     </Stack>}
                 </Stack>
