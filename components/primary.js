@@ -21,6 +21,8 @@ const PrimaryDesign = (props) => {
     const [isProductsOpen, setProducts] = useState(false);
     const [renderProduct, setProductRender] = useState(false);
 
+    const [isCollectionsOpen, setCollections] = useState(false);
+
     const [inputSearchValue, updateSearchText] = useState('');
 
     const handleSearchFieldChange = useCallback(
@@ -40,7 +42,7 @@ const PrimaryDesign = (props) => {
     const searchField = (
         <Autocomplete.TextField
             onChange={handleSearchFieldChange}
-            label="Tags"
+            label="Products"
             value={inputSearchValue}
             prefix={<Icon source={SearchMinor} color="inkLighter" />}
             placeholder="Search"
@@ -49,6 +51,12 @@ const PrimaryDesign = (props) => {
 
     return(
         <>
+            <ResourcePicker
+                resourceType="Collection"
+                open={isCollectionsOpen}
+                onSelection={(resources) => console.log(resources)}
+                onCancel={() => setCollections(false)}
+            />
             <ResourcePicker
                 resourceType="Product"
                 open={isProductsOpen}
@@ -142,37 +150,64 @@ const PrimaryDesign = (props) => {
                         checked={props.renderValue === 'order_status'}
                         onChange={props.handleRenderValueChange}
                     />
-                </Stack>
-                <Checkbox
-                    label={"Display at certain products"}
-                    checked={renderProduct}
-                    onChange={(newChecked) => {
-                        setProductRender(newChecked)
-                    }}
+                    <RadioButton
+                        label="Products"
+                        helpText="Displays timer at certain product pages."
+                        id="products"
+                        name="products"
+                        checked={props.renderValue === 'products'}
+                        onChange={props.handleRenderValueChange}
                     />
-            </Card>
-            {(renderProduct) && <Card sectioned>
-                <Stack vertical>
-                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '420px'}}>
-                        <Autocomplete
-                            onSelect={(value) => console.log(value)}
-                            selected={[]}
-                            options={[]}
-                            textField={searchField}
-                        />
-                    <Button
-                        size={"small"}
-                        type={"submit"}
-                        onClick={() => setProducts(true)}
-                    >
-                        Browse products
-                    </Button>
-                    </div>
-                    {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
-                        products={props.products} title={p.title} photo={p.images[0].originalSrc} id={p.handle}/>)}
-                    {console.log(props.products)}
+                    {(props.renderValue === 'products') && <Stack vertical>
+                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '420px'}}>
+                            <Autocomplete
+                                onSelect={(value) => console.log(value)}
+                                selected={[]}
+                                options={[]}
+                                textField={searchField}
+                            />
+                            <Button
+                                size={"small"}
+                                type={"submit"}
+                                onClick={() => setProducts(true)}
+                            >
+                                Browse products
+                            </Button>
+                        </div>
+                        {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
+                                                                                     products={props.products} title={p.title} photo={p.images[0].originalSrc} id={p.handle}/>)}
+                        {console.log(props.products)}
+                    </Stack>}
+                    <RadioButton
+                        label="Collections"
+                        helpText="Displays timer at certain collection pages."
+                        id="collections"
+                        name="collections"
+                        checked={props.renderValue === 'collections'}
+                        onChange={props.handleRenderValueChange}
+                    />
+                    {(props.renderValue === 'collections') && <Stack vertical>
+                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '420px'}}>
+                            <Autocomplete
+                                onSelect={(value) => console.log(value)}
+                                selected={[]}
+                                options={[]}
+                                textField={searchField}
+                            />
+                            <Button
+                                size={"small"}
+                                type={"submit"}
+                                onClick={() => setCollections(true)}
+                            >
+                                Browse products
+                            </Button>
+                        </div>
+                        {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
+                                                                                     products={props.products} title={p.title} photo={p.images[0].originalSrc} id={p.handle}/>)}
+                        {console.log(props.products)}
+                    </Stack>}
                 </Stack>
-            </Card>}
+            </Card>
             <Card title={'Utils'} sectioned>
                 <Stack vertical>
                     <Checkbox
