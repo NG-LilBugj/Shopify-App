@@ -43,6 +43,14 @@ const Initial = () => {
         endMonth: 7,
         endYear: 2020
     });
+
+    useEffect(() => {
+        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
+            fetchData(res.data);
+            setLoading(false);
+        });
+    }, [initBar]);
+
     const [selectedStartDate, setSelectedStartDate] = useState(scriptData.config ? scriptData.script[0].configData.startDate : {
         start: new Date(),
     });
