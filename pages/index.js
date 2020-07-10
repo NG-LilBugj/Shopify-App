@@ -29,10 +29,10 @@ const Initial = () => {
     const [isMainConfig, setConfigMenu] = useState(true);
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
-    const [name, setName] = useState('');
+    const [name, setName] = useState(scriptData.script[0].configData.name || '');
     const [nameError, setNameError] = useState(false);
-    const [firstText, setFirstText] = useState('Hurry Up!');
-    const [secondText, setSecondText] = useState('Flash Sale');
+    const [firstText, setFirstText] = useState(scriptData.script[0].configData.firstText || 'Hurry Up!');
+    const [secondText, setSecondText] = useState(scriptData.script[0].configData.secondText || 'Flash Sale');
 
     const [{month, year}, setDate] = useState({
         month: 6,
@@ -43,10 +43,10 @@ const Initial = () => {
         endMonth: 7,
         endYear: 2020
     });
-    const [selectedStartDate, setSelectedStartDate] = useState({
+    const [selectedStartDate, setSelectedStartDate] = useState(scriptData.script[0].configData.startDate || {
         start: new Date(),
     });
-    const [selectedEndDate, setSelectedEndDate] = useState({
+    const [selectedEndDate, setSelectedEndDate] = useState(scriptData.script[0].configData.endDate || {
         end: {
             toLocaleDateString(){return ''},
             getDate(){return 1},
@@ -66,18 +66,18 @@ const Initial = () => {
         [],
     );
 
-    const [value, setValue] = useState('Top');
-    const [renderValue, setRenderValue] = useState('all');
-    const [checked, setChecked] = useState(false);
-    const [isRepeatable, setRepeat] = useState(false);
+    const [value, setValue] = useState(scriptData.script[0].configData.position || 'Top');
+    const [renderValue, setRenderValue] = useState(scriptData.script[0].configData.display || 'all');
+    const [checked, setChecked] = useState(scriptData.script[0].configData.sticky || false);
+    const [isRepeatable, setRepeat] = useState(scriptData.script[0].configData.isRepeatable || false);
 
-    const [bgColor, setBgColor] = useState({
+    const [bgColor, setBgColor] = useState(scriptData.script[0].configData.backGroundColor || {
         hue: 1,
         saturation: 1,
         brightness: 1,
         alpha: 1
     });
-    const [borderColor, setBorderColor] = useState({
+    const [borderColor, setBorderColor] = useState(scriptData.script[0].configData.borderColor || {
         hue: 1,
         saturation: 1,
         brightness: 1,
@@ -147,11 +147,11 @@ const Initial = () => {
                 (dateError ? 'End date cannot be earlier than start date' : '')}
         /></div>;
 
-    const [products, pickProducts] = useState([]);
-    const [collections, pickCollections] = useState([]);
+    const [products, pickProducts] = useState(scriptData.script[0].configData.products || []);
+    const [collections, pickCollections] = useState(scriptData.script[0].configData.collections || []);
 
-    const [rangeValue, setRangeValue] = useState(0);
-    const [heightValue, setHeightValue] = useState(100);
+    const [rangeValue, setRangeValue] = useState(scriptData.script[0].configData.borderSize || 0);
+    const [heightValue, setHeightValue] = useState(scriptData.script[0].configData.bannerHeight || 100);
 
     const handleRangeSliderChange = useCallback(
         (value) => setRangeValue(value),
@@ -162,9 +162,9 @@ const Initial = () => {
         []
     );
 
-    const [isLinkActive, activateLink] = useState(false);
-    const [linkText, setLinkText] = useState('Get discount!');
-    const [href, setHref] = useState('https://');
+    const [isLinkActive, activateLink] = useState(scriptData.script[0].configData.isLinkActive || false);
+    const [linkText, setLinkText] = useState(scriptData.script[0].configData.linkText || 'Get discount!');
+    const [href, setHref] = useState(scriptData.script[0].configData.href || 'https://');
 
     const designSwitch = () => {
         if (!!name && !dateError && !!(selectedEndDate.end.toLocaleDateString())) {
@@ -196,8 +196,8 @@ const Initial = () => {
                 isRepeatable,
                 firstText,
                 secondText,
-                idsOfProducts: products.map(p => p.handle),
-                idsOfCollections: collections.map(c => c.handle),
+                products: products.map(p => ({title: p.title, photo: p.images[0].originalSrc, id: p.handle})),
+                collections: collections.map(c => ({title: c.title, handle: c.handle})),
                 isLinkActive,
                 linkText,
                 href
@@ -242,6 +242,13 @@ const Initial = () => {
                         </div>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
                         <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
+                            <Button
+                                primary
+                                size={"slim"}
+                                type={"submit"}
+                                onClick={() => setInitBar(true)}>
+                                Edit Banner
+                            </Button>
                             <Button
                                 primary
                                 destructive

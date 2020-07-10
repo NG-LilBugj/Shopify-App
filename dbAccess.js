@@ -22,7 +22,8 @@ const bannerSchema = new mongoose.Schema({
         brightness: Number,
         alpha: Number
     },
-    idsOfProducts: Array,
+    products: Array,
+    collections: Array,
     isRepeatable: Boolean,
     firstText: String,
     secondText: String,

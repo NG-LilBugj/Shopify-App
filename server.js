@@ -114,6 +114,16 @@ router.post('/api/script', koaBody(), async (ctx) => {
         console.log(e)
     }
 });
+router.put('api/script', koaBody(), async (ctx) => {
+    try {
+        const body = ctx.request.body;
+        const customConfig = await BannerConfig.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
+        console.log(customConfig);
+    }
+    catch (e) {
+        console.log(e)
+    }
+});
 router.delete('/api/script', koaBody(), async (ctx) => {
     try {
         BannerConfig.findOne({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
