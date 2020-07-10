@@ -44,8 +44,6 @@ const Initial = () => {
         endYear: 2020
     });
 
-    useEffect(() => console.log(scriptData.config ? scriptData.script[0].configData.name : ''), [initBar]);
-
     const [selectedStartDate, setSelectedStartDate] = useState(scriptData.config ? scriptData.script[0].configData.startDate : {
         start: new Date(),
     });
@@ -168,6 +166,28 @@ const Initial = () => {
     const [isLinkActive, activateLink] = useState(scriptData.config ? scriptData.script[0].configData.isLinkActive : false);
     const [linkText, setLinkText] = useState(scriptData.config ? scriptData.script[0].configData.linkText : 'Get discount!');
     const [href, setHref] = useState(scriptData.config ? scriptData.script[0].configData.href : 'https://');
+
+    useEffect(() => {
+        setName(scriptData.script[0].configData.name);
+        setFirstText(scriptData.script[0].configData.firstText);
+        setSecondText(scriptData.script[0].configData.secondText);
+        setSelectedStartDate(scriptData.script[0].configData.startDate);
+        setSelectedEndDate(scriptData.script[0].configData.endDate);
+        setValue(scriptData.script[0].configData.position);
+        setRenderValue(scriptData.script[0].configData.display);
+        setChecked(scriptData.script[0].configData.sticky);
+        setRepeat(scriptData.script[0].configData.isRepeatable);
+        setBgColor(scriptData.script[0].configData.backGroundColor);
+        setBorderColor(scriptData.script[0].configData.borderColor);
+        pickProducts(scriptData.config ? scriptData.script[0].configData.products : []);
+        pickCollections(scriptData.config ? scriptData.script[0].configData.collections : []);
+        setRangeValue(scriptData.config ? scriptData.script[0].configData.borderSize : 0);
+        setHeightValue(scriptData.config ? scriptData.script[0].configData.bannerHeight : 100);
+        activateLink(scriptData.config ? scriptData.script[0].configData.isLinkActive : false);
+        setLinkText(scriptData.config ? scriptData.script[0].configData.linkText : 'Get discount!');
+        setHref(scriptData.config ? scriptData.script[0].configData.href : 'https://');
+
+    }, [initBar]);
 
     const designSwitch = () => {
         if (!!name && !dateError && !!(selectedEndDate.end.toLocaleDateString())) {
