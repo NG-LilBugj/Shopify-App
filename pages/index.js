@@ -55,6 +55,7 @@ const Initial = () => {
             getFullYear() {return 2020}
         },
     });
+    debugger
     //new Date('Wed Aug 08 2020 00:00:00 GMT-0300 (EST)')
     const [isEndDateTouched, touchEndDate] = useState(false);
 
