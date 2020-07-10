@@ -54,7 +54,7 @@ const PrimaryDesign = (props) => {
             <ResourcePicker
                 resourceType={(props.renderValue === 'collections') ? "Collection" : "Product"}
                 open={isCollectionsOpen}
-                onSelection={(resources) => console.log(resources)}
+                onSelection={(resources) => console.log({resources, value: props.renderValue})}
                 onCancel={() => setCollections(false)}
             />
             <Card title={'Banner name:'} sectioned>
