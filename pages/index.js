@@ -171,14 +171,31 @@ const Initial = () => {
         setName(scriptData.config ? scriptData.script[0].configData.name : '');
         setFirstText(scriptData.config ? scriptData.script[0].configData.firstText : '');
         setSecondText(scriptData.config ? scriptData.script[0].configData.secondText : '');
-        setSelectedStartDate(scriptData.config ? scriptData.script[0].configData.startDate : '');
-        setSelectedEndDate(scriptData.config ? scriptData.script[0].configData.endDate :'');
-        setValue(scriptData.config ? scriptData.script[0].configData.position : '');
+        setSelectedStartDate(scriptData.config ? scriptData.script[0].configData.startDate : new Date());
+        setSelectedEndDate(scriptData.config ? scriptData.script[0].configData.endDate :  {
+            end: {
+                toLocaleDateString(){return ''},
+                getDate(){return 1},
+                getMonth(){return 6},
+                getFullYear() {return 2020}
+            },
+        });
+        setValue(scriptData.config ? scriptData.script[0].configData.position : 'Top');
         setRenderValue(scriptData.config ? scriptData.script[0].configData.display : '');
-        setChecked(scriptData.config ? scriptData.script[0].configData.sticky : '');
-        setRepeat(scriptData.config ? scriptData.script[0].configData.isRepeatable : '');
-        setBgColor(scriptData.config ? scriptData.script[0].configData.backGroundColor : '');
-        setBorderColor(scriptData.config ? scriptData.script[0].configData.borderColor : '');
+        setChecked(scriptData.config ? scriptData.script[0].configData.sticky : false);
+        setRepeat(scriptData.config ? scriptData.script[0].configData.isRepeatable : false);
+        setBgColor(scriptData.config ? scriptData.script[0].configData.backGroundColor : {
+            hue: 1,
+            saturation: 1,
+            brightness: 1,
+            alpha: 1
+        });
+        setBorderColor(scriptData.config ? scriptData.script[0].configData.borderColor : {
+            hue: 1,
+            saturation: 1,
+            brightness: 1,
+            alpha: 1
+        });
         pickProducts(scriptData.config ? scriptData.script[0].configData.products : []);
         pickCollections(scriptData.config ? scriptData.script[0].configData.collections : []);
         setRangeValue(scriptData.config ? scriptData.script[0].configData.borderSize : 0);
