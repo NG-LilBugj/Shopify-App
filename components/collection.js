@@ -1,4 +1,7 @@
-import {Button, Thumbnail} from "@shopify/polaris";
+import {Button, Icon, Thumbnail} from "@shopify/polaris";
+import {
+    DeleteMinor
+} from '@shopify/polaris-icons';
 
 const Collection = (props) => {
 
@@ -15,7 +18,7 @@ const Collection = (props) => {
                     props.collections.filter(removeCollection)
                 )}
             >
-                Remove
+                <Icon source={DeleteMinor}/>
             </Button>
         </div>
     )
