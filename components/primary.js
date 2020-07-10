@@ -54,9 +54,13 @@ const PrimaryDesign = (props) => {
             {(props.renderValue === 'collections' || props.renderValue === 'products') && <ResourcePicker
                     allowMultiple
                     resourceType={(props.renderValue === 'collections') ? "Collection" : "Product"}
-                    open={isCollectionsOpen}
-                    onSelection={(resources) => console.log({resources, value: props.renderValue})}
-                    onCancel={() => setCollections(false)}
+                    open={(props.renderValue === 'collections') ? isCollectionsOpen : isProductsOpen}
+                    onSelection={(props.renderValue === 'collections') ?
+                        (resources) => console.log({resources, value: props.renderValue}) :
+                        (resources) => handleSelection(resources)}
+                    onCancel={(props.renderValue === 'collections') ?
+                        () => setCollections(false) :
+                        () => setProducts(false)}
                 />}
             <Card title={'Banner name:'} sectioned>
                 <TextField

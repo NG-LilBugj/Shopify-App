@@ -93,7 +93,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
             "script_tag": {
                 "event": "onload",
                 "src": "https://lil-storage.herokuapp.com/static/script.js",
-                "display_scope": body.display
+                "display_scope": "all"
             }
         }, {
             headers: {
