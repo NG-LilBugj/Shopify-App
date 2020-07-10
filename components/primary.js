@@ -58,7 +58,7 @@ const PrimaryDesign = (props) => {
                 onCancel={() => setCollections(false)}
             />
             <ResourcePicker
-                resourceType="Collection"
+                resourceType="Product"
                 open={isProductsOpen}
                 onSelection={(resources) => handleSelection(resources)}
                 onCancel={() => setProducts(false)}
