@@ -58,7 +58,7 @@ const PrimaryDesign = (props) => {
                 onCancel={() => setCollections(false)}
             />
             <ResourcePicker
-                resourceType="Product"
+                resourceType="Collection"
                 open={isProductsOpen}
                 onSelection={(resources) => handleSelection(resources)}
                 onCancel={() => setProducts(false)}
@@ -199,7 +199,7 @@ const PrimaryDesign = (props) => {
                                 type={"submit"}
                                 onClick={() => setCollections(true)}
                             >
-                                Browse products
+                                Browse collections
                             </Button>
                         </div>
                         {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
