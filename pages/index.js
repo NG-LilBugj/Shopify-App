@@ -44,7 +44,7 @@ const Initial = () => {
         endYear: 2020
     });
 
-    useEffect(() => console.log(scriptData), [initBar]);
+    useEffect(() => console.log(scriptData.config ? scriptData.script[0].configData.name : ''), [initBar]);
 
     const [selectedStartDate, setSelectedStartDate] = useState(scriptData.config ? scriptData.script[0].configData.startDate : {
         start: new Date(),
