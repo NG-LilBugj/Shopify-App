@@ -29,10 +29,10 @@ const Initial = () => {
     const [isMainConfig, setConfigMenu] = useState(true);
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
-    const [name, setName] = useState(scriptData.script[0].configData.name || '');
+    const [name, setName] = useState(scriptData.config ? scriptData.script[0].configData.name : '');
     const [nameError, setNameError] = useState(false);
-    const [firstText, setFirstText] = useState(scriptData.script[0].configData.firstText || 'Hurry Up!');
-    const [secondText, setSecondText] = useState(scriptData.script[0].configData.secondText || 'Flash Sale');
+    const [firstText, setFirstText] = useState(scriptData.config ? scriptData.script[0].configData.firstText : 'Hurry Up!');
+    const [secondText, setSecondText] = useState(scriptData.config ? scriptData.script[0].configData.secondText : 'Flash Sale');
 
     const [{month, year}, setDate] = useState({
         month: 6,
@@ -43,10 +43,10 @@ const Initial = () => {
         endMonth: 7,
         endYear: 2020
     });
-    const [selectedStartDate, setSelectedStartDate] = useState(scriptData.script[0].configData.startDate || {
+    const [selectedStartDate, setSelectedStartDate] = useState(scriptData.config ? scriptData.script[0].configData.startDate : {
         start: new Date(),
     });
-    const [selectedEndDate, setSelectedEndDate] = useState(scriptData.script[0].configData.endDate || {
+    const [selectedEndDate, setSelectedEndDate] = useState(scriptData.config ? scriptData.script[0].configData.endDate : {
         end: {
             toLocaleDateString(){return ''},
             getDate(){return 1},
@@ -66,18 +66,18 @@ const Initial = () => {
         [],
     );
 
-    const [value, setValue] = useState(scriptData.script[0].configData.position || 'Top');
-    const [renderValue, setRenderValue] = useState(scriptData.script[0].configData.display || 'all');
-    const [checked, setChecked] = useState(scriptData.script[0].configData.sticky || false);
-    const [isRepeatable, setRepeat] = useState(scriptData.script[0].configData.isRepeatable || false);
+    const [value, setValue] = useState(scriptData.config ? scriptData.script[0].configData.position : 'Top');
+    const [renderValue, setRenderValue] = useState(scriptData.config ? scriptData.script[0].configData.display : 'all');
+    const [checked, setChecked] = useState(scriptData.config ? scriptData.script[0].configData.sticky : false);
+    const [isRepeatable, setRepeat] = useState(scriptData.config ? scriptData.script[0].configData.isRepeatable : false);
 
-    const [bgColor, setBgColor] = useState(scriptData.script[0].configData.backGroundColor || {
+    const [bgColor, setBgColor] = useState(scriptData.config ? scriptData.script[0].configData.backGroundColor : {
         hue: 1,
         saturation: 1,
         brightness: 1,
         alpha: 1
     });
-    const [borderColor, setBorderColor] = useState(scriptData.script[0].configData.borderColor || {
+    const [borderColor, setBorderColor] = useState(scriptData.config ? scriptData.script[0].configData.borderColor : {
         hue: 1,
         saturation: 1,
         brightness: 1,
@@ -147,11 +147,11 @@ const Initial = () => {
                 (dateError ? 'End date cannot be earlier than start date' : '')}
         /></div>;
 
-    const [products, pickProducts] = useState(scriptData.script[0].configData.products || []);
-    const [collections, pickCollections] = useState(scriptData.script[0].configData.collections || []);
+    const [products, pickProducts] = useState(scriptData.config ? scriptData.script[0].configData.products : []);
+    const [collections, pickCollections] = useState(scriptData.config ? scriptData.script[0].configData.collections : []);
 
-    const [rangeValue, setRangeValue] = useState(scriptData.script[0].configData.borderSize || 0);
-    const [heightValue, setHeightValue] = useState(scriptData.script[0].configData.bannerHeight || 100);
+    const [rangeValue, setRangeValue] = useState(scriptData.config ? scriptData.script[0].configData.borderSize : 0);
+    const [heightValue, setHeightValue] = useState(scriptData.config ? scriptData.script[0].configData.bannerHeight : 100);
 
     const handleRangeSliderChange = useCallback(
         (value) => setRangeValue(value),
@@ -162,9 +162,9 @@ const Initial = () => {
         []
     );
 
-    const [isLinkActive, activateLink] = useState(scriptData.script[0].configData.isLinkActive || false);
-    const [linkText, setLinkText] = useState(scriptData.script[0].configData.linkText || 'Get discount!');
-    const [href, setHref] = useState(scriptData.script[0].configData.href || 'https://');
+    const [isLinkActive, activateLink] = useState(scriptData.config ? scriptData.script[0].configData.isLinkActive : false);
+    const [linkText, setLinkText] = useState(scriptData.config ? scriptData.script[0].configData.linkText : 'Get discount!');
+    const [href, setHref] = useState(scriptData.config ? scriptData.script[0].configData.href : 'https://');
 
     const designSwitch = () => {
         if (!!name && !dateError && !!(selectedEndDate.end.toLocaleDateString())) {
