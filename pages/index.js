@@ -244,7 +244,7 @@ const Initial = () => {
             href
         };
         if (scriptData.config){
-            let res = await axios.put('https://lil-shopify.herokuapp.com/api/script', bundle);
+            let res = await axios.put('https://lil-shopify.herokuapp.com/api/script_update', bundle);
             console.log(res);
         }
         else {
