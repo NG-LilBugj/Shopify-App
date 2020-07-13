@@ -114,7 +114,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
         console.log(e)
     }
 });
-router.put('api/script', koaBody(), async (ctx) => {
+router.put('/api/script', koaBody(), async (ctx) => {
     try {
         console.log('put endpoint')
         const body = ctx.request.body;
