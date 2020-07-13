@@ -173,7 +173,7 @@ const PrimaryDesign = (props) => {
                                 options={[]}
                                 textField={searchField}
                             />
-                            <div style={{height: '30px'}}>
+                            <div style={{height: '35px'}}>
                             <Button
                                 size={"small"}
                                 type={"submit"}
@@ -203,7 +203,7 @@ const PrimaryDesign = (props) => {
                                 options={[]}
                                 textField={searchField}
                             />
-                            <div style={{height: '30px'}}>
+                            <div style={{height: '35px'}}>
                             <Button
                                 size={"small"}
                                 type={"submit"}
