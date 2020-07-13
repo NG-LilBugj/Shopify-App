@@ -166,13 +166,14 @@ const PrimaryDesign = (props) => {
                         onChange={props.handleRenderValueChange}
                     />
                     {(props.renderValue === 'products') && <Stack vertical>
-                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '420px'}}>
+                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' ,width: '420px'}}>
                             <Autocomplete
                                 onSelect={(value) => console.log(value)}
                                 selected={[]}
                                 options={[]}
                                 textField={searchField}
                             />
+                            <div style={{height: '30px'}}>
                             <Button
                                 size={"small"}
                                 type={"submit"}
@@ -180,6 +181,7 @@ const PrimaryDesign = (props) => {
                             >
                                 Browse products
                             </Button>
+                            </div>
                         </div>
                         {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                      products={props.products} {...p}/>)}
@@ -194,13 +196,14 @@ const PrimaryDesign = (props) => {
                         onChange={props.handleRenderValueChange}
                     />
                     {(props.renderValue === 'collections') && <Stack vertical>
-                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between',width: '420px'}}>
+                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', width: '420px'}}>
                             <Autocomplete
                                 onSelect={(value) => console.log(value)}
                                 selected={[]}
                                 options={[]}
                                 textField={searchField}
                             />
+                            <div style={{height: '30px'}}>
                             <Button
                                 size={"small"}
                                 type={"submit"}
@@ -208,6 +211,7 @@ const PrimaryDesign = (props) => {
                             >
                                 Browse collections
                             </Button>
+                            </div>
                         </div>
                         {(props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
                                                                                      collections={props.collections} {...c}/>)}
