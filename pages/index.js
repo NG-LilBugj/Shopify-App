@@ -237,8 +237,8 @@ const Initial = () => {
             isRepeatable,
             firstText,
             secondText,
-            products: products.map(p => ({title: p.title, photo: p.images[0].originalSrc, id: p.handle})),
-            collections: collections.map(c => ({title: c.title, handle: c.handle})),
+            products,
+            collections,
             isLinkActive,
             linkText,
             href

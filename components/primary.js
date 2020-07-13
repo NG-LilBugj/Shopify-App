@@ -34,14 +34,14 @@ const PrimaryDesign = (props) => {
     );
 
     const handleProductsSelection = (resources) => {
-        props.pickProducts(resources.selection);
+        props.pickProducts(resources.selection.map(p => ({title: p.title, photo: p.images[0].originalSrc, id: p.handle})));
         //const idsFromResources = resources.selection.map((products) => products.handle);
         setProducts(false);
         console.log(resources.selection)
     };
 
     const handleCollectionsSelection = (resources) => {
-        props.pickCollections(resources.selection);
+        props.pickCollections(resources.selection.map(c => ({title: c.title, id: c.handle})));
         setCollections(false);
     };
 
@@ -180,7 +180,7 @@ const PrimaryDesign = (props) => {
                             </Button>
                         </div>
                         {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
-                                                                                     products={props.products} title={p.title} photo={p.images[0].originalSrc} id={p.handle}/>)}
+                                                                                     products={props.products} {...p}/>)}
                         {console.log(props.products)}
                     </Stack>}
                     <RadioButton
@@ -208,7 +208,7 @@ const PrimaryDesign = (props) => {
                             </Button>
                         </div>
                         {(props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
-                                                                                     collections={props.collections} title={c.title} id={c.handle}/>)}
+                                                                                     collections={props.collections} {...c}/>)}
                         {console.log(props.products)}
                     </Stack>}
                 </Stack>
