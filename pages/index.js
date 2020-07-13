@@ -222,6 +222,7 @@ const Initial = () => {
     );
 
     const handleSubmit = async () => {
+        console.log('submitted');
         const bundle = {
             name,
             startDate: selectedStartDate,
