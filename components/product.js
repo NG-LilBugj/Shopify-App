@@ -14,6 +14,7 @@ const Product = (props) => {
             <div style={{marginLeft: '10px'}}>
                 {props.title}
             </div>
+            <div style={{height: '25px'}}>
             <Button
                 size={'small'}
                 onClick={() => props.pickProducts(
@@ -22,6 +23,7 @@ const Product = (props) => {
             >
                 Remove
             </Button>
+            </div>
         </div>
     )
 };

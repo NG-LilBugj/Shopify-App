@@ -123,6 +123,7 @@ const PrimaryDesign = (props) => {
                         onChange={props.handleChange}
                     />
                 </Stack>
+                <div style={{marginTop: '10px', marginBottom: '10px'}}>
                 <Checkbox
                     label="Display sticky"
                     checked={props.checked}
@@ -130,6 +131,7 @@ const PrimaryDesign = (props) => {
                         props.setChecked(newChecked)
                     }}
                 />
+                </div>
                 <Stack vertical>
                     <RadioButton
                         label="All"

@@ -290,7 +290,7 @@ const Initial = () => {
                         </div>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
                         <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
-                            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '60px'}}>
+                            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '70px'}}>
                             <Button
                                 primary
                                 size={"slim"}
