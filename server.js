@@ -115,6 +115,7 @@ router.post('/api/script', koaBody(), async (ctx) => {
     }
 });
 router.put('api/script', koaBody(), async (ctx) => {
+    console.log('put endpoint');
     try {
         const body = ctx.request.body;
         const customConfig = await BannerConfig.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
