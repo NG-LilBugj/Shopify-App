@@ -263,7 +263,9 @@ const Initial = () => {
         });
     };
 
-    if (isLoading) return <Page><Layout><img src={Preloader} alt={'shock'}/><Spinner accessibilityLabel="Spinner example" size="large" color="" /></Layout></Page>;
+    if (isLoading) return <Page><Layout><img src={
+        'https://i.gifer.com/embedded/download/LSM5.gif'
+    } alt={'shock'}/><Spinner accessibilityLabel="Spinner example" size="large" color="" /></Layout></Page>;
     else return (
         <Page>
             {!initBar && <Layout>
