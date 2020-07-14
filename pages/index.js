@@ -14,6 +14,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import DesignSection from "../components/design";
 import PrimaryDesign from "../components/primary";
+import Preloader from '../utils/Preloader.gif'
 import * as Scroll from 'react-scroll'
 
 const Initial = () => {
@@ -262,7 +263,7 @@ const Initial = () => {
         });
     };
 
-    if (isLoading) return <Page><Layout><Spinner accessibilityLabel="Spinner example" size="large" color="" /></Layout></Page>;
+    if (isLoading) return <Page><Layout><img src={Preloader} alt={'shock'}/><Spinner accessibilityLabel="Spinner example" size="large" color="" /></Layout></Page>;
     else return (
         <Page>
             {!initBar && <Layout>
