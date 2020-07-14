@@ -108,11 +108,11 @@ const PrimaryDesign = (props) => {
             </Card>
             <Card title={'Timer display'} sectioned>
                 <Stack vertical>
-                    <ButtonGroup>
+                    <ButtonGroup segmented={}>
                         <div style={{color: '3333cc'}}>
                         <Button outline={!isWidget} monochrome={!isWidget}>Banner</Button>
-                        <Button outline={isWidget} monochrome={isWidget}>Widget</Button>
                         </div>
+                        <Button outline={isWidget} monochrome={isWidget}>Widget</Button>
                     </ButtonGroup>
                     <RadioButton
                         label="Top"
