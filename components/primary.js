@@ -1,6 +1,6 @@
 import {
     Autocomplete,
-    Button,
+    Button, ButtonGroup,
     Card,
     Checkbox,
     DatePicker, Icon,
@@ -18,6 +18,8 @@ import Collection from "./collection";
 
 
 const PrimaryDesign = (props) => {
+
+    const [isWidget, setIsWidget] = useState(false);
 
     const [isProductsOpen, setProducts] = useState(false);
     const [renderProduct, setProductRender] = useState(false);
@@ -106,6 +108,10 @@ const PrimaryDesign = (props) => {
             </Card>
             <Card title={'Timer display'} sectioned>
                 <Stack vertical>
+                    <ButtonGroup>
+                        <Button outline monochrome pressed={!isWidget}>Banner</Button>
+                        <Button outline monochrome pressed={isWidget}>Widget</Button>
+                    </ButtonGroup>
                     <RadioButton
                         label="Top"
                         helpText="Displays timer at the top of the store."
