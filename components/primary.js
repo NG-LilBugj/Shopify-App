@@ -108,7 +108,7 @@ const PrimaryDesign = (props) => {
             </Card>
             <Card title={'Timer display'} sectioned>
                 <Stack vertical>
-                    <ButtonGroup segmented={}>
+                    <ButtonGroup segmented>
                         <div style={{color: '3333cc'}}>
                         <Button outline={!isWidget} monochrome={!isWidget}>Banner</Button>
                         </div>
