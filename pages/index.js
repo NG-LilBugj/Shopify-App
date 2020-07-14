@@ -14,7 +14,6 @@ import Link from 'next/link'
 import axios from 'axios'
 import DesignSection from "../components/design";
 import PrimaryDesign from "../components/primary";
-import Preloader from '../utils/Preloader.gif'
 import * as Scroll from 'react-scroll'
 
 const Initial = () => {
