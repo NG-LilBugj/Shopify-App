@@ -3,7 +3,7 @@ import {
     Button, ButtonGroup,
     Card,
     Checkbox,
-    DatePicker, Icon,
+    DatePicker, Heading, Icon,
     Layout,
     Popover,
     RadioButton,
@@ -16,10 +16,7 @@ import Product from "./product";
 import {SearchMinor} from "@shopify/polaris-icons";
 import Collection from "./collection";
 
-
 const PrimaryDesign = (props) => {
-
-    const [isWidget, setIsWidget] = useState(false);
 
     const [isProductsOpen, setProducts] = useState(false);
     const [renderProduct, setProductRender] = useState(false);
@@ -110,10 +107,25 @@ const PrimaryDesign = (props) => {
                 <Stack vertical>
                     <ButtonGroup segmented>
                         <div style={{color: '3333cc'}}>
-                        <Button outline={!isWidget} monochrome={!isWidget}>Banner</Button>
+                            <Button
+                                outline={!props.isWidget}
+                                monochrome={!props.isWidget}
+                                onClick={() => props.setIsWidget(false)}
+                            >
+                                Banner
+                            </Button>
                         </div>
-                        <Button outline={isWidget} monochrome={isWidget}>Widget</Button>
+                        <Button
+                            outline={props.isWidget}
+                            monochrome={props.isWidget}
+                            onClick={() => props.setIsWidget(true)}
+                        >
+                            Widget
+                        </Button>
                     </ButtonGroup>
+                </Stack>
+                {!isWidget ? <>
+                <Stack vertical>
                     <RadioButton
                         label="Top"
                         helpText="Displays timer at the top of the store."
@@ -226,6 +238,32 @@ const PrimaryDesign = (props) => {
                         {console.log(props.products)}
                     </Stack>}
                 </Stack>
+                </>
+                : <Stack vertical>
+                        <Heading>
+                            Product pages with timer
+                        </Heading>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' ,width: '420px'}}>
+                    <Autocomplete
+                    onSelect={(value) => console.log(value)}
+                    selected={[]}
+                    options={[]}
+                    textField={searchField}
+                    />
+                    <div style={{height: '35px'}}>
+                    <Button
+                    size={"small"}
+                    type={"submit"}
+                    onClick={() => setProducts(true)}
+                    >
+                    Browse products
+                    </Button>
+                    </div>
+                    </div>
+                    {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
+                                                                                 products={props.products} {...p}/>)}
+                    {console.log(props.products)}
+                    </Stack>}}
             </Card>
             <Card title={'Utils'} sectioned>
                 <Stack vertical>

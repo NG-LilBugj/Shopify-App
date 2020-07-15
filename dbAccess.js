@@ -6,6 +6,7 @@ const bannerSchema = new mongoose.Schema({
     name: String,
     startDate: {start: String},
     endDate: {end: String},
+    isWidget: Boolean,
     position: String,
     display: String,
     sticky: Boolean,

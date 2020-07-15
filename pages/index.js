@@ -27,6 +27,7 @@ const Initial = () => {
 
     const [isLoading, setLoading] = useState(true);
     const [isMainConfig, setConfigMenu] = useState(true);
+    const [isWidget, setIsWidget] = useState(false);
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState(scriptData.config ? scriptData.script[0].configData.name : '');
@@ -230,6 +231,7 @@ const Initial = () => {
             position: value,
             display: renderValue,
             sticky: checked,
+            isWidget,
             backGroundColor: bgColor,
             bannerHeight: heightValue,
             borderSize: rangeValue,
@@ -363,6 +365,8 @@ const Initial = () => {
                         collections={collections}
                         pickCollections={pickCollections}
                         dateCheck={dateCheck}
+                        isWidget={isWidget}
+                        setIsWidget={setIsWidget}
                     />
                 </Layout.Section>
                 :
@@ -392,6 +396,8 @@ const Initial = () => {
                         setLinkText={setLinkText}
                         href={href}
                         setHref={setHref}
+                        isWidget={isWidget}
+                        setIsWidget={setIsWidget}
                     />}
                 <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px', marginLeft: '20px'}}>
                     <Button
