@@ -124,7 +124,7 @@ const PrimaryDesign = (props) => {
                         </Button>
                     </ButtonGroup>
                 </Stack>
-                {!isWidget ? <>
+                {!props.isWidget ? <>
                 <Stack vertical>
                     <RadioButton
                         label="Top"
