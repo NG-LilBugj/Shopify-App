@@ -171,8 +171,8 @@ const Initial = () => {
     useEffect(() => {
         console.log(scriptData);
         setName(scriptData.config ? scriptData.script[0].configData.name : '');
-        setFirstText(scriptData.config ? scriptData.script[0].configData.firstText : '');
-        setSecondText(scriptData.config ? scriptData.script[0].configData.secondText : '');
+        setFirstText(scriptData.config ? scriptData.script[0].configData.firstText : 'Hurry up');
+        setSecondText(scriptData.config ? scriptData.script[0].configData.secondText : 'Flesh sale!');
         setSelectedStartDate(scriptData.config ? {start: new Date(scriptData.script[0].configData.startDate.start)} : {start: new Date()});
         setSelectedEndDate(scriptData.config ? {end: new Date(scriptData.script[0].configData.endDate.end)} :  {
             end: {
