@@ -5,7 +5,7 @@ const Preview = (props) => {
         <Card title={'Banner preview'} sectioned>
             <div style={{
                 width: '100%',
-                height: props.heightValue,
+                height: (+props.heightValue * 1.5),
                 backgroundColor: `hsla(${props.decodeColors(props.bgColor)})`,
                 border: `${props.rangeValue}px solid hsla(${props.decodeColors(props.borderColor)})`,
                 color: 'rgb(65, 65, 106)',
