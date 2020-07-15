@@ -18,7 +18,7 @@ const Preview = (props) => {
                 fontSize: '24px'
             }}>
                 <div className={props.isWidget? 'main-widget-container' : 'main-container'}>
-                    <div style={isWidget ? {width: 'auto'} : {}} className='first-sign'>{props.firstText || 'Hurry Up!'}</div>
+                    <div style={props.isWidget ? {width: 'auto'} : {}} className='first-sign'>{props.firstText || 'Hurry Up!'}</div>
                     <div className='inner-container'>
                         <div className="countdown-number">
                             <div className='numbers-container'>
@@ -63,7 +63,7 @@ const Preview = (props) => {
                             <span className="countdown-text">Seconds</span>
                         </div>
                     </div>
-                    <div style={isWidget ? {width: 'auto'} : {}} className='last-sign'>{props.secondText || 'Flash Sale!'}</div>
+                    <div style={props.isWidget ? {width: 'auto'} : {}} className='last-sign'>{props.secondText || 'Flash Sale!'}</div>
                 </div>
                 {props.isLinkActive && <a href={props.href} className={'event-link'}>{props.linkText}</a>}
             </div>
