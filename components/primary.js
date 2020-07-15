@@ -162,22 +162,6 @@ const PrimaryDesign = (props) => {
                         onChange={props.handleRenderValueChange}
                     />
                     <RadioButton
-                        label="Store"
-                        helpText="Displays timer at the pages of store."
-                        id="online_store"
-                        name="online_store"
-                        checked={props.renderValue === 'online_store'}
-                        onChange={props.handleRenderValueChange}
-                    />
-                    <RadioButton
-                        label="Order"
-                        helpText="Displays timer at the order status page."
-                        id="order_status"
-                        name="order_status"
-                        checked={props.renderValue === 'order_status'}
-                        onChange={props.handleRenderValueChange}
-                    />
-                    <RadioButton
                         label="Products"
                         helpText="Displays timer at certain product pages."
                         id="products"
