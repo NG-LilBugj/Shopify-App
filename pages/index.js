@@ -182,6 +182,7 @@ const Initial = () => {
                 getFullYear() {return 2020}
             },
         });
+        setIsWidget(scriptData.config ? scriptData.script[0].configData.isWidget : false);
         setValue(scriptData.config ? scriptData.script[0].configData.position : 'Top');
         setRenderValue(scriptData.config ? scriptData.script[0].configData.display : 'all');
         setChecked(scriptData.config ? scriptData.script[0].configData.sticky : false);
