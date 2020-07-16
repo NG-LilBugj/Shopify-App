@@ -3,7 +3,7 @@ import {Card} from "@shopify/polaris";
 const Preview = (props) => {
     return(
         <Card title={'Banner preview'} sectioned>
-            <div style={{display: "flex", alignItems: "center", width: '100%'}}>
+            <div style={{display: "flex", justifyContent: "center", width: '100%'}}>
             <div style={{
                 width: props.isWidget ? '70%' : '100%',
                 height: props.isWidget ? (+props.heightValue * 1.5) : +props.heightValue,
