@@ -4,10 +4,11 @@ const Preview = (props) => {
     return(
         <Card title={'Banner preview'} sectioned>
             <div style={{
-                width: '100%',
+                width: props.isWidget ? '100%' : '70%',
                 height: props.isWidget ? (+props.heightValue * 1.5) : +props.heightValue,
                 backgroundColor: `hsla(${props.decodeColors(props.bgColor)})`,
                 border: `${props.rangeValue}px solid hsla(${props.decodeColors(props.borderColor)})`,
+                borderRadius: props.isWidget ? '20px' : '0',
                 color: 'rgb(65, 65, 106)',
                 display: 'flex',
                 flexDirection: 'column',

@@ -35,7 +35,7 @@ const DesignSection = (props) => {
                     </div>
                     <div>
                         <RangeSlider
-                            label="Border size:"
+                            label="Border width:"
                             value={props.rangeValue}
                             onChange={props.handleRangeSliderChange}
                             min={0}

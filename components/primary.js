@@ -110,7 +110,9 @@ const PrimaryDesign = (props) => {
                             <Button
                                 outline={!props.isWidget}
                                 monochrome={!props.isWidget}
-                                onClick={() => props.setIsWidget(false)}
+                                onClick={() => {
+                                    props.setIsWidget(false);
+                                }}
                             >
                                 Banner
                             </Button>
@@ -118,7 +120,14 @@ const PrimaryDesign = (props) => {
                         <Button
                             outline={props.isWidget}
                             monochrome={props.isWidget}
-                            onClick={() => props.setIsWidget(true)}
+                            onClick={() => {
+                                props.handleRenderValueChange('product');
+                                props.setBorderColor({
+                                    hue: 208, saturation: 1, brightness: 0.42, alpha: 1
+                                });
+                                props.handleRangeSliderChange(1);
+                                props.setIsWidget(true)
+                            }}
                         >
                             Widget
                         </Button>
@@ -247,7 +256,7 @@ const PrimaryDesign = (props) => {
                     {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                  products={props.products} {...p}/>)}
                     {console.log(props.products)}
-                    </Stack>}}
+                    </Stack>}
             </Card>
             <Card title={'Utils'} sectioned>
                 <Stack vertical>

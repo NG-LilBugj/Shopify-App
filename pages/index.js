@@ -366,6 +366,8 @@ const Initial = () => {
                         collections={collections}
                         pickCollections={pickCollections}
                         dateCheck={dateCheck}
+                        handleRangeSliderChange={handleRangeSliderChange}
+                        setBorderColor={setBorderColor}
                         isWidget={isWidget}
                         setIsWidget={setIsWidget}
                     />
