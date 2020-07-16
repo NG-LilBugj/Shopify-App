@@ -3,6 +3,7 @@ import {Card} from "@shopify/polaris";
 const Preview = (props) => {
     return(
         <Card title={'Banner preview'} sectioned>
+            <div style={{display: "flex", alignItems: "center", width: '100%'}}>
             <div style={{
                 width: props.isWidget ? '70%' : '100%',
                 height: props.isWidget ? (+props.heightValue * 1.5) : +props.heightValue,
@@ -68,6 +69,7 @@ const Preview = (props) => {
                     <div style={props.isWidget ? {width: 'auto'} : {}} className='last-sign'>{props.secondText || 'Flash Sale!'}</div>
                 </div>
                 {props.isLinkActive && <a href={props.href} className={'event-link'}>{props.linkText}</a>}
+            </div>
             </div>
         </Card>
     )
