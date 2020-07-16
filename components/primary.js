@@ -56,7 +56,7 @@ const PrimaryDesign = (props) => {
 
     return(
         <>
-            {(props.renderValue === 'collections' || props.renderValue === 'products') && <ResourcePicker
+            {(props.renderValue === 'collections' || props.renderValue === 'products' || props.isWidget) && <ResourcePicker
                     allowMultiple
                     resourceType={(props.renderValue === 'collections') ? "Collection" : "Product"}
                     open={(props.renderValue === 'collections') ? isCollectionsOpen : isProductsOpen}
