@@ -7,7 +7,7 @@ import {
     Page, InlineError,
     RadioButton,
     ResourceList, Stack,
-    TextField, Popover, RangeSlider, Spinner
+    TextField, Popover, RangeSlider, Spinner, Icon
 } from "@shopify/polaris";
 import {useCallback, useState, useEffect} from "react";
 import Link from 'next/link'
@@ -15,6 +15,7 @@ import axios from 'axios'
 import DesignSection from "../components/design";
 import PrimaryDesign from "../components/primary";
 import * as Scroll from 'react-scroll'
+import {CalendarMinor} from "@shopify/polaris-icons";
 
 const Initial = () => {
 
@@ -138,12 +139,14 @@ const Initial = () => {
     const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover}>
         <TextField
         label={''}
+        prefix={<Icon source={CalendarMinor} color="inkLighter" />}
         value={selectedStartDate.start.toLocaleDateString()}
         error={(startError && switchTouch) ? 'Please enter date' : ''}
     /></div>;
     const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
         <TextField
             label={''}
+            prefix={<Icon source={CalendarMinor} color="inkLighter" />}
             value={selectedEndDate.end.toLocaleDateString()}
             error={((!(selectedEndDate.end.toLocaleDateString())) && switchTouch) ? 'Please enter date' :
                 (dateError ? 'End date cannot be earlier than start date' : '')}
