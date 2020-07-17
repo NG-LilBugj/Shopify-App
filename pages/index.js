@@ -136,7 +136,7 @@ const Initial = () => {
         Border color
     </Button>;
 
-    const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover}>
+    const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover} onBlur={toggleStartPopover}>
         <TextField
         label={''}
         prefix={<Icon source={CalendarMinor} color="inkLighter" />}
