@@ -15,7 +15,7 @@ import axios from 'axios'
 import DesignSection from "../components/design";
 import PrimaryDesign from "../components/primary";
 import * as Scroll from 'react-scroll'
-import {CalendarMinor, EditMinor, DeleteMinor} from "@shopify/polaris-icons";
+import {CalendarMinor, DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
 
 const Initial = () => {
 
@@ -298,19 +298,19 @@ const Initial = () => {
                         </div>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
                         <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
-                            <div style={{display: 'flex', justifyContent: 'space-between', height: '70px'}}>
+                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
                             <Button
                                 size={"slim"}
                                 type={"submit"}
                                 onClick={() => setInitBar(true)}>
-                                <Icon source={EditMinor}/>
+                                <Icon source={SettingsMajorMonotone}/>
                             </Button>
                             <Button
                                 destructive
                                 size={"slim"}
                                 type={"submit"}
                                 onClick={deleteSubmit}>
-                                <Icon source={DeleteMinor}/>
+                                <Icon source={DeleteMajorMonotone}/>
                             </Button>
                             </div>
                         </div>
