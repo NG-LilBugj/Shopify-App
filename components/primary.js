@@ -117,6 +117,7 @@ const PrimaryDesign = (props) => {
                                 Banner
                             </Button>
                         </div>
+                        <div style={{color: '#3333cc'}}>
                         <Button
                             outline={props.isWidget}
                             monochrome={props.isWidget}
@@ -131,6 +132,7 @@ const PrimaryDesign = (props) => {
                         >
                             Widget
                         </Button>
+                        </div>
                     </ButtonGroup>
                 </Stack>
                 {!props.isWidget ? <>
