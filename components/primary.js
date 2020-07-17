@@ -7,7 +7,7 @@ import {
     Layout,
     Popover,
     RadioButton,
-    Stack,
+    Stack, TextContainer,
     TextField, Thumbnail
 } from "@shopify/polaris";
 import {ResourcePicker} from "@shopify/app-bridge-react";
@@ -233,6 +233,14 @@ const PrimaryDesign = (props) => {
                 </Stack>
                 </>
                 : <Stack vertical>
+                        <TextContainer>
+                        <Heading>
+                            Widget description
+                        </Heading>
+                            <i>
+                                Compact timer, available on product pages only. Renders beneath product description
+                            </i>
+                        </TextContainer>
                         <Heading>
                             Product pages with timer
                         </Heading>
