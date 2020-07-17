@@ -143,11 +143,6 @@ const Initial = () => {
         value={selectedStartDate.start.toLocaleDateString()}
         error={(startError && switchTouch) ? 'Please enter date' : ''}
     />
-    <Button
-        onClick={toggleStartPopover}
-        >
-        OK
-    </Button>
     </div>;
     const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
         <TextField
@@ -157,11 +152,6 @@ const Initial = () => {
             error={((!(selectedEndDate.end.toLocaleDateString())) && switchTouch) ? 'Please enter date' :
                 (dateError ? 'End date cannot be earlier than start date' : '')}
         />
-        <Button
-            onClick={toggleEndPopover}
-        >
-            OK
-        </Button>
     </div>;
 
     const [products, pickProducts] = useState(scriptData.config ? scriptData.script[0].configData.products : []);

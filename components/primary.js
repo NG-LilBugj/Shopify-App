@@ -88,6 +88,11 @@ const PrimaryDesign = (props) => {
                         onMonthChange={props.handleMonthChange}
                         selected={props.selectedStartDate}
                     />
+                    <Button
+                        onClick={props.toggleStartPopover}
+                    >
+                        OK
+                    </Button>
                 </Popover>
             </Card>
             <Card title={'End date'} sectioned>
@@ -100,6 +105,11 @@ const PrimaryDesign = (props) => {
                         onMonthChange={props.handleEndMonthChange}
                         selected={props.selectedEndDate}
                     />
+                    <Button
+                        onClick={props.toggleEndPopover}
+                    >
+                        OK
+                    </Button>
                 </Popover>
             </Card>
             <Card title={'Timer display'} sectioned>
