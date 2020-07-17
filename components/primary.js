@@ -47,7 +47,6 @@ const PrimaryDesign = (props) => {
     const searchField = (
         <Autocomplete.TextField
             onChange={handleSearchFieldChange}
-            label="Products"
             value={inputSearchValue}
             prefix={<Icon source={SearchMinor} color="inkLighter" />}
             placeholder="Search"
@@ -190,7 +189,6 @@ const PrimaryDesign = (props) => {
                                 options={[]}
                                 textField={searchField}
                             />
-                            <div style={{height: '35px'}}>
                             <Button
                                 size={"small"}
                                 type={"submit"}
@@ -198,7 +196,6 @@ const PrimaryDesign = (props) => {
                             >
                                 Browse products
                             </Button>
-                            </div>
                         </div>
                         {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                      products={props.products} {...p}/>)}
@@ -220,7 +217,6 @@ const PrimaryDesign = (props) => {
                                 options={[]}
                                 textField={searchField}
                             />
-                            <div style={{height: '35px'}}>
                             <Button
                                 size={"small"}
                                 type={"submit"}
@@ -228,7 +224,6 @@ const PrimaryDesign = (props) => {
                             >
                                 Browse collections
                             </Button>
-                            </div>
                         </div>
                         {(props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
                                                                                      collections={props.collections} {...c}/>)}
@@ -257,7 +252,6 @@ const PrimaryDesign = (props) => {
                     options={[]}
                     textField={searchField}
                     />
-                    <div style={{height: '35px'}}>
                     <Button
                     size={"small"}
                     type={"submit"}
@@ -265,7 +259,6 @@ const PrimaryDesign = (props) => {
                     >
                     Browse products
                     </Button>
-                    </div>
                     </div>
                     {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                  products={props.products} {...p}/>)}
