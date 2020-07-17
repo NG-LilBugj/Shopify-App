@@ -233,14 +233,16 @@ const PrimaryDesign = (props) => {
                 </Stack>
                 </>
                 : <Stack vertical>
+                        <div style={{marginTop: '15px'}}>
                         <TextContainer>
                         <Heading>
                             Widget description
                         </Heading>
-                            <i>
-                                Compact timer, available on product pages only. Renders beneath product description
+                            <i style={{width: '240px', marginTop: '10px'}}>
+                                Compact timer, available on product pages only. Renders beneath product title
                             </i>
                         </TextContainer>
+                        </div>
                         <Heading>
                             Product pages with timer
                         </Heading>
