@@ -6,7 +6,7 @@ import {
     DatePicker, Heading, Icon,
     Layout,
     Popover,
-    RadioButton,
+    RadioButton, Select,
     Stack, TextContainer,
     TextField, Thumbnail
 } from "@shopify/polaris";
@@ -241,6 +241,25 @@ const PrimaryDesign = (props) => {
                                 Compact timer, available on product pages only. Renders beneath product title
                             </i>
                         </TextContainer>
+                        </div>
+                        <div>
+                            <Heading>
+                                Widget placement
+                            </Heading>
+                            <Select
+                                label={'Placement'}
+                                labelInline
+                                options={[
+                                    {label: 'Above title', value: 'aboveTitle'},
+                                    {label: 'Below title', value: 'belowTitle'},
+                                    {label: 'Above price', value: 'abovePrice'},
+                                    {label: 'Below price', value: 'belowPrice'},
+                                    {label: 'Above buy button', value: 'aboveBuyButton'},
+                                    {label: 'Below buy button', value: 'belowBuyButton'},
+                                ]}
+                                onChange={(value) => props.setWidgetValue(value)}
+                                value={props.widgetRenderValue}
+                            />
                         </div>
                         <Heading>
                             Product pages with timer

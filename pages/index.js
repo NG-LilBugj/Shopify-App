@@ -155,6 +155,8 @@ const Initial = () => {
     const [products, pickProducts] = useState(scriptData.config ? scriptData.script[0].configData.products : []);
     const [collections, pickCollections] = useState(scriptData.config ? scriptData.script[0].configData.collections : []);
 
+    const [widgetRenderValue, setWidgetValue] = useState('belowTitle');
+
     const [rangeValue, setRangeValue] = useState(scriptData.config ? scriptData.script[0].configData.borderSize : 0);
     const [heightValue, setHeightValue] = useState(scriptData.config ? scriptData.script[0].configData.bannerHeight : 100);
 
@@ -371,6 +373,8 @@ const Initial = () => {
                         setBorderColor={setBorderColor}
                         isWidget={isWidget}
                         setIsWidget={setIsWidget}
+                        widgetRenderValue={widgetRenderValue}
+                        setWidgetValue={setWidgetValue}
                     />
                 </Layout.Section>
                 :
