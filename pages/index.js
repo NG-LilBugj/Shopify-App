@@ -136,13 +136,19 @@ const Initial = () => {
         Border color
     </Button>;
 
-    const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover} onBlur={toggleStartPopover}>
+    const startDateText = <div style={{width: '200px'}} onClick={toggleStartPopover}>
         <TextField
         label={''}
         prefix={<Icon source={CalendarMinor} color="inkLighter" />}
         value={selectedStartDate.start.toLocaleDateString()}
         error={(startError && switchTouch) ? 'Please enter date' : ''}
-    /></div>;
+    />
+    <Button
+        onClick={toggleStartPopover}
+        >
+        OK
+    </Button>
+    </div>;
     const endDateText = <div style={{width: '200px'}} onClick={toggleEndPopover}>
         <TextField
             label={''}
@@ -150,7 +156,13 @@ const Initial = () => {
             value={selectedEndDate.end.toLocaleDateString()}
             error={((!(selectedEndDate.end.toLocaleDateString())) && switchTouch) ? 'Please enter date' :
                 (dateError ? 'End date cannot be earlier than start date' : '')}
-        /></div>;
+        />
+        <Button
+            onClick={toggleEndPopover}
+        >
+            OK
+        </Button>
+    </div>;
 
     const [products, pickProducts] = useState(scriptData.config ? scriptData.script[0].configData.products : []);
     const [collections, pickCollections] = useState(scriptData.config ? scriptData.script[0].configData.collections : []);
