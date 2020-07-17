@@ -246,6 +246,7 @@ const PrimaryDesign = (props) => {
                             <Heading>
                                 Widget placement
                             </Heading>
+                            <div style={{width: '240px'}}>
                             <Select
                                 label={'Placement'}
                                 labelInline
@@ -260,6 +261,7 @@ const PrimaryDesign = (props) => {
                                 onChange={(value) => props.setWidgetValue(value)}
                                 value={props.widgetRenderValue}
                             />
+                            </div>
                         </div>
                         <Heading>
                             Product pages with timer
