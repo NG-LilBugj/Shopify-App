@@ -299,23 +299,19 @@ const Initial = () => {
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
                         <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
                             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                                <div style={{height: '50px', width: '50px'}}>
                             <Button
-                                size={"slim"}
+                                size={"medium"}
                                 type={"submit"}
                                 onClick={() => setInitBar(true)}>
                                 <Icon source={SettingsMajorMonotone}/>
                             </Button>
-                                </div>
-                                <div style={{height: '50px', width: '50px'}}>
                             <Button
                                 destructive
-                                size={"slim"}
+                                size={"medium"}
                                 type={"submit"}
                                 onClick={deleteSubmit}>
                                 <Icon source={DeleteMajorMonotone}/>
                             </Button>
-                                </div>
                             </div>
                         </div>
                     </Card>
