@@ -108,6 +108,7 @@ const PrimaryDesign = (props) => {
                     <ButtonGroup segmented>
                         <div style={{color: '#3333cc'}}>
                             <Button
+                                primary
                                 outline={!props.isWidget}
                                 monochrome={!props.isWidget}
                                 onClick={() => {
@@ -119,6 +120,7 @@ const PrimaryDesign = (props) => {
                         </div>
                         <div style={{color: '#3333cc'}}>
                         <Button
+                            primary
                             outline={props.isWidget}
                             monochrome={props.isWidget}
                             onClick={() => {
