@@ -1,4 +1,5 @@
-import {Button, Thumbnail} from "@shopify/polaris";
+import {Button, Icon, Thumbnail} from "@shopify/polaris";
+import {DeleteMinor} from "@shopify/polaris-icons";
 
 
 const Product = (props) => {
@@ -20,7 +21,7 @@ const Product = (props) => {
                     props.products.filter(removeProduct)
                 )}
             >
-                Remove
+                <Icon source={DeleteMinor}/>
             </Button>
         </div>
     )

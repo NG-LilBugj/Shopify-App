@@ -5,7 +5,7 @@ import {
 
 const Collection = (props) => {
 
-    const removeCollection = (collection) => (collection.handle !== props.id);
+    const removeCollection = (collection) => (collection.id !== props.id);
 
     return(
         <div style={{display: 'flex', justifyContent: 'space-between', height: '40px'}}>
