@@ -157,7 +157,7 @@ const Initial = () => {
     const [products, pickProducts] = useState(scriptData.config ? scriptData.script[0].configData.products : []);
     const [collections, pickCollections] = useState(scriptData.config ? scriptData.script[0].configData.collections : []);
 
-    const [widgetRenderValue, setWidgetValue] = useState('belowTitle');
+    const [widgetRenderValue, setWidgetValue] = useState('.product-single__title/append');
 
     const [rangeValue, setRangeValue] = useState(scriptData.config ? scriptData.script[0].configData.borderSize : 0);
     const [heightValue, setHeightValue] = useState(scriptData.config ? scriptData.script[0].configData.bannerHeight : 100);
@@ -190,6 +190,7 @@ const Initial = () => {
             },
         });
         setIsWidget(scriptData.config ? scriptData.script[0].configData.isWidget : false);
+        setWidgetValue(scriptData.config ? scriptData.script[0].configData.widgetRenderValue : '.product-single__title/append');
         setValue(scriptData.config ? scriptData.script[0].configData.position : 'Top');
         setRenderValue(scriptData.config ? scriptData.script[0].configData.display : 'all');
         setChecked(scriptData.config ? scriptData.script[0].configData.sticky : false);
@@ -240,6 +241,7 @@ const Initial = () => {
             display: renderValue,
             sticky: checked,
             isWidget,
+            widgetRenderValue,
             backGroundColor: bgColor,
             bannerHeight: heightValue,
             borderSize: rangeValue,

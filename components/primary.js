@@ -123,8 +123,8 @@ const PrimaryDesign = (props) => {
                         <div style={{color: '#3333cc'}}>
                             <Button
                                 primary
-                                outline={!props.isWidget}
-                                monochrome={!props.isWidget}
+                                outline={props.isWidget}
+                                monochrome={props.isWidget}
                                 onClick={() => {
                                     props.setIsWidget(false);
                                 }}
@@ -135,8 +135,8 @@ const PrimaryDesign = (props) => {
                         <div style={{color: '#3333cc'}}>
                         <Button
                             primary
-                            outline={props.isWidget}
-                            monochrome={props.isWidget}
+                            outline={!props.isWidget}
+                            monochrome={!props.isWidget}
                             onClick={() => {
                                 props.handleRenderValueChange('product');
                                 props.setBorderColor({
@@ -263,15 +263,15 @@ const PrimaryDesign = (props) => {
                             </Heading>
                             <div style={{width: '240px'}}>
                             <Select
-                                label={'Placement'}
+                                label={''}
                                 labelInline
                                 options={[
-                                    {label: 'Above title', value: 'aboveTitle'},
-                                    {label: 'Below title', value: 'belowTitle'},
-                                    {label: 'Above price', value: 'abovePrice'},
-                                    {label: 'Below price', value: 'belowPrice'},
-                                    {label: 'Above buy button', value: 'aboveBuyButton'},
-                                    {label: 'Below buy button', value: 'belowBuyButton'},
+                                    {label: 'Above title', value: '.product-single__title/prepend'},
+                                    {label: 'Below title', value: '.product-single__title/append'},
+                                    {label: 'Above price', value: '.product__price/prepend'},
+                                    {label: 'Below price', value: '.product__price/append'},
+                                    {label: 'Above buy button', value: '.product-form__controls-group/append'},
+                                    {label: 'Below buy button', value: '.product-form__controls-group product-form__controls-group--submit/append'},
                                 ]}
                                 onChange={(value) => props.setWidgetValue(value)}
                                 value={props.widgetRenderValue}
