@@ -23,7 +23,7 @@ const InitPage = (props) => {
                             Create Banner
                         </Button>
                     </div>
-                    <img src={'https://lil-proxy.herokuapp.com/static/sale_animation.gif'} alt={'sale'}/>
+                    <img src={'https://lil-proxy.herokuapp.com/static/sale.gif'} alt={'sale'}/>
                 </div>
             </Layout>
         </Page>
