@@ -6,12 +6,10 @@ const InitPage = (props) => {
         <Page>
             <Layout>
                 <div style={{display: "flex", justifyContent: "space-evenly", alignItems: "center", width: '100%', height: '100%'}}>
-                    <div style={{display: "flex", flexDirection: "column", width: "30%", height: "50%", justifyContent: "space-evenly"}}>
-                        <Heading
-                            element={"h1"}
-                        >
+                    <div style={{display: "flex", flexDirection: "column", width: "30%", height: "90%", justifyContent: "space-evenly"}}>
+                        <DisplayText size={'extraLarge'}>
                             TopSale Countdown Banner
-                        </Heading>
+                        </DisplayText>
                         <DisplayText size="small">
                             Increase sales with urgency, countdown timer, labels and awesome banners
                         </DisplayText>
