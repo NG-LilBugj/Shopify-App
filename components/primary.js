@@ -153,6 +153,9 @@ const PrimaryDesign = (props) => {
                 </Stack>
                 {!props.isWidget ? <>
                 <Stack vertical>
+                    <Heading>
+                        Timer position at the page
+                    </Heading>
                     <RadioButton
                         label="Top"
                         helpText="Displays timer at the top of the store."
@@ -170,7 +173,7 @@ const PrimaryDesign = (props) => {
                         onChange={props.handleChange}
                     />
                 </Stack>
-                <div style={{marginTop: '10px', marginBottom: '10px'}}>
+                <div style={{marginTop: '15px', marginBottom: '15px'}}>
                 <Checkbox
                     label="Display sticky"
                     checked={props.checked}
@@ -180,6 +183,9 @@ const PrimaryDesign = (props) => {
                 />
                 </div>
                 <Stack vertical>
+                    <Heading>
+                        Pages where timer is shown
+                    </Heading>
                     <RadioButton
                         label="All"
                         helpText="Displays timer at all pages."
