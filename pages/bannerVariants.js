@@ -8,31 +8,32 @@ const BannerVariants = (props) => {
                     Which wat do you want to encreasy revenue?
                 </DisplayText>
                 <div>
-                    <Card sectioned>
+                    <Layout.Section>
                         <Heading>
                             Banner first
                         </Heading>
                         <DisplayText size={'small'}>
-                            poru elem necro manuscipto piano forttress. Trant absorbes chaos energy
+                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
                         </DisplayText>
-                    </Card>
-                    <Card sectioned>
+                    </Layout.Section>
+                    <Layout.Section>
                         <Heading>
                             Banner second
                         </Heading>
                         <DisplayText size={'small'}>
-                            poru elem necro manuscipto piano forttress. Trant absorbes chaos energy
+                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
                         </DisplayText>
-                    </Card>
-                    <Card sectioned>
+                    </Layout.Section>
+                    <Layout.Section>
                         <Heading>
                             Banner third
                         </Heading>
                         <DisplayText size={'small'}>
-                            poru elem necro manuscipto piano forttress. Trant absorbes chaos energy
+                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
                         </DisplayText>
-                    </Card>
+                    </Layout.Section>
                 </div>
+                <Layout.Section>
                 <div>
                     <Button
                         primary
@@ -40,6 +41,7 @@ const BannerVariants = (props) => {
                         Create
                     </Button>
                 </div>
+                </Layout.Section>
             </Layout>
         </Page>
     )
