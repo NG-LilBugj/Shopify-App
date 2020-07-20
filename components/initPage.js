@@ -1,4 +1,4 @@
-import {Button, DisplayText, Heading, Page} from "@shopify/polaris";
+import {Button, DisplayText, Heading, Layout, Page} from "@shopify/polaris";
 
 
 const InitPage = (props) => {
