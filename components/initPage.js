@@ -1,5 +1,5 @@
 import {Button, DisplayText, Heading, Layout, Page} from "@shopify/polaris";
-import {Link} from "next";
+import Link from "next/link";
 
 
 const InitPage = (props) => {
