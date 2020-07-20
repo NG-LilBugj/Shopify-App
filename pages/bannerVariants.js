@@ -4,35 +4,44 @@ const BannerVariants = (props) => {
     return(
         <Page>
             <Layout>
-                <DisplayText size={'extraLarge'} element={'h1'}>
+                <DisplayText size={'large'} element={'h1'}>
                     Which wat do you want to encreasy revenue?
                 </DisplayText>
                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh'}}>
                     <Layout.Section>
                         <Card sectioned>
+                            <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
+                                <div style={{display: "flex", flexDirection: "column"}}>
                         <Heading>
                             Banner first
                         </Heading>
-                        <DisplayText size={'small'}>
+                        <p>
                             poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
-                        </DisplayText>
+                        </p>
+                                </div>
+                                <img alt={'design'}/>
+                            </div>
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
+                        <Card sectioned>
                         <Heading>
                             Banner second
                         </Heading>
-                        <DisplayText size={'small'}>
+                        <p>
                             poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
-                        </DisplayText>
+                        </p>
+                        </Card>
                     </Layout.Section>
                     <Layout.Section>
+                        <Card sectioned>
                         <Heading>
                             Banner third
                         </Heading>
-                        <DisplayText size={'small'}>
+                        <p>
                             poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
-                        </DisplayText>
+                        </p>
+                        </Card>
                     </Layout.Section>
                 </div>
                 <Layout.Section>
