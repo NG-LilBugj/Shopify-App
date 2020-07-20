@@ -7,7 +7,7 @@ const BannerVariants = (props) => {
                 <DisplayText size={'extraLarge'} element={'h1'}>
                     Which wat do you want to encreasy revenue?
                 </DisplayText>
-                <div>
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh'}}>
                     <Layout.Section>
                         <Card sectioned>
                         <Heading>
@@ -36,7 +36,7 @@ const BannerVariants = (props) => {
                     </Layout.Section>
                 </div>
                 <Layout.Section>
-                <div>
+                <div style={{display: "flex", justifyContent: "center", width: '100%'}}>
                     <Button
                         primary
                     >
