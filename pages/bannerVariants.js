@@ -9,12 +9,14 @@ const BannerVariants = (props) => {
                 </DisplayText>
                 <div>
                     <Layout.Section>
+                        <Card sectioned>
                         <Heading>
                             Banner first
                         </Heading>
                         <DisplayText size={'small'}>
                             poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
                         </DisplayText>
+                        </Card>
                     </Layout.Section>
                     <Layout.Section>
                         <Heading>
