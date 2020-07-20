@@ -16,6 +16,7 @@ import DesignSection from "../components/design";
 import PrimaryDesign from "../components/primary";
 import * as Scroll from 'react-scroll'
 import {CalendarMinor, DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
+import InitPage from "../components/initPage";
 
 const Initial = () => {
 
@@ -281,20 +282,9 @@ const Initial = () => {
         <Page>
             {!initBar && <Layout>
                 {!scriptData.config && <Layout.Section>
-                    <EmptyState
-                        heading={`Sale Banner`}
-                        image={'https://sct.spur-i-t.com/img/icons/empty-state.svg'}>
-                        <Button
-                            primary
-                            size={"slim"}
-                            type={"submit"}
-                            onClick={() => {
-                                setInitBar(true)
-                            }}
-                        >
-                            Create Banner
-                        </Button>
-                    </EmptyState>
+                    <InitPage
+                        setInitBar={setInitBar}
+                    />
                 </Layout.Section>}
                 {!!scriptData.config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>
