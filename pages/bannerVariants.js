@@ -19,7 +19,7 @@ const BannerVariants = (props) => {
                             poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
                         </p>
                                 </div>
-                                <img alt={'design'}/>
+                                <img src={'https://lil-proxy.herokuapp.com/static/flash_sale.png'} alt={'design'}/>
                             </div>
                         </Card>
                     </Layout.Section>
