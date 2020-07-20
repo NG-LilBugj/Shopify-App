@@ -6,7 +6,7 @@ const InitPage = (props) => {
         <Page>
             <Layout>
                 <div style={{display: "flex", justifyContent: "space-evenly", alignItems: "center", width: '100%', height: '100%'}}>
-                    <div style={{display: "flex", flexDirection: "column"}}>
+                    <div style={{display: "flex", flexDirection: "column", width: "30%"}}>
                         <Heading>
                             TopSale Countdown Banner
                         </Heading>
@@ -23,7 +23,7 @@ const InitPage = (props) => {
                             Create Banner
                         </Button>
                     </div>
-                    <img src={'https://assets3.lottiefiles.com/private_files/lf30_mQLlnH.json'} alt={'sale'}/>
+                    <img src={'https://lil-proxy.herokuapp.com/static/sale_animation.gif'} alt={'sale'}/>
                 </div>
             </Layout>
         </Page>
