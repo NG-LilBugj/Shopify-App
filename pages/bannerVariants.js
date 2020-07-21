@@ -13,7 +13,7 @@ const BannerVariants = (props) => {
                     <Layout.Section>
                         <Card sectioned>
                             <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
-                                <div>
+                                <div style={{display: "flex", flexDirection: "row"}}>
                                     <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>
                                 <div style={{display: "flex", flexDirection: "column"}}>
                         <Heading>
