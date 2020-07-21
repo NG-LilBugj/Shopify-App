@@ -1,4 +1,5 @@
-import {Button, Card, DisplayText, Heading, Layout, Page} from "@shopify/polaris";
+import {Card, DisplayText, Heading, Layout, Page} from "@shopify/polaris";
+import {Button} from "@material-ui/core"
 import {useState} from "react";
 
 const BannerVariants = (props) => {
@@ -13,7 +14,7 @@ const BannerVariants = (props) => {
                     Which wat do you want to encreasy revenue?
                 </DisplayText>
                 </div>
-                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh', marginTop: '30px'}}>
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh'}}>
                     <Layout.Section>
                         <Card sectioned>
                             <div
@@ -85,6 +86,7 @@ const BannerVariants = (props) => {
                 <div style={{display: "flex", justifyContent: "center", width: '100%', marginBottom: '10px', marginTop: '40px'}}>
                     <Button
                         primary
+                        size={'large'}
                     >
                         Continue
                     </Button>
