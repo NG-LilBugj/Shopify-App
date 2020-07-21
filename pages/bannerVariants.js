@@ -85,7 +85,8 @@ const BannerVariants = (props) => {
                 <Layout.Section>
                 <div style={{display: "flex", justifyContent: "center", width: '100%', marginBottom: '10px', marginTop: '40px'}}>
                     <Button
-                        primary
+                        variant="contained"
+                        color="primary"
                         size={'large'}
                     >
                         Continue
