@@ -1,6 +1,7 @@
-import {Button, Card, Layout, Page, Pagination} from "@shopify/polaris";
+import {Button, Card, Layout, Page, Pagination, Select} from "@shopify/polaris";
 import {useState} from "react";
 import "../public/index.css"
+import axios from "axios";
 
 const categories = [
     'Banners',
@@ -52,6 +53,15 @@ const Badges = (props) => {
 
     const [category, pickCategory] = useState(categories[0]);
     const [pickedBadge, pickBadge] = useState(0);
+    const [bannerRenderValue, setBannerValue] = useState('.product-single__title/append');
+
+    const handleSubmit = async () => {
+        let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
+            pickedBadge,
+            bannerRenderValue
+        });
+        console.log(res);
+    };
 
     return (
         <Page>
@@ -63,8 +73,11 @@ const Badges = (props) => {
                             Customize your special badge banner!
                         </div>
                         <Button
+                            primary
+                            disabled={(pickedBadge === 0)}
                             size={"medium"}
                             type={"submit"}
+                            onClick={handleSubmit}
                         >
                             Save
                         </Button>
@@ -96,9 +109,33 @@ const Badges = (props) => {
                 </Layout.Section>
                 <Layout.Section>
                     <Card title={'Banner placement'}>
-
+                        <Select
+                            label={''}
+                            labelInline
+                            options={[
+                                {label: 'Above title', value: '.product-single__title/prepend'},
+                                {label: 'Below title', value: '.product-single__title/append'},
+                                {label: 'Above price', value: '.product__price/prepend'},
+                                {label: 'Below price', value: '.product__price/append'},
+                                {label: 'Above buy button', value: '.product-form__controls-group/append'},
+                                {label: 'Below buy button', value: '.product-form__controls-group product-form__controls-group--submit/append'},
+                            ]}
+                            onChange={(value) => setBannerValue(value)}
+                            value={bannerRenderValue}
+                        />
                     </Card>
                 </Layout.Section>
+                <div style={{display: "flex", justifyContent: 'flex-end',width: '100%'}}>
+                    <Button
+                        primary
+                        disabled={(pickedBadge === 0)}
+                        size={"medium"}
+                        type={"submit"}
+                        onClick={handleSubmit}
+                    >
+                        Save
+                    </Button>
+                </div>
             </Layout>
         </Page>
     )
