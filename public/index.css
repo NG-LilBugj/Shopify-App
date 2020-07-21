@@ -82,6 +82,22 @@
     color: darkblue;
 }
 
+
+
+.img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 260px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+.img-container:hover{
+    border-color: #5c6ac4;
+    transition: 0.3s;
+}
+
 @media screen and (max-width: 800px) {
     .number-place {
         border-radius: 3px;

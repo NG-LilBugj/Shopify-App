@@ -1,5 +1,6 @@
 import {Button, Card, Layout, Page, Pagination} from "@shopify/polaris";
 import {useState} from "react";
+import "../public/index.css"
 
 const categories = [
     'Banners',
@@ -13,23 +14,23 @@ const categoryVariant = (category) => {
         case 'Banners': return <div/>;
         case 'Badges': return(
             <div style={{display: "flex", flexWrap: "wrap", width: '100%'}}>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '260px', marginBottom: '20px', '&:hover': {border: '1px solid #3333aa', transition: '0.3s'}}}>
+                <div className={'img-container'}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge1.png'} alt={'icon'}/></div>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '260px', marginBottom: '20px', '&:hover': {border: '1px solid #3333aa', transition: '0.3s'}}}>
+                <div className={'img-container'}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge2.png'} alt={'icon'}/></div>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '260px', marginBottom: '20px', '&:hover': {border: '1px solid #3333aa', transition: '0.3s'}}}>
+                <div className={'img-container'}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge3.png'} alt={'icon'}/></div>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '260px', marginBottom: '20px', '&:hover': {border: '1px solid #3333aa', transition: '0.3s'}}}>
+                <div className={'img-container'}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge4.png'} alt={'icon'}/></div>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '260px', marginBottom: '20px', '&:hover': {border: '1px solid #3333aa', transition: '0.3s'}}}>
+                <div className={'img-container'}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge5.png'} alt={'icon'}/></div>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '260px', marginBottom: '20px', '&:hover': {border: '1px solid #3333aa', transition: '0.3s'}}}>
+                <div className={'img-container'}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge6.png'} alt={'icon'}/></div>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '260px', marginBottom: '20px', '&:hover': {border: '1px solid #3333aa', transition: '0.3s'}}}>
+                <div className={'img-container'}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge7.png'} alt={'icon'}/></div>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '260px', marginBottom: '20px', '&:hover': {border: '1px solid #3333aa', transition: '0.3s'}}}>
+                <div className={'img-container'}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge8.png'} alt={'icon'}/></div>
-                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '260px', marginBottom: '20px', '&:hover': {border: '1px solid #3333aa', transition: '0.3s'}}}>
+                <div className={'img-container'}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge9.png'} alt={'icon'}/></div>
             </div>
         );
