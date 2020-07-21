@@ -57,13 +57,13 @@ const Badges = (props) => {
                             <Pagination
                                 hasPrevious={categories.indexOf(category) > 0}
                                 onPrevious={() => {
-                                    console.log(categories.indexOf(category) + 1, categories[categories.indexOf(category) + 1]);
-                                    pickCategory(categories[categories.indexOf(category) + 1])
+                                    console.log(categories.indexOf(category) - 1, categories[categories.indexOf(category) - 1]);
+                                    pickCategory(categories[categories.indexOf(category) - 1])
                                 }}
                                 hasNext={categories.indexOf(category) < categories.length - 1}
                                 onNext={() => {
-                                    console.log(categories.indexOf(category) - 1, categories[categories.indexOf(category) - 1]);
-                                    pickCategory(categories[categories.indexOf(category) - 1])
+                                    console.log(categories.indexOf(category) + 1, categories[categories.indexOf(category) + 1]);
+                                    pickCategory(categories[categories.indexOf(category) + 1])
                                 }}
                             />
                         </div>
