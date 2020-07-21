@@ -57,7 +57,7 @@ const BannerVariants = (props) => {
                     </Layout.Section>
                 </div>
                 <Layout.Section>
-                <div style={{display: "flex", justifyContent: "center", width: '100%'}}>
+                <div style={{display: "flex", justifyContent: "center", width: '100%', marginBottom: '30px', marginTop: '30px'}}>
                     <Button
                         primary
                     >
