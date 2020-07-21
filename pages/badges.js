@@ -51,7 +51,7 @@ const Badges = (props) => {
                     </div>
                 </Layout.Section>
                 <Layout.Section>
-                    <Card title={'Pick category'}>
+                    <Card sectioned title={'Pick category'}>
                         <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
                             <p>Category: {category}</p>
                             <Pagination
@@ -70,7 +70,7 @@ const Badges = (props) => {
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
-                    <Card title={'Pick Badge'}>
+                    <Card sectioned title={'Pick Badge'}>
                         {categoryVariant(category)}
                     </Card>
                 </Layout.Section>
