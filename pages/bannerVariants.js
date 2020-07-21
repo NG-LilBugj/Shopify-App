@@ -60,12 +60,14 @@ const BannerVariants = (props) => {
                                             that great offer has begun!
                                         </p>
                                         <i>
-                                            - About 15% more revenue
+                                            - About 20% more revenue
                                         </i>
                                     </div>
                                 </div>
+                                <div style={{display: "flex", alignItems: 'center'}}>
                                 <img style={{width: '90px', height: '41px'}}
                                      src={'https://lil-proxy.herokuapp.com/static/day_left.png'} alt={'design'}/>
+                                </div>
                             </div>
                         </Card>
                     </Layout.Section>
@@ -87,12 +89,14 @@ const BannerVariants = (props) => {
                                             Incredible label which will underline the unique of your products.
                                         </p>
                                         <i>
-                                            - About 15% more revenue
+                                            - About 25% more revenue
                                         </i>
                                     </div>
                                 </div>
+                                <div style={{display: "flex", alignItems: 'center'}}>
                                 <img style={{width: '120px'}}
                                      src={'https://lil-proxy.herokuapp.com/static/flash_sale.png'} alt={'design'}/>
+                                </div>
                             </div>
                         </Card>
                     </Layout.Section>
