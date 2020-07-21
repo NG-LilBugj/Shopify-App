@@ -108,7 +108,8 @@ const Badges = (props) => {
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
-                    <Card title={'Banner placement'}>
+                    <Card sectioned title={'Banner placement'}>
+                        <div style={{width: '320px'}}>
                         <Select
                             label={''}
                             labelInline
@@ -123,6 +124,7 @@ const Badges = (props) => {
                             onChange={(value) => setBannerValue(value)}
                             value={bannerRenderValue}
                         />
+                        </div>
                     </Card>
                 </Layout.Section>
                 <div style={{display: "flex", justifyContent: 'flex-end',width: '100%'}}>
