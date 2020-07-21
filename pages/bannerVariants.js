@@ -39,7 +39,7 @@ const BannerVariants = (props) => {
                     <Layout.Section>
                         <Card sectioned>
                             <div
-                                style={{display: "flex", justifyContent: "space-between", width: '540px'}}
+                                style={{display: "flex", justifyContent: "space-between", width: '540px', cursor: "pointer"}}
                                 onClick={() => chooseOption(1)}
                             >
                                 <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
@@ -74,7 +74,7 @@ const BannerVariants = (props) => {
                     <Layout.Section>
                         <Card sectioned>
                             <div
-                                style={{display: "flex", justifyContent: "space-between", maxWidth: '540px'}}
+                                style={{display: "flex", justifyContent: "space-between", maxWidth: '540px', cursor: "pointer"}}
                                 onClick={() => chooseOption(2)}
                             >
                                 <div style={{display: "flex", flexDirection: "row"}}>
@@ -103,7 +103,7 @@ const BannerVariants = (props) => {
                     <Layout.Section>
                         <Card sectioned>
                             <div
-                                style={{display: "flex", justifyContent: "space-between", maxWidth: '540px'}}
+                                style={{display: "flex", justifyContent: "space-between", maxWidth: '540px', cursor: "pointer"}}
                                 onClick={() => chooseOption(3)}
                             >
                                 <div style={{display: "flex", flexDirection: "row"}}>
