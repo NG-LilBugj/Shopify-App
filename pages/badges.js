@@ -45,7 +45,6 @@ const Badges = (props) => {
                         <Button
                             size={"medium"}
                             type={"submit"}
-                            onClick={designSwitch}
                         >
                             Save
                         </Button>
