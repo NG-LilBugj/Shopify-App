@@ -23,7 +23,7 @@ const ShopifyButton = withStyles({
     }
 })(Button);
 
-const InitPage = () => {
+const InitPage = (props) => {
     return(
         <Page>
             <Layout>
