@@ -4,12 +4,12 @@ const BannerVariants = (props) => {
     return(
         <Page>
             <Layout>
-                <div style={{marginBottom: '30px', marginTop: '30px'}}>
+                <div style={{marginBottom: '60px', marginTop: '30px'}}>
                 <DisplayText size={'large'} element={'h1'}>
                     Which wat do you want to encreasy revenue?
                 </DisplayText>
                 </div>
-                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh'}}>
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh', marginTop: '30px'}}>
                     <Layout.Section>
                         <Card sectioned>
                             <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
