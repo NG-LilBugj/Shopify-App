@@ -25,22 +25,32 @@ const BannerVariants = (props) => {
                     </Layout.Section>
                     <Layout.Section>
                         <Card sectioned>
-                        <Heading>
-                            Banner second
-                        </Heading>
-                        <p>
-                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
-                        </p>
+                            <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
+                                <div style={{display: "flex", flexDirection: "column"}}>
+                                    <Heading>
+                                        Banner second
+                                    </Heading>
+                                    <p>
+                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
+                                    </p>
+                                </div>
+                                <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/day_left.png'} alt={'design'}/>
+                            </div>
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
                         <Card sectioned>
-                        <Heading>
-                            Banner third
-                        </Heading>
-                        <p>
-                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
-                        </p>
+                            <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
+                                <div style={{display: "flex", flexDirection: "column"}}>
+                                    <Heading>
+                                        Banner third
+                                    </Heading>
+                                    <p>
+                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
+                                    </p>
+                                </div>
+                                <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/gift.gif'} alt={'design'}/>
+                            </div>
                         </Card>
                     </Layout.Section>
                 </div>
@@ -49,7 +59,7 @@ const BannerVariants = (props) => {
                     <Button
                         primary
                     >
-                        Create
+                        Continue
                     </Button>
                 </div>
                 </Layout.Section>
