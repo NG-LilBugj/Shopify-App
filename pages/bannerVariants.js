@@ -2,7 +2,7 @@ import {Button, Card, DisplayText, Heading, Layout, Page} from "@shopify/polaris
 
 const BannerVariants = (props) => {
     return(
-        <div>
+        <div style={{height: '100%'}}>
             <Layout>
                 <DisplayText size={'large'} element={'h1'}>
                     Which wat do you want to encreasy revenue?
