@@ -1,6 +1,10 @@
 import {Button, Card, DisplayText, Heading, Layout, Page} from "@shopify/polaris";
+import {useState} from "react";
 
 const BannerVariants = (props) => {
+
+    const [chosenOption, chooseOption] = useState(1);
+
     return(
         <Page>
             <Layout>
@@ -12,9 +16,13 @@ const BannerVariants = (props) => {
                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh', marginTop: '30px'}}>
                     <Layout.Section>
                         <Card sectioned>
-                            <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
+                            <div
+                                style={{display: "flex", justifyContent: "space-between", width: '100%'}}
+                                onClick={() => chooseOption(1)}
+                            >
                                 <div style={{display: "flex", flexDirection: "row"}}>
-                                    <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>
+                                    {(chosenOption === 1) &&
+                                        <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
                                 <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
                         <Heading>
                             Banner first
@@ -24,37 +32,49 @@ const BannerVariants = (props) => {
                         </p>
                                 </div>
                                 </div>
-                                <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/flash_sale.png'} alt={'design'}/>
-                            </div>
-                        </Card>
-                    </Layout.Section>
-                    <Layout.Section>
-                        <Card sectioned>
-                            <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
-                                <div style={{display: "flex", flexDirection: "column"}}>
-                                    <Heading>
-                                        Banner second
-                                    </Heading>
-                                    <p>
-                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
-                                    </p>
-                                </div>
                                 <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/day_left.png'} alt={'design'}/>
                             </div>
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
                         <Card sectioned>
-                            <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
-                                <div style={{display: "flex", flexDirection: "column"}}>
-                                    <Heading>
-                                        Banner third
-                                    </Heading>
-                                    <p>
-                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy.
-                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy.
-                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy.
-                                    </p>
+                            <div
+                                style={{display: "flex", justifyContent: "space-between", width: '100%'}}
+                                onClick={() => chooseOption(2)}
+                            >
+                                <div style={{display: "flex", flexDirection: "row"}}>
+                                    {(chosenOption === 2) &&
+                                    <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
+                                    <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
+                                        <Heading>
+                                            Banner first
+                                        </Heading>
+                                        <p>
+                                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
+                                        </p>
+                                    </div>
+                                </div>
+                                <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/flash_sale.png'} alt={'design'}/>
+                            </div>
+                        </Card>
+                    </Layout.Section>
+                    <Layout.Section>
+                        <Card sectioned>
+                            <div
+                                style={{display: "flex", justifyContent: "space-between", width: '100%'}}
+                                onClick={() => chooseOption(3)}
+                            >
+                                <div style={{display: "flex", flexDirection: "row"}}>
+                                    {(chosenOption === 3) &&
+                                    <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
+                                    <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
+                                        <Heading>
+                                            Banner first
+                                        </Heading>
+                                        <p>
+                                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
+                                        </p>
+                                    </div>
                                 </div>
                                 <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/gift.gif'} alt={'design'}/>
                             </div>
