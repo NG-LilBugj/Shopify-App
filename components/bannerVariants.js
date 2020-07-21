@@ -1,4 +1,4 @@
-import {Card, DisplayText, Heading, Layout, Page} from "@shopify/polaris";
+import {Card, DisplayText, Heading, Layout, Page, TextStyle} from "@shopify/polaris";
 import {Button, withStyles} from "@material-ui/core"
 import {useState} from "react";
 import Link from "next/link";
@@ -142,11 +142,17 @@ const BannerVariants = (props) => {
                                 variant="contained"
                                 color="primary"
                                 size={'large'}
+                                disabled={(chosenOption === 3)}
                                 onClick={() => props.setInitBar(true)}
                             >
                                 Continue
                             </ShopifyButton>
                         </Link>
+                        {(chosenOption === 3) && <DisplayText>
+                            <TextStyle variation={'negative'}>
+                                This feature has not embedded yet
+                            </TextStyle>
+                        </DisplayText>}
                     </div>
                 </Layout.Section>
             </Layout>
