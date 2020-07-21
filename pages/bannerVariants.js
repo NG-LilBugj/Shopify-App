@@ -48,7 +48,9 @@ const BannerVariants = (props) => {
                                         Banner third
                                     </Heading>
                                     <p>
-                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
+                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy.
+                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy.
+                                        poru elem necro manuscipto piano fortress. Trant absorbes chaos energy.
                                     </p>
                                 </div>
                                 <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/gift.gif'} alt={'design'}/>
