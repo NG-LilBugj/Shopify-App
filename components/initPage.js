@@ -1,7 +1,13 @@
 import {DisplayText, Heading, Layout, Page} from "@shopify/polaris";
 import Link from "next/link";
 import Button from "@material-ui/core/Button";
+import {withStyles} from "@material-ui/core";
 
+const ShopifyButton = withStyles({
+    root: {
+        fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'
+    }
+})(Button);
 
 const InitPage = (props) => {
     return(
@@ -17,7 +23,7 @@ const InitPage = (props) => {
                         </DisplayText>
                         <div style={{width: '200px', fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'}}>
                             <Link href={'/bannerVariants'}>
-                        <Button
+                        <ShopifyButton
                             variant="contained"
                             color="primary"
                             size={'large'}
@@ -26,7 +32,7 @@ const InitPage = (props) => {
                             }}
                         >
                             Create Banner
-                        </Button>
+                        </ShopifyButton>
                             </Link>
                         </div>
                     </div>
