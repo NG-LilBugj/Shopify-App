@@ -9,7 +9,7 @@ const categories = [
     'Some'
 ];
 
-const categoryVariant = (category) => {
+const categoryVariant = (category, pickedBadge, pickBadge) => {
     switch (category) {
         case 'Banners': return <div/>;
         case 'Badges': return(
@@ -91,7 +91,7 @@ const Badges = (props) => {
                 </Layout.Section>
                 <Layout.Section>
                     <Card sectioned title={'Pick Badge'}>
-                        {categoryVariant(category)}
+                        {categoryVariant(category, pickedBadge, pickBadge)}
                     </Card>
                 </Layout.Section>
             </Layout>
