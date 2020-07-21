@@ -14,31 +14,31 @@ const categoryVariant = (category, pickedBadge, pickBadge) => {
         case 'Banners': return <div/>;
         case 'Badges': return(
             <div style={{display: "flex", flexWrap: "wrap", width: '100%'}}>
-                <div style={{borderColor: (pickedBadge === 1) ? '#3333aa' : "transparent"}}
+                <div style={{borderColor: (pickedBadge === 1) ? '#3333aa' : ""}}
                      className={'img-container'} onClick={() => pickBadge(1)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge1.png'} alt={'icon'}/></div>
-                <div style={{borderColor: (pickedBadge === 2) ? '#3333aa' : "transparent"}}
+                <div style={{borderColor: (pickedBadge === 2) ? '#3333aa' : ""}}
                      className={'img-container'} onClick={() => pickBadge(2)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge2.png'} alt={'icon'}/></div>
-                <div style={{borderColor: (pickedBadge === 3) ? '#3333aa' : "transparent"}}
+                <div style={{borderColor: (pickedBadge === 3) ? '#3333aa' : ""}}
                      className={'img-container'} onClick={() => pickBadge(3)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge3.png'} alt={'icon'}/></div>
-                <div style={{borderColor: (pickedBadge === 4) ? '#3333aa' : "transparent"}}
+                <div style={{borderColor: (pickedBadge === 4) ? '#3333aa' : ""}}
                      className={'img-container'} onClick={() => pickBadge(4)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge4.png'} alt={'icon'}/></div>
-                <div style={{borderColor: (pickedBadge === 5) ? '#3333aa' : "transparent"}}
+                <div style={{borderColor: (pickedBadge === 5) ? '#3333aa' : ""}}
                      className={'img-container'} onClick={() => pickBadge(5)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge5.png'} alt={'icon'}/></div>
-                <div style={{borderColor: (pickedBadge === 6) ? '#3333aa' : "transparent"}}
+                <div style={{borderColor: (pickedBadge === 6) ? '#3333aa' : ""}}
                      className={'img-container'} onClick={() => pickBadge(6)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge6.png'} alt={'icon'}/></div>
-                <div style={{borderColor: (pickedBadge === 7) ? '#3333aa' : "transparent"}}
+                <div style={{borderColor: (pickedBadge === 7) ? '#3333aa' : ""}}
                      className={'img-container'} onClick={() => pickBadge(7)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge7.png'} alt={'icon'}/></div>
-                <div style={{borderColor: (pickedBadge === 8) ? '#3333aa' : "transparent"}}
+                <div style={{borderColor: (pickedBadge === 8) ? '#3333aa' : ""}}
                      className={'img-container'} onClick={() => pickBadge(8)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge8.png'} alt={'icon'}/></div>
-                <div style={{borderColor: (pickedBadge === 9) ? '#3333aa' : "transparent"}}
+                <div style={{borderColor: (pickedBadge === 9) ? '#3333aa' : ""}}
                      className={'img-container'} onClick={() => pickBadge(9)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge9.png'} alt={'icon'}/></div>
             </div>
@@ -92,6 +92,11 @@ const Badges = (props) => {
                 <Layout.Section>
                     <Card sectioned title={'Pick Badge'}>
                         {categoryVariant(category, pickedBadge, pickBadge)}
+                    </Card>
+                </Layout.Section>
+                <Layout.Section>
+                    <Card title={'Banner placement'}>
+
                     </Card>
                 </Layout.Section>
             </Layout>
