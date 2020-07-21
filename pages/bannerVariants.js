@@ -1,6 +1,23 @@
 import {Card, DisplayText, Heading, Layout, Page} from "@shopify/polaris";
-import {Button} from "@material-ui/core"
+import {Button, withStyles} from "@material-ui/core"
 import {useState} from "react";
+
+const ShopifyButton = withStyles({
+    root: {
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
+    }
+})(Button);
 
 const BannerVariants = (props) => {
 
@@ -84,13 +101,13 @@ const BannerVariants = (props) => {
                 </div>
                 <Layout.Section>
                 <div style={{display: "flex", justifyContent: "center", width: '100%', marginBottom: '10px', marginTop: '40px', fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'}}>
-                    <Button
+                    <ShopifyButton
                         variant="contained"
                         color="primary"
                         size={'large'}
                     >
                         Continue
-                    </Button>
+                    </ShopifyButton>
                 </div>
                 </Layout.Section>
             </Layout>

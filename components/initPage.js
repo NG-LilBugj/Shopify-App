@@ -32,7 +32,7 @@ const InitPage = (props) => {
                         <DisplayText size="small">
                             Increase sales with urgency, countdown timer, labels and awesome banners
                         </DisplayText>
-                        <div style={{width: '200px', fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'}}>
+                        <div style={{width: '200px'}}>
                             <Link href={'/bannerVariants'}>
                         <ShopifyButton
                             variant="contained"
