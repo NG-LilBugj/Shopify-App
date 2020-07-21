@@ -1,6 +1,7 @@
 import {Card, DisplayText, Heading, Layout, Page} from "@shopify/polaris";
 import {Button, withStyles} from "@material-ui/core"
 import {useState} from "react";
+import Link from "next/link";
 
 const ShopifyButton = withStyles({
     root: {
@@ -101,6 +102,7 @@ const BannerVariants = (props) => {
                 </div>
                 <Layout.Section>
                 <div style={{display: "flex", justifyContent: "center", width: '100%', marginBottom: '10px', marginTop: '40px', fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'}}>
+                    <Link href={(chosenOption === 1) ? '/' : (chosenOption === 2) ? '/badges' : ''}>
                     <ShopifyButton
                         variant="contained"
                         color="primary"
@@ -108,6 +110,7 @@ const BannerVariants = (props) => {
                     >
                         Continue
                     </ShopifyButton>
+                    </Link>
                 </div>
                 </Layout.Section>
             </Layout>
