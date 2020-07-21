@@ -5,9 +5,9 @@ import Link from "next/link";
 
 const ShopifyButton = withStyles({
     root: {
-        padding: '8px 16px',
+        padding: '9px 18px',
         textTransform: 'none',
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: [
             '-apple-system',
             'BlinkMacSystemFont',
@@ -42,7 +42,7 @@ const BannerVariants = (props) => {
                                 style={{display: "flex", justifyContent: "space-between", width: '100%'}}
                                 onClick={() => chooseOption(1)}
                             >
-                                <div style={{display: "flex", flexDirection: "row"}}>
+                                <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                                     {(chosenOption === 1) &&
                                         <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
                                 <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
