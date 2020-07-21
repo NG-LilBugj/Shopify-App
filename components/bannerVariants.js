@@ -131,11 +131,11 @@ const BannerVariants = (props) => {
                 <Layout.Section>
                     <div style={{
                         display: "flex",
-                        justifyContent: "center",
+                        justifyContent: "space-evenly",
+                        alignItems: "center",
                         width: '100%',
                         marginBottom: '10px',
                         marginTop: '40px',
-                        fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'
                     }}>
                         <Link href={(chosenOption === 1) ? '/' : (chosenOption === 2) ? '/badges' : ''}>
                             <ShopifyButton
