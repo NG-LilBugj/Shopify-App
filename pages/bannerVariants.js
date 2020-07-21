@@ -5,6 +5,9 @@ import Link from "next/link";
 
 const ShopifyButton = withStyles({
     root: {
+        padding: '8px 16px',
+        textTransform: 'none',
+        fontSize: 18,
         fontFamily: [
             '-apple-system',
             'BlinkMacSystemFont',
