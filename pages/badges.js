@@ -13,15 +13,24 @@ const categoryVariant = (category) => {
         case 'Banners': return <div/>;
         case 'Badges': return(
             <div style={{display: "flex", flexWrap: "wrap", width: '100%'}}>
-                <img src={'https://lil-proxy.herokuapp.com/static/badge1.png'} alt={'icon'}/>
-                <img src={'https://lil-proxy.herokuapp.com/static/badge2.png'} alt={'icon'}/>
-                <img src={'https://lil-proxy.herokuapp.com/static/badge3.png'} alt={'icon'}/>
-                <img src={'https://lil-proxy.herokuapp.com/static/badge4.png'} alt={'icon'}/>
-                <img src={'https://lil-proxy.herokuapp.com/static/badge5.png'} alt={'icon'}/>
-                <img src={'https://lil-proxy.herokuapp.com/static/badge6.png'} alt={'icon'}/>
-                <img src={'https://lil-proxy.herokuapp.com/static/badge7.png'} alt={'icon'}/>
-                <img src={'https://lil-proxy.herokuapp.com/static/badge8.png'} alt={'icon'}/>
-                <img src={'https://lil-proxy.herokuapp.com/static/badge9.png'} alt={'icon'}/>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '300px'}}>
+                    <img style={{width: '240px'}} src={'https://lil-proxy.herokuapp.com/static/badge1.png'} alt={'icon'}/></div>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '300px'}}>
+                    <img style={{width: '240px'}} src={'https://lil-proxy.herokuapp.com/static/badge2.png'} alt={'icon'}/></div>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '300px'}}>
+                    <img style={{width: '240px'}} src={'https://lil-proxy.herokuapp.com/static/badge3.png'} alt={'icon'}/></div>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '300px'}}>
+                    <img style={{width: '240px'}} src={'https://lil-proxy.herokuapp.com/static/badge4.png'} alt={'icon'}/></div>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '300px'}}>
+                    <img style={{width: '240px'}} src={'https://lil-proxy.herokuapp.com/static/badge5.png'} alt={'icon'}/></div>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '300px'}}>
+                    <img style={{width: '240px'}} src={'https://lil-proxy.herokuapp.com/static/badge6.png'} alt={'icon'}/></div>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '300px'}}>
+                    <img style={{width: '240px'}} src={'https://lil-proxy.herokuapp.com/static/badge7.png'} alt={'icon'}/></div>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '300px'}}>
+                    <img style={{width: '240px'}} src={'https://lil-proxy.herokuapp.com/static/badge8.png'} alt={'icon'}/></div>
+                <div style={{display: "flex", justifyContent: "center", alignItems: "center", width: '300px'}}>
+                    <img style={{width: '240px'}} src={'https://lil-proxy.herokuapp.com/static/badge9.png'} alt={'icon'}/></div>
             </div>
         );
         case 'Third': return <div/>;
