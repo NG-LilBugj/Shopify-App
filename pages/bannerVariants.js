@@ -2,11 +2,13 @@ import {Button, Card, DisplayText, Heading, Layout, Page} from "@shopify/polaris
 
 const BannerVariants = (props) => {
     return(
-        <div style={{height: '85vh'}}>
+        <Page>
             <Layout>
+                <div style={{marginBottom: '30px', marginTop: '30px'}}>
                 <DisplayText size={'large'} element={'h1'}>
                     Which wat do you want to encreasy revenue?
                 </DisplayText>
+                </div>
                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh'}}>
                     <Layout.Section>
                         <Card sectioned>
@@ -64,7 +66,7 @@ const BannerVariants = (props) => {
                 </div>
                 </Layout.Section>
             </Layout>
-        </div>
+        </Page>
     )
 };
 
