@@ -6,7 +6,10 @@ import {withStyles} from "@material-ui/core";
 const ShopifyButton = withStyles({
     root: {
         fontFamily: [
-            'Helvetica',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
             'Arial',
             'sans-serif',
         ].join(','),

@@ -29,7 +29,7 @@ const BannerVariants = (props) => {
                             Banner first
                         </Heading>
                         <p>
-                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
+                            Special countdown timer which can render on product or other pages, signs that great offer has begun!
                         </p>
                                 </div>
                                 </div>
@@ -51,7 +51,7 @@ const BannerVariants = (props) => {
                                             Banner first
                                         </Heading>
                                         <p>
-                                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
+                                            Incredible label which will underline the unique of your products.
                                         </p>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@ const BannerVariants = (props) => {
                                             Banner first
                                         </Heading>
                                         <p>
-                                            poru elem necro manuscipto piano fortress. Trant absorbes chaos energy
+                                            Gift animation to your customers!
                                         </p>
                                     </div>
                                 </div>
