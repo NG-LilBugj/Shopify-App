@@ -15,7 +15,7 @@ const BannerVariants = (props) => {
                             <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
                                 <div style={{display: "flex", flexDirection: "row"}}>
                                     <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>
-                                <div style={{display: "flex", flexDirection: "column"}}>
+                                <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
                         <Heading>
                             Banner first
                         </Heading>
