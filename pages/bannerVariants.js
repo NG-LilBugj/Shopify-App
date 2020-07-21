@@ -45,7 +45,7 @@ const BannerVariants = (props) => {
                         <Heading>
                             Banner first
                         </Heading>
-                        <p>
+                        <p style={{width: '360px'}}>
                             Special countdown timer which can render on product or other pages, signs that great offer has begun!
                         </p>
                                 </div>
@@ -67,7 +67,7 @@ const BannerVariants = (props) => {
                                         <Heading>
                                             Banner first
                                         </Heading>
-                                        <p>
+                                        <p style={{width: '360px'}}>
                                             Incredible label which will underline the unique of your products.
                                         </p>
                                     </div>
@@ -89,7 +89,7 @@ const BannerVariants = (props) => {
                                         <Heading>
                                             Banner first
                                         </Heading>
-                                        <p>
+                                        <p style={{width: '360px'}}>
                                             Gift animation to your customers!
                                         </p>
                                     </div>
