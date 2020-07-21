@@ -17,6 +17,7 @@ import PrimaryDesign from "../components/primary";
 import * as Scroll from 'react-scroll'
 import {CalendarMinor, DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
 import InitPage from "../components/initPage";
+import BannerVariants from "../components/bannerVariants";
 
 const Initial = () => {
 
@@ -28,6 +29,7 @@ const Initial = () => {
     }, []);
 
     const [isLoading, setLoading] = useState(true);
+    const [isSecondPage, setSecondPage] = useState(false);
     const [isMainConfig, setConfigMenu] = useState(true);
     const [isWidget, setIsWidget] = useState(false);
     const [scriptData, fetchData] = useState(false);
@@ -276,15 +278,19 @@ const Initial = () => {
     };
 
     if (isLoading) return <Page><Layout><img src={
-        'https://lh3.googleusercontent.com/proxy/Vh7D1LB-KgwOcX-E1ekpDUhNTScwctudMb7ULPWSE0UvJWU2KMPZl2bp8fHN-SZdbMa1RnCbY8LsBDldmQc3YL98GQ'
+        'https://lil-proxy.herokuapp.com/static/Preloader.gif'
     } alt={'shock'}/></Layout></Page>;
     else return (
         <Page>
             {!initBar && <Layout>
                 {!scriptData.config && <Layout.Section>
-                    <InitPage
-                        setInitBar={setInitBar}
-                    />
+                    {isSecondPage ?
+                        <BannerVariants
+                            setInitBar={setInitBar}
+                        /> :
+                        <InitPage
+                            setSecondPage={setSecondPage}
+                        />}
                 </Layout.Section>}
                 {!!scriptData.config && <Layout.Section>
                     <Card title={"Existing Banner:"} sectioned>

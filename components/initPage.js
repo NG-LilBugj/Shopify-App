@@ -23,7 +23,7 @@ const ShopifyButton = withStyles({
     }
 })(Button);
 
-const InitPage = (props) => {
+const InitPage = () => {
     return(
         <Page>
             <Layout>
@@ -36,18 +36,16 @@ const InitPage = (props) => {
                             Increase sales with urgency, countdown timer, labels and awesome banners
                         </DisplayText>
                         <div style={{width: '200px'}}>
-                            <Link href={'/bannerVariants'}>
                         <ShopifyButton
                             variant="contained"
                             color="primary"
                             size={'large'}
                             onClick={() => {
-                                //props.setInitBar(true)
+                                props.setSecondPage(true)
                             }}
                         >
                             Create Banner
                         </ShopifyButton>
-                            </Link>
                         </div>
                     </div>
                     <img src={'https://lil-proxy.herokuapp.com/static/sale.gif'} alt={'sale'}/>

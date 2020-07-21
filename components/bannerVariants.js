@@ -142,6 +142,7 @@ const BannerVariants = (props) => {
                                 variant="contained"
                                 color="primary"
                                 size={'large'}
+                                onClick={() => props.setInitBar(true)}
                             >
                                 Continue
                             </ShopifyButton>
