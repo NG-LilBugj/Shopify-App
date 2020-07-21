@@ -6,7 +6,6 @@ import {withStyles} from "@material-ui/core";
 const ShopifyButton = withStyles({
     root: {
         fontFamily: [
-            'ShopifySans',
             'Helvetica',
             'Arial',
             'sans-serif',
