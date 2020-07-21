@@ -1,4 +1,4 @@
-import {Button, Card, Layout, Page} from "@shopify/polaris";
+import {Button, Card, Layout, Page, Pagination} from "@shopify/polaris";
 import {useState} from "react";
 
 const categories = [
