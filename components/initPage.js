@@ -1,5 +1,6 @@
-import {Button, DisplayText, Heading, Layout, Page} from "@shopify/polaris";
+import {DisplayText, Heading, Layout, Page} from "@shopify/polaris";
 import Link from "next/link";
+import Button from "@material-ui/core/Button";
 
 
 const InitPage = (props) => {
@@ -14,11 +15,12 @@ const InitPage = (props) => {
                         <DisplayText size="small">
                             Increase sales with urgency, countdown timer, labels and awesome banners
                         </DisplayText>
-                        <div style={{width: '200px'}}>
+                        <div style={{width: '200px', fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'}}>
                             <Link href={'/bannerVariants'}>
                         <Button
-                            primary
-                            type={"submit"}
+                            variant="contained"
+                            color="primary"
+                            size={'large'}
                             onClick={() => {
                                 //props.setInitBar(true)
                             }}

@@ -83,7 +83,7 @@ const BannerVariants = (props) => {
                     </Layout.Section>
                 </div>
                 <Layout.Section>
-                <div style={{display: "flex", justifyContent: "center", width: '100%', marginBottom: '10px', marginTop: '40px'}}>
+                <div style={{display: "flex", justifyContent: "center", width: '100%', marginBottom: '10px', marginTop: '40px', fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'}}>
                     <Button
                         variant="contained"
                         color="primary"
