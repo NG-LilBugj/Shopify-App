@@ -64,7 +64,7 @@ const BannerVariants = (props) => {
                                         </i>
                                     </div>
                                 </div>
-                                <img style={{width: '80px'}}
+                                <img style={{width: '90px', height: '41px'}}
                                      src={'https://lil-proxy.herokuapp.com/static/day_left.png'} alt={'design'}/>
                             </div>
                         </Card>
