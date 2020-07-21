@@ -27,13 +27,13 @@ const BannerVariants = (props) => {
 
     const [chosenOption, chooseOption] = useState(1);
 
-    return(
+    return (
         <Page>
             <Layout>
                 <div style={{marginBottom: '60px', marginTop: '30px'}}>
-                <DisplayText size={'large'} element={'h1'}>
-                    Which wat do you want to encreasy revenue?
-                </DisplayText>
+                    <DisplayText size={'large'} element={'h1'}>
+                        Which wat do you want to encreasy revenue?
+                    </DisplayText>
                 </div>
                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh'}}>
                     <Layout.Section>
@@ -44,17 +44,28 @@ const BannerVariants = (props) => {
                             >
                                 <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                                     {(chosenOption === 1) &&
-                                        <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
-                                <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
-                        <Heading>
-                            Banner first
-                        </Heading>
-                        <p style={{width: '360px'}}>
-                            Special countdown timer which can render on product or other pages, signs that great offer has begun!
-                        </p>
+                                    <img style={{width: '32px', height: '32px'}}
+                                         src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
+                                    <div style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "space-between",
+                                        marginLeft: '20px'
+                                    }}>
+                                        <Heading>
+                                            Banner first
+                                        </Heading>
+                                        <p style={{width: '320px'}}>
+                                            Special countdown timer which can render on product or other pages, signs
+                                            that great offer has begun!
+                                        </p>
+                                        <i>
+                                            - About 15% more revenue
+                                        </i>
+                                    </div>
                                 </div>
-                                </div>
-                                <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/day_left.png'} alt={'design'}/>
+                                <img style={{width: '80px'}}
+                                     src={'https://lil-proxy.herokuapp.com/static/day_left.png'} alt={'design'}/>
                             </div>
                         </Card>
                     </Layout.Section>
@@ -66,17 +77,22 @@ const BannerVariants = (props) => {
                             >
                                 <div style={{display: "flex", flexDirection: "row"}}>
                                     {(chosenOption === 2) &&
-                                    <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
+                                    <img style={{width: '32px', height: '32px'}}
+                                         src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
                                     <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
                                         <Heading>
                                             Banner first
                                         </Heading>
-                                        <p style={{width: '360px'}}>
+                                        <p style={{width: '320px'}}>
                                             Incredible label which will underline the unique of your products.
                                         </p>
+                                        <i>
+                                            - About 15% more revenue
+                                        </i>
                                     </div>
                                 </div>
-                                <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/flash_sale.png'} alt={'design'}/>
+                                <img style={{width: '120px'}}
+                                     src={'https://lil-proxy.herokuapp.com/static/flash_sale.png'} alt={'design'}/>
                             </div>
                         </Card>
                     </Layout.Section>
@@ -88,33 +104,45 @@ const BannerVariants = (props) => {
                             >
                                 <div style={{display: "flex", flexDirection: "row"}}>
                                     {(chosenOption === 3) &&
-                                    <img style={{width: '32px', height: '32px'}} src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
+                                    <img style={{width: '32px', height: '32px'}}
+                                         src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
                                     <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
                                         <Heading>
                                             Banner first
                                         </Heading>
-                                        <p style={{width: '360px'}}>
+                                        <p style={{width: '320px'}}>
                                             Gift animation to your customers!
                                         </p>
+                                        <i>
+                                            - About 15% more revenue
+                                        </i>
                                     </div>
                                 </div>
-                                <img style={{width: '120px'}} src={'https://lil-proxy.herokuapp.com/static/gift.gif'} alt={'design'}/>
+                                <img style={{width: '90px'}} src={'https://lil-proxy.herokuapp.com/static/gift.gif'}
+                                     alt={'design'}/>
                             </div>
                         </Card>
                     </Layout.Section>
                 </div>
                 <Layout.Section>
-                <div style={{display: "flex", justifyContent: "center", width: '100%', marginBottom: '10px', marginTop: '40px', fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'}}>
-                    <Link href={(chosenOption === 1) ? '/' : (chosenOption === 2) ? '/badges' : ''}>
-                    <ShopifyButton
-                        variant="contained"
-                        color="primary"
-                        size={'large'}
-                    >
-                        Continue
-                    </ShopifyButton>
-                    </Link>
-                </div>
+                    <div style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: '100%',
+                        marginBottom: '10px',
+                        marginTop: '40px',
+                        fontFamily: 'ShopifySans, Helvetica, Arial, sans-serif'
+                    }}>
+                        <Link href={(chosenOption === 1) ? '/' : (chosenOption === 2) ? '/badges' : ''}>
+                            <ShopifyButton
+                                variant="contained"
+                                color="primary"
+                                size={'large'}
+                            >
+                                Continue
+                            </ShopifyButton>
+                        </Link>
+                    </div>
                 </Layout.Section>
             </Layout>
         </Page>
