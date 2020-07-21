@@ -5,6 +5,9 @@ import {withStyles} from "@material-ui/core";
 
 const ShopifyButton = withStyles({
     root: {
+        padding: '8px 16px',
+        textTransform: none,
+        fontSize: 24,
         fontFamily: [
             '-apple-system',
             'BlinkMacSystemFont',
