@@ -34,6 +34,17 @@ const bannerSchema = new mongoose.Schema({
     linkText: String,
     href: String
 });
+
+const badgeSchema = new mongoose.Schema({
+    id: Number,
+    shop: String,
+    name: String,
+    pickedBadge: Number,
+    bannerRenderValue: String
+});
+
 const BannerConfig = mongoose.model('bannerConfig', bannerSchema);
+const BadgeConfig = mongoose.model('badgeConfig', badgeSchema);
 
 module.exports.BannerConfig = BannerConfig;
+module.exports.BadgeConfig = BadgeConfig;

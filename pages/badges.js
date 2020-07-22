@@ -1,7 +1,9 @@
-import {Button, Card, Layout, Page, Pagination, Select} from "@shopify/polaris";
-import {useState} from "react";
+import {Button, Card, Icon, Layout, Page, Pagination, Select, TextField} from "@shopify/polaris";
+import {useEffect, useState} from "react";
 import "../public/index.css"
 import axios from "axios";
+import * as Scroll from "react-scroll";
+import {DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
 
 const categories = [
     'Banners',
@@ -51,27 +53,177 @@ const categoryVariant = (category, pickedBadge, pickBadge) => {
 
 const Badges = (props) => {
 
+    useEffect(() => {
+        axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
+            fetchData(res.data);
+            setLoading(false);
+        });
+    }, []);
+
+    const [badgeData, fetchData] = useState(null);
+    const [isLoading, setLoading] = useState(true);
+    //async state
+
+    const [name, setName] = useState('');
     const [category, pickCategory] = useState(categories[0]);
     const [pickedBadge, pickBadge] = useState(0);
     const [bannerRenderValue, setBannerValue] = useState('.product-single__title/append');
+    //data state
+
+    const [nameTouch, handleNameTouch] = useState(false);
+    const [switchTouch, setSwitchTouch] = useState(false);
+    //error state
 
     const handleSubmit = async () => {
-        let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
-            pickedBadge,
-            bannerRenderValue
-        });
-        console.log(res);
+        if (nameTouch && !name){
+            Scroll.animateScroll.scrollToTop();
+            setSwitchTouch(true)
+        }
+        else {
+            let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
+                pickedBadge,
+                bannerRenderValue
+            });
+            console.log(res);
+        }
     };
 
-    return (
+    const deleteSubmit = async () => {
+        setLoading(true);
+        axios.delete('https://lil-shopify.herokuapp.com/api/badge').then(res => {
+            console.log(res)
+        });
+        axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
+            fetchData(res.data);
+            setLoading(false)
+        });
+    };
+
+    useEffect(() => {
+        setName(badgeData.config ? badgeData.script[0].configData.name : '');
+        pickCategory(badgeData.config ? categories[1] : categories[0]);
+        pickBadge(badgeData.config ? badgeData.script[0].configData.pickedBadge : 0);
+        setBannerValue(badgeData.config ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
+    }, [badgeData.config]);
+
+    if (isLoading) return <Page><Layout>
+        <img src={'https://lil-proxy.herokuapp.com/static/Preloader.gif'} alt={'load...'}/>
+    </Layout></Page>;
+    else return (
         <Page>
-            <Layout>
-                <Layout.Section>
-                    <div
-                        style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '25px'}}>
-                        <div style={{fontSize: '24px', fontWeight: '600'}}>
-                            Customize your special badge banner!
+            {badgeData.config ?
+                <Layout>
+                    <Card title={"Existing Badge Banner:"} sectioned>
+                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
+                            <p>Banner name:</p>
+                            <p>Actions:</p>
                         </div>
+                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
+                            <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
+                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                                <Button
+                                    size={"medium"}
+                                    type={"submit"}
+                                    onClick={() => fetchData({...badgeData, config: false})}>
+                                    <Icon source={SettingsMajorMonotone}/>
+                                </Button>
+                                <Button
+                                    destructive
+                                    size={"medium"}
+                                    type={"submit"}
+                                    onClick={deleteSubmit}>
+                                    <Icon source={DeleteMajorMonotone}/>
+                                </Button>
+                            </div>
+                        </div>
+                    </Card>
+                </Layout>
+                :
+                <Layout>
+                    <Layout.Section>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                width: '100%',
+                                marginBottom: '25px'
+                            }}>
+                            <div style={{fontSize: '24px', fontWeight: '600'}}>
+                                Customize your special badge banner!
+                            </div>
+                            <Button
+                                primary
+                                disabled={(pickedBadge === 0)}
+                                size={"medium"}
+                                type={"submit"}
+                                onClick={handleSubmit}
+                            >
+                                Save
+                            </Button>
+                        </div>
+                    </Layout.Section>
+                    <Layout.Section>
+                        <Card title={'Banner name:'} sectioned>
+                            <TextField
+                                label={''}
+                                onBlur={() => handleNameTouch(true)}
+                                value={name}
+                                placeholder={'Enter name...'}
+                                onChange={(value) => {
+                                    setName(value)
+                                }}
+                                error={((!name) && switchTouch) ? 'Please enter name' : ''}
+                            />
+                        </Card>
+                    </Layout.Section>
+                    <Layout.Section>
+                        <Card sectioned title={'Pick category'}>
+                            <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
+                                <p>Category: {category}</p>
+                                <Pagination
+                                    hasPrevious={categories.indexOf(category) > 0}
+                                    onPrevious={() => {
+                                        console.log(categories.indexOf(category) - 1, categories[categories.indexOf(category) - 1]);
+                                        pickCategory(categories[categories.indexOf(category) - 1])
+                                    }}
+                                    hasNext={categories.indexOf(category) < categories.length - 1}
+                                    onNext={() => {
+                                        console.log(categories.indexOf(category) + 1, categories[categories.indexOf(category) + 1]);
+                                        pickCategory(categories[categories.indexOf(category) + 1])
+                                    }}
+                                />
+                            </div>
+                        </Card>
+                    </Layout.Section>
+                    <Layout.Section>
+                        <Card sectioned title={'Pick Badge'}>
+                            {categoryVariant(category, pickedBadge, pickBadge)}
+                        </Card>
+                    </Layout.Section>
+                    <Layout.Section>
+                        <Card sectioned title={'Banner placement'}>
+                            <div style={{width: '320px'}}>
+                                <Select
+                                    label={''}
+                                    labelInline
+                                    options={[
+                                        {label: 'Above title', value: '.product-single__title/prepend'},
+                                        {label: 'Below title', value: '.product-single__title/append'},
+                                        {label: 'Above price', value: '.product__price/prepend'},
+                                        {label: 'Below price', value: '.product__price/append'},
+                                        {label: 'Above buy button', value: '.product-form__controls-group/append'},
+                                        {
+                                            label: 'Below buy button',
+                                            value: '.product-form__controls-group product-form__controls-group--submit/append'
+                                        },
+                                    ]}
+                                    onChange={(value) => setBannerValue(value)}
+                                    value={bannerRenderValue}
+                                />
+                            </div>
+                        </Card>
+                    </Layout.Section>
+                    <div style={{display: "flex", justifyContent: 'flex-end', width: '100%'}}>
                         <Button
                             primary
                             disabled={(pickedBadge === 0)}
@@ -82,63 +234,8 @@ const Badges = (props) => {
                             Save
                         </Button>
                     </div>
-                </Layout.Section>
-                <Layout.Section>
-                    <Card sectioned title={'Pick category'}>
-                        <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
-                            <p>Category: {category}</p>
-                            <Pagination
-                                hasPrevious={categories.indexOf(category) > 0}
-                                onPrevious={() => {
-                                    console.log(categories.indexOf(category) - 1, categories[categories.indexOf(category) - 1]);
-                                    pickCategory(categories[categories.indexOf(category) - 1])
-                                }}
-                                hasNext={categories.indexOf(category) < categories.length - 1}
-                                onNext={() => {
-                                    console.log(categories.indexOf(category) + 1, categories[categories.indexOf(category) + 1]);
-                                    pickCategory(categories[categories.indexOf(category) + 1])
-                                }}
-                            />
-                        </div>
-                    </Card>
-                </Layout.Section>
-                <Layout.Section>
-                    <Card sectioned title={'Pick Badge'}>
-                        {categoryVariant(category, pickedBadge, pickBadge)}
-                    </Card>
-                </Layout.Section>
-                <Layout.Section>
-                    <Card sectioned title={'Banner placement'}>
-                        <div style={{width: '320px'}}>
-                        <Select
-                            label={''}
-                            labelInline
-                            options={[
-                                {label: 'Above title', value: '.product-single__title/prepend'},
-                                {label: 'Below title', value: '.product-single__title/append'},
-                                {label: 'Above price', value: '.product__price/prepend'},
-                                {label: 'Below price', value: '.product__price/append'},
-                                {label: 'Above buy button', value: '.product-form__controls-group/append'},
-                                {label: 'Below buy button', value: '.product-form__controls-group product-form__controls-group--submit/append'},
-                            ]}
-                            onChange={(value) => setBannerValue(value)}
-                            value={bannerRenderValue}
-                        />
-                        </div>
-                    </Card>
-                </Layout.Section>
-                <div style={{display: "flex", justifyContent: 'flex-end',width: '100%'}}>
-                    <Button
-                        primary
-                        disabled={(pickedBadge === 0)}
-                        size={"medium"}
-                        type={"submit"}
-                        onClick={handleSubmit}
-                    >
-                        Save
-                    </Button>
-                </div>
-            </Layout>
+                </Layout>
+            }
         </Page>
     )
 };

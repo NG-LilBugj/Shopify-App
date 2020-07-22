@@ -45,8 +45,10 @@ const server = new Koa();
 const router = new KoaRouter();
 
 let BannerConfig = DBAccess.BannerConfig;
+let BadgeConfig = DBAccess.BadgeConfig;
 
 const modelDecoder = rep.decoder;
+const badgeDecoder = rep.decoder;
 const getter = rep.getter;
 
 const testFetch = async () => {
@@ -86,6 +88,33 @@ router.get('/api/script', async (ctx) => {
         console.log(e)
     }
 });
+router.get('/api/badge', async (ctx) => {
+    try {
+        let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
+            headers: {
+                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+            }
+        });
+        let badgeData = await badgeDecoder(ctx);
+        ctx.body = {
+            status: 'success',
+            config: res.data.scripts_tags.some(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js'),
+            script: (!!res.data.scripts_tags
+                .filter(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js').length) ? res.data.scripts_tags
+                .filter(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js')
+                .map(b => {
+                    return {
+                        ...t,
+                        configData: badgeData.find(e => b.id === e.id)
+                    }
+                }) : null,
+            message: ctx.cookies.get('shopOrigin')
+        }
+    }
+    catch (e) {
+        console.log(e)
+    }
+});
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
@@ -114,12 +143,49 @@ router.post('/api/script', koaBody(), async (ctx) => {
         console.log(e)
     }
 });
+router.post('/api/badge', koaBody(), async (ctx) => {
+    try{
+        const body = ctx.request.body;
+        axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
+            "script_tag": {
+                "event": "onload",
+                "src": "https://lil-storage.herokuapp.com/static/badge.js",
+                "display_scope": "all"
+            }
+        }, {
+            headers: {
+                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+            }
+        }).then(res => {
+            console.log(res);
+            let customBadge = new BadgeConfig({
+                ...body,
+                id: res.data.script_tag.id,
+                shop: ctx.cookies.get('shopOrigin')
+            });
+            customBadge.save().catch(e => console.log(e))
+        });
+        ctx.body = {message: 'badge added'}
+    }
+    catch (e) {
+        console.log(e)
+    }
+});
 router.put('/api/script', koaBody(), async (ctx) => {
     try {
-        console.log('put endpoint');
         const body = ctx.request.body;
         const customConfig = await BannerConfig.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
         console.log(customConfig);
+    }
+    catch (e) {
+        console.log(e)
+    }
+});
+router.put('/api/badge', koaBody(), async (ctx) => {
+    try {
+        const body = ctx.request.body;
+        const customBadge = await BadgeConfig.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
+        console.log(customBadge);
     }
     catch (e) {
         console.log(e)
@@ -131,6 +197,24 @@ router.delete('/api/script', koaBody(), async (ctx) => {
             if (err) console.log(err);
             else {
                 BannerConfig.deleteOne(res, (err) => console.log(err));
+                axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${res.id}.json`, {
+                    headers: {
+                        "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+                    }
+                }).then(res => console.log(res));
+            }
+        });
+        ctx.body = 'Timer deleted'
+    } catch (e) {
+        console.log(e)
+    }
+});
+router.delete('/api/badge', koaBody(), async (ctx) => {
+    try {
+        BadgeConfig.findOne({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+            if (err) console.log(err);
+            else {
+                BadgeConfig.deleteOne(res, (err) => console.log(err));
                 axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${res.id}.json`, {
                     headers: {
                         "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
