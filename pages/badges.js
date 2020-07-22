@@ -51,12 +51,13 @@ const categoryVariant = (category, pickedBadge, pickBadge) => {
     }
 };
 
-const Badges = (props) => {
+const Badges = () => {
 
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
             fetchData(res.data);
             setLoading(false);
+            console.log(res.data)
         })
             .catch(err => {
                 console.log(err);
