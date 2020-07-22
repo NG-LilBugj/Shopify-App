@@ -101,9 +101,9 @@ router.get('/api/badge', async (ctx) => {
         console.log(res.data);
         ctx.body = {
             status: 'success',
-            config: res.data.scripts_tags.some(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js'),
-            script: (!!res.data.scripts_tags
-                .filter(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js').length) ? res.data.scripts_tags
+            config: res.data.script_tags.some(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js'),
+            script: (!!res.data.script_tags
+                .filter(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js').length) ? res.data.script_tags
                 .filter(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js')
                 .map(b => {
                     return {
