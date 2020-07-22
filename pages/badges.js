@@ -60,7 +60,7 @@ const Badges = (props) => {
         });
     }, []);
 
-    const [badgeData, fetchData] = useState(null);
+    const [badgeData, fetchData] = useState({config: false});
     const [isLoading, setLoading] = useState(true);
     //async state
 
