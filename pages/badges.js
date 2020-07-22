@@ -170,7 +170,7 @@ const Badges = () => {
                             <div style={{fontSize: '24px', fontWeight: '600'}}>
                                 Customize your special badge banner!
                             </div>
-                            <Link href={'/success'}>
+                            <Link href={!!name ? '/success' : '/badges'}>
                             <Button
                                 primary
                                 disabled={(pickedBadge === 0)}
@@ -245,7 +245,7 @@ const Badges = () => {
                         </Card>
                     </Layout.Section>
                     <div style={{display: "flex", justifyContent: 'flex-end', width: '100%'}}>
-                        <Link href={'/success'}>
+                        <Link href={!!name ? '/success' : '/badges'}>
                         <Button
                             primary
                             disabled={(pickedBadge === 0)}
