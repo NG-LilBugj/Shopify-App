@@ -71,7 +71,7 @@ const Badges = () => {
 
     const [name, setName] = useState('');
     const [category, pickCategory] = useState(categories[0]);
-    const [pickedBadge, pickBadge] = useState(0);
+    const [pickedBadge, pickBadge] = useState(badgeData.config ? badgeData.script[0].configData.pickedBadge : 0);
     const [bannerRenderValue, setBannerValue] = useState('.product-single__title/append');
     //data state
 
