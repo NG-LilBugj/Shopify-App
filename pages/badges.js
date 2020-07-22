@@ -57,7 +57,11 @@ const Badges = (props) => {
         axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
             fetchData(res.data);
             setLoading(false);
-        });
+        })
+            .catch(err => {
+                console.log(err);
+                setLoading(false)
+            });
     }, []);
 
     const [badgeData, fetchData] = useState({config: false});
