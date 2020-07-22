@@ -65,13 +65,13 @@ const Badges = () => {
             });
     }, []);
 
-    const [badgeData, fetchData] = useState({config: false});
+    const [badgeData, fetchData] = useState({config: false, status: ''});
     const [isLoading, setLoading] = useState(true);
     //async state
 
     const [name, setName] = useState('');
     const [category, pickCategory] = useState(categories[0]);
-    const [pickedBadge, pickBadge] = useState(badgeData.config ? badgeData.script[0].configData.pickedBadge : 0);
+    const [pickedBadge, pickBadge] = useState(0);
     const [bannerRenderValue, setBannerValue] = useState('.product-single__title/append');
     //data state
 
@@ -110,7 +110,7 @@ const Badges = () => {
         pickCategory(badgeData.config ? categories[1] : categories[0]);
         pickBadge(badgeData.config ? badgeData.script[0].configData.pickedBadge : 0);
         setBannerValue(badgeData.config ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
-    }, [badgeData.config]);
+    }, [badgeData.status]);
 
     useEffect(() => console.log(pickedBadge), [pickedBadge]);
 
