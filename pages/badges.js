@@ -23,41 +23,69 @@ import Product from "../components/product";
 const categories = [
     'Banners',
     'Badges',
-    'Third',
-    'Some'
 ];
 
 const categoryVariant = (category, pickedBadge, pickBadge) => {
     switch (category) {
-        case 'Banners': return <div/>;
-        case 'Badges': return(
+        case 'Banners': return(
             <div style={{display: "flex", flexWrap: "wrap", width: '100%'}}>
                 <div style={{borderColor: (pickedBadge === 1) ? '#3333aa' : ""}}
-                     className={'img-container'} onClick={() => pickBadge(1)}>
-                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge1.png'} alt={'icon'}/></div>
+                     className={'img-banner-container'} onClick={() => pickBadge(1)}>
+                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner1.png'} alt={'icon'}/></div>
                 <div style={{borderColor: (pickedBadge === 2) ? '#3333aa' : ""}}
-                     className={'img-container'} onClick={() => pickBadge(2)}>
-                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge2.png'} alt={'icon'}/></div>
+                     className={'img-banner-container'} onClick={() => pickBadge(2)}>
+                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner2.png'} alt={'icon'}/></div>
                 <div style={{borderColor: (pickedBadge === 3) ? '#3333aa' : ""}}
-                     className={'img-container'} onClick={() => pickBadge(3)}>
-                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge3.png'} alt={'icon'}/></div>
+                     className={'img-banner-container'} onClick={() => pickBadge(3)}>
+                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner3.png'} alt={'icon'}/></div>
                 <div style={{borderColor: (pickedBadge === 4) ? '#3333aa' : ""}}
-                     className={'img-container'} onClick={() => pickBadge(4)}>
-                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge4.png'} alt={'icon'}/></div>
+                     className={'img-banner-container'} onClick={() => pickBadge(4)}>
+                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner4.png'} alt={'icon'}/></div>
                 <div style={{borderColor: (pickedBadge === 5) ? '#3333aa' : ""}}
-                     className={'img-container'} onClick={() => pickBadge(5)}>
-                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge5.png'} alt={'icon'}/></div>
+                     className={'img-banner-container'} onClick={() => pickBadge(5)}>
+                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner5.png'} alt={'icon'}/></div>
                 <div style={{borderColor: (pickedBadge === 6) ? '#3333aa' : ""}}
-                     className={'img-container'} onClick={() => pickBadge(6)}>
-                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge6.png'} alt={'icon'}/></div>
+                     className={'img-banner-container'} onClick={() => pickBadge(6)}>
+                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner6.png'} alt={'icon'}/></div>
                 <div style={{borderColor: (pickedBadge === 7) ? '#3333aa' : ""}}
-                     className={'img-container'} onClick={() => pickBadge(7)}>
-                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge7.png'} alt={'icon'}/></div>
+                     className={'img-banner-container'} onClick={() => pickBadge(7)}>
+                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner7.png'} alt={'icon'}/></div>
                 <div style={{borderColor: (pickedBadge === 8) ? '#3333aa' : ""}}
-                     className={'img-container'} onClick={() => pickBadge(8)}>
-                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge8.png'} alt={'icon'}/></div>
+                     className={'img-banner-container'} onClick={() => pickBadge(8)}>
+                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner8.png'} alt={'icon'}/></div>
                 <div style={{borderColor: (pickedBadge === 9) ? '#3333aa' : ""}}
-                     className={'img-container'} onClick={() => pickBadge(9)}>
+                     className={'img-banner-container'} onClick={() => pickBadge(9)}>
+                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner9.png'} alt={'icon'}/></div>
+            </div>
+        );
+        case 'Badges': return(
+            <div style={{display: "flex", flexWrap: "wrap", width: '100%'}}>
+                <div style={{borderColor: (pickedBadge === 10) ? '#3333aa' : ""}}
+                     className={'img-container'} onClick={() => pickBadge(10)}>
+                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge1.png'} alt={'icon'}/></div>
+                <div style={{borderColor: (pickedBadge === 11) ? '#3333aa' : ""}}
+                     className={'img-container'} onClick={() => pickBadge(11)}>
+                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge2.png'} alt={'icon'}/></div>
+                <div style={{borderColor: (pickedBadge === 12) ? '#3333aa' : ""}}
+                     className={'img-container'} onClick={() => pickBadge(12)}>
+                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge3.png'} alt={'icon'}/></div>
+                <div style={{borderColor: (pickedBadge === 13) ? '#3333aa' : ""}}
+                     className={'img-container'} onClick={() => pickBadge(13)}>
+                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge4.png'} alt={'icon'}/></div>
+                <div style={{borderColor: (pickedBadge === 14) ? '#3333aa' : ""}}
+                     className={'img-container'} onClick={() => pickBadge(14)}>
+                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge5.png'} alt={'icon'}/></div>
+                <div style={{borderColor: (pickedBadge === 15) ? '#3333aa' : ""}}
+                     className={'img-container'} onClick={() => pickBadge(15)}>
+                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge6.png'} alt={'icon'}/></div>
+                <div style={{borderColor: (pickedBadge === 16) ? '#3333aa' : ""}}
+                     className={'img-container'} onClick={() => pickBadge(16)}>
+                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge7.png'} alt={'icon'}/></div>
+                <div style={{borderColor: (pickedBadge === 17) ? '#3333aa' : ""}}
+                     className={'img-container'} onClick={() => pickBadge(17)}>
+                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge8.png'} alt={'icon'}/></div>
+                <div style={{borderColor: (pickedBadge === 18) ? '#3333aa' : ""}}
+                     className={'img-container'} onClick={() => pickBadge(18)}>
                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/badge9.png'} alt={'icon'}/></div>
             </div>
         );

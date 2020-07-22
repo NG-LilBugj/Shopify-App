@@ -83,7 +83,19 @@
 }
 
 
-
+.img-banner-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 640px;
+    margin-bottom: 20px;
+    border: 1.5px solid transparent;
+    border-radius: 5px;
+}
+.img-banner-container:hover{
+    border-color: #8c8be6;
+    transition: 0.3s;
+}
 .img-container{
     display: flex;
     justify-content: center;
