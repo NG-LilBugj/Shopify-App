@@ -48,7 +48,7 @@ let BannerConfig = DBAccess.BannerConfig;
 let BadgeConfig = DBAccess.BadgeConfig;
 
 const modelDecoder = rep.decoder;
-const badgeDecoder = rep.decoder;
+const badgeDecoder = rep.badgeDecoder;
 const getter = rep.getter;
 
 const testFetch = async () => {
