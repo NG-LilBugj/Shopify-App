@@ -40,7 +40,8 @@ const badgeSchema = new mongoose.Schema({
     shop: String,
     name: String,
     pickedBadge: Number,
-    bannerRenderValue: String
+    bannerRenderValue: String,
+    products: Array
 });
 
 const BannerConfig = mongoose.model('bannerConfig', bannerSchema);

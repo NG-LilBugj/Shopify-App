@@ -1,10 +1,24 @@
-import {Button, Card, Icon, Layout, Page, Pagination, Select, TextField} from "@shopify/polaris";
+import {
+    Autocomplete,
+    Button,
+    Card,
+    Heading,
+    Icon,
+    Layout,
+    Page,
+    Pagination,
+    Select,
+    Stack,
+    TextField
+} from "@shopify/polaris";
 import {useEffect, useState} from "react";
 import "../public/index.css"
 import axios from "axios";
 import * as Scroll from "react-scroll";
-import {DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
+import {DeleteMajorMonotone, SearchMinor, SettingsMajorMonotone} from "@shopify/polaris-icons";
 import Link from "next/link";
+import {ResourcePicker} from "@shopify/app-bridge-react";
+import Product from "../components/product";
 
 const categories = [
     'Banners',
@@ -71,14 +85,30 @@ const Badges = () => {
     //async state
 
     const [name, setName] = useState('');
-    const [category, pickCategory] = useState(categories[0]);
     const [pickedBadge, pickBadge] = useState(0);
     const [bannerRenderValue, setBannerValue] = useState('.product-single__title/append');
+    const [products, setProducts] = useState([]);
     //data state
+
+    const [category, pickCategory] = useState(categories[0]);
+    const [inputSearchValue, setInputValue] = useState('');
+    const [isProductsOpen, setProductsOpen] = useState(false);
+    //local state
 
     const [nameTouch, handleNameTouch] = useState(false);
     const [switchTouch, setSwitchTouch] = useState(false);
     //error state
+
+    let handleProductSelection = (products) => {
+        setProducts(products.selection.map(p => ({title: p.title, photo: p.images[0].originalSrc, id: p.handle})))
+        setProductsOpen(false);
+        console.log(products)
+    };
+
+    let handleSearchFieldChange = (value) => {
+        setProductsOpen(true);
+        setInputValue(value)
+    };
 
     const handleSubmit = async () => {
         if (!name){
@@ -90,7 +120,8 @@ const Badges = () => {
                 let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
                     name,
                     pickedBadge,
-                    bannerRenderValue
+                    bannerRenderValue,
+                    products
                 });
                 console.log(res);
             }
@@ -98,7 +129,8 @@ const Badges = () => {
                 let res = await axios.put('https://lil-shopify.herokuapp.com/api/badge', {
                     name,
                     pickedBadge,
-                    bannerRenderValue
+                    bannerRenderValue,
+                    products
                 });
                 console.log(res);
             }
@@ -124,6 +156,15 @@ const Badges = () => {
     }, [badgeData.config]);
 
     useEffect(() => console.log(pickedBadge), [pickedBadge]);
+
+    const searchField = (
+        <Autocomplete.TextField
+            onChange={handleSearchFieldChange}
+            value={inputSearchValue}
+            prefix={<Icon source={SearchMinor} color="inkLighter" />}
+            placeholder="Search"
+        />
+    );
 
     if (isLoading) return <Page><Layout>
         <img src={'https://lil-proxy.herokuapp.com/static/Preloader.gif'} alt={'load...'}/>
@@ -159,6 +200,13 @@ const Badges = () => {
                 </Layout>
                 :
                 <Layout>
+                    <ResourcePicker
+                        allowMultiple
+                        resourceType={"Product"}
+                        open={isProductsOpen}
+                        onSelection={(resources) => handleProductSelection(resources)}
+                        onCancel={() => setProductsOpen(false)}
+                    />
                     <Layout.Section>
                         <div
                             style={{
@@ -223,6 +271,33 @@ const Badges = () => {
                     </Layout.Section>
                     <Layout.Section>
                         <Card sectioned title={'Banner placement'}>
+                            <Heading>
+                                Product pages with badge:
+                            </Heading>
+                            <div style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-end',
+                                width: '420px'
+                            }}>
+                                <Autocomplete
+                                    onSelect={(value) => console.log(value)}
+                                    selected={[]}
+                                    options={[]}
+                                    textField={searchField}
+                                />
+                                <Button
+                                    size={"small"}
+                                    type={"submit"}
+                                    onClick={() => setProducts(true)}
+                                >
+                                    Browse products
+                                </Button>
+                            </div>
+                            {(props.products.length) && props.products.map(p => <Product
+                                pickProducts={props.pickProducts}
+                                products={props.products} {...p}/>)}
                             <div style={{width: '320px'}}>
                                 <Select
                                     label={''}
