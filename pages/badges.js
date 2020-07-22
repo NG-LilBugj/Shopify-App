@@ -86,7 +86,7 @@ const Badges = () => {
             setSwitchTouch(true)
         }
         else {
-            if (!badgeData.script.length) {
+            if (!badgeData.script) {
                 let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
                     name,
                     pickedBadge,
