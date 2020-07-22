@@ -98,7 +98,7 @@ router.get('/api/badge', async (ctx) => {
                     }
               });
         let badgeData = await badgeDecoder(ctx);
-        console.log(res);
+        console.log(res.data);
         ctx.body = {
             status: 'success',
             config: res.data.scripts_tags.some(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js'),
