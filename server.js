@@ -179,6 +179,10 @@ router.put('/api/script', koaBody(), async (ctx) => {
         const body = ctx.request.body;
         const customConfig = await BannerConfig.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
         console.log(customConfig);
+        ctx.body = {
+            message: 'config saved',
+            customConfig
+        }
     }
     catch (e) {
         console.log(e)
@@ -189,6 +193,10 @@ router.put('/api/badge', koaBody(), async (ctx) => {
         const body = ctx.request.body;
         const customBadge = await BadgeConfig.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
         console.log(customBadge);
+        ctx.body = {
+            message: 'config saved',
+            customBadge
+        }
     }
     catch (e) {
         console.log(e)
