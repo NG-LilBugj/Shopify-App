@@ -107,7 +107,7 @@ router.get('/api/badge', async (ctx) => {
                 .filter(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js')
                 .map(b => {
                     return {
-                        ...t,
+                        ...b,
                         configData: badgeData.find(e => b.id === e.id)
                     }
                 }) : null,
