@@ -90,19 +90,15 @@ router.get('/api/script', async (ctx) => {
 });
 router.get('/api/badge', async (ctx) => {
     try {
-        try {
-            var res = await axios.get(
-                `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
-                {
+        let res = await axios.get(
+              `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
+              {
                     headers: {
                         "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                     }
-                });
-        }
-        catch (e) {
-            console.log(e)
-        }
+              });
         let badgeData = await badgeDecoder(ctx);
+        console.log(res);
         ctx.body = {
             status: 'success',
             config: res.data.scripts_tags.some(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js'),
@@ -119,7 +115,7 @@ router.get('/api/badge', async (ctx) => {
         }
     }
     catch (e) {
-        console.log(e)
+        console.log(e);
     }
 });
 router.post('/api/script', koaBody(), async (ctx) => {
