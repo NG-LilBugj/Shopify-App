@@ -81,7 +81,7 @@ const Badges = () => {
     //error state
 
     const handleSubmit = async () => {
-        if (nameTouch && !name){
+        if (!name){
             Scroll.animateScroll.scrollToTop();
             setSwitchTouch(true)
         }
