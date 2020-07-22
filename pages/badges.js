@@ -4,6 +4,7 @@ import "../public/index.css"
 import axios from "axios";
 import * as Scroll from "react-scroll";
 import {DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
+import Link from "next/link";
 
 const categories = [
     'Banners',
@@ -159,6 +160,7 @@ const Badges = () => {
                             <div style={{fontSize: '24px', fontWeight: '600'}}>
                                 Customize your special badge banner!
                             </div>
+                            <Link href={'/success'}>
                             <Button
                                 primary
                                 disabled={(pickedBadge === 0)}
@@ -168,6 +170,7 @@ const Badges = () => {
                             >
                                 Save
                             </Button>
+                            </Link>
                         </div>
                     </Layout.Section>
                     <Layout.Section>
@@ -232,6 +235,7 @@ const Badges = () => {
                         </Card>
                     </Layout.Section>
                     <div style={{display: "flex", justifyContent: 'flex-end', width: '100%'}}>
+                        <Link href={'/success'}>
                         <Button
                             primary
                             disabled={(pickedBadge === 0)}
@@ -241,6 +245,7 @@ const Badges = () => {
                         >
                             Save
                         </Button>
+                        </Link>
                     </div>
                 </Layout>
             }
