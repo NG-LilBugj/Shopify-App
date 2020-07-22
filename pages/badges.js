@@ -106,10 +106,10 @@ const Badges = () => {
     };
 
     useEffect(() => {
-        setName(badgeData.config ? badgeData.script[0].configData.name : '');
-        pickCategory(badgeData.config ? categories[1] : categories[0]);
-        pickBadge(badgeData.config ? badgeData.script[0].configData.pickedBadge : 0);
-        setBannerValue(badgeData.config ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
+        setName(badgeData.status ? badgeData.script[0].configData.name : '');
+        pickCategory(badgeData.status ? categories[1] : categories[0]);
+        pickBadge(badgeData.status ? badgeData.script[0].configData.pickedBadge : 0);
+        setBannerValue(badgeData.status ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
     }, [badgeData.status]);
 
     useEffect(() => console.log(pickedBadge), [pickedBadge]);
