@@ -90,13 +90,18 @@ router.get('/api/script', async (ctx) => {
 });
 router.get('/api/badge', async (ctx) => {
     try {
-        let res = await axios.get(
-            `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
-            {
-                headers: {
-                    "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-                }
-            });
+        try {
+            let res = await axios.get(
+                `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
+                {
+                    headers: {
+                        "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+                    }
+                });
+        }
+        catch (e) {
+            console.log(e)
+        }
         let badgeData = await badgeDecoder(ctx);
         ctx.body = {
             status: 'success',
