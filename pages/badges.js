@@ -112,6 +112,8 @@ const Badges = () => {
         setBannerValue(badgeData.config ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
     }, [badgeData.config]);
 
+    useEffect(() => console.log(pickedBadge), [pickedBadge]);
+
     if (isLoading) return <Page><Layout>
         <img src={'https://lil-proxy.herokuapp.com/static/Preloader.gif'} alt={'load...'}/>
     </Layout></Page>;
@@ -120,7 +122,7 @@ const Badges = () => {
             {badgeData.config ?
                 <Layout>
                     <Card title={"Existing Badge Banner:"} sectioned>
-                        <div style={{width: "80vw", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
+                        <div style={{width: "60vw", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
                             <p>Banner name:</p>
                             <p>Actions:</p>
                         </div>
