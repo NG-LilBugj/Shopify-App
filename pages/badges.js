@@ -153,6 +153,7 @@ const Badges = () => {
         pickCategory(badgeData.status ? categories[1] : categories[0]);
         pickBadge(badgeData.status ? badgeData.script[0].configData.pickedBadge : 0);
         setBannerValue(badgeData.status ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
+        setProducts(badgeData.status ? badgeData.script[0].configData.products : [])
     }, [badgeData.config]);
 
     useEffect(() => console.log(pickedBadge), [pickedBadge]);
