@@ -86,6 +86,7 @@ const Badges = () => {
         }
         else {
             let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
+                name,
                 pickedBadge,
                 bannerRenderValue
             });
@@ -119,7 +120,7 @@ const Badges = () => {
             {badgeData.config ?
                 <Layout>
                     <Card title={"Existing Badge Banner:"} sectioned>
-                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
+                        <div style={{width: "50vw", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
                             <p>Banner name:</p>
                             <p>Actions:</p>
                         </div>
