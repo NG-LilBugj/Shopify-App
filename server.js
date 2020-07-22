@@ -91,7 +91,7 @@ router.get('/api/script', async (ctx) => {
 router.get('/api/badge', async (ctx) => {
     try {
         try {
-            let res = await axios.get(
+            var res = await axios.get(
                 `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
                 {
                     headers: {
