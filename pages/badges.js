@@ -86,12 +86,22 @@ const Badges = () => {
             setSwitchTouch(true)
         }
         else {
-            let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
-                name,
-                pickedBadge,
-                bannerRenderValue
-            });
-            console.log(res);
+            if (badgeData.status !== 'success') {
+                let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
+                    name,
+                    pickedBadge,
+                    bannerRenderValue
+                });
+                console.log(res);
+            }
+            else {
+                let res = await axios.put('https://lil-shopify.herokuapp.com/api/badge', {
+                    name,
+                    pickedBadge,
+                    bannerRenderValue
+                });
+                console.log(res);
+            }
         }
     };
 
@@ -111,7 +121,7 @@ const Badges = () => {
         pickCategory(badgeData.status ? categories[1] : categories[0]);
         pickBadge(badgeData.status ? badgeData.script[0].configData.pickedBadge : 0);
         setBannerValue(badgeData.status ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
-    }, [badgeData.status]);
+    }, [badgeData.config]);
 
     useEffect(() => console.log(pickedBadge), [pickedBadge]);
 
