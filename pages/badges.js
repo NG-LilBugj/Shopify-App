@@ -295,9 +295,9 @@ const Badges = () => {
                                     Browse products
                                 </Button>
                             </div>
-                            {(props.products.length) && props.products.map(p => <Product
-                                pickProducts={props.pickProducts}
-                                products={props.products} {...p}/>)}
+                            {(products.length) && products.map(p => <Product
+                                pickProducts={setProducts}
+                                products={products} {...p}/>)}
                             <div style={{width: '320px'}}>
                                 <Select
                                     label={''}
