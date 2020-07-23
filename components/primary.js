@@ -225,7 +225,7 @@ const PrimaryDesign = (props) => {
                                 Browse products
                             </Button>
                             <Button
-                                plain
+                                primary
                                 onCLick={() => {console.log('pressed'); props.pickAllProducts(!props.isAllProducts)}}
                             >
                                 {props.isAllProducts ? 'Cancel' : 'Pick All Products'}
