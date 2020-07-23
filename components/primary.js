@@ -56,7 +56,7 @@ const PrimaryDesign = (props) => {
     );
 
     useEffect(() => {
-        console.log(props.isAllProducts)
+        console.log(props)
     }, [props.isAllProducts]);
 
     return(
