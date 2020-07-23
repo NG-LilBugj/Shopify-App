@@ -226,9 +226,9 @@ const PrimaryDesign = (props) => {
                             </Button>
                             <Button
                                 plain
-                                onCLick={() => props.pickAllProducts(true)}
+                                onCLick={() => {props.pickAllProducts(!props.isAllProducts)}}
                             >
-                                Pick All Products
+                                {props.isAllProducts ? 'Cancel' : 'Pick All Products'}
                             </Button>
                         </div>
                         {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
