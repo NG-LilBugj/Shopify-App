@@ -225,8 +225,8 @@ const PrimaryDesign = (props) => {
                                 Browse products
                             </Button>
                             <Button
-                                primary
-                                onCLick={() => {console.log('pressed'); props.pickAllProducts(!props.isAllProducts)}}
+                                plain
+                                onClick={() => {console.log('pressed'); props.pickAllProducts(!props.isAllProducts)}}
                             >
                                 {props.isAllProducts ? 'Cancel' : 'Pick All Products'}
                             </Button>
@@ -261,7 +261,7 @@ const PrimaryDesign = (props) => {
                             </Button>
                             <Button
                                 plain
-                                onCLick={() => props.pickAllCollection(true)}
+                                onClick={() => props.pickAllCollection(true)}
                             >
                                 Pick All Collections
                             </Button>
@@ -324,7 +324,7 @@ const PrimaryDesign = (props) => {
                     </Button>
                         <Button
                             plain
-                            onCLick={() => props.pickAllProducts(true)}
+                            onClick={() => props.pickAllProducts(true)}
                         >
                             Pick All Products
                         </Button>
