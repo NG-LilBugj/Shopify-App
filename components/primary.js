@@ -11,7 +11,7 @@ import {
     TextField, Thumbnail
 } from "@shopify/polaris";
 import {ResourcePicker} from "@shopify/app-bridge-react";
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import Product from "./product";
 import {SearchMinor} from "@shopify/polaris-icons";
 import Collection from "./collection";
@@ -54,6 +54,10 @@ const PrimaryDesign = (props) => {
             placeholder="Search"
         />
     );
+
+    useEffect(() => {
+        console.log(props.isAllProducts)
+    }, [props.isAllProducts]);
 
     return(
         <>
