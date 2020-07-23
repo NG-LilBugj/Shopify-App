@@ -27,8 +27,10 @@ const PrimaryDesign = (props) => {
 
     const handleSearchFieldChange = useCallback(
         (value) => {
-            updateSearchText(value);
-            setProducts(true)
+            if (!props.isAllProducts || !props.isAllCollection) {
+                updateSearchText(value);
+                setProducts(true)
+            }
         }, []
     );
 
@@ -203,7 +205,7 @@ const PrimaryDesign = (props) => {
                         onChange={props.handleRenderValueChange}
                     />
                     {(props.renderValue === 'products') && <Stack vertical>
-                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' ,width: '420px'}}>
+                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' ,width: '520px'}}>
                             <Autocomplete
                                 onSelect={(value) => console.log(value)}
                                 selected={[]}
@@ -213,9 +215,16 @@ const PrimaryDesign = (props) => {
                             <Button
                                 size={"small"}
                                 type={"submit"}
+                                disabled={props.isAllProducts}
                                 onClick={() => setProducts(true)}
                             >
                                 Browse products
+                            </Button>
+                            <Button
+                                plain
+                                onCLick={() => props.pickAllProducts(true)}
+                            >
+                                Pick All Products
                             </Button>
                         </div>
                         {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
@@ -241,9 +250,16 @@ const PrimaryDesign = (props) => {
                             <Button
                                 size={"small"}
                                 type={"submit"}
+                                disabled={props.isAllCollection}
                                 onClick={() => setCollections(true)}
                             >
                                 Browse collections
+                            </Button>
+                            <Button
+                                plain
+                                onCLick={() => props.pickAllCollection(true)}
+                            >
+                                Pick All Collections
                             </Button>
                         </div>
                         {(props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
@@ -287,7 +303,7 @@ const PrimaryDesign = (props) => {
                         <Heading>
                             Product pages with timer
                         </Heading>
-                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' ,width: '420px'}}>
+                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' ,width: '520px'}}>
                     <Autocomplete
                     onSelect={(value) => console.log(value)}
                     selected={[]}
@@ -297,10 +313,17 @@ const PrimaryDesign = (props) => {
                     <Button
                     size={"small"}
                     type={"submit"}
+                    disabled={props.isAllProducts}
                     onClick={() => setProducts(true)}
                     >
                     Browse products
                     </Button>
+                        <Button
+                            plain
+                            onCLick={() => props.pickAllProducts(true)}
+                        >
+                            Pick All Products
+                        </Button>
                     </div>
                     {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                  products={props.products} {...p}/>)}

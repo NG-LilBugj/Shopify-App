@@ -158,7 +158,9 @@ const Initial = () => {
     </div>;
 
     const [products, pickProducts] = useState(scriptData.config ? scriptData.script[0].configData.products : []);
+    const [isAllProducts, pickAllProducts] = useState(scriptData.config ? scriptData.script[0].configData.isAllProducts : false);
     const [collections, pickCollections] = useState(scriptData.config ? scriptData.script[0].configData.collections : []);
+    const [isAllCollection, pickAllCollection] = useState(scriptData.config ? scriptData.script[0].configData.isAllCollection : false);
 
     const [widgetRenderValue, setWidgetValue] = useState('.product-single__title/append');
 
@@ -211,7 +213,9 @@ const Initial = () => {
             alpha: 1
         });
         pickProducts(scriptData.config ? scriptData.script[0].configData.products : []);
+        pickAllProducts(scriptData.config ? scriptData.script[0].configData.isAllProducts : false);
         pickCollections(scriptData.config ? scriptData.script[0].configData.collections : []);
+        pickAllCollection(scriptData.config ? scriptData.script[0].configData.isAllCollection : false);
         setRangeValue(scriptData.config ? scriptData.script[0].configData.borderSize : 0);
         setHeightValue(scriptData.config ? scriptData.script[0].configData.bannerHeight : 100);
         activateLink(scriptData.config ? scriptData.script[0].configData.isLinkActive : false);
@@ -254,6 +258,8 @@ const Initial = () => {
             secondText,
             products,
             collections,
+            isAllProducts,
+            isAllCollection,
             isLinkActive,
             linkText,
             href
@@ -366,8 +372,12 @@ const Initial = () => {
                         switchTouch={switchTouch}
                         products={products}
                         pickProducts={pickProducts}
+                        isAllProducts={isAllProducts}
+                        pickAllProducts={pickAllProducts}
                         collections={collections}
                         pickCollections={pickCollections}
+                        isAllCollection={isAllCollection}
+                        pickAllCollection={pickAllCollection}
                         dateCheck={dateCheck}
                         handleRangeSliderChange={handleRangeSliderChange}
                         setBorderColor={setBorderColor}

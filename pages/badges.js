@@ -53,9 +53,6 @@ const categoryVariant = (category, pickedBadge, pickBadge) => {
                 <div style={{borderColor: (pickedBadge === 8) ? '#3333aa' : ""}}
                      className={'img-banner-container'} onClick={() => pickBadge(8)}>
                     <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner8.png'} alt={'icon'}/></div>
-                <div style={{borderColor: (pickedBadge === 9) ? '#3333aa' : ""}}
-                     className={'img-banner-container'} onClick={() => pickBadge(9)}>
-                    <img style={{width: '600px'}} src={'https://lil-proxy.herokuapp.com/static/banner9.png'} alt={'icon'}/></div>
             </div>
         );
         case 'Badges': return(
@@ -116,6 +113,7 @@ const Badges = () => {
     const [pickedBadge, pickBadge] = useState(0);
     const [bannerRenderValue, setBannerValue] = useState('.product-single__title/append');
     const [products, setProducts] = useState([]);
+    const [isAllProducts, pickAllProducts] = useState(false);
     //data state
 
     const [category, pickCategory] = useState(categories[0]);
@@ -134,8 +132,10 @@ const Badges = () => {
     };
 
     let handleSearchFieldChange = (value) => {
-        setProductsOpen(true);
-        setInputValue(value)
+        if (!isAllProducts) {
+            setProductsOpen(true);
+            setInputValue(value)
+        }
     };
 
     const handleSubmit = async () => {
@@ -149,7 +149,8 @@ const Badges = () => {
                     name,
                     pickedBadge,
                     bannerRenderValue,
-                    products
+                    products,
+                    isAllProducts
                 });
                 console.log(res);
             }
@@ -158,7 +159,8 @@ const Badges = () => {
                     name,
                     pickedBadge,
                     bannerRenderValue,
-                    products
+                    products,
+                    isAllProducts
                 });
                 console.log(res);
             }
@@ -308,7 +310,7 @@ const Badges = () => {
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
                                 alignItems: 'flex-end',
-                                width: '420px'
+                                width: '520px'
                             }}>
                                 <Autocomplete
                                     onSelect={(value) => console.log(value)}
@@ -317,11 +319,18 @@ const Badges = () => {
                                     textField={searchField}
                                 />
                                 <Button
+                                    disabled={isAllProducts}
                                     size={"small"}
                                     type={"submit"}
                                     onClick={() => setProducts(true)}
                                 >
                                     Browse products
+                                </Button>
+                                <Button
+                                    plain
+                                    onClick={() => pickAllProducts(true)}
+                                >
+                                    All products
                                 </Button>
                             </div>
                             {(products.length) && products.map(p => <Product

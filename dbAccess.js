@@ -27,6 +27,8 @@ const bannerSchema = new mongoose.Schema({
     },
     products: Array,
     collections: Array,
+    isAllProducts: Boolean,
+    isAllCollection: Boolean,
     isRepeatable: Boolean,
     firstText: String,
     secondText: String,
@@ -41,7 +43,8 @@ const badgeSchema = new mongoose.Schema({
     name: String,
     pickedBadge: Number,
     bannerRenderValue: String,
-    products: Array
+    products: Array,
+    isAllProducts: Boolean
 });
 
 const BannerConfig = mongoose.model('bannerConfig', bannerSchema);
