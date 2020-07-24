@@ -137,13 +137,12 @@ const BannerVariants = (props) => {
                         marginBottom: '10px',
                         marginTop: '40px',
                     }}>
-                        <Link href={(chosenOption === 1) ? '/' : (chosenOption === 2) ? '/badges' : '/animations'}>
+                        <Link href={(chosenOption === 1) ? '/countdown' : (chosenOption === 2) ? '/badges' : '/animations'}>
                             <ShopifyButton
                                 variant="contained"
                                 color="primary"
                                 size={'large'}
                                 disabled={(chosenOption === 3)}
-                                onClick={() => props.setInitBar(true)}
                             >
                                 Continue
                             </ShopifyButton>
