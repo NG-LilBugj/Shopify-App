@@ -179,11 +179,11 @@ const Badges = () => {
     };
 
     useEffect(() => {
-        setName(badgeData.script[0] ? badgeData.script[0].configData.name : '');
-        pickCategory(badgeData.script[0] ? categories[1] : categories[0]);
-        pickBadge(badgeData.script[0] ? badgeData.script[0].configData.pickedBadge : 0);
-        setBannerValue(badgeData.script[0] ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
-        setProducts(badgeData.script[0] ? badgeData.script[0].configData.products : [])
+        setName(badgeData.script ? badgeData.script[0].configData.name : '');
+        pickCategory(badgeData.script ? categories[1] : categories[0]);
+        pickBadge(badgeData.script ? badgeData.script[0].configData.pickedBadge : 0);
+        setBannerValue(badgeData.script ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
+        setProducts(badgeData.script ? badgeData.script[0].configData.products : [])
     }, [badgeData.config]);
 
     const searchField = (
