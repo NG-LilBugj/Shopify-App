@@ -51,8 +51,6 @@ const getter = rep.getter;
 
 const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint} = end;
 
-console.log({BannerConfig, BadgeConfig, AnimationConfig});
-
 router.get('/api/script', getEndpoint({
     Config: BannerConfig,
     file: 'script.js'
