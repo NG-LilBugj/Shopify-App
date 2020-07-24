@@ -5,6 +5,7 @@ const DBAccess = require('./dbAccess');
 const decoder = rep.decoder;
 
 const getEndpoint = (bundle) => async (ctx) => {
+    console.log(bundle.Config);
     try {
         let res = await axios.get(
             `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
