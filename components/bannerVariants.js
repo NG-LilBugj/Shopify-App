@@ -137,22 +137,16 @@ const BannerVariants = (props) => {
                         marginBottom: '10px',
                         marginTop: '40px',
                     }}>
-                        <Link href={(chosenOption === 1) ? '/' : (chosenOption === 2) ? '/badges' : ''}>
+                        <Link href={(chosenOption === 1) ? '/' : (chosenOption === 2) ? '/badges' : '/animations'}>
                             <ShopifyButton
                                 variant="contained"
                                 color="primary"
                                 size={'large'}
-                                disabled={(chosenOption === 3)}
                                 onClick={() => props.setInitBar(true)}
                             >
                                 Continue
                             </ShopifyButton>
                         </Link>
-                        {(chosenOption === 3) && <DisplayText>
-                            <TextStyle variation={'negative'}>
-                                This feature has not embedded yet
-                            </TextStyle>
-                        </DisplayText>}
                     </div>
                 </Layout.Section>
             </Layout>
