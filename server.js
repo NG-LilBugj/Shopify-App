@@ -45,7 +45,7 @@ const {SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY, HOST} = process.env;
 const server = new Koa();
 const router = new KoaRouter();
 
-let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess.BannerConfig;
+let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
 
 const getter = rep.getter;
 
