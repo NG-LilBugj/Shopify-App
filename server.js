@@ -51,11 +51,7 @@ const getter = rep.getter;
 
 const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint} = end;
 
-const testFetch = async () => {
-    return await getter();
-};
-
-console.log(testFetch());
+console.log({BannerConfig, BadgeConfig, AnimationConfig});
 
 router.get('/api/script', getEndpoint({
     Config: BannerConfig,
