@@ -25,6 +25,7 @@ const session = require('koa-session');
 const axios = require('axios');
 const DBAccess = require('./dbAccess');
 const rep = require('./repository');
+const end = require('./endpoints');
 
 dotenv.config();
 
@@ -51,6 +52,8 @@ const modelDecoder = rep.decoder;
 const badgeDecoder = rep.badgeDecoder;
 const getter = rep.getter;
 
+const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint} = end;
+
 const testFetch = async () => {
     return await getter();
 };
@@ -58,66 +61,14 @@ const testFetch = async () => {
 console.log(testFetch());
 
 
-router.get('/api/script', async (ctx) => {
-    try {
-        let res = await axios.get(
-            `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
-            {
-                headers: {
-                    "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-                }
-            });
-        let confData = await modelDecoder(ctx);
-        console.log(confData);
-        ctx.body = {
-            status: 'success',
-            config: res.data.script_tags.some(t => t.src === 'https://lil-storage.herokuapp.com/static/script.js'),
-            script: (!!res.data.script_tags
-                .filter(t => t.src === 'https://lil-storage.herokuapp.com/static/script.js').length) ? res.data.script_tags
-                .filter(t => t.src === 'https://lil-storage.herokuapp.com/static/script.js')
-                .map(t => {
-                    return {
-                        ...t,
-                        configData: confData.find(e => t.id === e.id)
-                    }
-                }) : null
-            ,
-            message: ctx.cookies.get('shopOrigin')
-        }
-    } catch (e) {
-        console.log(e)
-    }
-});
-router.get('/api/badge', async (ctx) => {
-    try {
-        let res = await axios.get(
-              `https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`,
-              {
-                    headers: {
-                        "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-                    }
-              });
-        let badgeData = await badgeDecoder(ctx);
-        console.log(badgeData);
-        ctx.body = {
-            status: 'success',
-            config: res.data.script_tags.some(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js'),
-            script: (!!res.data.script_tags
-                .filter(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js').length) ? res.data.script_tags
-                .filter(b => b.src === 'https://lil-storage.herokuapp.com/static/badge.js')
-                .map(b => {
-                    return {
-                        ...b,
-                        configData: badgeData.find(e => b.id === e.id)
-                    }
-                }) : null,
-            message: ctx.cookies.get('shopOrigin')
-        }
-    }
-    catch (e) {
-        console.log(e);
-    }
-});
+router.get('/api/script', getEndpoint({
+    decoder: modelDecoder,
+    file: 'script.js'
+}));
+router.get('/api/badge', getEndpoint({
+    decoder: badgeDecoder,
+    file: 'badge.js'
+}));
 router.post('/api/script', koaBody(), async (ctx) => {
     try {
         const body = ctx.request.body;
