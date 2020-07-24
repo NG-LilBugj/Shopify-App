@@ -47,8 +47,24 @@ const badgeSchema = new mongoose.Schema({
     isAllProducts: Boolean
 });
 
+const animationSchema = new mongoose.Schema({
+    id: Number,
+    shop: String,
+    name: String,
+    pickedAnimation: Number,
+    animationRenderValue: String,
+    message: String,
+    products: Array,
+    isAllProducts: Boolean
+});
+
 const BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 const BadgeConfig = mongoose.model('badgeConfig', badgeSchema);
+const AnimationConfig = mongoose.model('animationConfig', animationSchema);
 
-module.exports.BannerConfig = BannerConfig;
-module.exports.BadgeConfig = BadgeConfig;
+module.exports = {
+    BannerConfig,
+    BadgeConfig,
+    AnimationConfig
+};
+

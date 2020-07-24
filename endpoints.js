@@ -2,6 +2,7 @@ const axios = require('axios');
 const rep = require('./repository');
 const DBAccess = require('./dbAccess');
 
+const decoder = rep.decoder;
 
 const getEndpoint = (bundle) => async (ctx) => {
     try {
@@ -12,7 +13,7 @@ const getEndpoint = (bundle) => async (ctx) => {
                     "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                 }
             });
-        let confData = await bundle.decoder(ctx);
+        let confData = await decoder(ctx, bundle.Config);
         console.log(confData);
         ctx.body = {
             status: 'success',

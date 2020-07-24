@@ -45,11 +45,8 @@ const {SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY, HOST} = process.env;
 const server = new Koa();
 const router = new KoaRouter();
 
-let BannerConfig = DBAccess.BannerConfig;
-let BadgeConfig = DBAccess.BadgeConfig;
+let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess.BannerConfig;
 
-const modelDecoder = rep.decoder;
-const badgeDecoder = rep.badgeDecoder;
 const getter = rep.getter;
 
 const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint} = end;
@@ -60,135 +57,48 @@ const testFetch = async () => {
 
 console.log(testFetch());
 
-
 router.get('/api/script', getEndpoint({
-    decoder: modelDecoder,
+    Config: BannerConfig,
     file: 'script.js'
 }));
 router.get('/api/badge', getEndpoint({
-    decoder: badgeDecoder,
+    Config: BadgeConfig,
     file: 'badge.js'
 }));
-router.post('/api/script', koaBody(), async (ctx) => {
-    try {
-        const body = ctx.request.body;
-        axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
-            "script_tag": {
-                "event": "onload",
-                "src": "https://lil-storage.herokuapp.com/static/script.js",
-                "display_scope": "all"
-            }
-        }, {
-            headers: {
-                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-            }
-        })
-            .then(res => {
-                console.log(res);
-                let customConfig = new BannerConfig({
-                    ...body,
-                    id: res.data.script_tag.id,
-                    shop: ctx.cookies.get('shopOrigin'),
-                });
-                customConfig.save().catch(e => console.log(e))
-            });
-        ctx.body = {message: 'Config added'}
-    } catch (e) {
-        console.log(e)
-    }
-});
-router.post('/api/badge', koaBody(), async (ctx) => {
-    try{
-        const body = ctx.request.body;
-        axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
-            "script_tag": {
-                "event": "onload",
-                "src": "https://lil-storage.herokuapp.com/static/badge.js",
-                "display_scope": "all"
-            }
-        }, {
-            headers: {
-                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-            }
-        }).then(res => {
-            console.log(res);
-            let customBadge = new BadgeConfig({
-                ...body,
-                id: res.data.script_tag.id,
-                shop: ctx.cookies.get('shopOrigin')
-            });
-            customBadge.save().catch(e => console.log(e))
-        });
-        ctx.body = {message: 'badge added'}
-    }
-    catch (e) {
-        console.log(e)
-    }
-});
-router.put('/api/script', koaBody(), async (ctx) => {
-    try {
-        const body = ctx.request.body;
-        const customConfig = await BannerConfig.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
-        console.log(customConfig);
-        ctx.body = {
-            message: 'config saved',
-            customConfig
-        }
-    }
-    catch (e) {
-        console.log(e)
-    }
-});
-router.put('/api/badge', koaBody(), async (ctx) => {
-    try {
-        const body = ctx.request.body;
-        const customBadge = await BadgeConfig.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
-        console.log(customBadge);
-        ctx.body = {
-            message: 'config saved',
-            customBadge
-        }
-    }
-    catch (e) {
-        console.log(e)
-    }
-});
-router.delete('/api/script', koaBody(), async (ctx) => {
-    try {
-        BannerConfig.findOne({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-            if (err) console.log(err);
-            else {
-                BannerConfig.deleteOne(res, (err) => console.log(err));
-                axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${res.id}.json`, {
-                    headers: {
-                        "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-                    }
-                }).then(res => console.log(res));
-            }
-        });
-        ctx.body = 'Timer deleted'
-    } catch (e) {
-        console.log(e)
-    }
-});
-router.delete('/api/badge', koaBody(), async (ctx) => {
-    try {
-        BadgeConfig.findOne({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-            if (err) console.log(err);
-            else {
-                BadgeConfig.deleteOne(res, (err) => console.log(err));
-                axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${res.id}.json`, {
-                    headers: {
-                        "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
-                    }
-                }).then(res => console.log(res));
-            }
-        });
-        ctx.body = 'Timer deleted'
-    } catch (e) {
-        console.log(e)
-    }
-});
+router.get('/api/animation', getEndpoint({
+    Config: AnimationConfig,
+    file: 'animation.js'
+}));
+router.post('/api/script', koaBody(), postEndpoint({
+    Config: BannerConfig,
+    file: 'script.js'
+}));
+router.post('/api/badge', koaBody(), postEndpoint({
+    Config: BadgeConfig,
+    file: 'badge.js'
+}));
+router.post('/api/animation', koaBody(), postEndpoint({
+    Config: AnimationConfig,
+    file: 'animation.js'
+}));
+router.put('/api/script', koaBody(), putEndpoint({
+    Config: BannerConfig
+}));
+router.put('/api/badge', koaBody(), putEndpoint({
+    Config: BadgeConfig
+}));
+router.put('/api/animation', koaBody(), putEndpoint({
+    Config: AnimationConfig,
+}));
+router.delete('/api/script', koaBody(), deleteEndpoint({
+    Config: BannerConfig
+}));
+router.delete('/api/badge', koaBody(), deleteEndpoint({
+    Config: BadgeConfig
+}));
+router.delete('/api/animation', koaBody(), deleteEndpoint({
+    Config: AnimationConfig,
+}));
 
 server.use(router.allowedMethods());
 server.use(router.routes());

@@ -2,24 +2,16 @@ const DBAccess = require('./dbAccess');
 const BannerConfig = DBAccess.BannerConfig;
 const BadgeConfig = DBAccess.BadgeConfig;
 
-const modelDecoder = (ctx) => {
+const modelDecoder = (ctx, Config) => {
     return new Promise((res, rej) => {
-        const config = BannerConfig.find({shop: ctx.cookies.get('shopOrigin')});
+        const config = Config.find({shop: ctx.cookies.get('shopOrigin')});
         config.exec((err, conf) => {
             if (err) {rej(err)}
             else res(conf)
         })
     })
 };
-const badgeDecoder = (ctx) => {
-    return new Promise((res, rej) => {
-        const config = BadgeConfig.find({shop: ctx.cookies.get('shopOrigin')});
-        config.exec((err, conf) => {
-            if (err) {rej(err)}
-            else res(conf)
-        })
-    })
-};
+
 const getter = () => {
     return new Promise((res, rej) => {
         const arr = BannerConfig.find();
@@ -31,5 +23,4 @@ const getter = () => {
 };
 
 module.exports.decoder = modelDecoder;
-module.exports.badgeDecoder = badgeDecoder;
 module.exports.getter = getter;

@@ -10,7 +10,7 @@ import * as Scroll from "react-scroll";
 const Animations = () => {
 
     useEffect(() => {
-        axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
+        axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {
             fetchData(res.data);
             setLoading(false);
             console.log(res.data)
@@ -60,7 +60,7 @@ const Animations = () => {
         }
         else {
             if (!animData.script) {
-                let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
+                let res = await axios.post('https://lil-shopify.herokuapp.com/api/animation', {
                     name,
                     pickedAnimation: null,
                     badgeRenderValue: animationRenderValue,
@@ -70,7 +70,7 @@ const Animations = () => {
                 console.log(res);
             }
             else {
-                let res = await axios.put('https://lil-shopify.herokuapp.com/api/badge', {
+                let res = await axios.put('https://lil-shopify.herokuapp.com/api/animation', {
                     name,
                     pickedAnimation: null,
                     badgeRenderValue: animationRenderValue,
@@ -84,10 +84,10 @@ const Animations = () => {
 
     const deleteSubmit = async () => {
         setLoading(true);
-        axios.delete('https://lil-shopify.herokuapp.com/api/badge').then(res => {
+        axios.delete('https://lil-shopify.herokuapp.com/api/animation').then(res => {
             console.log(res)
         });
-        axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
+        axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {
             fetchData(res.data);
             setLoading(false)
         });
