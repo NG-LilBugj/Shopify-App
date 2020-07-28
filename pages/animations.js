@@ -26,6 +26,7 @@ const Animations = () => {
     //async state
 
     const [name, setName] = useState('');
+    const [messageText, setMessageText] = useState('');
     const [pickedAnimation, pickAnimation] = useState(0);
     const [animationRenderValue, setBannerValue] = useState('.product-single__title/append');
     const [products, setProducts] = useState([]);
@@ -55,7 +56,7 @@ const Animations = () => {
     };
 
     const handleSubmit = async () => {
-        if (!name){
+        if (!name || !messageText){
             Scroll.animateScroll.scrollToTop();
             setSwitchTouch(true)
         }
@@ -69,6 +70,7 @@ const Animations = () => {
                     name,
                     pickedAnimation,
                     badgeRenderValue: animationRenderValue,
+                    message: messageText,
                     products,
                     isAllProducts
                 });
@@ -80,6 +82,7 @@ const Animations = () => {
                     name,
                     pickedAnimation,
                     badgeRenderValue: animationRenderValue,
+                    message: messageText,
                     products,
                     isAllProducts
                 });
@@ -193,7 +196,6 @@ const Animations = () => {
                         <Card title={'Banner name:'} sectioned>
                             <TextField
                                 label={''}
-                                onBlur={() => handleNameTouch(true)}
                                 value={name}
                                 placeholder={'Enter name...'}
                                 onChange={(value) => {
@@ -222,6 +224,20 @@ const Animations = () => {
                                      className={'img-container'} onClick={() => pickAnimation(5)}>
                                     <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift5.gif'} alt={'icon'}/></div>
                             </div>
+                        </Card>
+                    </Layout.Section>
+                    <Layout.Section>
+                        <Card title={'Your message text:'} sectioned>
+                            <TextField
+                                label={''}
+                                onBlur={() => handleNameTouch(true)}
+                                value={messageText}
+                                placeholder={'Enter text...'}
+                                onChange={(value) => {
+                                    setMessageText(value)
+                                }}
+                                error={((!messageText) && switchTouch) ? 'Please enter text' : ''}
+                            />
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
