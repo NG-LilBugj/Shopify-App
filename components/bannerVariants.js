@@ -36,7 +36,7 @@ const BannerVariants = (props) => {
                         Which wat do you want to encreasy revenue?
                     </DisplayText>
                 </div>
-                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", height: '60vh'}}>
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", minHeight: '60vh'}}>
                     <Layout.Section>
                         <Card sectioned>
                             <div
