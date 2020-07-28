@@ -7,7 +7,9 @@ import {Provider} from "@shopify/app-bridge-react";
 import Cookies from 'js-cookie'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+import ReduxProvider from "../redux/providerMiddleware";
 import fetch from "node-fetch";
+import store from "../redux/store";
 
 const client = new ApolloClient({
       uri: 'http://localhost:8000/graphql',
@@ -28,9 +30,11 @@ class MyApp extends App{
                 </Head>
                 <Provider config={config}>
                 <AppProvider i18n={translations}>
+                    <ReduxProvider store={store}>
                     <ApolloProvider client={client}>
                 <this.props.Component {...this.props.pageProps}/>  {/*react children (all other pages*/}
                     </ApolloProvider>
+                    </ReduxProvider>
                 </AppProvider>
                 </Provider>
             </React.Fragment>

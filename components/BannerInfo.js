@@ -19,7 +19,7 @@ const BannerInfo = (props) => {
                     <Button
                         primary
                     >
-                        Go to
+                        Go to config
                     </Button>
                     </Link>
                 </div>
