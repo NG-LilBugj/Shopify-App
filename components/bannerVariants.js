@@ -2,6 +2,7 @@ import {Card, DisplayText, Heading, Layout, Page, TextStyle} from "@shopify/pola
 import {Button, withStyles} from "@material-ui/core"
 import {useState} from "react";
 import Link from "next/link";
+import BannerInfo from "./BannerInfo";
 
 const ShopifyButton = withStyles({
     root: {
@@ -71,6 +72,14 @@ const BannerVariants = (props) => {
                             </div>
                         </Card>
                     </Layout.Section>
+                    {props.bannerData[2].data.config &&
+                        <Layout.Section>
+                            <BannerInfo
+                                data={props.bannerData[2].data}
+                                link={'/countdown'}
+                            />
+                        </Layout.Section>
+                    }
                     <Layout.Section>
                         <Card sectioned>
                             <div
@@ -100,6 +109,14 @@ const BannerVariants = (props) => {
                             </div>
                         </Card>
                     </Layout.Section>
+                    {props.bannerData[1].data.config &&
+                    <Layout.Section>
+                        <BannerInfo
+                            data={props.bannerData[1].data}
+                            link={'/badges'}
+                        />
+                    </Layout.Section>
+                    }
                     <Layout.Section>
                         <Card sectioned>
                             <div
@@ -127,6 +144,14 @@ const BannerVariants = (props) => {
                             </div>
                         </Card>
                     </Layout.Section>
+                    {props.bannerData[0].data.config &&
+                    <Layout.Section>
+                        <BannerInfo
+                            data={props.bannerData[0].data}
+                            link={'/animations'}
+                        />
+                    </Layout.Section>
+                    }
                 </div>
                 <Layout.Section>
                     <div style={{

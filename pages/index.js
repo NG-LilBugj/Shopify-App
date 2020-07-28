@@ -13,8 +13,11 @@ const Initial = () => {
         let animation = axios.get('https://lil-shopify.herokuapp.com/api/animation');
         let saleBadge = axios.get('https://lil-shopify.herokuapp.com/api/badge');
         let countdown = axios.get('https://lil-shopify.herokuapp.com/api/script');
-        Promise.all([animation, saleBadge, countdown]).then(values => console.log(values))
-    });
+        Promise.all([animation, saleBadge, countdown]).then(values => {
+            console.log(values);
+            receiveBannerData(values.map(v => v.data))
+        })
+    }, []);
 
     const [isSecondPage, setSecondPage] = useState(false);
     const [bannerData, receiveBannerData] = useState([null, null, null]);
@@ -23,7 +26,9 @@ const Initial = () => {
         <Page>
                 <Layout.Section>
                     {isSecondPage ?
-                        <BannerVariants/> :
+                        <BannerVariants
+                            bannerData={bannerData}
+                        /> :
                         <InitPage
                             setSecondPage={setSecondPage}
                         />}
