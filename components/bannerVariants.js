@@ -33,11 +33,10 @@ const BannerVariants = (props) => {
             <Layout>
                 <div style={{marginBottom: '60px', marginTop: '30px'}}>
                     <DisplayText size={'large'} element={'h1'}>
-                        Which wat do you want to encreasy revenue?
+                        Which wat do you want to increase revenue?
                     </DisplayText>
                 </div>
                 <div style={{display: "flex", flexDirection: "column", justifyContent: "space-around", minHeight: '60vh'}}>
-                    <Layout.Section>
                         <Card sectioned>
                             <div
                                 style={{display: "flex", justifyContent: "space-between", width: '540px', cursor: "pointer"}}
@@ -71,14 +70,11 @@ const BannerVariants = (props) => {
                                 </div>
                             </div>
                         </Card>
-                    </Layout.Section>
                     {props.bannerData[2].config &&
-                        <Layout.Section>
                             <BannerInfo
                                 data={props.bannerData[2]}
                                 link={'/countdown'}
                             />
-                        </Layout.Section>
                     }
                     <Layout.Section>
                         <Card sectioned>
