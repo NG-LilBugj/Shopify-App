@@ -109,7 +109,6 @@ const BannerVariants = (props) => {
                             link={'/badges'}
                         />
                     }
-                    <Layout.Section>
                         <Card sectioned>
                             <div
                                 style={{display: "flex", justifyContent: "space-between", maxWidth: '540px', cursor: "pointer"}}
@@ -135,15 +134,11 @@ const BannerVariants = (props) => {
                                      alt={'design'}/>
                             </div>
                         </Card>
-                    </Layout.Section>
                     {props.bannerData[0].config &&
-                    <Layout.Section>
                         <BannerInfo
                             data={props.bannerData[0]}
                             link={'/animations'}
-                        />
-                    </Layout.Section>
-                    }
+                        />}
                 </div>
                 <Layout.Section>
                     <div style={{
