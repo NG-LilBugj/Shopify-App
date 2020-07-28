@@ -11,7 +11,7 @@ const BannerInfo = (props) => {
             padding: '10px',
             borderBottom: "1px solid grey"
         }}>
-            <p>{props.bannerName}</p>
+            <p>{props.strings.bannerName}</p>
         </div>
             <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
                 <b style={{fontSize: "24px"}}>{props.data.script[0].configData ? props.data.script[0].configData.name : "Banner"}</b>
@@ -20,7 +20,7 @@ const BannerInfo = (props) => {
                     <Button
                         primary
                     >
-                        {props.goToConfig}
+                        {props.strings.goToConfig}
                     </Button>
                     </Link>
                 </div>

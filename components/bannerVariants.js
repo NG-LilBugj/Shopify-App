@@ -3,6 +3,7 @@ import {Button, withStyles} from "@material-ui/core"
 import {useState} from "react";
 import Link from "next/link";
 import BannerInfo from "./BannerInfo";
+import {connect} from "react-redux";
 
 const ShopifyButton = withStyles({
     root: {
@@ -33,7 +34,7 @@ const BannerVariants = (props) => {
             <Layout>
                 <div style={{marginBottom: '60px', marginTop: '30px'}}>
                     <DisplayText size={'large'} element={'h1'}>
-                        Which wat do you want to increase revenue?
+                        {props.strings.secondPageMainSign}
                     </DisplayText>
                 </div>
                 <div style={{
@@ -185,4 +186,8 @@ const BannerVariants = (props) => {
     )
 };
 
-export default BannerVariants
+const mapStateToProps = (state) => ({
+    strings: state.stringsToDisplay.strings.bannerVariants
+});
+
+export default connect(mapStateToProps)(BannerVariants)
