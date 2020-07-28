@@ -1,5 +1,6 @@
 import {Button, Card, Icon} from "@shopify/polaris";
 import Link from "next/link";
+import {connect} from "react-redux";
 
 const BannerInfo = (props) => {
     return(
@@ -10,7 +11,7 @@ const BannerInfo = (props) => {
             padding: '10px',
             borderBottom: "1px solid grey"
         }}>
-            <p>Banner name:</p>
+            <p>{props.bannerName}</p>
         </div>
             <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
                 <b style={{fontSize: "24px"}}>{props.data.script[0].configData ? props.data.script[0].configData.name : "Banner"}</b>
@@ -19,7 +20,7 @@ const BannerInfo = (props) => {
                     <Button
                         primary
                     >
-                        Go to config
+                        {props.goToConfig}
                     </Button>
                     </Link>
                 </div>
@@ -28,4 +29,8 @@ const BannerInfo = (props) => {
     )
 };
 
-export default BannerInfo
+const mapStateToProps = (state) => ({
+    strings: state.stringsToDisplay.strings.bannerInfo
+});
+
+export default connect(mapStateToProps)(BannerInfo)
