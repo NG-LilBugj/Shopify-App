@@ -67,7 +67,7 @@ const Animations = () => {
             if (!animData.script) {
                 let res = await axios.post('https://lil-shopify.herokuapp.com/api/animation', {
                     name,
-                    pickedAnimation: null,
+                    pickedAnimation,
                     badgeRenderValue: animationRenderValue,
                     products,
                     isAllProducts
@@ -78,7 +78,7 @@ const Animations = () => {
             else {
                 let res = await axios.put('https://lil-shopify.herokuapp.com/api/animation', {
                     name,
-                    pickedAnimation: null,
+                    pickedAnimation,
                     badgeRenderValue: animationRenderValue,
                     products,
                     isAllProducts
