@@ -25,7 +25,7 @@ const ShopifyButton = withStyles({
 })(Button);
 
 const BannerVariants = (props) => {
-
+    console.log(props);
     const [chosenOption, chooseOption] = useState(1);
 
     return (
