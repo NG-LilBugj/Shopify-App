@@ -72,10 +72,10 @@ const BannerVariants = (props) => {
                             </div>
                         </Card>
                     </Layout.Section>
-                    {props.bannerData[2].data.config &&
+                    {props.bannerData[2].config &&
                         <Layout.Section>
                             <BannerInfo
-                                data={props.bannerData[2].data}
+                                data={props.bannerData[2]}
                                 link={'/countdown'}
                             />
                         </Layout.Section>
@@ -109,10 +109,10 @@ const BannerVariants = (props) => {
                             </div>
                         </Card>
                     </Layout.Section>
-                    {props.bannerData[1].data.config &&
+                    {props.bannerData[1].config &&
                     <Layout.Section>
                         <BannerInfo
-                            data={props.bannerData[1].data}
+                            data={props.bannerData[1]}
                             link={'/badges'}
                         />
                     </Layout.Section>
@@ -144,10 +144,10 @@ const BannerVariants = (props) => {
                             </div>
                         </Card>
                     </Layout.Section>
-                    {props.bannerData[0].data.config &&
+                    {props.bannerData[0].config &&
                     <Layout.Section>
                         <BannerInfo
-                            data={props.bannerData[0].data}
+                            data={props.bannerData[0]}
                             link={'/animations'}
                         />
                     </Layout.Section>
