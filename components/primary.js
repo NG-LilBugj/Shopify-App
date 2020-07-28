@@ -261,9 +261,9 @@ const PrimaryDesign = (props) => {
                             </Button>
                             <Button
                                 plain
-                                onClick={() => props.pickAllCollection(true)}
+                                onClick={() => props.pickAllCollection(!props.isAllCollection)}
                             >
-                                Pick All Collections
+                                {props.isAllCollection ? 'Cancel' : 'Pick All Collections'}
                             </Button>
                         </div>
                         {(props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
