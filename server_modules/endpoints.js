@@ -12,15 +12,16 @@ const getEndpoint = (bundle) => async (ctx) => {
                 headers: {
                     "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                 }
-            });
-        let confData = await decoder(ctx, bundle.Config);
+            }); // HTTP Get request to Shopify ScriptTag API
+        let confData = await decoder(ctx, bundle.Config); //Request to mongoose model (in repository file)
         console.log(confData);
-        ctx.body = {
+        ctx.body = { //response to front with data about script tags and special config
             status: 'success',
             config: res.data.script_tags.some(t => t.src === `https://lil-storage.herokuapp.com/static/${bundle.file}`),
             script: (!!res.data.script_tags
                 .filter(t => t.src === `https://lil-storage.herokuapp.com/static/${bundle.file}`).length) ? res.data.script_tags
                 .filter(t => t.src === `https://lil-storage.herokuapp.com/static/${bundle.file}`)
+                //analysing script tags for matches with our scripts
                 .map(t => {
                     return {
                         ...t,
@@ -37,16 +38,16 @@ const getEndpoint = (bundle) => async (ctx) => {
 
 const postEndpoint = (bundle) => (ctx) => {
     try {
-        const body = ctx.request.body;
+        const body = ctx.request.body; //parsing request from front
         axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
             "script_tag": {
                 "event": "onload",
                 "src": `https://lil-storage.herokuapp.com/static/${bundle.file}`,
                 "display_scope": "all"
-            }
+            } // HTTP Post request to Shopify ScriptTag API
         }, {
             headers: {
-                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
+                "X-Shopify-Access-Token": ctx.cookies.get('accessToken')  //enabling headers
             }
         })
             .then(res => {
@@ -56,7 +57,7 @@ const postEndpoint = (bundle) => (ctx) => {
                     id: res.data.script_tag.id,
                     shop: ctx.cookies.get('shopOrigin'),
                 });
-                customConfig.save().catch(e => console.log(e))
+                customConfig.save().catch(e => console.log(e))  //saving config to MongoDB
             });
         ctx.body = {message: 'Config added'}
     } catch (e) {
@@ -66,13 +67,14 @@ const postEndpoint = (bundle) => (ctx) => {
 
 const putEndpoint = (bundle) => async (ctx) => {
     try {
-        const body = ctx.request.body;
+        const body = ctx.request.body;  //parsing request from front
         const customConfig = await bundle.Config.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
+        // editing document with config in MongoDB
         console.log(customConfig);
         ctx.body = {
             message: 'config saved',
             customConfig
-        }
+        } // response to front
     }
     catch (e) {
         console.log(e)
@@ -81,18 +83,18 @@ const putEndpoint = (bundle) => async (ctx) => {
 
 const deleteEndpoint = (bundle) => async (ctx) => {
     try {
-        bundle.Config.findOne({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+        bundle.Config.findOne({shop: ctx.cookies.get('shopOrigin')}, (err, res) => { // searching for a matching document
             if (err) console.log(err);
             else {
-                bundle.Config.deleteOne(res, (err) => console.log(err));
+                bundle.Config.deleteOne(res, (err) => console.log(err)); // deleting document
                 axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags/${res.id}.json`, {
                     headers: {
                         "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
                     }
-                }).then(res => console.log(res));
+                }).then(res => console.log(res)); // HTTP Delete request to Shopify ScriptTag API
             }
         });
-        ctx.body = 'Timer deleted'
+        ctx.body = 'Timer deleted' // response to front
     } catch (e) {
         console.log(e)
     }
@@ -103,4 +105,4 @@ module.exports = {
     postEndpoint,
     putEndpoint,
     deleteEndpoint
-};
+}; // module exporting

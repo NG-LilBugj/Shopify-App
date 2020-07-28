@@ -35,7 +35,7 @@ const bannerSchema = new mongoose.Schema({
     isLinkActive: Boolean,
     linkText: String,
     href: String
-});
+});  // schema for countdown timer
 
 const badgeSchema = new mongoose.Schema({
     id: Number,
@@ -45,7 +45,7 @@ const badgeSchema = new mongoose.Schema({
     bannerRenderValue: String,
     products: Array,
     isAllProducts: Boolean
-});
+}); // schema for sale banner
 
 const animationSchema = new mongoose.Schema({
     id: Number,
@@ -56,15 +56,16 @@ const animationSchema = new mongoose.Schema({
     message: String,
     products: Array,
     isAllProducts: Boolean
-});
+}); // schema for animation badge
 
 const BannerConfig = mongoose.model('bannerConfig', bannerSchema);
 const BadgeConfig = mongoose.model('badgeConfig', badgeSchema);
 const AnimationConfig = mongoose.model('animationConfig', animationSchema);
+// mongoose model creation
 
 module.exports = {
     BannerConfig,
     BadgeConfig,
     AnimationConfig
-};
+}; // module exported
 

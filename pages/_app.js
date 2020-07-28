@@ -13,13 +13,13 @@ const client = new ApolloClient({
       uri: 'http://localhost:8000/graphql',
     fetch: fetch
  });
+// connection to ApolloClient
 
 class MyApp extends App{
-    componentDidMount(){
-    }
+    // root component for app
 
     render(){
-        const config = { apiKey: API_KEY, shopOrigin: Cookies.get("shopOrigin"), forceRedirect: true };
+        const config = { apiKey: API_KEY, shopOrigin: Cookies.get("shopOrigin"), forceRedirect: true }; // config with connection data
         return(
             <React.Fragment>
                 <Head>
@@ -29,7 +29,7 @@ class MyApp extends App{
                 <Provider config={config}>
                 <AppProvider i18n={translations}>
                     <ApolloProvider client={client}>
-                <this.props.Component {...this.props.pageProps}/>
+                <this.props.Component {...this.props.pageProps}/>  {/*react children (all other pages*/}
                     </ApolloProvider>
                 </AppProvider>
                 </Provider>

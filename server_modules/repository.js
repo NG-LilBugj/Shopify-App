@@ -10,7 +10,7 @@ const modelDecoder = (ctx, Config) => {
             else res(conf)
         })
     })
-};
+}; // special function for erasing data from mongoose config model
 
 const getter = () => {
     return new Promise((res, rej) => {
@@ -20,7 +20,7 @@ const getter = () => {
             else res(conf)
         })
     })
-};
+}; // special testing function
 
 module.exports.decoder = modelDecoder;
 module.exports.getter = getter;

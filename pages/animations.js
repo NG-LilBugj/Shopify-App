@@ -9,7 +9,7 @@ import * as Scroll from "react-scroll";
 
 const Animations = () => {
 
-    useEffect(() => {
+    useEffect(() => { // side effect function to fetch data from main server (get endpoint for animations)
         axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {
             fetchData(res.data);
             setLoading(false);
@@ -40,13 +40,14 @@ const Animations = () => {
     const [switchTouch, setSwitchTouch] = useState(false);
     //error state
 
-    let handleProductSelection = (products) => {
+    let handleProductSelection = (products) => { //callback to pick products where animation is shown
         setProducts(products.selection.map(p => ({title: p.title, photo: p.images[0].originalSrc, id: p.handle})))
         setProductsOpen(false);
         console.log(products)
     };
 
     let handleSearchFieldChange = (value) => {
+        //callback to pick products where animation is shown (on search field)
         if (!isAllProducts) {
             setProductsOpen(true);
             setInputValue(value)
@@ -59,6 +60,10 @@ const Animations = () => {
             setSwitchTouch(true)
         }
         else {
+            // users errors handler (if user forgets to fill name field)
+
+            // if there is no data received from server, function makes POST request, but if there is data to edit,
+            // function makes PUT request
             if (!animData.script) {
                 let res = await axios.post('https://lil-shopify.herokuapp.com/api/animation', {
                     name,
@@ -68,6 +73,7 @@ const Animations = () => {
                     isAllProducts
                 });
                 console.log(res);
+                // HTTP Post request to main server
             }
             else {
                 let res = await axios.put('https://lil-shopify.herokuapp.com/api/animation', {
@@ -78,15 +84,18 @@ const Animations = () => {
                     isAllProducts
                 });
                 console.log(res);
+                // HTTP Put request to main server
             }
         }
     };
 
     const deleteSubmit = async () => {
+        // HTTP Delete request to main server
         setLoading(true);
         axios.delete('https://lil-shopify.herokuapp.com/api/animation').then(res => {
             console.log(res)
         });
+        // HTTP request to renew data about config
         axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {
             fetchData(res.data);
             setLoading(false)
@@ -98,7 +107,7 @@ const Animations = () => {
         setBannerValue(animData.status ? animData.script[0].configData.badgeRenderValue : '.product-single__title/append');
         setProducts(animData.status ? animData.script[0].configData.products : [])
     }, [animData.config]);
-
+    // resettling data state when there is information from main server
 
     const searchField = (
         <Autocomplete.TextField
