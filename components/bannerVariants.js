@@ -179,11 +179,11 @@ const BannerVariants = (props) => {
                             Continue
                         </ShopifyButton>
                     </Link>
-                    {(chosenOption === 3) && <DisplayText>
-                        <TextStyle variation={'negative'}>
-                            This feature has not embedded yet
-                        </TextStyle>
-                    </DisplayText>}
+                    {/*{(chosenOption === 3) && <DisplayText>*/}
+                    {/*    <TextStyle variation={'negative'}>*/}
+                    {/*        This feature has not embedded yet*/}
+                    {/*    </TextStyle>*/}
+                    {/*</DisplayText>}*/}
                 </div>
                 </Layout.Section>
             </Layout>
