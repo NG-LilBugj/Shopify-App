@@ -62,7 +62,7 @@ const initState = {
         ]
 };
 
-export const localesReducer = (action, state = initState) => {
+export const localesReducer = (state = initState, action) => {
     switch (action.type) {
         case SET_LOCALES: return {
             ...state,
