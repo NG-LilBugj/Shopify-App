@@ -174,16 +174,10 @@ const BannerVariants = (props) => {
                             variant="contained"
                             color="primary"
                             size={'large'}
-                            disabled={(chosenOption === 3)}
                         >
                             Continue
                         </ShopifyButton>
                     </Link>
-                    {(chosenOption === 3) && <DisplayText>
-                        <TextStyle variation={'negative'}>
-                            This feature has not embedded yet
-                        </TextStyle>
-                    </DisplayText>}
                 </div>
                 </Layout.Section>
             </Layout>
