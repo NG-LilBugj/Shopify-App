@@ -23,17 +23,13 @@ const Initial = () => {
     const [bannerData, receiveBannerData] = useState([null, null, null]);
 
     return (
-        <Page>
-                <Layout.Section>
-                    {isSecondPage ?
+                    isSecondPage ?
                         <BannerVariants
                             bannerData={bannerData}
                         /> :
                         <InitPage
                             setSecondPage={setSecondPage}
-                        />}
-                </Layout.Section>
-        </Page>
+                        />
     )
 };
 
