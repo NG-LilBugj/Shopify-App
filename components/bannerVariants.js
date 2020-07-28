@@ -76,7 +76,6 @@ const BannerVariants = (props) => {
                                 link={'/countdown'}
                             />
                     }
-                    <Layout.Section>
                         <Card sectioned>
                             <div
                                 style={{display: "flex", justifyContent: "space-between", maxWidth: '540px', cursor: "pointer"}}
@@ -104,16 +103,12 @@ const BannerVariants = (props) => {
                                 </div>
                             </div>
                         </Card>
-                    </Layout.Section>
                     {props.bannerData[1].config &&
-                    <Layout.Section>
                         <BannerInfo
                             data={props.bannerData[1]}
                             link={'/badges'}
                         />
-                    </Layout.Section>
                     }
-                    <Layout.Section>
                         <Card sectioned>
                             <div
                                 style={{display: "flex", justifyContent: "space-between", maxWidth: '540px', cursor: "pointer"}}
@@ -139,17 +134,13 @@ const BannerVariants = (props) => {
                                      alt={'design'}/>
                             </div>
                         </Card>
-                    </Layout.Section>
                     {props.bannerData[0].config &&
-                    <Layout.Section>
                         <BannerInfo
                             data={props.bannerData[0]}
                             link={'/animations'}
                         />
-                    </Layout.Section>
                     }
                 </div>
-                <Layout.Section>
                     <div style={{
                         display: "flex",
                         justifyContent: "space-evenly",
@@ -174,7 +165,6 @@ const BannerVariants = (props) => {
                             </TextStyle>
                         </DisplayText>}
                     </div>
-                </Layout.Section>
             </Layout>
         </Page>
     )
