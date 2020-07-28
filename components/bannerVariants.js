@@ -30,6 +30,7 @@ const BannerVariants = (props) => {
 
     return (
         <Page>
+            <Layout>
                 <div style={{marginBottom: '60px', marginTop: '30px'}}>
                     <DisplayText size={'large'} element={'h1'}>
                         Which wat do you want to increase revenue?
@@ -159,6 +160,7 @@ const BannerVariants = (props) => {
                         link={'/animations'}
                     />}
                 </div>
+                <Layout.Section>
                 <div style={{
                     display: "flex",
                     justifyContent: "space-evenly",
@@ -183,6 +185,8 @@ const BannerVariants = (props) => {
                         </TextStyle>
                     </DisplayText>}
                 </div>
+                </Layout.Section>
+            </Layout>
         </Page>
     )
 };
