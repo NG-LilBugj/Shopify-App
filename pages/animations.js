@@ -107,8 +107,11 @@ const Animations = () => {
 
     useEffect(() => {
         setName(animData.status ? animData.script[0].configData.name : '');
+        setMessageText(animData.status ? animData.script[0].configData.message : '');
+        pickAnimation(animData.status ? animData.script[0].configData.pickedAnimation : 0);
         setBannerValue(animData.status ? animData.script[0].configData.badgeRenderValue : '.product-single__title/append');
-        setProducts(animData.status ? animData.script[0].configData.products : [])
+        setProducts(animData.status ? animData.script[0].configData.products : []);
+        pickAllProducts(animData.script ? animData.script[0].configData.isAllProducts : false);
     }, [animData.config]);
     // resettling data state when there is information from main server
 
