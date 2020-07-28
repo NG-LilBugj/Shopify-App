@@ -174,7 +174,6 @@ const BannerVariants = (props) => {
                             variant="contained"
                             color="primary"
                             size={'large'}
-                            disabled={(chosenOption === 3)}
                         >
                             Continue
                         </ShopifyButton>
