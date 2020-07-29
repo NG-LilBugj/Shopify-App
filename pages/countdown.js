@@ -232,6 +232,7 @@ const Countdown = (props) => {
     const handleSubmit = async () => {
         console.log('submitted');
         const bundle = {
+            id: scriptData.script[0].id,
             name,
             startDate: selectedStartDate,
             endDate: selectedEndDate,
@@ -266,7 +267,7 @@ const Countdown = (props) => {
     };
 
     const deleteSubmit = () => {
-        axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {
+        axios.delete(`https://lil-shopify.herokuapp.com/api/script?id=${scriptData.script[0].id}`).then(res => {
             console.log(res);
             axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
                 fetchData(res.data);

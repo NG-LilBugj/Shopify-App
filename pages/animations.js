@@ -79,7 +79,8 @@ const Animations = (props) => {
                 // HTTP Post request to main server
             }
             else {
-                let res = await axios.put('https://lil-shopify.herokuapp.com/api/animation', {
+                let res = await axios.put(`https://lil-shopify.herokuapp.com/api/animation`, {
+                    id: animData.script[0].id,
                     name,
                     pickedAnimation,
                     badgeRenderValue: animationRenderValue,
@@ -96,7 +97,7 @@ const Animations = (props) => {
     const deleteSubmit = () => {
         // HTTP Delete request to main server
         setLoading(true);
-        axios.delete('https://lil-shopify.herokuapp.com/api/animation').then(res => {
+        axios.delete(`https://lil-shopify.herokuapp.com/api/animation?id=${animData.script[0].id}`).then(res => {
             console.log(res);
             // HTTP request to renew data about config
             axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {

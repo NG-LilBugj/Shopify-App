@@ -68,7 +68,7 @@ const postEndpoint = (bundle) => (ctx) => {
 const putEndpoint = (bundle) => async (ctx) => {
     try {
         const body = ctx.request.body;  //parsing request from front
-        const customConfig = await bundle.Config.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin')}, body, {new: true});
+        const customConfig = await bundle.Config.findOneAndUpdate({shop: ctx.cookies.get('shopOrigin'), id: body.id}, body, {new: true});
         // editing document with config in MongoDB
         console.log(customConfig);
         ctx.body = {
@@ -83,7 +83,8 @@ const putEndpoint = (bundle) => async (ctx) => {
 
 const deleteEndpoint = (bundle) => async (ctx) => {
     try {
-        bundle.Config.findOne({shop: ctx.cookies.get('shopOrigin')}, (err, res) => { // searching for a matching document
+        const id = ctx.query.id;
+        bundle.Config.findOne({shop: ctx.cookies.get('shopOrigin'), id}, (err, res) => { // searching for a matching document
             if (err) console.log(err);
             else {
                 bundle.Config.deleteOne(res, (err) => console.log(err)); // deleting document

@@ -157,6 +157,7 @@ const Badges = (props) => {
             }
             else {
                 let res = await axios.put('https://lil-shopify.herokuapp.com/api/badge', {
+                    id: badgeData.script[0].id,
                     name,
                     pickedBadge,
                     bannerRenderValue,
@@ -170,7 +171,7 @@ const Badges = (props) => {
 
     const deleteSubmit = () => {
         setLoading(true);
-        axios.delete('https://lil-shopify.herokuapp.com/api/badge').then(res => {
+        axios.delete(`https://lil-shopify.herokuapp.com/api/badge?id=${badgeData.script[0].id}`).then(res => {
             console.log(res);
             axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
                 fetchData(res.data);
@@ -184,7 +185,7 @@ const Badges = (props) => {
         setName(badgeData.script ? badgeData.script[0].configData.name : '');
         pickCategory(badgeData.script ? categories[1] : categories[0]);
         pickBadge(badgeData.script ? badgeData.script[0].configData.pickedBadge : 0);
-        setBannerValue(badgeData.script ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append')
+        setBannerValue(badgeData.script ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append');
         setProducts(badgeData.script ? badgeData.script[0].configData.products : [])
     }, [badgeData.config]);
 
