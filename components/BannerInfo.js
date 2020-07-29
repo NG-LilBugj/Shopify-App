@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 const BannerInfo = (props) => {
     return(
-        <Card>
+        <Card sectioned>
             <div style={{
             display: "flex",
             justifyContent: "space-between",

@@ -43,7 +43,7 @@ const Animations = (props) => {
     //error state
 
     let handleProductSelection = (products) => { //callback to pick products where animation is shown
-        setProducts(products.selection.map(p => ({title: p.title, photo: p.images[0].originalSrc, id: p.handle})))
+        setProducts(products.selection.map(p => ({title: p.title, photo: p.images[0].originalSrc, id: p.handle})));
         setProductsOpen(false);
         console.log(products)
     };
