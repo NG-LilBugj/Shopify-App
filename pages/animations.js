@@ -181,7 +181,7 @@ const Animations = () => {
                                 marginBottom: '25px'
                             }}>
                             <div style={{fontSize: '24px', fontWeight: '600'}}>
-                                Customize your special badge banner!
+                                {props.strings.customize}
                             </div>
                             <Link href={!!name ? '/success' : '/badges'}>
                                 <Button
@@ -191,26 +191,26 @@ const Animations = () => {
                                     type={"submit"}
                                     onClick={handleSubmit}
                                 >
-                                    Save
+                                    {props.strings.save}
                                 </Button>
                             </Link>
                         </div>
                     </Layout.Section>
                     <Layout.Section>
-                        <Card title={'Banner name:'} sectioned>
+                        <Card title={props.strings.bannerName} sectioned>
                             <TextField
                                 label={''}
                                 value={name}
-                                placeholder={'Enter name...'}
+                                placeholder={props.strings.enterName}
                                 onChange={(value) => {
                                     setName(value)
                                 }}
-                                error={((!name) && switchTouch) ? 'Please enter name' : ''}
+                                error={((!name) && switchTouch) ? props.strings.pleaseEnterName : ''}
                             />
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
-                        <Card title={'Pick animation'} sectioned>
+                        <Card title={props.strings.pickAnimation} sectioned>
                             <div style={{display: "flex", flexWrap: "wrap", width: '100%'}}>
                                 <div style={{borderColor: (pickedAnimation === 1) ? '#3333aa' : ""}}
                                      className={'img-container'} onClick={() => pickAnimation(1)}>
@@ -231,23 +231,23 @@ const Animations = () => {
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
-                        <Card title={'Your message text:'} sectioned>
+                        <Card title={props.strings.messageText} sectioned>
                             <TextField
                                 label={''}
                                 onBlur={() => handleNameTouch(true)}
                                 value={messageText}
-                                placeholder={'Enter text...'}
+                                placeholder={props.strings.enterText}
                                 onChange={(value) => {
                                     setMessageText(value)
                                 }}
-                                error={((!messageText) && switchTouch) ? 'Please enter text' : ''}
+                                error={((!messageText) && switchTouch) ? props.strings.pleaseEnterText : ''}
                             />
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
-                        <Card sectioned title={'Banner placement'}>
+                        <Card sectioned title={props.strings.bannerPlacement}>
                             <Heading>
-                                Product pages with badge:
+                                {props.strings.productPagesWithPopup}
                             </Heading>
                             <div style={{
                                 display: 'flex',
@@ -268,7 +268,7 @@ const Animations = () => {
                                     type={"submit"}
                                     onClick={() => setProducts(true)}
                                 >
-                                    Browse products
+                                    {props.strings.browseProducts}
                                 </Button>
                                 <Button
                                     plain
