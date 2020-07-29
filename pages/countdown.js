@@ -427,7 +427,7 @@ const Countdown = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.animations,
+    strings: state.stringsToDisplay.strings.countdown,
     configStrings: state.stringsToDisplay.strings.existing_config
 });
 

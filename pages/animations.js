@@ -280,25 +280,6 @@ const Animations = (props) => {
                             {(products.length) && products.map(p => <Product
                                 pickProducts={setProducts}
                                 products={products} {...p}/>)}
-                            <div style={{width: '320px'}}>
-                                <Select
-                                    label={''}
-                                    labelInline
-                                    options={[
-                                        {label: props.strings.aboveTitle, value: '.product-single__title/prepend'},
-                                        {label: props.strings.belowTitle, value: '.product-single__title/append'},
-                                        {label: props.strings.abovePrice, value: '.product__price/prepend'},
-                                        {label: props.strings.belowPrice, value: '.product__price/append'},
-                                        {label: props.strings.aboveBuyButton, value: '.product-form__controls-group/append'},
-                                        {
-                                            label: props.strings.belowBuyButton,
-                                            value: '.product-form__controls-group product-form__controls-group--submit/append'
-                                        },
-                                    ]}
-                                    onChange={(value) => setBannerValue(value)}
-                                    value={animationRenderValue}
-                                />
-                            </div>
                         </Card>
                     </Layout.Section>
                     <div style={{display: "flex", justifyContent: 'flex-end', width: '100%'}}>

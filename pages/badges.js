@@ -377,7 +377,7 @@ const Badges = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.animations,
+    strings: state.stringsToDisplay.strings.badges,
     configStrings: state.stringsToDisplay.strings.existing_config
 });
 
