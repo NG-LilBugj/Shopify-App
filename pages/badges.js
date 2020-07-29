@@ -92,7 +92,7 @@ const categoryVariant = (category, pickedBadge, pickBadge) => {
     }
 };
 
-const Badges = () => {
+const Badges = (props) => {
 
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
@@ -171,7 +171,7 @@ const Badges = () => {
     const deleteSubmit = () => {
         setLoading(true);
         axios.delete('https://lil-shopify.herokuapp.com/api/badge').then(res => {
-            console.log(res)
+            console.log(res);
             axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
                 fetchData(res.data);
                 setLoading(false)

@@ -8,7 +8,7 @@ import axios from "axios";
 import * as Scroll from "react-scroll";
 import {connect} from "react-redux";
 
-const Animations = () => {
+const Animations = (props) => {
 
     useEffect(() => { // side effect function to fetch data from main server (get endpoint for animations)
         axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {

@@ -11,7 +11,7 @@ import Link from "next/link";
 import {connect} from "react-redux";
 
 
-const Countdown = () => {
+const Countdown = (props) => {
 
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
