@@ -2,7 +2,7 @@ import {Button, EmptyState, Page} from "@shopify/polaris";
 import Link from "next/link"
 import {connect} from "react-redux";
 
-const Success = (props) => {
+const Success = () => {
 
     return (
         <Page>
