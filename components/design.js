@@ -1,6 +1,7 @@
 import {Card, Checkbox, ColorPicker, Layout, Popover, RangeSlider, TextField} from "@shopify/polaris";
 import '../public/index.css'
 import Preview from "./preview";
+import {connect} from "react-redux";
 
 
 const DesignSection = (props) => {
