@@ -1,23 +1,21 @@
 import {Button, EmptyState, Page} from "@shopify/polaris";
 import Link from "next/link"
-import {connect} from "react-redux";
+import {connect, useSelector} from "react-redux";
 
 const Success = () => {
+
+    const strings = useSelector(state => state.stringsToDisplay.strings.success);
 
     return (
         <Page>
         <EmptyState
-            heading={props.strings.mainHeader}
+            heading={strings.mainHeader}
             image={'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg'}
         >
-            <Link href={'/'}><Button primary>{props.strings.button}</Button></Link>
+            <Link href={'/'}><Button primary>{strings.button}</Button></Link>
         </EmptyState>
         </Page>
     )
 };
 
-let mapStateToProps = (state) => ({
-    strings: state.strings.success
-});
-
-export default connect(mapStateToProps)(Success)
+export default Success
