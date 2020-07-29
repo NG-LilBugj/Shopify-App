@@ -24,16 +24,17 @@ const ShopifyButton = withStyles({
 })(Button);
 
 const InitPage = (props) => {
+
     return(
         <Page>
             <Layout>
                 <div style={{display: "flex", justifyContent: "space-evenly", alignItems: "center", width: '100%', height: '100%'}}>
                     <div style={{display: "flex", flexDirection: "column", width: "50%", height: "420px", justifyContent: "space-evenly"}}>
                         <DisplayText size={'extraLarge'}>
-                            TopSale Countdown Banner
+                            {props.strings.mainHeader}
                         </DisplayText>
                         <DisplayText size="small">
-                            Increase sales with urgency, countdown timer, labels and awesome banners
+                            {props.strings.subheader}
                         </DisplayText>
                         <div style={{width: '200px'}}>
                         <ShopifyButton
@@ -44,7 +45,7 @@ const InitPage = (props) => {
                                 props.setSecondPage(true)
                             }}
                         >
-                            Create Banner
+                            {props.strings.button}
                         </ShopifyButton>
                         </div>
                     </div>
@@ -55,4 +56,8 @@ const InitPage = (props) => {
     )
 };
 
-export default InitPage
+const mapStateToProps = (state) => ({
+    strings: state.stringsToDisplay.strings.initPage
+});
+
+export default connect(mapStateToProps)(InitPage)

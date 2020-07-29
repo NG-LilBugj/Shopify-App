@@ -6,6 +6,7 @@ import Product from "../components/product";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import * as Scroll from "react-scroll";
+import {connect} from "react-redux";
 
 const Animations = () => {
 
@@ -131,7 +132,7 @@ const Animations = () => {
         <Page>
             {animData.config ?
                 <Layout>
-                    <Card title={"Existing Badge Banner:"} sectioned>
+                    <Card title={props.configStrings.existingAnimationPopup} sectioned>
                         <div style={{
                             width: "60vw",
                             display: "flex",
@@ -139,11 +140,11 @@ const Animations = () => {
                             padding: '10px',
                             borderBottom: "1px solid grey"
                         }}>
-                            <p>Banner name:</p>
-                            <p>Actions:</p>
+                            <p>{props.configStrings.bannerName}</p>
+                            <p>{props.configStrings.actions}</p>
                         </div>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
-                            <b style={{fontSize: "24px"}}>{animData.script[0].configData ? animData.script[0].configData.name : "Timer"}</b>
+                            <b style={{fontSize: "24px"}}>{animData.script[0].configData ? animData.script[0].configData.name : props.configStrings.title}</b>
                             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                                 <Button
                                     size={"medium"}
@@ -318,4 +319,9 @@ const Animations = () => {
     )
 };
 
-export default Animations
+const mapStateToProps = (state) => ({
+    strings: state.stringsToDisplay.strings.animations,
+    configStrings: state.stringsToDisplay.strings.existing_config
+});
+
+export default connect(mapStateToProps)(Animations)

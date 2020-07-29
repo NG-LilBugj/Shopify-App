@@ -64,14 +64,13 @@ const BannerVariants = (props) => {
                                     marginLeft: '20px'
                                 }}>
                                     <Heading>
-                                        Countdown timer bar
+                                        {props.strings.countdownTimerBar}
                                     </Heading>
                                     <p style={{width: '320px'}}>
-                                        Special countdown timer which can render on product or other pages, signs
-                                        that great offer has begun!
+                                        {props.strings.countdownDescription}
                                     </p>
                                     <i style={{fontWeight: '300'}}>
-                                        About 20% more revenue
+                                        {props.strings.countdownRevenue}
                                     </i>
                                 </div>
                             </div>
@@ -103,13 +102,13 @@ const BannerVariants = (props) => {
                                      src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
                                 <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
                                     <Heading>
-                                        Sale banners
+                                        {props.strings.saleBanner}
                                     </Heading>
                                     <p style={{width: '320px'}}>
-                                        Incredible label which will underline the unique of your products.
+                                        {props.strings.saleBannerDescription}
                                     </p>
                                     <i style={{fontWeight: '300'}}>
-                                        About 25% more revenue
+                                        {props.strings.saleBannerRevenue}
                                     </i>
                                 </div>
                             </div>
@@ -141,13 +140,13 @@ const BannerVariants = (props) => {
                                      src={'https://lil-proxy.herokuapp.com/static/shopify_tick.png'} alt={'tick'}/>}
                                 <div style={{display: "flex", flexDirection: "column", marginLeft: '20px'}}>
                                     <Heading>
-                                        Discount popups
+                                        {props.strings.animationBanner}
                                     </Heading>
                                     <p style={{width: '320px'}}>
-                                        Gift animation to your customers!
+                                        {props.strings.animationDescription}
                                     </p>
                                     <i style={{fontWeight: '300'}}>
-                                        About 15% more revenue
+                                        {props.strings.animationRevenue}
                                     </i>
                                 </div>
                             </div>
@@ -176,7 +175,7 @@ const BannerVariants = (props) => {
                             color="primary"
                             size={'large'}
                         >
-                            Continue
+                            {props.strings.continue}
                         </ShopifyButton>
                     </Link>
                 </div>

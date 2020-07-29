@@ -6,10 +6,10 @@ import Preview from "./preview";
 const DesignSection = (props) => {
     return(
         <Layout.Section>
-            <Card title={'Timer design'} sectioned>
+            <Card title={props.strings.timerDesign} sectioned>
                 <div style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', width: '100%'}}>
                     <div>
-                        <p style={{marginBottom: '10px'}}>Background color:</p>
+                        <p style={{marginBottom: '10px'}}>{props.strings.backgroundColor}</p>
 
                         <Popover active={props.popoverActive} activator={props.activator} onClose={props.togglePopoverActive}
                                  fluidContent={true} sectioned>
@@ -25,7 +25,7 @@ const DesignSection = (props) => {
                     </div>
                     <div>
                         <RangeSlider
-                            label="Banner height:"
+                            label={props.strings.bannerHeight}
                             value={props.heightValue}
                             onChange={props.handleHeightSliderChange}
                             min={60}
@@ -35,7 +35,7 @@ const DesignSection = (props) => {
                     </div>
                     <div>
                         <RangeSlider
-                            label="Border width:"
+                            label={props.strings.borderWidth}
                             value={props.rangeValue}
                             onChange={props.handleRangeSliderChange}
                             min={0}
@@ -44,7 +44,7 @@ const DesignSection = (props) => {
                         />
                     </div>
                     <div>
-                        <p style={{marginBottom: '10px'}}>Border color:</p>
+                        <p style={{marginBottom: '10px'}}>{props.strings.borderColor}</p>
 
                         <Popover active={props.borderPopover} activator={props.borderActivator}
                                  onClose={props.toggleBorderPopover}
@@ -61,29 +61,29 @@ const DesignSection = (props) => {
                     </div>
                 </div>
             </Card>
-            <Card title={'Banner texts:'} sectioned>
+            <Card title={props.strings.bannerTexts} sectioned>
                 <TextField
-                    label={'First text'}
+                    label={props.strings.firstText}
                     value={props.firstText}
                     onChange={(value) => {
                         props.setFirstText(value)
                     }}
-                    error={(!props.firstText) ? 'Please enter text' : ''}
+                    error={(!props.firstText) ? props.strings.pleaseEnterText : ''}
                 />
                 <div style={{marginTop: '25px'}}>
                     <TextField
-                    label={'Second text'}
+                    label={props.strings.secondText}
                     value={props.secondText}
                     onChange={(value) => {
                         props.setSecondText(value)
                     }}
-                    error={(!props.secondText) ? 'Please enter text' : ''}
+                    error={(!props.secondText) ? props.strings.pleaseEnterText : ''}
                 />
                 </div>
             </Card>
             <Card sectioned>
                 <Checkbox
-                    label={'Discount link'}
+                    label={props.strings.discountLink}
                     checked={props.isLinkActive}
                     onChange={(newChecked) => {
                         props.activateLink(newChecked)
@@ -91,20 +91,20 @@ const DesignSection = (props) => {
                 />
                 {props.isLinkActive && <div style={{display: 'flex', flexDirection: 'row', height: '60px'}}>
                 <TextField
-                    label={'Title:'}
+                    label={props.strings.title}
                     value={props.linkText}
                     onChange={(value) => {
                         props.setLinkText(value)
                     }}
-                    error={(!props.linkText) ? 'Please enter text' : ''}
+                    error={(!props.linkText) ? props.strings.pleaseEnterText : ''}
                 />
                 <TextField
-                    label={'Link:'}
+                    label={props.strings.link}
                     value={props.href}
                     onChange={(value) => {
                         props.setHref(value)
                     }}
-                    error={(!props.href) ? 'Please enter text' : ''}
+                    error={(!props.href) ? props.strings.pleaseEnterText : ''}
                 />
                 </div>}
             </Card>
@@ -120,4 +120,8 @@ const decodeColors = (model) => {
     return `${hue}, ${saturation*100}%, ${brightness*100}%, ${alpha}`
 };
 
-export default DesignSection
+const mapStateToProps = (state) => ({
+    strings: state.stringsToDisplay.strings.design
+});
+
+export default connect(mapStateToProps)(DesignSection)

@@ -9,7 +9,7 @@ const initState = {
                 goToConfig: "Go to config",
             },
             bannerVariants: {
-                secondPageMainSign: "Which do you want to increase revenue?",
+                secondPageMainSign: "Which banner do you want to increase revenue?",
                 countdownTimerBar: "Countdown timer bar",
                 countdownDescription: "Special countdown timer which can render on product or other pages, signs\n" +
                     "that great offer has begun!",
@@ -88,7 +88,7 @@ const initState = {
                 utils: "Utils",
                 repeat: "Repeat timer when it ends"
             },
-            _existing_config: {
+            existing_config: {
                 existingCountdownTimer: "Existing Countdown Timer:",
                 existingBadgeBanner: "Existing Badge Banner:",
                 existingAnimationPopup: "Existing Animation Popup:",
@@ -151,7 +151,7 @@ const initState = {
                     goToConfig: "Go to config",
                 },
                 bannerVariants: {
-                    secondPageMainSign: "Which do you want to increase revenue?",
+                    secondPageMainSign: "Which banner do you want to increase revenue?",
                     countdownTimerBar: "Countdown timer bar",
                     countdownDescription: "Special countdown timer which can render on product or other pages, signs\n" +
                         "that great offer has begun!",
@@ -230,7 +230,7 @@ const initState = {
                     utils: "Utils",
                     repeat: "Repeat timer when it ends"
                 },
-                _existing_config: {
+                existing_config: {
                     existingCountdownTimer: "Existing Countdown Timer:",
                     existingBadgeBanner: "Existing Badge Banner:",
                     existingAnimationPopup: "Existing Animation Popup:",

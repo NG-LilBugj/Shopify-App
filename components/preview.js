@@ -1,8 +1,9 @@
 import {Card} from "@shopify/polaris";
+import {connect} from "react-redux";
 
 const Preview = (props) => {
     return(
-        <Card title={'Banner preview'} sectioned>
+        <Card title={props.strings.bannerPreview} sectioned>
             <div style={{display: "flex", justifyContent: "center", width: '100%'}}>
             <div style={{
                 width: props.isWidget ? '70%' : '100%',
@@ -30,7 +31,7 @@ const Preview = (props) => {
                                 <div className='number-place'><span className="days-countdown-time-second\">1</span>
                                 </div>
                             </div>
-                            <span className="countdown-text">Days</span>
+                            <span className="countdown-text">{props.strings.days}</span>
                         </div>
                         <div className="countdown-number">
                             <div className='numbers-container'>
@@ -39,7 +40,7 @@ const Preview = (props) => {
                                 <div className='number-place'><span className="hours-countdown-time-second">2</span>
                                 </div>
                             </div>
-                            <span className="countdown-text">Hours</span>
+                            <span className="countdown-text">{props.strings.hours}</span>
                         </div>
                         <span className='delimiter'>:</span>
                         <div className="countdown-number">
@@ -51,7 +52,7 @@ const Preview = (props) => {
                                     className="minutes-countdown-time-second">3</span>
                                 </div>
                             </div>
-                            <span className="countdown-text">Minutes</span>
+                            <span className="countdown-text">{props.strings.minutes}</span>
                         </div>
                         <span className='delimiter'>:</span>
                         <div className="countdown-number">
@@ -63,7 +64,7 @@ const Preview = (props) => {
                                     className="seconds-countdown-time-second">4</span>
                                 </div>
                             </div>
-                            <span className="countdown-text">Seconds</span>
+                            <span className="countdown-text">{props.strings.seconds}</span>
                         </div>
                     </div>
                     <div style={props.isWidget ? {width: 'auto', fontSize: '18px'} : {}} className='last-sign'>{props.secondText || 'Flash Sale!'}</div>
@@ -75,4 +76,8 @@ const Preview = (props) => {
     )
 };
 
-export default Preview
+const mapStateToProps = (state) => ({
+    strings: state.stringsToDisplay.strings.preview
+});
+
+export default connect(mapStateToProps)(Preview)
