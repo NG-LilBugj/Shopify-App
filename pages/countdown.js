@@ -8,6 +8,7 @@ import InitPage from "../components/initPage";
 import PrimaryDesign from "../components/primary";
 import DesignSection from "../components/design";
 import Link from "next/link";
+import {connect} from "react-redux";
 
 
 const Countdown = () => {
@@ -266,10 +267,10 @@ const Countdown = () => {
 
     const deleteSubmit = () => {
         axios.delete('https://lil-shopify.herokuapp.com/api/script').then(res => {
-            console.log(res)
-        });
-        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
-            fetchData(res.data);
+            console.log(res);
+            axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
+                fetchData(res.data);
+            });
         });
     };
 
@@ -280,13 +281,13 @@ const Countdown = () => {
         <Page>
             {!initBar && <Layout>
                 {!!scriptData.config && <Layout.Section>
-                    <Card title={"Existing Banner:"} sectioned>
+                    <Card title={props.configStrings.existingCountdownTimer} sectioned>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
-                            <p>Banner name:</p>
-                            <p>Actions:</p>
+                            <p>{props.configStrings.bannerName}</p>
+                            <p>{props.configStrings.actions}</p>
                         </div>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
-                            <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):"Timer"}</b>
+                            <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):props.configStrings.timer}</b>
                             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                                 <Button
                                     size={"medium"}
@@ -311,7 +312,7 @@ const Countdown = () => {
                     {isMainConfig ? <Layout.Section>
                             {isMainConfig && <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '25px'}}>
                                 <div style={{fontSize: '24px', fontWeight: '600'}}>
-                                    Customize your banner!
+                                    {props.strings.customize}
                                 </div>
                                 <Button
                                     size={"medium"}
@@ -404,7 +405,7 @@ const Countdown = () => {
                             type={"submit"}
                             onClick={designSwitch}
                         >
-                            {isMainConfig ? 'Banner design' : 'Settings'}
+                            {isMainConfig ? props.strings.bannerDesign : props.strings.settings}
                         </Button>
                         <Link href={'/success'}>
                             <Button
@@ -414,7 +415,7 @@ const Countdown = () => {
                                 onClick={handleSubmit}
                                 disabled={!name || dateError || !(selectedEndDate.end.toLocaleDateString())}
                             >
-                                Save
+                                {props.strings.save}
                             </Button>
                         </Link>
                     </div>
@@ -425,4 +426,9 @@ const Countdown = () => {
     )
 };
 
-export default Countdown
+const mapStateToProps = (state) => ({
+    strings: state.stringsToDisplay.strings.animations,
+    configStrings: state.stringsToDisplay.strings.existing_config
+});
+
+export default connect(mapStateToProps)(Countdown)

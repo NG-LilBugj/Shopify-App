@@ -93,16 +93,16 @@ const Animations = () => {
         }
     };
 
-    const deleteSubmit = async () => {
+    const deleteSubmit = () => {
         // HTTP Delete request to main server
         setLoading(true);
         axios.delete('https://lil-shopify.herokuapp.com/api/animation').then(res => {
-            console.log(res)
-        });
-        // HTTP request to renew data about config
-        axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {
-            fetchData(res.data);
-            setLoading(false)
+            console.log(res);
+            // HTTP request to renew data about config
+            axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {
+                fetchData(res.data);
+                setLoading(false)
+            });
         });
     };
 
@@ -274,7 +274,7 @@ const Animations = () => {
                                     plain
                                     onClick={() => pickAllProducts(true)}
                                 >
-                                    All products
+                                    {props.strings.pickAllProducts}
                                 </Button>
                             </div>
                             {(products.length) && products.map(p => <Product
@@ -285,13 +285,13 @@ const Animations = () => {
                                     label={''}
                                     labelInline
                                     options={[
-                                        {label: 'Above title', value: '.product-single__title/prepend'},
-                                        {label: 'Below title', value: '.product-single__title/append'},
-                                        {label: 'Above price', value: '.product__price/prepend'},
-                                        {label: 'Below price', value: '.product__price/append'},
-                                        {label: 'Above buy button', value: '.product-form__controls-group/append'},
+                                        {label: props.strings.aboveTitle, value: '.product-single__title/prepend'},
+                                        {label: props.strings.belowTitle, value: '.product-single__title/append'},
+                                        {label: props.strings.abovePrice, value: '.product__price/prepend'},
+                                        {label: props.strings.belowPrice, value: '.product__price/append'},
+                                        {label: props.strings.aboveBuyButton, value: '.product-form__controls-group/append'},
                                         {
-                                            label: 'Below buy button',
+                                            label: props.strings.belowBuyButton,
                                             value: '.product-form__controls-group product-form__controls-group--submit/append'
                                         },
                                     ]}
@@ -309,7 +309,7 @@ const Animations = () => {
                                 type={"submit"}
                                 onClick={handleSubmit}
                             >
-                                Save
+                                {props.strings.save}
                             </Button>
                         </Link>
                     </div>

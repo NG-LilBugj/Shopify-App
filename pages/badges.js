@@ -19,6 +19,7 @@ import {DeleteMajorMonotone, SearchMinor, SettingsMajorMonotone} from "@shopify/
 import Link from "next/link";
 import {ResourcePicker} from "@shopify/app-bridge-react";
 import Product from "../components/product";
+import {connect} from "react-redux";
 
 const categories = [
     'Banners',
@@ -167,15 +168,16 @@ const Badges = () => {
         }
     };
 
-    const deleteSubmit = async () => {
+    const deleteSubmit = () => {
         setLoading(true);
         axios.delete('https://lil-shopify.herokuapp.com/api/badge').then(res => {
             console.log(res)
+            axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
+                fetchData(res.data);
+                setLoading(false)
+            });
         });
-        axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
-            fetchData(res.data);
-            setLoading(false)
-        });
+
     };
 
     useEffect(() => {
@@ -202,13 +204,13 @@ const Badges = () => {
         <Page>
             {badgeData.config ?
                 <Layout>
-                    <Card title={"Existing Badge Banner:"} sectioned>
+                    <Card title={props.configStrings.existingBadgeBanner} sectioned>
                         <div style={{width: "60vw", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
-                            <p>Banner name:</p>
-                            <p>Actions:</p>
+                            <p>{props.configStrings.bannerName}</p>
+                            <p>{props.configStrings.actions}</p>
                         </div>
                         <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
-                            <b style={{fontSize: "24px"}}>{badgeData.script[0].configData?badgeData.script[0].configData.name:"Timer"}</b>
+                            <b style={{fontSize: "24px"}}>{badgeData.script[0].configData?badgeData.script[0].configData.name:props.configStrings.timer}</b>
                             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                                 <Button
                                     size={"medium"}
@@ -245,7 +247,7 @@ const Badges = () => {
                                 marginBottom: '25px'
                             }}>
                             <div style={{fontSize: '24px', fontWeight: '600'}}>
-                                Customize your special badge banner!
+                                {props.strings.customize}
                             </div>
                             <Link href={!!name ? '/success' : '/badges'}>
                             <Button
@@ -255,29 +257,29 @@ const Badges = () => {
                                 type={"submit"}
                                 onClick={handleSubmit}
                             >
-                                Save
+                                {props.strings.save}
                             </Button>
                             </Link>
                         </div>
                     </Layout.Section>
                     <Layout.Section>
-                        <Card title={'Banner name:'} sectioned>
+                        <Card title={props.bannerName} sectioned>
                             <TextField
                                 label={''}
                                 onBlur={() => handleNameTouch(true)}
                                 value={name}
-                                placeholder={'Enter name...'}
+                                placeholder={props.strings.enterName}
                                 onChange={(value) => {
                                     setName(value)
                                 }}
-                                error={((!name) && switchTouch) ? 'Please enter name' : ''}
+                                error={((!name) && switchTouch) ? props.strings.pleaseEnterName : ''}
                             />
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
-                        <Card sectioned title={'Pick category'}>
+                        <Card sectioned title={props.strings.pickCategory}>
                             <div style={{display: "flex", justifyContent: "space-between", width: '100%'}}>
-                                <p>Category: {category}</p>
+                                <p>{props.strings.category} {category}</p>
                                 <Pagination
                                     hasPrevious={categories.indexOf(category) > 0}
                                     onPrevious={() => {
@@ -294,14 +296,14 @@ const Badges = () => {
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
-                        <Card sectioned title={'Pick Badge'}>
+                        <Card sectioned title={props.strings.pickCategory}>
                             {categoryVariant(category, pickedBadge, pickBadge)}
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
                         <Card sectioned title={'Banner placement'}>
                             <Heading>
-                                Product pages with badge:
+                                {props.strings.productPagesWithBanner}
                             </Heading>
                             <div style={{
                                 display: 'flex',
@@ -322,13 +324,13 @@ const Badges = () => {
                                     type={"submit"}
                                     onClick={() => setProducts(true)}
                                 >
-                                    Browse products
+                                    {props.strings.browseProducts}
                                 </Button>
                                 <Button
                                     plain
                                     onClick={() => pickAllProducts(true)}
                                 >
-                                    All products
+                                    {props.strings.pickAllProducts}
                                 </Button>
                             </div>
                             {(products.length) && products.map(p => <Product
@@ -339,13 +341,13 @@ const Badges = () => {
                                     label={''}
                                     labelInline
                                     options={[
-                                        {label: 'Above title', value: '.product-single__title/prepend'},
-                                        {label: 'Below title', value: '.product-single__title/append'},
-                                        {label: 'Above price', value: '.product__price/prepend'},
-                                        {label: 'Below price', value: '.product__price/append'},
-                                        {label: 'Above buy button', value: '.product-form__controls-group/append'},
+                                        {label: props.strings.aboveTitle, value: '.product-single__title/prepend'},
+                                        {label: props.strings.belowTitle, value: '.product-single__title/append'},
+                                        {label: props.strings.abovePrice, value: '.product__price/prepend'},
+                                        {label: props.strings.belowPrice, value: '.product__price/append'},
+                                        {label: props.strings.aboveBuyButton, value: '.product-form__controls-group/append'},
                                         {
-                                            label: 'Below buy button',
+                                            label: props.strings.belowBuyButton,
                                             value: '.product-form__controls-group product-form__controls-group--submit/append'
                                         },
                                     ]}
@@ -364,7 +366,7 @@ const Badges = () => {
                             type={"submit"}
                             onClick={handleSubmit}
                         >
-                            Save
+                            {props.strings.save}
                         </Button>
                         </Link>
                     </div>
@@ -374,4 +376,9 @@ const Badges = () => {
     )
 };
 
-export default Badges
+const mapStateToProps = (state) => ({
+    strings: state.stringsToDisplay.strings.animations,
+    configStrings: state.stringsToDisplay.strings.existing_config
+});
+
+export default connect(mapStateToProps)(Badges)

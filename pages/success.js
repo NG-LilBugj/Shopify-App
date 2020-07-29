@@ -1,18 +1,23 @@
 import {Button, EmptyState, Page} from "@shopify/polaris";
 import Link from "next/link"
+import {connect} from "react-redux";
 
-const Success = () => {
+const Success = (props) => {
 
     return (
         <Page>
         <EmptyState
-            heading={"Banner added successful!"}
+            heading={props.strings.mainHeader}
             image={'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg'}
         >
-            <Link href={'/'}><Button primary>Go to main</Button></Link>
+            <Link href={'/'}><Button primary>{props.strings.button}</Button></Link>
         </EmptyState>
         </Page>
     )
 };
 
-export default Success
+let mapStateToProps = (state) => ({
+    strings: state.strings.success
+});
+
+export default connect(mapStateToProps)(Success)

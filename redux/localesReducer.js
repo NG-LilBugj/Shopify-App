@@ -134,6 +134,8 @@ const initState = {
             },
             countdown: {
                 customize: "Customize your countdown timer!",
+                bannerDesign: "Banner design",
+                settings: "Settings",
                 save: "Save"
             },
             success: {
