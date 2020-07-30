@@ -32,10 +32,12 @@ const DisplayedConfig = (props) => {
             }
             break;
             case 'https://lil-storage.herokuapp.com/static/badge.js': {
+                console.log(props.id);
                 props.setSaleId(props.id)
             }
             break;
             case 'https://lil-storage.herokuapp.com/static/animation.js': {
+                console.log(props.id);
                 props.setCountdownId(props.id)
             }
             break;
