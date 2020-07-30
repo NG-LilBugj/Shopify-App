@@ -210,7 +210,7 @@ const Countdown = (props) => {
         setLinkText(scriptData ? scriptData.configData.linkText : 'Get discount!');
         setHref(scriptData ? scriptData.configData.href : 'https://');
 
-    }, []);
+    }, [scriptData]);
 
     const designSwitch = () => {
         if (!!name && !dateError && !!(selectedEndDate.end.toLocaleDateString())) {
