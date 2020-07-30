@@ -7,9 +7,6 @@ import {useEffect} from "react";
 import Link from "next/link";
 
 const DisplayedConfig = (props) => {
-    useEffect(() => {
-        console.log(props)
-    }, []);
 
     const configStrings = useSelector(state => state.localesReducer.stringsToDisplay.strings.existing_config);
 
