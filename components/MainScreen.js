@@ -1,11 +1,12 @@
-import {Button, Card, DisplayText, Icon, Layout, Page} from "@shopify/polaris";
+import {Card, DisplayText, Layout, Page} from "@shopify/polaris";
 import DisplayedConfig from "./DisplayedConfig";
+import {connect} from "react-redux";
 
 const MainScreen = (props) => {
 
-    let countdownTimers = props.bannerData[2].script.map(s => <DisplayedConfig {...s}/>);
-    let saleBanners = props.bannerData[1].script.map(s => <DisplayedConfig {...s}/>);
-    let giftPopups = props.bannerData[0].script.map(s => <DisplayedConfig {...s}/>);
+    let countdownTimers = props.configs.countdownConfig.script.map(s => <DisplayedConfig {...s}/>);
+    let saleBanners = props.configs.saleConfig.script.map(s => <DisplayedConfig {...s}/>);
+    let giftPopups = props.configs.popupConfig.script.map(s => <DisplayedConfig {...s}/>);
 
     return(
         <Page>
@@ -37,6 +38,7 @@ const MainScreen = (props) => {
 
 let mapStateToProps = (state) => ({
     strings: state.localesReducer.stringsToDisplay.strings.mainScreen,
+    configs: state.configsReducer
 });
 
-export default MainScreen
+export default connect(mapStateToProps)(MainScreen)

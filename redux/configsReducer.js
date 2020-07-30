@@ -2,13 +2,13 @@ const SET_CONFIGS = 'configs_reducers/SET_CONFIGS';
 
 const initState = {
     countdownConfig: {
-
+        config: false
     },
     saleConfig: {
-
+        config: false
     },
     popupConfig: {
-
+        config: false
     }
 };
 
