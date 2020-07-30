@@ -38,7 +38,7 @@ const DisplayedConfig = (props) => {
             break;
             case 'https://lil-storage.herokuapp.com/static/animation.js': {
                 console.log(props.id);
-                props.setCountdownId(props.id)
+                props.setPopupId(props.id)
             }
             break;
             default: console.log('id dispatching error')
