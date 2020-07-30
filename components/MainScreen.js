@@ -13,7 +13,7 @@ const MainScreen = (props) => {
             <Layout>
                 <div style={{marginBottom: '60px', marginTop: '30px'}}>
                     <DisplayText size={'large'} element={'h1'}>
-                        {props.strings.secondPageMainSign}
+                        ddddd
                     </DisplayText>
                 </div>
                 <Layout.Section>
