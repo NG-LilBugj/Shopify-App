@@ -25,6 +25,14 @@ const ShopifyButton = withStyles({
     }
 })(Button);
 
+const noCardDisplayStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    height: "8vh"
+};
+
 const MainScreen = (props) => {
 
     let countdownTimers = props.configs.countdownConfig.script.map(s => <DisplayedConfig {...s}/>);
@@ -35,7 +43,7 @@ const MainScreen = (props) => {
         console.log(props.configs.countdownConfig.script)
     }, []);
 
-    return(
+    return (
         <Page>
             <Layout>
                 <div style={{marginBottom: '30px', marginTop: '30px', marginLeft: '2rem', width: '100%'}}>
@@ -46,50 +54,70 @@ const MainScreen = (props) => {
                 <Layout.Section>
                     <Card title={props.configStrings.existingCountdownTimer} sectioned>
                         {countdownTimers}
-                        {!countdownTimers[0] &&
-                        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                        {!countdownTimers[0] ?
+                        <div style={noCardDisplayStyle}>
                             <i>
-                            {props.strings.hereIsNo}
-                        </i>
+                                {props.strings.hereIsNo}
+                            </i>
+                            <ShopifyButton
+                                variant="contained"
+                                color="primary"
+                            >
+                                {props.strings.createBanner}
+                            </ShopifyButton>
+                        </div> :
                         <ShopifyButton
                             variant="contained"
                             color="primary"
                         >
                             {props.strings.createNew}
-                        </ShopifyButton>
-                        </div>}
+                        </ShopifyButton>}
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
                     <Card title={props.configStrings.existingBadgeBanner} sectioned>
                         {saleBanners}
-                        {!saleBanners[0] &&
-                        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                        {!saleBanners[0] ?
+                        <div style={noCardDisplayStyle}>
                             <i>
-                            {props.strings.hereIsNo}
-                        </i>
+                                {props.strings.hereIsNo}
+                            </i>
+                            <ShopifyButton
+                                variant="contained"
+                                color="primary"
+                            >
+                                {props.strings.createBanner}
+                            </ShopifyButton>
+                        </div> :
                         <ShopifyButton
                             variant="contained"
                             color="primary"
                         >
                             {props.strings.createNew}
-                        </ShopifyButton></div>}
+                        </ShopifyButton>}
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
                     <Card title={props.configStrings.existingAnimationPopup} sectioned>
                         {giftPopups}
-                        {!giftPopups[0] &&
-                        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                        {!giftPopups[0] ?
+                        <div style={noCardDisplayStyle}>
                             <i>
-                            {props.strings.hereIsNo}
-                        </i>
+                                {props.strings.hereIsNo}
+                            </i>
+                            <ShopifyButton
+                                variant="contained"
+                                color="primary"
+                            >
+                                {props.strings.createBanner}
+                            </ShopifyButton>
+                        </div> :
                         <ShopifyButton
                             variant="contained"
                             color="primary"
                         >
                             {props.strings.createNew}
-                        </ShopifyButton></div>}
+                        </ShopifyButton>}
                     </Card>
                 </Layout.Section>
             </Layout>

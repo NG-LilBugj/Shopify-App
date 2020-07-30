@@ -145,6 +145,7 @@ const initState = {
             mainScreen: {
                 secondPageMainSign: "Your Banners:",
                 createNew: "Create new",
+                createBanner: "Create banner",
                 hereIsNo: "No banner of this type has been created yet"
             }
         }
@@ -292,6 +293,7 @@ const initState = {
                 mainScreen: {
                     secondPageMainSign: "Your Banners:",
                     createNew: "Create new",
+                    createBanner: "Create banner",
                     hereIsNo: "No banner of this type has been created yet"
                 }
             }
