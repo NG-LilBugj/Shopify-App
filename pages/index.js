@@ -19,6 +19,8 @@ const Initial = (props) => {
         })
     }, []);
 
+    useEffect(() => console.log(props.configData));
+
 
     const [isSecondPage, setSecondPage] = useState(false);
     const [bannerData, receiveBannerData] = useState([null, null, null]);
@@ -34,6 +36,10 @@ const Initial = (props) => {
     )
 };
 
-export default connect(null, {
+let mapStateToProps = (state) => ({
+    configData: state.configsReducer
+});
+
+export default connect(mapStateToProps(), {
     setConfigs
 })(Initial)
