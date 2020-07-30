@@ -24,14 +24,14 @@ const DisplayedConfig = (props) => {
                     <Button
                         size={"medium"}
                         type={"submit"}
-                        onClick={() => setInitBar(true)}>
+                        onClick={() => {}}>
                         <Icon source={SettingsMajorMonotone}/>
                     </Button>
                     <Button
                         destructive
                         size={"medium"}
                         type={"submit"}
-                        onClick={deleteSubmit}>
+                        onClick={() => {}}>
                         <Icon source={DeleteMajorMonotone}/>
                     </Button>
                 </div>
