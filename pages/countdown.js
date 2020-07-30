@@ -18,7 +18,6 @@ const Countdown = (props) => {
         fetchData(props.config.script.find(c => c.id === props.dispatchedId))
     }, []);
 
-    const [isLoading, setLoading] = useState(true);
     const [isMainConfig, setConfigMenu] = useState(true);
     const [isWidget, setIsWidget] = useState(false);
     const [scriptData, fetchData] = useState(false);
@@ -264,10 +263,7 @@ const Countdown = (props) => {
         }
     };
 
-    if (isLoading) return <Page><Layout><img src={
-        'https://lil-proxy.herokuapp.com/static/Preloader.gif'
-    } alt={'shock'}/></Layout></Page>;
-    else return (
+    return (
         <Page>
             <Layout>
                 <Layout.Section>
