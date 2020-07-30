@@ -22,7 +22,6 @@ const Countdown = (props) => {
     const [isMainConfig, setConfigMenu] = useState(true);
     const [isWidget, setIsWidget] = useState(false);
     const [scriptData, fetchData] = useState(false);
-    const [initBar, setInitBar] = useState(false);
     const [name, setName] = useState(scriptData ? scriptData.configData.name : '');
     const [nameError, setNameError] = useState(false);
     const [firstText, setFirstText] = useState(scriptData ? scriptData.configData.firstText : 'Hurry Up!');
@@ -211,7 +210,7 @@ const Countdown = (props) => {
         setLinkText(scriptData ? scriptData.configData.linkText : 'Get discount!');
         setHref(scriptData ? scriptData.configData.href : 'https://');
 
-    }, [initBar]);
+    }, []);
 
     const designSwitch = () => {
         if (!!name && !dateError && !!(selectedEndDate.end.toLocaleDateString())) {
