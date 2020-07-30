@@ -8,6 +8,8 @@ import axios from "axios";
 import * as Scroll from "react-scroll";
 import {connect} from "react-redux";
 
+console.log('animaPage');
+
 const Animations = (props) => {
 
     useEffect(() => { // side effect function to fetch data from main server (get endpoint for animations)
