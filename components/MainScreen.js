@@ -38,6 +38,7 @@ const MainScreen = (props) => {
 
 let mapStateToProps = (state) => ({
     strings: state.localesReducer.stringsToDisplay.strings.mainScreen,
+    configStrings: state.localesReducer.stringsToDisplay.strings.existing_config,
     configs: state.configsReducer
 });
 
