@@ -14,6 +14,7 @@ import {connect} from "react-redux";
 const Countdown = (props) => {
 
     useEffect(() => {
+        console.log(props.config);
         fetchData(props.config.find(c => c.id === props.dispatchedId))
     }, []);
 
