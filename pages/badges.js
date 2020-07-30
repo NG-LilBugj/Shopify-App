@@ -95,15 +95,11 @@ const categoryVariant = (category, pickedBadge, pickBadge) => {
 const Badges = (props) => {
 
     useEffect(() => {
-        axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
-            fetchData(res.data);
-            setLoading(false);
-            console.log(res.data)
-        })
-            .catch(err => {
-                console.log(err);
-                setLoading(false)
-            });
+        if (props.dispatchedId) {
+            console.log(props.config.script.find(c => c.id === props.dispatchedId));
+            console.log(props.config, props.dispatchedId);
+            fetchData(props.config.script.find(c => c.id === props.dispatchedId))
+        }
     }, []);
 
     const [badgeData, fetchData] = useState({config: false, status: ''});
@@ -187,7 +183,7 @@ const Badges = (props) => {
         pickBadge(badgeData.script ? badgeData.script[0].configData.pickedBadge : 0);
         setBannerValue(badgeData.script ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append');
         setProducts(badgeData.script ? badgeData.script[0].configData.products : [])
-    }, [badgeData.config]);
+    }, [badgeData]);
 
     const searchField = (
         <Autocomplete.TextField
@@ -197,11 +193,7 @@ const Badges = (props) => {
             placeholder="Search"
         />
     );
-
-    if (isLoading) return <Page><Layout>
-        <img src={'https://lil-proxy.herokuapp.com/static/Preloader.gif'} alt={'load...'}/>
-    </Layout></Page>;
-    else return (
+return (
         <Page>
             {badgeData.config ?
                 <Layout>
@@ -378,6 +370,8 @@ const Badges = (props) => {
 };
 
 const mapStateToProps = (state) => ({
+    config: state.configsReducer.saleConfig,
+    dispatchedId: state.configsReducer.dispatchedIds.saleId,
     strings: state.localesReducer.stringsToDisplay.strings.badges,
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });

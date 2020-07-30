@@ -255,7 +255,7 @@ const Countdown = (props) => {
             linkText,
             href
         };
-        if (scriptData.dispatchedId){
+        if (props.dispatchedId){
             let res = await axios.put('https://lil-shopify.herokuapp.com/api/script', bundle);
             console.log(res.data);
         }
