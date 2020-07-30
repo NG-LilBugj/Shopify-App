@@ -20,7 +20,7 @@ const MainScreen = (props) => {
     let giftPopups = props.configs.popupConfig.script.map(s => <DisplayedConfig {...s}/>);
 
     useEffect(() => {
-        console.log(props.configs.countdownConfig.script)
+        console.log(props.configs)
     }, []);
 
     return (

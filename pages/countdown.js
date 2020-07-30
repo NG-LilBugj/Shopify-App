@@ -14,10 +14,7 @@ import {connect} from "react-redux";
 const Countdown = (props) => {
 
     useEffect(() => {
-        axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
-            fetchData(res.data);
-            setLoading(false);
-        });
+        fetchData(props.config.find(c => c.id === props.dispatchedId))
     }, []);
 
     const [isLoading, setLoading] = useState(true);
@@ -266,49 +263,12 @@ const Countdown = (props) => {
         }
     };
 
-    const deleteSubmit = () => {
-        axios.delete(`https://lil-shopify.herokuapp.com/api/script?id=${scriptData.script[0].id}`).then(res => {
-            console.log(res);
-            axios.get('https://lil-shopify.herokuapp.com/api/script').then(res => {
-                fetchData(res.data);
-            });
-        });
-    };
-
     if (isLoading) return <Page><Layout><img src={
         'https://lil-proxy.herokuapp.com/static/Preloader.gif'
     } alt={'shock'}/></Layout></Page>;
     else return (
         <Page>
-            {!initBar && <Layout>
-                {!!scriptData.config && <Layout.Section>
-                    <Card title={props.configStrings.existingCountdownTimer} sectioned>
-                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
-                            <p>{props.configStrings.bannerName}</p>
-                            <p>{props.configStrings.actions}</p>
-                        </div>
-                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
-                            <b style={{fontSize: "24px"}}>{scriptData.script[0].configData?renderData(scriptData.script[0].configData.name):props.configStrings.timer}</b>
-                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                                <Button
-                                    size={"medium"}
-                                    type={"submit"}
-                                    onClick={() => setInitBar(true)}>
-                                    <Icon source={SettingsMajorMonotone}/>
-                                </Button>
-                                <Button
-                                    destructive
-                                    size={"medium"}
-                                    type={"submit"}
-                                    onClick={deleteSubmit}>
-                                    <Icon source={DeleteMajorMonotone}/>
-                                </Button>
-                            </div>
-                        </div>
-                    </Card>
-                </Layout.Section>}
-            </Layout>}
-            {initBar && <Layout>
+            <Layout>
                 <Layout.Section>
                     {isMainConfig ? <Layout.Section>
                             {isMainConfig && <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '25px'}}>
@@ -421,13 +381,14 @@ const Countdown = (props) => {
                         </Link>
                     </div>
                 </Layout.Section>
-            </Layout>}
-
+            </Layout>
         </Page>
     )
 };
 
 const mapStateToProps = (state) => ({
+    config: state.configsReducer.countdownConfig,
+    dispatchedId: state.configsReducer.dispatchedIds.countdownId,
     strings: state.localesReducer.stringsToDisplay.strings.countdown,
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
