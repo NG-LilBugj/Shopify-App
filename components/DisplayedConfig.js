@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 
 const DisplayedConfig = (props) => {
 
-    const configStrings = useSelector(state => state.stringsToDisplay.strings.existing_config);
+    const configStrings = useSelector(state => state.localesReducer.stringsToDisplay.strings.existing_config);
 
     return(
         <>

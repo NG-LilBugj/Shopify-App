@@ -1,12 +1,17 @@
 import {Card, DisplayText, Layout, Page} from "@shopify/polaris";
 import DisplayedConfig from "./DisplayedConfig";
 import {connect} from "react-redux";
+import {useEffect} from "react";
 
 const MainScreen = (props) => {
 
     let countdownTimers = props.configs.countdownConfig.script.map(s => <DisplayedConfig {...s}/>);
     let saleBanners = props.configs.saleConfig.script.map(s => <DisplayedConfig {...s}/>);
     let giftPopups = props.configs.popupConfig.script.map(s => <DisplayedConfig {...s}/>);
+
+    useEffect(() => {
+        console.log(props.configs.countdownConfig.script)
+    }, []);
 
     return(
         <Page>
