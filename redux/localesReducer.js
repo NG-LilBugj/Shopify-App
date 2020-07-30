@@ -141,6 +141,9 @@ const initState = {
             success: {
                 mainHeading: "Banner added successful!",
                 button: "Go to main"
+            },
+            mainScreen: {
+                secondPageMainSign: "Your Banners:"
             }
         }
     },
