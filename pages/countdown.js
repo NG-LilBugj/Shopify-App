@@ -23,10 +23,10 @@ const Countdown = (props) => {
     const [isWidget, setIsWidget] = useState(false);
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
-    const [name, setName] = useState(scriptData.config ? scriptData.configData.name : '');
+    const [name, setName] = useState(props.dispatchedId ? scriptData.configData.name : '');
     const [nameError, setNameError] = useState(false);
-    const [firstText, setFirstText] = useState(scriptData.config ? scriptData.configData.firstText : 'Hurry Up!');
-    const [secondText, setSecondText] = useState(scriptData.config ? scriptData.configData.secondText : 'Flash Sale');
+    const [firstText, setFirstText] = useState(props.dispatchedId ? scriptData.configData.firstText : 'Hurry Up!');
+    const [secondText, setSecondText] = useState(props.dispatchedId ? scriptData.configData.secondText : 'Flash Sale');
 
     const [{month, year}, setDate] = useState({
         month: 6,
@@ -61,18 +61,18 @@ const Countdown = (props) => {
         [],
     );
 
-    const [value, setValue] = useState(scriptData.config ? scriptData.configData.position : 'Top');
-    const [renderValue, setRenderValue] = useState(scriptData.config ? scriptData.configData.display : 'all');
-    const [checked, setChecked] = useState(scriptData.config ? scriptData.configData.sticky : false);
-    const [isRepeatable, setRepeat] = useState(scriptData.config ? scriptData.configData.isRepeatable : false);
+    const [value, setValue] = useState(props.dispatchedId ? scriptData.configData.position : 'Top');
+    const [renderValue, setRenderValue] = useState(props.dispatchedId ? scriptData.configData.display : 'all');
+    const [checked, setChecked] = useState(props.dispatchedId ? scriptData.configData.sticky : false);
+    const [isRepeatable, setRepeat] = useState(props.dispatchedId ? scriptData.configData.isRepeatable : false);
 
-    const [bgColor, setBgColor] = useState(scriptData.config ? scriptData.configData.backGroundColor : {
+    const [bgColor, setBgColor] = useState(props.dispatchedId ? scriptData.configData.backGroundColor : {
         hue: 1,
         saturation: 1,
         brightness: 1,
         alpha: 1
     });
-    const [borderColor, setBorderColor] = useState(scriptData.config ? scriptData.configData.borderColor : {
+    const [borderColor, setBorderColor] = useState(props.dispatchedId ? scriptData.configData.borderColor : {
         hue: 1,
         saturation: 1,
         brightness: 1,
@@ -146,15 +146,15 @@ const Countdown = (props) => {
         />
     </div>;
 
-    const [products, pickProducts] = useState(scriptData.config ? scriptData.configData.products : []);
-    const [isAllProducts, pickAllProducts] = useState(scriptData.config ? scriptData.configData.isAllProducts : false);
-    const [collections, pickCollections] = useState(scriptData.config ? scriptData.configData.collections : []);
-    const [isAllCollection, pickAllCollection] = useState(scriptData.config ? scriptData.configData.isAllCollection : false);
+    const [products, pickProducts] = useState(props.dispatchedId ? scriptData.configData.products : []);
+    const [isAllProducts, pickAllProducts] = useState(props.dispatchedId ? scriptData.configData.isAllProducts : false);
+    const [collections, pickCollections] = useState(props.dispatchedId ? scriptData.configData.collections : []);
+    const [isAllCollection, pickAllCollection] = useState(props.dispatchedId ? scriptData.configData.isAllCollection : false);
 
     const [widgetRenderValue, setWidgetValue] = useState('.product-single__title/append');
 
-    const [rangeValue, setRangeValue] = useState(scriptData.config ? scriptData.configData.borderSize : 0);
-    const [heightValue, setHeightValue] = useState(scriptData.config ? scriptData.configData.bannerHeight : 100);
+    const [rangeValue, setRangeValue] = useState(props.dispatchedId ? scriptData.configData.borderSize : 0);
+    const [heightValue, setHeightValue] = useState(props.dispatchedId ? scriptData.configData.bannerHeight : 100);
 
     const handleRangeSliderChange = useCallback(
         (value) => setRangeValue(value),
@@ -165,17 +165,17 @@ const Countdown = (props) => {
         []
     );
 
-    const [isLinkActive, activateLink] = useState(scriptData.config ? scriptData.configData.isLinkActive : false);
-    const [linkText, setLinkText] = useState(scriptData.config ? scriptData.configData.linkText : 'Get discount!');
-    const [href, setHref] = useState(scriptData.config ? scriptData.configData.href : 'https://');
+    const [isLinkActive, activateLink] = useState(props.dispatchedId ? scriptData.configData.isLinkActive : false);
+    const [linkText, setLinkText] = useState(props.dispatchedId ? scriptData.configData.linkText : 'Get discount!');
+    const [href, setHref] = useState(props.dispatchedId ? scriptData.configData.href : 'https://');
 
     useEffect(() => {
         console.log(scriptData);
-        setName(scriptData.config ? scriptData.configData.name : '');
-        setFirstText(scriptData.config ? scriptData.configData.firstText : 'Hurry up');
-        setSecondText(scriptData.config ? scriptData.configData.secondText : 'Flesh sale!');
-        setSelectedStartDate(scriptData.config ? {start: new Date(scriptData.configData.startDate.start)} : {start: new Date()});
-        setSelectedEndDate(scriptData.config ? {end: new Date(scriptData.configData.endDate.end)} :  {
+        setName(props.dispatchedId ? scriptData.configData.name : '');
+        setFirstText(props.dispatchedId ? scriptData.configData.firstText : 'Hurry up');
+        setSecondText(props.dispatchedId ? scriptData.configData.secondText : 'Flesh sale!');
+        setSelectedStartDate(props.dispatchedId ? {start: new Date(scriptData.configData.startDate.start)} : {start: new Date()});
+        setSelectedEndDate(props.dispatchedId ? {end: new Date(scriptData.configData.endDate.end)} :  {
             end: {
                 toLocaleDateString(){return ''},
                 getDate(){return 1},
@@ -183,33 +183,33 @@ const Countdown = (props) => {
                 getFullYear() {return 2020}
             },
         });
-        setIsWidget(scriptData.config ? scriptData.configData.isWidget : false);
-        setWidgetValue(scriptData.config ? scriptData.configData.widgetRenderValue : '.product-single__title/append');
-        setValue(scriptData.config ? scriptData.configData.position : 'Top');
-        setRenderValue(scriptData.config ? scriptData.configData.display : 'all');
-        setChecked(scriptData.config ? scriptData.configData.sticky : false);
-        setRepeat(scriptData.config ? scriptData.configData.isRepeatable : false);
-        setBgColor(scriptData.config ? scriptData.configData.backGroundColor : {
+        setIsWidget(props.dispatchedId ? scriptData.configData.isWidget : false);
+        setWidgetValue(props.dispatchedId ? scriptData.configData.widgetRenderValue : '.product-single__title/append');
+        setValue(props.dispatchedId ? scriptData.configData.position : 'Top');
+        setRenderValue(props.dispatchedId ? scriptData.configData.display : 'all');
+        setChecked(props.dispatchedId ? scriptData.configData.sticky : false);
+        setRepeat(props.dispatchedId ? scriptData.configData.isRepeatable : false);
+        setBgColor(props.dispatchedId ? scriptData.configData.backGroundColor : {
             hue: 1,
             saturation: 1,
             brightness: 1,
             alpha: 1
         });
-        setBorderColor(scriptData.config ? scriptData.configData.borderColor : {
+        setBorderColor(props.dispatchedId ? scriptData.configData.borderColor : {
             hue: 1,
             saturation: 1,
             brightness: 1,
             alpha: 1
         });
-        pickProducts(scriptData.config ? scriptData.configData.products : []);
-        pickAllProducts(scriptData.config ? scriptData.configData.isAllProducts : false);
-        pickCollections(scriptData.config ? scriptData.configData.collections : []);
-        pickAllCollection(scriptData.config ? scriptData.configData.isAllCollection : false);
-        setRangeValue(scriptData.config ? scriptData.configData.borderSize : 0);
-        setHeightValue(scriptData.config ? scriptData.configData.bannerHeight : 100);
-        activateLink(scriptData.config ? scriptData.configData.isLinkActive : false);
-        setLinkText(scriptData.config ? scriptData.configData.linkText : 'Get discount!');
-        setHref(scriptData.config ? scriptData.configData.href : 'https://');
+        pickProducts(props.dispatchedId ? scriptData.configData.products : []);
+        pickAllProducts(props.dispatchedId ? scriptData.configData.isAllProducts : false);
+        pickCollections(props.dispatchedId ? scriptData.configData.collections : []);
+        pickAllCollection(props.dispatchedId ? scriptData.configData.isAllCollection : false);
+        setRangeValue(props.dispatchedId ? scriptData.configData.borderSize : 0);
+        setHeightValue(props.dispatchedId ? scriptData.configData.bannerHeight : 100);
+        activateLink(props.dispatchedId ? scriptData.configData.isLinkActive : false);
+        setLinkText(props.dispatchedId ? scriptData.configData.linkText : 'Get discount!');
+        setHref(props.dispatchedId ? scriptData.configData.href : 'https://');
 
     }, [initBar]);
 
