@@ -103,7 +103,6 @@ const Badges = (props) => {
     }, []);
 
     const [badgeData, fetchData] = useState({config: false, status: ''});
-    const [isLoading, setLoading] = useState(true);
     //async state
 
     const [name, setName] = useState('');
@@ -141,7 +140,7 @@ const Badges = (props) => {
             setSwitchTouch(true)
         }
         else {
-            if (!badgeData.script) {
+            if (!props.dispatchedId) {
                 let res = await axios.post('https://lil-shopify.herokuapp.com/api/badge', {
                     name,
                     pickedBadge,
@@ -153,7 +152,7 @@ const Badges = (props) => {
             }
             else {
                 let res = await axios.put('https://lil-shopify.herokuapp.com/api/badge', {
-                    id: badgeData.script[0].id,
+                    id: badgeData.id,
                     name,
                     pickedBadge,
                     bannerRenderValue,
@@ -165,24 +164,12 @@ const Badges = (props) => {
         }
     };
 
-    const deleteSubmit = () => {
-        setLoading(true);
-        axios.delete(`https://lil-shopify.herokuapp.com/api/badge?id=${badgeData.script[0].id}`).then(res => {
-            console.log(res.data);
-            axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
-                fetchData(res.data);
-                setLoading(false)
-            });
-        });
-
-    };
-
     useEffect(() => {
-        setName(badgeData.script ? badgeData.script[0].configData.name : '');
+        setName(badgeData.script ? badgeData.configData.name : '');
         pickCategory(badgeData.script ? categories[1] : categories[0]);
-        pickBadge(badgeData.script ? badgeData.script[0].configData.pickedBadge : 0);
-        setBannerValue(badgeData.script ? badgeData.script[0].configData.bannerRenderValue : '.product-single__title/append');
-        setProducts(badgeData.script ? badgeData.script[0].configData.products : [])
+        pickBadge(badgeData.script ? badgeData.configData.pickedBadge : 0);
+        setBannerValue(badgeData.script ? badgeData.configData.bannerRenderValue : '.product-single__title/append');
+        setProducts(badgeData.script ? badgeData.configData.products : [])
     }, [badgeData]);
 
     const searchField = (
@@ -195,34 +182,6 @@ const Badges = (props) => {
     );
 return (
         <Page>
-            {badgeData.config ?
-                <Layout>
-                    <Card title={props.configStrings.existingBadgeBanner} sectioned>
-                        <div style={{width: "60vw", display: "flex", justifyContent: "space-between", padding: '10px', borderBottom: "1px solid grey"}}>
-                            <p>{props.configStrings.bannerName}</p>
-                            <p>{props.configStrings.actions}</p>
-                        </div>
-                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
-                            <b style={{fontSize: "24px"}}>{badgeData.script[0].configData?badgeData.script[0].configData.name:props.configStrings.timer}</b>
-                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                                <Button
-                                    size={"medium"}
-                                    type={"submit"}
-                                    onClick={() => fetchData({...badgeData, config: false})}>
-                                    <Icon source={SettingsMajorMonotone}/>
-                                </Button>
-                                <Button
-                                    destructive
-                                    size={"medium"}
-                                    type={"submit"}
-                                    onClick={deleteSubmit}>
-                                    <Icon source={DeleteMajorMonotone}/>
-                                </Button>
-                            </div>
-                        </div>
-                    </Card>
-                </Layout>
-                :
                 <Layout>
                     <ResourcePicker
                         allowMultiple
@@ -364,7 +323,6 @@ return (
                         </Link>
                     </div>
                 </Layout>
-            }
         </Page>
     )
 };

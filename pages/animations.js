@@ -11,15 +11,11 @@ import {connect} from "react-redux";
 const Animations = (props) => {
 
     useEffect(() => { // side effect function to fetch data from main server (get endpoint for animations)
-        axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {
-            fetchData(res.data);
-            setLoading(false);
-            console.log(res.data)
-        })
-            .catch(err => {
-                console.log(err);
-                setLoading(false)
-            });
+        if (props.dispatchedId) {
+            console.log(props.config.script.find(c => c.id === props.dispatchedId));
+            console.log(props.config, props.dispatchedId);
+            fetchData(props.config.script.find(c => c.id === props.dispatchedId))
+        }
     }, []);
 
     const [animData, fetchData] = useState({config: false, status: ''});
@@ -66,7 +62,7 @@ const Animations = (props) => {
 
             // if there is no data received from server, function makes POST request, but if there is data to edit,
             // function makes PUT request
-            if (!animData.script) {
+            if (!props.dispatchedId) {
                 let res = await axios.post('https://lil-shopify.herokuapp.com/api/animation', {
                     name,
                     pickedAnimation,
@@ -80,7 +76,7 @@ const Animations = (props) => {
             }
             else {
                 let res = await axios.put(`https://lil-shopify.herokuapp.com/api/animation`, {
-                    id: animData.script[0].id,
+                    id: props.dispatchedId,
                     name,
                     pickedAnimation,
                     badgeRenderValue: animationRenderValue,
@@ -94,27 +90,14 @@ const Animations = (props) => {
         }
     };
 
-    const deleteSubmit = () => {
-        // HTTP Delete request to main server
-        setLoading(true);
-        axios.delete(`https://lil-shopify.herokuapp.com/api/animation?id=${animData.script[0].id}`).then(res => {
-            console.log(res.data);
-            // HTTP request to renew data about config
-            axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {
-                fetchData(res.data);
-                setLoading(false)
-            });
-        });
-    };
-
     useEffect(() => {
-        setName(animData.status ? animData.script[0].configData.name : '');
-        setMessageText(animData.status ? animData.script[0].configData.message : '');
-        pickAnimation(animData.status ? animData.script[0].configData.pickedAnimation : 0);
-        setBannerValue(animData.status ? animData.script[0].configData.badgeRenderValue : '.product-single__title/append');
-        setProducts(animData.status ? animData.script[0].configData.products : []);
-        pickAllProducts(animData.script ? animData.script[0].configData.isAllProducts : false);
-    }, [animData.config]);
+        setName(animData.status ? animData.configData.name : '');
+        setMessageText(animData.status ? animData.configData.message : '');
+        pickAnimation(animData.status ? animData.configData.pickedAnimation : 0);
+        setBannerValue(animData.status ? animData.configData.badgeRenderValue : '.product-single__title/append');
+        setProducts(animData.status ? animData.configData.products : []);
+        pickAllProducts(animData.script ? animData.configData.isAllProducts : false);
+    }, [animData]);
     // resettling data state when there is information from main server
 
     const searchField = (
@@ -126,45 +109,8 @@ const Animations = (props) => {
         />
     );
 
-    if (isLoading) return <Page><Layout>
-        <img src={'https://lil-proxy.herokuapp.com/static/Preloader.gif'} alt={'load...'}/>
-    </Layout></Page>;
-    else return (
+    return (
         <Page>
-            {animData.config ?
-                <Layout>
-                    <Card title={props.configStrings.existingAnimationPopup} sectioned>
-                        <div style={{
-                            width: "60vw",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            padding: '10px',
-                            borderBottom: "1px solid grey"
-                        }}>
-                            <p>{props.configStrings.bannerName}</p>
-                            <p>{props.configStrings.actions}</p>
-                        </div>
-                        <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
-                            <b style={{fontSize: "24px"}}>{animData.script[0].configData ? animData.script[0].configData.name : props.configStrings.title}</b>
-                            <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                                <Button
-                                    size={"medium"}
-                                    type={"submit"}
-                                    onClick={() => fetchData({...animData, config: false})}>
-                                    <Icon source={SettingsMajorMonotone}/>
-                                </Button>
-                                <Button
-                                    destructive
-                                    size={"medium"}
-                                    type={"submit"}
-                                    onClick={deleteSubmit}>
-                                    <Icon source={DeleteMajorMonotone}/>
-                                </Button>
-                            </div>
-                        </div>
-                    </Card>
-                </Layout>
-                :
                 <Layout>
                     <ResourcePicker
                         allowMultiple
@@ -296,12 +242,13 @@ const Animations = (props) => {
                         </Link>
                     </div>
                 </Layout>
-            }
         </Page>
     )
 };
 
 const mapStateToProps = (state) => ({
+    config: state.configsReducer.popupConfig,
+    dispatchedId: state.configsReducer.dispatchedIds.popupId,
     strings: state.localesReducer.stringsToDisplay.strings.animations,
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
