@@ -27,7 +27,7 @@ const getEndpoint = (bundle) => async (ctx) => {
                         ...t,
                         configData: confData.find(e => t.id === e.id)
                     }
-                }) : null
+                }) : []
             ,
             message: ctx.cookies.get('shopOrigin')
         }
