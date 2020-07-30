@@ -29,7 +29,7 @@ const Initial = (props) => {
         'https://lil-proxy.herokuapp.com/static/Preloader.gif'
     } alt={'shock'}/></Layout></Page>;
     else return (
-        (props.configData.countdownConfig.config || props.configData.saleConfig.config || props.configData.popupConfig.config) ? <MainScreen/> :
+        (props.configData.countdownConfig.config || props.configData.saleConfig.config || props.configData.popupConfig.config) ? <></> :
             isSecondPage ?
                 <BannerVariants
                     bannerData={bannerData}
