@@ -47,7 +47,7 @@ const MainScreen = (props) => {
                                     {props.strings.createBanner}
                                 </ShopifyButton>
                             </div> :
-                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%', paddingRight: '10px'}}>
                                 <Button
                                     primary
                                 >
@@ -72,7 +72,7 @@ const MainScreen = (props) => {
                                     {props.strings.createBanner}
                                 </ShopifyButton>
                             </div> :
-                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%', paddingRight: '10px'}}>
                                 <Button
                                     primary
                                 >
@@ -97,7 +97,7 @@ const MainScreen = (props) => {
                                     {props.strings.createBanner}
                                 </ShopifyButton>
                             </div> :
-                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%', paddingRight: '10px'}}>
                                 <Button
                                     primary
                                 >

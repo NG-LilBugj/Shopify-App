@@ -8,7 +8,7 @@ const DisplayedConfig = (props) => {
     const configStrings = useSelector(state => state.localesReducer.stringsToDisplay.strings.existing_config);
 
     return(
-        <>
+        <div style={{borderRadius: '15px', border: '1px solid #999'}}>
             <div style={{
                 width: "100%",
                 display: "flex",
@@ -37,7 +37,7 @@ const DisplayedConfig = (props) => {
                     </Button>
                 </div>
             </div>
-        </>
+        </div>
     )
 };
 
