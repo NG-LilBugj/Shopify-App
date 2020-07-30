@@ -15,7 +15,7 @@ const Countdown = (props) => {
 
     useEffect(() => {
         console.log(props.config);
-        fetchData(props.config.find(c => c.id === props.dispatchedId))
+        fetchData(props.config.script.find(c => c.id === props.dispatchedId))
     }, []);
 
     const [isLoading, setLoading] = useState(true);
