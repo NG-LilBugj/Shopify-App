@@ -14,9 +14,11 @@ import {connect} from "react-redux";
 const Countdown = (props) => {
 
     useEffect(() => {
-        console.log(props.config.script.find(c => c.id === props.dispatchedId));
-        console.log(props.config, props.dispatchedId);
-        fetchData(props.config.script.find(c => c.id === props.dispatchedId))
+        if (props.dispatchedId) {
+            console.log(props.config.script.find(c => c.id === props.dispatchedId));
+            console.log(props.config, props.dispatchedId);
+            fetchData(props.config.script.find(c => c.id === props.dispatchedId))
+        }
     }, []);
 
     const [isMainConfig, setConfigMenu] = useState(true);
@@ -253,7 +255,7 @@ const Countdown = (props) => {
             linkText,
             href
         };
-        if (scriptData.config){
+        if (scriptData.dispatchedId){
             let res = await axios.put('https://lil-shopify.herokuapp.com/api/script', bundle);
             console.log(res.data);
         }

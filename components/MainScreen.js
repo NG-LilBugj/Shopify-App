@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {useEffect} from "react";
 import {withStyles} from "@material-ui/core";
 import {ShopifyButton} from "../utils/ShopifyButton";
+import Link from "next/link";
 
 const noCardDisplayStyle = {
     display: "flex",
@@ -39,20 +40,24 @@ const MainScreen = (props) => {
                                 <i>
                                     {props.strings.hereIsNo}
                                 </i>
-                                <ShopifyButton
-                                    variant="contained"
-                                    color="primary"
-                                    size={"large"}
-                                >
-                                    {props.strings.createBanner}
-                                </ShopifyButton>
+                                <Link href={'/countdown'}>
+                                    <ShopifyButton
+                                        variant="contained"
+                                        color="primary"
+                                        size={"large"}
+                                    >
+                                        {props.strings.createBanner}
+                                    </ShopifyButton>
+                                </Link>
                             </div> :
                             <div style={{display: "flex", justifyContent: "flex-end", width: '100%', paddingRight: '10px'}}>
+                                <Link href={'/countdown'}>
                                 <Button
                                     primary
                                 >
                                     {props.strings.createNew}
                                 </Button>
+                                </Link>
                             </div>}
                     </Card>
                 </Layout.Section>
@@ -64,20 +69,24 @@ const MainScreen = (props) => {
                                 <i>
                                     {props.strings.hereIsNo}
                                 </i>
-                                <ShopifyButton
-                                    variant="contained"
-                                    color="primary"
-                                    size={"large"}
-                                >
-                                    {props.strings.createBanner}
-                                </ShopifyButton>
+                                <Link href={'/badges'}>
+                                    <ShopifyButton
+                                        variant="contained"
+                                        color="primary"
+                                        size={"large"}
+                                    >
+                                        {props.strings.createBanner}
+                                    </ShopifyButton>
+                                </Link>
                             </div> :
                             <div style={{display: "flex", justifyContent: "flex-end", width: '100%', paddingRight: '10px'}}>
-                                <Button
-                                    primary
-                                >
-                                    {props.strings.createNew}
-                                </Button>
+                                <Link href={'/badges'}>
+                                    <Button
+                                        primary
+                                    >
+                                        {props.strings.createNew}
+                                    </Button>
+                                </Link>
                             </div>}
                     </Card>
                 </Layout.Section>
@@ -89,20 +98,24 @@ const MainScreen = (props) => {
                                 <i>
                                     {props.strings.hereIsNo}
                                 </i>
-                                <ShopifyButton
-                                    variant="contained"
-                                    color="primary"
-                                    size={"large"}
-                                >
-                                    {props.strings.createBanner}
-                                </ShopifyButton>
+                                <Link href={'/animations'}>
+                                    <ShopifyButton
+                                        variant="contained"
+                                        color="primary"
+                                        size={"large"}
+                                    >
+                                        {props.strings.createBanner}
+                                    </ShopifyButton>
+                                </Link>
                             </div> :
                             <div style={{display: "flex", justifyContent: "flex-end", width: '100%', paddingRight: '10px'}}>
-                                <Button
-                                    primary
-                                >
-                                    {props.strings.createNew}
-                                </Button>
+                                <Link href={'/animations'}>
+                                    <Button
+                                        primary
+                                    >
+                                        {props.strings.createNew}
+                                    </Button>
+                                </Link>
                             </div>}
                     </Card>
                 </Layout.Section>
