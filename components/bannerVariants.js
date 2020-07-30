@@ -186,7 +186,7 @@ const BannerVariants = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.bannerVariants
+    strings: state.localesReducer.stringsToDisplay.strings.bannerVariants
 });
 
 export default connect(mapStateToProps)(BannerVariants)

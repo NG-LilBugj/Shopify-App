@@ -153,7 +153,7 @@ const Badges = (props) => {
                     products,
                     isAllProducts
                 });
-                console.log(res);
+                console.log(res.data);
             }
             else {
                 let res = await axios.put('https://lil-shopify.herokuapp.com/api/badge', {
@@ -164,7 +164,7 @@ const Badges = (props) => {
                     products,
                     isAllProducts
                 });
-                console.log(res);
+                console.log(res.data);
             }
         }
     };
@@ -172,7 +172,7 @@ const Badges = (props) => {
     const deleteSubmit = () => {
         setLoading(true);
         axios.delete(`https://lil-shopify.herokuapp.com/api/badge?id=${badgeData.script[0].id}`).then(res => {
-            console.log(res);
+            console.log(res.data);
             axios.get('https://lil-shopify.herokuapp.com/api/badge').then(res => {
                 fetchData(res.data);
                 setLoading(false)
@@ -378,8 +378,8 @@ const Badges = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.badges,
-    configStrings: state.stringsToDisplay.strings.existing_config
+    strings: state.localesReducer.stringsToDisplay.strings.badges,
+    configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
 export default connect(mapStateToProps)(Badges)

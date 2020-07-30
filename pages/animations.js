@@ -75,7 +75,7 @@ const Animations = (props) => {
                     products,
                     isAllProducts
                 });
-                console.log(res);
+                console.log(res.data);
                 // HTTP Post request to main server
             }
             else {
@@ -88,7 +88,7 @@ const Animations = (props) => {
                     products,
                     isAllProducts
                 });
-                console.log(res);
+                console.log(res.data);
                 // HTTP Put request to main server
             }
         }
@@ -98,7 +98,7 @@ const Animations = (props) => {
         // HTTP Delete request to main server
         setLoading(true);
         axios.delete(`https://lil-shopify.herokuapp.com/api/animation?id=${animData.script[0].id}`).then(res => {
-            console.log(res);
+            console.log(res.data);
             // HTTP request to renew data about config
             axios.get('https://lil-shopify.herokuapp.com/api/animation').then(res => {
                 fetchData(res.data);
@@ -302,8 +302,8 @@ const Animations = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.animations,
-    configStrings: state.stringsToDisplay.strings.existing_config
+    strings: state.localesReducer.stringsToDisplay.strings.animations,
+    configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
 export default connect(mapStateToProps)(Animations)

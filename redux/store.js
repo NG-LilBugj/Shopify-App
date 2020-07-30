@@ -1,6 +1,9 @@
 import {localesReducer} from "./localesReducer";
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
+import {configsReducer} from "./configsReducer";
 
-const store = createStore(localesReducer);
+let reducers = combineReducers({localesReducer, configsReducer});
+
+const store = createStore(reducers);
 
 export default store

@@ -30,7 +30,7 @@ const BannerInfo = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.bannerInfo
+    strings: state.localesReducer.stringsToDisplay.strings.bannerInfo
 });
 
 export default connect(mapStateToProps)(BannerInfo)

@@ -4,12 +4,12 @@ import {connect, useSelector} from "react-redux";
 
 const Success = () => {
 
-    const strings = useSelector(state => state.stringsToDisplay.strings.success);
+    const strings = useSelector(state => state.localesReducer.stringsToDisplay.strings.success);
 
     return (
         <Page>
         <EmptyState
-            heading={strings.mainHeader}
+            heading={strings.mainHeading}
             image={'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg'}
         >
             <Link href={'/'}><Button primary>{strings.button}</Button></Link>

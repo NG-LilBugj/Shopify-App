@@ -1,13 +1,11 @@
-import {
-    Layout,
-    Page, InlineError,
-} from "@shopify/polaris";
 import {useCallback, useState, useEffect} from "react";
 import InitPage from "../components/initPage";
 import BannerVariants from "../components/bannerVariants";
 import axios from "axios";
+import {connect} from "react-redux";
+import {setConfigs} from "../redux/configsReducer";
 
-const Initial = () => {
+const Initial = (props) => {
     // init page, constructed from first and second pages
     useEffect(() => {
         let animation = axios.get('https://lil-shopify.herokuapp.com/api/animation');
@@ -15,9 +13,12 @@ const Initial = () => {
         let countdown = axios.get('https://lil-shopify.herokuapp.com/api/script');
         Promise.all([animation, saleBadge, countdown]).then(values => {
             console.log(values);
+            const [animation, saleBadge, countdown] = values;
+            props.setConfigs(countdown.data, saleBadge.data, animation.data);
             receiveBannerData(values.map(v => v.data))
         })
     }, []);
+
 
     const [isSecondPage, setSecondPage] = useState(false);
     const [bannerData, receiveBannerData] = useState([null, null, null]);
@@ -33,4 +34,6 @@ const Initial = () => {
     )
 };
 
-export default Initial
+export default connect(null, {
+    setConfigs
+})(Initial)

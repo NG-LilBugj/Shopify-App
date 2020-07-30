@@ -258,11 +258,11 @@ const Countdown = (props) => {
         };
         if (scriptData.config){
             let res = await axios.put('https://lil-shopify.herokuapp.com/api/script', bundle);
-            console.log(res);
+            console.log(res.data);
         }
         else {
             let res = await axios.post('https://lil-shopify.herokuapp.com/api/script', bundle);
-            console.log(res);
+            console.log(res.data);
         }
     };
 
@@ -428,8 +428,8 @@ const Countdown = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.countdown,
-    configStrings: state.stringsToDisplay.strings.existing_config
+    strings: state.localesReducer.stringsToDisplay.strings.countdown,
+    configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
 export default connect(mapStateToProps)(Countdown)

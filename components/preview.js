@@ -77,7 +77,7 @@ const Preview = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.preview
+    strings: state.localesReducer.stringsToDisplay.strings.preview
 });
 
 export default connect(mapStateToProps)(Preview)

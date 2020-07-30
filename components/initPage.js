@@ -58,7 +58,7 @@ const InitPage = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.initPage
+    strings: state.localesReducer.stringsToDisplay.strings.initPage
 });
 
 export default connect(mapStateToProps)(InitPage)

@@ -122,7 +122,7 @@ const decodeColors = (model) => {
 };
 
 const mapStateToProps = (state) => ({
-    strings: state.stringsToDisplay.strings.design
+    strings: state.localesReducer.stringsToDisplay.strings.design
 });
 
 export default connect(mapStateToProps)(DesignSection)
