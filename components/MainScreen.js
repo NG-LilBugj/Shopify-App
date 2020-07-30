@@ -1,8 +1,9 @@
-import {Button, Card, DisplayText, Layout, Page} from "@shopify/polaris";
+import {Card, DisplayText, Layout, Page} from "@shopify/polaris";
 import DisplayedConfig from "./DisplayedConfig";
 import {connect} from "react-redux";
 import {useEffect} from "react";
 import {withStyles} from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 const ShopifyButton = withStyles({
     root: {
@@ -45,7 +46,7 @@ const MainScreen = (props) => {
                 <Layout.Section>
                     <Card title={props.configStrings.existingCountdownTimer} sectioned>
                         {countdownTimers}
-                        {countdownTimers && <DisplayText>
+                        {!countdownTimers[0] && <DisplayText>
                             {props.strings.hereIsNo}
                         </DisplayText>}
                         <ShopifyButton>
@@ -56,7 +57,7 @@ const MainScreen = (props) => {
                 <Layout.Section>
                     <Card title={props.configStrings.existingBadgeBanner} sectioned>
                         {saleBanners}
-                        {saleBanners && <DisplayText>
+                        {!saleBanners[0] && <DisplayText>
                             {props.strings.hereIsNo}
                         </DisplayText>}
                         <ShopifyButton>
@@ -67,7 +68,7 @@ const MainScreen = (props) => {
                 <Layout.Section>
                     <Card title={props.configStrings.existingAnimationPopup} sectioned>
                         {giftPopups}
-                        {giftPopups && <DisplayText>
+                        {!giftPopups[0] && <DisplayText>
                             {props.strings.hereIsNo}
                         </DisplayText>}
                         <ShopifyButton>
