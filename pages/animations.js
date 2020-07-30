@@ -9,7 +9,6 @@ import * as Scroll from "react-scroll";
 import {connect} from "react-redux";
 
 const Animations = (props) => {
-    console.log(props.config.script, props.dispatchedId);
 
     useEffect(() => { // side effect function to fetch data from main server (get endpoint for animations)
         if (props.dispatchedId) {

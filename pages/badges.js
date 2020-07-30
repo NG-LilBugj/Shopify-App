@@ -165,11 +165,11 @@ const Badges = (props) => {
     };
 
     useEffect(() => {
-        setName(props.dispatchedId ? badgeData.configData.name : '');
-        pickCategory(props.dispatchedId ? categories[1] : categories[0]);
-        pickBadge(props.dispatchedId ? badgeData.configData.pickedBadge : 0);
-        setBannerValue(props.dispatchedId ? badgeData.configData.bannerRenderValue : '.product-single__title/append');
-        setProducts(props.dispatchedId ? badgeData.configData.products : [])
+        setName(badgeData.id ? badgeData.configData.name : '');
+        pickCategory(badgeData.id ? categories[1] : categories[0]);
+        pickBadge(badgeData.id ? badgeData.configData.pickedBadge : 0);
+        setBannerValue(badgeData.id ? badgeData.configData.bannerRenderValue : '.product-single__title/append');
+        setProducts(badgeData.id ? badgeData.configData.products : [])
     }, [badgeData]);
 
     const searchField = (
