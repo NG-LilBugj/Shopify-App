@@ -23,7 +23,7 @@ const Countdown = (props) => {
     const [isWidget, setIsWidget] = useState(false);
     const [scriptData, fetchData] = useState(false);
     const [initBar, setInitBar] = useState(false);
-    const [name, setName] = useState(props.dispatchedId ? scriptData.configData.name : '');
+    const [name, setName] = useState(props.dispatchedId ? scriptData.name : '');
     const [nameError, setNameError] = useState(false);
     const [firstText, setFirstText] = useState(props.dispatchedId ? scriptData.configData.firstText : 'Hurry Up!');
     const [secondText, setSecondText] = useState(props.dispatchedId ? scriptData.configData.secondText : 'Flash Sale');
