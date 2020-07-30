@@ -14,7 +14,6 @@ const Animations = (props) => {
     useEffect(() => { // side effect function to fetch data from main server (get endpoint for animations)
         if (props.dispatchedId) {
             console.log(props.config.script.find(c => c.id === props.dispatchedId));
-            console.log(props.config, props.dispatchedId);
             fetchData(props.config.script.find(c => c.id === props.dispatchedId))
         }
     }, []);
@@ -92,6 +91,7 @@ const Animations = (props) => {
     };
 
     useEffect(() => {
+        console.log(animData);
         setName(props.dispatchedId ? animData.configData.name : '');
         setMessageText(props.dispatchedId ? animData.configData.message : '');
         pickAnimation(props.dispatchedId ? animData.configData.pickedAnimation : 0);
