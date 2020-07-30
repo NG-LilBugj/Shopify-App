@@ -40,6 +40,6 @@ let mapStateToProps = (state) => ({
     configData: state.configsReducer
 });
 
-export default connect(mapStateToProps(), {
+export default connect(mapStateToProps, {
     setConfigs
 })(Initial)
