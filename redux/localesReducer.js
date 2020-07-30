@@ -143,7 +143,9 @@ const initState = {
                 button: "Go to main"
             },
             mainScreen: {
-                secondPageMainSign: "Your Banners:"
+                secondPageMainSign: "Your Banners:",
+                createNew: "Create new",
+                hereIsNo: "No banner of this type has been created yet"
             }
         }
     },
@@ -288,7 +290,9 @@ const initState = {
                     button: "Go to main"
                 },
                 mainScreen: {
-                    secondPageMainSign: "Your Banners:"
+                    secondPageMainSign: "Your Banners:",
+                    createNew: "Create new",
+                    hereIsNo: "No banner of this type has been created yet"
                 }
             }
         },

@@ -1,6 +1,7 @@
 import {Button, Icon} from "@shopify/polaris";
 import {DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
 import {useSelector} from "react-redux";
+import {withStyles} from "@material-ui/core";
 
 const DisplayedConfig = (props) => {
 
