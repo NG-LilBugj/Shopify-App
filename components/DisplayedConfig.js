@@ -1,6 +1,6 @@
 import {Button, Icon} from "@shopify/polaris";
 import {DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
-import {useSelector} from "react-redux";
+import {connect, useSelector} from "react-redux";
 import axios from "axios";
 import {setConfigs, setCountdownId, setPopupId, setSaleId} from "../redux/configsReducer";
 import {useEffect} from "react";
