@@ -1,36 +1,16 @@
-import {Card, DisplayText, Layout, Page} from "@shopify/polaris";
+import {Button, Card, DisplayText, Layout, Page} from "@shopify/polaris";
 import DisplayedConfig from "./DisplayedConfig";
 import {connect} from "react-redux";
 import {useEffect} from "react";
 import {withStyles} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-
-const ShopifyButton = withStyles({
-    root: {
-        padding: '6px 12px',
-        textTransform: 'none',
-        fontSize: 14,
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(','),
-    }
-})(Button);
+import {ShopifyButton} from "../utils/ShopifyButton";
 
 const noCardDisplayStyle = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-evenly",
-    height: "8vh"
+    height: "15vh"
 };
 
 const MainScreen = (props) => {
@@ -55,69 +35,75 @@ const MainScreen = (props) => {
                     <Card title={props.configStrings.existingCountdownTimer} sectioned>
                         {countdownTimers}
                         {!countdownTimers[0] ?
-                        <div style={noCardDisplayStyle}>
-                            <i>
-                                {props.strings.hereIsNo}
-                            </i>
-                            <ShopifyButton
-                                variant="contained"
-                                color="primary"
-                            >
-                                {props.strings.createBanner}
-                            </ShopifyButton>
-                        </div> :
-                        <ShopifyButton
-                            variant="contained"
-                            color="primary"
-                        >
-                            {props.strings.createNew}
-                        </ShopifyButton>}
+                            <div style={noCardDisplayStyle}>
+                                <i>
+                                    {props.strings.hereIsNo}
+                                </i>
+                                <ShopifyButton
+                                    variant="contained"
+                                    color="primary"
+                                    size={"large"}
+                                >
+                                    {props.strings.createBanner}
+                                </ShopifyButton>
+                            </div> :
+                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                                <Button
+                                    primary
+                                >
+                                    {props.strings.createNew}
+                                </Button>
+                            </div>}
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
                     <Card title={props.configStrings.existingBadgeBanner} sectioned>
                         {saleBanners}
                         {!saleBanners[0] ?
-                        <div style={noCardDisplayStyle}>
-                            <i>
-                                {props.strings.hereIsNo}
-                            </i>
-                            <ShopifyButton
-                                variant="contained"
-                                color="primary"
-                            >
-                                {props.strings.createBanner}
-                            </ShopifyButton>
-                        </div> :
-                        <ShopifyButton
-                            variant="contained"
-                            color="primary"
-                        >
-                            {props.strings.createNew}
-                        </ShopifyButton>}
+                            <div style={noCardDisplayStyle}>
+                                <i>
+                                    {props.strings.hereIsNo}
+                                </i>
+                                <ShopifyButton
+                                    variant="contained"
+                                    color="primary"
+                                    size={"large"}
+                                >
+                                    {props.strings.createBanner}
+                                </ShopifyButton>
+                            </div> :
+                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                                <Button
+                                    primary
+                                >
+                                    {props.strings.createNew}
+                                </Button>
+                            </div>}
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
                     <Card title={props.configStrings.existingAnimationPopup} sectioned>
                         {giftPopups}
                         {!giftPopups[0] ?
-                        <div style={noCardDisplayStyle}>
-                            <i>
-                                {props.strings.hereIsNo}
-                            </i>
-                            <ShopifyButton
-                                variant="contained"
-                                color="primary"
-                            >
-                                {props.strings.createBanner}
-                            </ShopifyButton>
-                        </div> :
-                        <ShopifyButton
-                            variant="contained"
-                            color="primary"
-                        >
-                            {props.strings.createNew}
-                        </ShopifyButton>}
+                            <div style={noCardDisplayStyle}>
+                                <i>
+                                    {props.strings.hereIsNo}
+                                </i>
+                                <ShopifyButton
+                                    variant="contained"
+                                    color="primary"
+                                    size={"large"}
+                                >
+                                    {props.strings.createBanner}
+                                </ShopifyButton>
+                            </div> :
+                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                                <Button
+                                    primary
+                                >
+                                    {props.strings.createNew}
+                                </Button>
+                            </div>}
                     </Card>
                 </Layout.Section>
             </Layout>
