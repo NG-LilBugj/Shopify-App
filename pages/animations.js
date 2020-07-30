@@ -91,12 +91,12 @@ const Animations = (props) => {
     };
 
     useEffect(() => {
-        setName(animData.status ? animData.configData.name : '');
-        setMessageText(animData.status ? animData.configData.message : '');
-        pickAnimation(animData.status ? animData.configData.pickedAnimation : 0);
-        setBannerValue(animData.status ? animData.configData.badgeRenderValue : '.product-single__title/append');
-        setProducts(animData.status ? animData.configData.products : []);
-        pickAllProducts(animData.script ? animData.configData.isAllProducts : false);
+        setName(props.dispatchedId ? animData.configData.name : '');
+        setMessageText(props.dispatchedId ? animData.configData.message : '');
+        pickAnimation(props.dispatchedId ? animData.configData.pickedAnimation : 0);
+        setBannerValue(props.dispatchedId ? animData.configData.badgeRenderValue : '.product-single__title/append');
+        setProducts(props.dispatchedId ? animData.configData.products : []);
+        pickAllProducts(props.dispatchedId ? animData.configData.isAllProducts : false);
     }, [animData]);
     // resettling data state when there is information from main server
 
