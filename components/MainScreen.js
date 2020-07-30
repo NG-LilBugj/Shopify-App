@@ -46,34 +46,50 @@ const MainScreen = (props) => {
                 <Layout.Section>
                     <Card title={props.configStrings.existingCountdownTimer} sectioned>
                         {countdownTimers}
-                        {!countdownTimers[0] && <DisplayText>
+                        {!countdownTimers[0] &&
+                        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                            <i>
                             {props.strings.hereIsNo}
-                        </DisplayText>}
-                        <ShopifyButton>
+                        </i>
+                        <ShopifyButton
+                            variant="contained"
+                            color="primary"
+                        >
                             {props.strings.createNew}
                         </ShopifyButton>
+                        </div>}
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
                     <Card title={props.configStrings.existingBadgeBanner} sectioned>
                         {saleBanners}
-                        {!saleBanners[0] && <DisplayText>
+                        {!saleBanners[0] &&
+                        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                            <i>
                             {props.strings.hereIsNo}
-                        </DisplayText>}
-                        <ShopifyButton>
+                        </i>
+                        <ShopifyButton
+                            variant="contained"
+                            color="primary"
+                        >
                             {props.strings.createNew}
-                        </ShopifyButton>
+                        </ShopifyButton></div>}
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
                     <Card title={props.configStrings.existingAnimationPopup} sectioned>
                         {giftPopups}
-                        {!giftPopups[0] && <DisplayText>
+                        {!giftPopups[0] &&
+                        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                            <i>
                             {props.strings.hereIsNo}
-                        </DisplayText>}
-                        <ShopifyButton>
+                        </i>
+                        <ShopifyButton
+                            variant="contained"
+                            color="primary"
+                        >
                             {props.strings.createNew}
-                        </ShopifyButton>
+                        </ShopifyButton></div>}
                     </Card>
                 </Layout.Section>
             </Layout>
