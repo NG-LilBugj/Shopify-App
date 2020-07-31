@@ -9,7 +9,12 @@ import PrimaryDesign from "../components/primary";
 import DesignSection from "../components/design";
 import Link from "next/link";
 import {connect} from "react-redux";
-import {setCountdownId} from "../redux/configsReducer";
+import {
+    handleCountdownCollections,
+    handleCountdownDisplay,
+    handleCountdownProducts,
+    setCountdownId
+} from "../redux/configsReducer";
 
 
 const Countdown = (props) => {
@@ -170,6 +175,18 @@ const Countdown = (props) => {
     const [isLinkActive, activateLink] = useState(scriptData ? scriptData.configData.isLinkActive : false);
     const [linkText, setLinkText] = useState(scriptData ? scriptData.configData.linkText : 'Get discount!');
     const [href, setHref] = useState(scriptData ? scriptData.configData.href : 'https://');
+
+    useEffect(() => {
+        props.handleCountdownDisplay(renderValue)
+    }, [renderValue]);
+
+    useEffect(() => {
+        props.handleCountdownDisplay(renderValue)
+    }, [products]);
+
+    useEffect(() => {
+        console.log()
+    }, [props.warning.reason.string]);
 
     useEffect(() => {
         console.log(scriptData);
@@ -390,10 +407,14 @@ const Countdown = (props) => {
 const mapStateToProps = (state) => ({
     config: state.configsReducer.countdownConfig,
     dispatchedId: state.configsReducer.dispatchedIds.countdownId,
+    warning: state.configsReducer.displayWarnings.countdown,
     strings: state.localesReducer.stringsToDisplay.strings.countdown,
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
 export default connect(mapStateToProps, {
-    setCountdownId
+    setCountdownId,
+    handleCountdownDisplay,
+    handleCountdownProducts,
+    handleCountdownCollections,
 })(Countdown)
