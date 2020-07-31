@@ -18,7 +18,6 @@ const Animations = (props) => {
     }, []);
 
     const [animData, fetchData] = useState({config: false, status: ''});
-    const [isLoading, setLoading] = useState(true);
     //async state
 
     const [name, setName] = useState('');

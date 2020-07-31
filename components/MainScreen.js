@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import {withStyles} from "@material-ui/core";
 import {ShopifyButton} from "../utils/ShopifyButton";
 import Link from "next/link";
+import {setCountdownId, setPopupId, setSaleId} from "../redux/configsReducer";
 
 const noCardDisplayStyle = {
     display: "flex",
@@ -54,6 +55,7 @@ const MainScreen = (props) => {
                                 <Link href={'/countdown'}>
                                 <Button
                                     primary
+                                    onClick={() => props.setCountdownId(0)}
                                 >
                                     {props.strings.createNew}
                                 </Button>
@@ -83,6 +85,7 @@ const MainScreen = (props) => {
                                 <Link href={'/badges'}>
                                     <Button
                                         primary
+                                        onClick={() => props.setSaleId(0)}
                                     >
                                         {props.strings.createNew}
                                     </Button>
@@ -112,6 +115,7 @@ const MainScreen = (props) => {
                                 <Link href={'/animations'}>
                                     <Button
                                         primary
+                                        onClick={() => props.setPopupId(0)}
                                     >
                                         {props.strings.createNew}
                                     </Button>
@@ -130,4 +134,8 @@ let mapStateToProps = (state) => ({
     configs: state.configsReducer
 });
 
-export default connect(mapStateToProps)(MainScreen)
+export default connect(mapStateToProps, {
+    setCountdownId,
+    setSaleId,
+    setPopupId
+})(MainScreen)

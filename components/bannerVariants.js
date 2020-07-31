@@ -80,12 +80,6 @@ const BannerVariants = (props) => {
                             </div>
                         </div>
                     </Card>
-                    {props.bannerData[2].config &&
-                    <BannerInfo
-                        data={props.bannerData[2]}
-                        link={'/countdown'}
-                    />
-                    }
                     <Card sectioned>
                         <div
                             style={{
@@ -118,12 +112,6 @@ const BannerVariants = (props) => {
                             </div>
                         </div>
                     </Card>
-                    {props.bannerData[1].config &&
-                    <BannerInfo
-                        data={props.bannerData[1]}
-                        link={'/badges'}
-                    />
-                    }
                     <Card sectioned>
                         <div
                             style={{
@@ -154,11 +142,6 @@ const BannerVariants = (props) => {
                                  alt={'design'}/>
                         </div>
                     </Card>
-                    {props.bannerData[0].config &&
-                    <BannerInfo
-                        data={props.bannerData[0]}
-                        link={'/animations'}
-                    />}
                 </div>
                 <Layout.Section>
                 <div style={{
