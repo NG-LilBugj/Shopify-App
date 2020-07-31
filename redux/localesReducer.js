@@ -135,6 +135,11 @@ const initState = {
             countdown: {
                 customize: "Customize your countdown timer!",
                 bannerDesign: "Banner design",
+                warningTitle: "Banner interception detected",
+                warningMessage: "This banner are going to render on the same pages there the existing " +
+                    "one of this type has been already rendered. This will cause critical malfunctions." +
+                    "Please, check vulnerabilities below and correct them",
+                reason: "Vulnerability:",
                 settings: "Settings",
                 save: "Save"
             },

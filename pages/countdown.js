@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
-import {Button, Card, Icon, Layout, Page, TextField} from "@shopify/polaris";
+import {Banner, Button, Card, Icon, Layout, Page, TextField} from "@shopify/polaris";
 import {CalendarMinor, DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
 import * as Scroll from "react-scroll";
 import BannerVariants from "../components/bannerVariants";
@@ -15,6 +15,7 @@ import {
     handleCountdownProducts,
     setCountdownId
 } from "../redux/configsReducer";
+import Product from "../components/product";
 
 
 const Countdown = (props) => {
@@ -303,6 +304,21 @@ const Countdown = (props) => {
                                     {isMainConfig ? 'Banner design' : 'Settings'}
                                 </Button>
                             </div>}
+                            {props.warning.isWarning &&
+                                <Banner
+                                    title={props.strings.warningTitle}
+                                    status="critical"
+                                >
+                                    <p>
+                                        {props.strings.warningMessage}
+                                    </p>
+                                    <p>{props.strings.reason} {props.warning.string}</p>
+                                    {(props.warning.string === "display/products") &&
+                                    props.products.map(p => <Product pickProducts={props.pickProducts}
+                                                                     products={props.products} {...p}/>)
+                                    }
+                                </Banner>
+                            }
                             <PrimaryDesign
                                 name={name}
                                 setName={setName}
