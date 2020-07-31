@@ -181,6 +181,7 @@ const Countdown = (props) => {
     }, [renderValue]);
 
     useEffect(() => {
+        console.log('prod changed');
         props.handleCountdownDisplay(renderValue)
     }, [products]);
 
