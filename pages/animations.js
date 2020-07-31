@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import * as Scroll from "react-scroll";
 import {connect} from "react-redux";
+import {setPopupId} from "../redux/configsReducer";
 
 const Animations = (props) => {
 
@@ -70,6 +71,7 @@ const Animations = (props) => {
                     isAllProducts
                 });
                 console.log(res.data);
+                props.setPopupId(0);
                 // HTTP Post request to main server
             }
             else {
@@ -252,4 +254,4 @@ const mapStateToProps = (state) => ({
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
-export default connect(mapStateToProps)(Animations)
+export default connect(mapStateToProps, {setPopupId})(Animations)

@@ -20,7 +20,8 @@ const initState = {
         countdownId: 0,
         saleId: 0,
         popupId: 0
-    }
+    },
+
 };
 
 export const configsReducer = (state = initState, action) => {

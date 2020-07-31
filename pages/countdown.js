@@ -9,6 +9,7 @@ import PrimaryDesign from "../components/primary";
 import DesignSection from "../components/design";
 import Link from "next/link";
 import {connect} from "react-redux";
+import {setCountdownId} from "../redux/configsReducer";
 
 
 const Countdown = (props) => {
@@ -258,6 +259,7 @@ const Countdown = (props) => {
         if (props.dispatchedId){
             let res = await axios.put('https://lil-shopify.herokuapp.com/api/script', bundle);
             console.log(res.data);
+            props.setCountdownId(0);
         }
         else {
             let res = await axios.post('https://lil-shopify.herokuapp.com/api/script', bundle);
@@ -392,4 +394,6 @@ const mapStateToProps = (state) => ({
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
-export default connect(mapStateToProps)(Countdown)
+export default connect(mapStateToProps, {
+    setCountdownId
+})(Countdown)

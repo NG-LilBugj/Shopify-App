@@ -20,6 +20,7 @@ import Link from "next/link";
 import {ResourcePicker} from "@shopify/app-bridge-react";
 import Product from "../components/product";
 import {connect} from "react-redux";
+import {setSaleId} from "../redux/configsReducer";
 
 const categories = [
     'Banners',
@@ -149,6 +150,7 @@ const Badges = (props) => {
                     isAllProducts
                 });
                 console.log(res.data);
+                props.setSaleId(0);
             }
             else {
                 let res = await axios.put('https://lil-shopify.herokuapp.com/api/badge', {
@@ -334,4 +336,4 @@ const mapStateToProps = (state) => ({
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
-export default connect(mapStateToProps)(Badges)
+export default connect(mapStateToProps, {setSaleId})(Badges)
