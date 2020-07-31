@@ -182,6 +182,7 @@ const Countdown = (props) => {
 
     useEffect(() => {
         console.log('prod changed');
+        console.log(props.warning.reason);
         props.handleCountdownDisplay(renderValue)
     }, [products]);
 
