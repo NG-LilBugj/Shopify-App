@@ -314,8 +314,8 @@ const Countdown = (props) => {
                                     </p>
                                     <p>{props.strings.reason} {props.warning.reason.string}</p>
                                     {(props.warning.reason.string === "display/products") &&
-                                    props.products.map(p => <Product pickProducts={props.pickProducts}
-                                                                     products={props.products} {...p}/>)
+                                    products.map(p => <Product pickProducts={pickProducts}
+                                                                     products={products} {...p}/>)
                                     }
                                 </Banner>}
                             <PrimaryDesign
