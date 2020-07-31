@@ -185,7 +185,7 @@ const Countdown = (props) => {
     }, [products]);
 
     useEffect(() => {
-        console.log()
+        console.log(props.warning)
     }, [props.warning.reason.string]);
 
     useEffect(() => {
