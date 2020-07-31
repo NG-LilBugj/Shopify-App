@@ -154,9 +154,10 @@ export const configsReducer = (state = initState, action) => {
         }
         case HANDLE_COUNTDOWN_PRODUCTS: {
             let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]));
-            console.log(arr, arr[0]);
-            if (arr[0][0]) return {
+                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
+                .filter(e => Boolean(e));
+            console.log(arr);
+            if (arr) return {
                 ...state,
                 displayWarnings: {
                     ...state.displayWarnings,
@@ -164,7 +165,7 @@ export const configsReducer = (state = initState, action) => {
                         isWarning: true,
                         reason: {
                             string: 'display/products',
-                            elements: arr[0]
+                            elements: arr
                         }
                     }
                 }
