@@ -95,12 +95,24 @@ export const configsReducer = (state = initState, action) => {
                     }
                 }
             };
-            else return state
+            else return {
+                ...state,
+                displayWarnings: {
+                    ...state.displayWarnings,
+                    countdown: {
+                        isWarning: false,
+                        reason: {
+                            string: '',
+                            elements: []
+                        }
+                    }
+                }
+            };
         }
         case HANDLE_COUNTDOWN_COLLECTIONS: {
             let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                 .map(s => s.configData.collections.map(c => action.collections.filter(a => c.id === a.id)).map(e => e[0].id))
-            if (!!arr.length) return {
+            if (arr[0][0]) return {
                 ...state,
                 displayWarnings: {
                     ...state.displayWarnings,
@@ -126,11 +138,24 @@ export const configsReducer = (state = initState, action) => {
                     }
                 }
             };
-            else return state
+            else return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        countdown: {
+                            isWarning: false,
+                            reason: {
+                                string: '',
+                                elements: []
+                            }
+                        }
+                    }
+                };
         }
         case HANDLE_COUNTDOWN_PRODUCTS: {
             let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                 .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]));
+            console.log(arr);
             if (arr[0][0]) return {
                 ...state,
                 displayWarnings: {
