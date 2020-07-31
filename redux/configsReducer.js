@@ -129,7 +129,6 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_COUNTDOWN_PRODUCTS: {
-            console.log('redux');
             let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                 .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]));
             if (!!arr.length) return {
@@ -158,7 +157,19 @@ export const configsReducer = (state = initState, action) => {
                     }
                 }
             };
-            else return state
+            else return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        countdown: {
+                            isWarning: false,
+                            reason: {
+                                string: '',
+                                elements: []
+                            }
+                        }
+                    }
+                };
         }
         case HANDLE_SALE_PRODUCTS: {
             let arr = state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
@@ -189,7 +200,19 @@ export const configsReducer = (state = initState, action) => {
                     }
                 }
             };
-            else return state
+            else return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        countdown: {
+                            isWarning: false,
+                            reason: {
+                                string: '',
+                                elements: []
+                            }
+                        }
+                    }
+                };
         }
         case HANDLE_POPUP_PRODUCTS: {
             let arr = state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
@@ -220,7 +243,19 @@ export const configsReducer = (state = initState, action) => {
                     }
                 }
             };
-            else return state
+            else return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        countdown: {
+                            isWarning: false,
+                            reason: {
+                                string: '',
+                                elements: []
+                            }
+                        }
+                    }
+                };
         }
         default: return state
     }
