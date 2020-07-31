@@ -130,6 +130,7 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_COUNTDOWN_PRODUCTS: {
+            console.log('reducer reached');
             let arr = state.countdownConfig.script
                 .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0].id))
                 .map(s => s[0]);
