@@ -304,7 +304,7 @@ const Countdown = (props) => {
                                     {isMainConfig ? 'Banner design' : 'Settings'}
                                 </Button>
                             </div>}
-                            {props.warning.isWarning &&
+                            {props.warning.string &&
                                 <Banner
                                     title={props.strings.warningTitle}
                                     status="critical"
