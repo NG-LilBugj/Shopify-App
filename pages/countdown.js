@@ -304,7 +304,7 @@ const Countdown = (props) => {
                                     {isMainConfig ? 'Banner design' : 'Settings'}
                                 </Button>
                             </div>}
-                            {props.warning.string &&
+                            {props.warning.isWarning &&
                                 <Banner
                                     title={props.strings.warningTitle}
                                     status="critical"
@@ -312,13 +312,12 @@ const Countdown = (props) => {
                                     <p>
                                         {props.strings.warningMessage}
                                     </p>
-                                    <p>{props.strings.reason} {props.warning.string}</p>
-                                    {(props.warning.string === "display/products") &&
+                                    <p>{props.strings.reason} {props.warning.reason.string}</p>
+                                    {(props.warning.reason.string === "display/products") &&
                                     props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                      products={props.products} {...p}/>)
                                     }
-                                </Banner>
-                            }
+                                </Banner>}
                             <PrimaryDesign
                                 name={name}
                                 setName={setName}
