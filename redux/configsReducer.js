@@ -157,7 +157,7 @@ export const configsReducer = (state = initState, action) => {
                 .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
                 .filter(e => Boolean(e));
             console.log(arr);
-            if (arr) return {
+            if (arr[0]) return {
                 ...state,
                 displayWarnings: {
                     ...state.displayWarnings,
