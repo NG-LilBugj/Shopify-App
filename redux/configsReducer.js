@@ -131,22 +131,24 @@ export const configsReducer = (state = initState, action) => {
         }
         case HANDLE_COUNTDOWN_PRODUCTS: {
             console.log('reducer reached');
-            let arr = state.countdownConfig.script
-                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0].id))
-                .map(s => s[0]);
-            if (!!arr.length) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    countdown: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/products',
-                            elements: arr
+            if (!!action.products.length) {
+                let arr = state.countdownConfig.script
+                    .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0].id));
+                if (!!arr.length) return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        countdown: {
+                            isWarning: true,
+                            reason: {
+                                string: 'display/products',
+                                elements: arr
+                            }
                         }
                     }
-                }
-            };
+                };
+                else return state
+            }
             else if (!!state.countdownConfig.script.filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
                 ...state,
                 displayWarnings: {
