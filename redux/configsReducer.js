@@ -130,9 +130,9 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_COUNTDOWN_PRODUCTS: {
-            console.log(action.products, state.countdownConfig.script);
+            console.log(action.products, state.countdownConfig.script[0].configData.products);
             let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)))
+                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)));
             if (!!arr.length) return {
                 ...state,
                 displayWarnings: {
