@@ -7,8 +7,6 @@ import {
     Icon,
     Layout,
     Page,
-    Pagination,
-    Select,
     TextField
 } from "@shopify/polaris";
 import {DeleteMajorMonotone, SearchMinor, SettingsMajorMonotone} from "@shopify/polaris-icons";
@@ -103,7 +101,7 @@ const Animations = (props) => {
     };
 
     useEffect(() => {
-        console.log('dispatched' ,props.warning);
+        console.log('dispatched', products);
         props.handlePopupProducts(products, isAllProducts)
     }, [products]);
 
@@ -128,145 +126,29 @@ const Animations = (props) => {
 
     return (
         <Page>
-                <Layout>
-                    <ResourcePicker
-                        allowMultiple
-                        resourceType={"Product"}
-                        open={isProductsOpen}
-                        onSelection={(resources) => handleProductSelection(resources)}
-                        onCancel={() => setProductsOpen(false)}
-                    />
-                    <Layout.Section>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                width: '100%',
-                                marginBottom: '25px'
-                            }}>
-                            <div style={{fontSize: '24px', fontWeight: '600'}}>
-                                {props.strings.customize}
-                            </div>
-                            <Link href={!!name ? '/success' : '/badges'}>
-                                <Button
-                                    primary
-                                    disabled={(pickedAnimation === 0)}
-                                    size={"medium"}
-                                    type={"submit"}
-                                    onClick={handleSubmit}
-                                >
-                                    {props.strings.save}
-                                </Button>
-                            </Link>
+            <Layout>
+                <ResourcePicker
+                    allowMultiple
+                    resourceType={"Product"}
+                    open={isProductsOpen}
+                    onSelection={(resources) => handleProductSelection(resources)}
+                    onCancel={() => setProductsOpen(false)}
+                />
+                <Layout.Section>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            width: '100%',
+                            marginBottom: '25px'
+                        }}>
+                        <div style={{fontSize: '24px', fontWeight: '600'}}>
+                            {props.strings.customize}
                         </div>
-                    </Layout.Section>
-                    <Layout.Section>
-                        <Card title={props.strings.bannerName} sectioned>
-                            <TextField
-                                label={''}
-                                value={name}
-                                placeholder={props.strings.enterName}
-                                onChange={(value) => {
-                                    setName(value)
-                                }}
-                                error={((!name) && switchTouch) ? props.strings.pleaseEnterName : ''}
-                            />
-                        </Card>
-                    </Layout.Section>
-                    <Layout.Section>
-                        <Card title={props.strings.pickAnimation} sectioned>
-                            <div style={{display: "flex", flexWrap: "wrap", width: '100%'}}>
-                                <div style={{borderColor: (pickedAnimation === 1) ? '#3333aa' : ""}}
-                                     className={'img-container'} onClick={() => pickAnimation(1)}>
-                                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift.gif'} alt={'icon'}/></div>
-                                <div style={{borderColor: (pickedAnimation === 2) ? '#3333aa' : ""}}
-                                     className={'img-container'} onClick={() => pickAnimation(2)}>
-                                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift2.gif'} alt={'icon'}/></div>
-                                <div style={{borderColor: (pickedAnimation === 3) ? '#3333aa' : ""}}
-                                     className={'img-container'} onClick={() => pickAnimation(3)}>
-                                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift3.gif'} alt={'icon'}/></div>
-                                <div style={{borderColor: (pickedAnimation === 4) ? '#3333aa' : ""}}
-                                     className={'img-container'} onClick={() => pickAnimation(4)}>
-                                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift4.gif'} alt={'icon'}/></div>
-                                <div style={{borderColor: (pickedAnimation === 5) ? '#3333aa' : ""}}
-                                     className={'img-container'} onClick={() => pickAnimation(5)}>
-                                    <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift5.gif'} alt={'icon'}/></div>
-                            </div>
-                        </Card>
-                    </Layout.Section>
-                    <Layout.Section>
-                        <Card title={props.strings.messageText} sectioned>
-                            <TextField
-                                label={''}
-                                onBlur={() => handleNameTouch(true)}
-                                value={messageText}
-                                placeholder={props.strings.enterText}
-                                onChange={(value) => {
-                                    setMessageText(value)
-                                }}
-                                error={((!messageText) && switchTouch) ? props.strings.pleaseEnterText : ''}
-                            />
-                        </Card>
-                    </Layout.Section>
-                    <Layout.Section>
-                        {props.warning.isWarning &&
-                        <div style={{marginTop: '10px', marginBottom: '30px'}}>
-                            <Banner
-                                title={props.strings.warningTitle}
-                                status="critical"
-                            >
-                                <p style={{marginTop: '10px', marginBottom: '10px'}}>
-                                    {props.strings.warningMessage}
-                                </p>
-                                <p style={{marginTop: '10px', marginBottom: '10px'}}>{props.strings.reason} {props.warning.reason.string}</p>
-                                {(props.warning.reason.string === "display/products") &&
-                                props.warning.reason.elements.map(p => <Product pickProducts={setProducts}
-                                                                                products={products} {...p}/>)
-                                }
-                            </Banner>
-                        </div>}
-                        {console.log(props.warning.isWarning)}
-                        <Card sectioned title={props.strings.bannerPlacement}>
-                            <Heading>
-                                {props.strings.productPagesWithPopup}
-                            </Heading>
-                            <div style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                width: '520px'
-                            }}>
-                                <Autocomplete
-                                    onSelect={(value) => console.log(value)}
-                                    selected={[]}
-                                    options={[]}
-                                    textField={searchField}
-                                />
-                                <Button
-                                    disabled={isAllProducts}
-                                    size={"small"}
-                                    type={"submit"}
-                                    onClick={() => setProductsOpen(true)}
-                                >
-                                    {props.strings.browseProducts}
-                                </Button>
-                                <Button
-                                    plain
-                                    onClick={() => pickAllProducts(!isAllProducts)}
-                                >
-                                    {props.strings.pickAllProducts}
-                                </Button>
-                            </div>
-                            {(products.length) && products.map(p => <Product
-                                pickProducts={setProducts}
-                                products={products} {...p}/>)}
-                        </Card>
-                    </Layout.Section>
-                    <div style={{display: "flex", justifyContent: 'flex-end', width: '100%'}}>
                         <Link href={!!name ? '/success' : '/badges'}>
                             <Button
                                 primary
+                                disabled={(pickedAnimation === 0)}
                                 size={"medium"}
                                 type={"submit"}
                                 onClick={handleSubmit}
@@ -275,7 +157,123 @@ const Animations = (props) => {
                             </Button>
                         </Link>
                     </div>
-                </Layout>
+                </Layout.Section>
+                <Layout.Section>
+                    <Card title={props.strings.bannerName} sectioned>
+                        <TextField
+                            label={''}
+                            value={name}
+                            placeholder={props.strings.enterName}
+                            onChange={(value) => {
+                                setName(value)
+                            }}
+                            error={((!name) && switchTouch) ? props.strings.pleaseEnterName : ''}
+                        />
+                    </Card>
+                </Layout.Section>
+                <Layout.Section>
+                    <Card title={props.strings.pickAnimation} sectioned>
+                        <div style={{display: "flex", flexWrap: "wrap", width: '100%'}}>
+                            <div style={{borderColor: (pickedAnimation === 1) ? '#3333aa' : ""}}
+                                 className={'img-container'} onClick={() => pickAnimation(1)}>
+                                <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift.gif'} alt={'icon'}/></div>
+                            <div style={{borderColor: (pickedAnimation === 2) ? '#3333aa' : ""}}
+                                 className={'img-container'} onClick={() => pickAnimation(2)}>
+                                <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift2.gif'} alt={'icon'}/></div>
+                            <div style={{borderColor: (pickedAnimation === 3) ? '#3333aa' : ""}}
+                                 className={'img-container'} onClick={() => pickAnimation(3)}>
+                                <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift3.gif'} alt={'icon'}/></div>
+                            <div style={{borderColor: (pickedAnimation === 4) ? '#3333aa' : ""}}
+                                 className={'img-container'} onClick={() => pickAnimation(4)}>
+                                <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift4.gif'} alt={'icon'}/></div>
+                            <div style={{borderColor: (pickedAnimation === 5) ? '#3333aa' : ""}}
+                                 className={'img-container'} onClick={() => pickAnimation(5)}>
+                                <img style={{width: '200px'}} src={'https://lil-proxy.herokuapp.com/static/gift5.gif'} alt={'icon'}/></div>
+                        </div>
+                    </Card>
+                </Layout.Section>
+                <Layout.Section>
+                    <Card title={props.strings.messageText} sectioned>
+                        <TextField
+                            label={''}
+                            onBlur={() => handleNameTouch(true)}
+                            value={messageText}
+                            placeholder={props.strings.enterText}
+                            onChange={(value) => {
+                                setMessageText(value)
+                            }}
+                            error={((!messageText) && switchTouch) ? props.strings.pleaseEnterText : ''}
+                        />
+                    </Card>
+                </Layout.Section>
+                <Layout.Section>
+                    {props.warning.isWarning &&
+                    <div style={{marginTop: '10px', marginBottom: '30px'}}>
+                        <Banner
+                            title={props.strings.warningTitle}
+                            status="critical"
+                        >
+                            <p style={{marginTop: '10px', marginBottom: '10px'}}>
+                                {props.strings.warningMessage}
+                            </p>
+                            <p style={{marginTop: '10px', marginBottom: '10px'}}>{props.strings.reason} {props.warning.reason.string}</p>
+                            {(props.warning.reason.string === "display/products") &&
+                            props.warning.reason.elements.map(p => <Product pickProducts={setProducts}
+                                                                            products={products} {...p}/>)
+                            }
+                        </Banner>
+                    </div>}
+                    {console.log(props.warning.isWarning)}
+                    <Card sectioned title={props.strings.bannerPlacement}>
+                        <Heading>
+                            {props.strings.productPagesWithPopup}
+                        </Heading>
+                        <div style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            width: '520px'
+                        }}>
+                            <Autocomplete
+                                onSelect={(value) => console.log(value)}
+                                selected={[]}
+                                options={[]}
+                                textField={searchField}
+                            />
+                            <Button
+                                disabled={isAllProducts}
+                                size={"small"}
+                                type={"submit"}
+                                onClick={() => setProductsOpen(true)}
+                            >
+                                {props.strings.browseProducts}
+                            </Button>
+                            <Button
+                                plain
+                                onClick={() => pickAllProducts(!isAllProducts)}
+                            >
+                                {props.strings.pickAllProducts}
+                            </Button>
+                        </div>
+                        {(products.length) && products.map(p => <Product
+                            pickProducts={setProducts}
+                            products={products} {...p}/>)}
+                    </Card>
+                </Layout.Section>
+                <div style={{display: "flex", justifyContent: 'flex-end', width: '100%'}}>
+                    <Link href={!!name ? '/success' : '/badges'}>
+                        <Button
+                            primary
+                            size={"medium"}
+                            type={"submit"}
+                            onClick={handleSubmit}
+                        >
+                            {props.strings.save}
+                        </Button>
+                    </Link>
+                </div>
+            </Layout>
         </Page>
     )
 };

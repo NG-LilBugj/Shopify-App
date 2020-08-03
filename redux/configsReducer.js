@@ -258,7 +258,8 @@ export const configsReducer = (state = initState, action) => {
                     }
                 }
             };
-            else if (!!state.popupConfig.script.filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
+            else if (!!state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
+                .filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
                 ...state,
                 displayWarnings: {
                     ...state.displayWarnings,

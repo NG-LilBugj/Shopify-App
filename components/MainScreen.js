@@ -2,7 +2,6 @@ import {Button, Card, DisplayText, Layout, Page} from "@shopify/polaris";
 import DisplayedConfig from "./DisplayedConfig";
 import {connect} from "react-redux";
 import {useEffect} from "react";
-import {withStyles} from "@material-ui/core";
 import {ShopifyButton} from "../utils/ShopifyButton";
 import Link from "next/link";
 import {setCountdownId, setPopupId, setSaleId} from "../redux/configsReducer";

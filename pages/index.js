@@ -1,4 +1,4 @@
-import {useCallback, useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import InitPage from "../components/initPage";
 import BannerVariants from "../components/bannerVariants";
 import axios from "axios";
