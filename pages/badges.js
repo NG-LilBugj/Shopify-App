@@ -197,7 +197,7 @@ return (
                         onCancel={() => setProductsOpen(false)}
                     />
                     {props.warning.isWarning &&
-                    <Layout.Section>
+                    <div style={{marginTop: '10px', marginBottom: '30px'}}>
                         <Banner
                             title={props.strings.warningTitle}
                             status="critical"
@@ -211,7 +211,7 @@ return (
                                                                             products={products} {...p}/>)
                             }
                         </Banner>
-                    </Layout.Section>}
+                    </div>}
                     <Layout.Section>
                         <div
                             style={{
@@ -335,7 +335,7 @@ return (
                         <Link href={!!name ? '/success' : '/badges'}>
                         <Button
                             primary
-                            disabled={(pickedBadge === 0)}
+                            disabled={(pickedBadge === 0) || props.warning.isWarning}
                             size={"medium"}
                             type={"submit"}
                             onClick={handleSubmit}

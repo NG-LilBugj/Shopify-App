@@ -136,7 +136,7 @@ const Animations = (props) => {
                         onCancel={() => setProductsOpen(false)}
                     />
                     {props.warning.isWarning &&
-                    <Layout.Section>
+                    <div style={{marginTop: '10px', marginBottom: '30px'}}>
                         <Banner
                             title={props.strings.warningTitle}
                             status="critical"
@@ -150,7 +150,7 @@ const Animations = (props) => {
                                                                             products={products} {...p}/>)
                             }
                         </Banner>
-                    </Layout.Section>}
+                    </div>}
                     <Layout.Section>
                         <div
                             style={{

@@ -302,7 +302,7 @@ const Countdown = (props) => {
                                 </Button>
                             </div>}
                             {props.warning.isWarning &&
-                            <Layout.Section>
+                            <div style={{marginTop: '10px', marginBottom: '30px'}}>
                             <Banner
                                     title={props.strings.warningTitle}
                                     status="critical"
@@ -320,7 +320,7 @@ const Countdown = (props) => {
                                                                                     collections={collections} {...p}/>)
                                     }
                                 </Banner>
-                            </Layout.Section>}
+                            </div>}
                             <PrimaryDesign
                                 name={name}
                                 setName={setName}
@@ -412,7 +412,7 @@ const Countdown = (props) => {
                                 size={"large"}
                                 type={"submit"}
                                 onClick={handleSubmit}
-                                disabled={!name || dateError || !(selectedEndDate.end.toLocaleDateString())}
+                                disabled={!name || dateError || props.warning.isWarning || !(selectedEndDate.end.toLocaleDateString())}
                             >
                                 {props.strings.save}
                             </Button>
