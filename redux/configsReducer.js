@@ -231,7 +231,7 @@ export const configsReducer = (state = initState, action) => {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
-                        countdown: {
+                        sale: {
                             isWarning: false,
                             reason: {
                                 string: '',
@@ -275,7 +275,7 @@ export const configsReducer = (state = initState, action) => {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
-                        countdown: {
+                        popup: {
                             isWarning: false,
                             reason: {
                                 string: '',

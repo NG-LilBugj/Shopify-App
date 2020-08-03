@@ -103,6 +103,7 @@ const Animations = (props) => {
     };
 
     useEffect(() => {
+        console.log(props.warning);
         props.handlePopupProducts(products, isAllProducts)
     }, [products]);
 
