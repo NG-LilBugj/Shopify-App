@@ -307,7 +307,7 @@ return (
                                     {props.strings.pickAllProducts}
                                 </Button>
                             </div>
-                            {(products.length) && products.map(p => <Product
+                            {(!!products.length) && products.map(p => <Product
                                 pickProducts={setProducts}
                                 products={products} {...p}/>)}
                             <div style={{width: '320px'}}>
