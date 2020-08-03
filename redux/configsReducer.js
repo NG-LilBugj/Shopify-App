@@ -245,8 +245,7 @@ export const configsReducer = (state = initState, action) => {
             let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                 .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
                 .filter(e => Boolean(e));
-            console.log('array:', arr);
-            if (arr[0]) return {
+            if (arr[0] && !!action.products.length) return {
                 ...state,
                 displayWarnings: {
                     ...state.displayWarnings,
