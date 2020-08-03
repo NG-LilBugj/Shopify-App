@@ -81,7 +81,7 @@ export const configsReducer = (state = initState, action) => {
             }
         };
         case HANDLE_COUNTDOWN_DISPLAY: {
-            let arr = state.countdownConfig.script.filter(c => c.configData.display === action.display);
+            let arr = state.countdownConfig.script.filter(c => c.id !== state.dispatchedIds.countdownId);
             if (action.display === 'all' && !!arr.length) return {
                 ...state,
                 displayWarnings: {
