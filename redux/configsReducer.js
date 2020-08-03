@@ -81,7 +81,7 @@ export const configsReducer = (state = initState, action) => {
             }
         };
         case HANDLE_COUNTDOWN_DISPLAY: {
-            if (Boolean(state.countdownConfig.script)) {
+            if (Boolean(state.countdownConfig.config)) {
                 let arr = state.countdownConfig.script.filter(c => c.id !== state.dispatchedIds.countdownId);
                 if (action.display === 'all' && !!arr.length) return {
                     ...state,
@@ -113,7 +113,7 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_COUNTDOWN_COLLECTIONS: {
-            if (Boolean(state.countdownConfig.script)) {
+            if (Boolean(state.countdownConfig.config)) {
                 let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                     .map(s => s.configData.collections.map(c => action.collections.filter(a => c.id === a.id)).map(e => e[0]))[0]
                     .filter(e => Boolean(e));
@@ -160,7 +160,7 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_COUNTDOWN_PRODUCTS: {
-            if (Boolean(state.countdownConfig.script)) {
+            if (Boolean(state.countdownConfig.config)) {
                 let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
                     .filter(e => Boolean(e));
@@ -207,7 +207,7 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_SALE_PRODUCTS: {
-            if (Boolean(state.saleConfig.script)) {
+            if (Boolean(state.saleConfig.config)) {
                 let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
                     .filter(e => Boolean(e));
@@ -255,7 +255,7 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_POPUP_PRODUCTS: {
-            if (Boolean(state.popupConfig.script)) {
+            if (Boolean(state.popupConfig.config)) {
                 let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
                     .filter(e => Boolean(e));
