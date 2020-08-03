@@ -49,7 +49,8 @@ const BannerVariants = (props) => {
                                 display: "flex",
                                 justifyContent: "space-between",
                                 width: '540px',
-                                cursor: "pointer"
+                                cursor: "pointer",
+                                height: "104px"
                             }}
                             onClick={() => chooseOption(1)}
                         >
@@ -86,7 +87,8 @@ const BannerVariants = (props) => {
                                 display: "flex",
                                 justifyContent: "space-between",
                                 maxWidth: '540px',
-                                cursor: "pointer"
+                                cursor: "pointer",
+                                height: "104px"
                             }}
                             onClick={() => chooseOption(2)}
                         >
@@ -118,7 +120,8 @@ const BannerVariants = (props) => {
                                 display: "flex",
                                 justifyContent: "space-between",
                                 maxWidth: '540px',
-                                cursor: "pointer"
+                                cursor: "pointer",
+                                height: "104px"
                             }}
                             onClick={() => chooseOption(3)}
                         >

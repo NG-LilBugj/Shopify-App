@@ -70,7 +70,7 @@ const Countdown = (props) => {
     );
 
     const [value, setValue] = useState(scriptData ? scriptData.configData.position : 'Top');
-    const [renderValue, setRenderValue] = useState(scriptData ? scriptData.configData.display : 'all');
+    const [renderValue, setRenderValue] = useState(scriptData ? scriptData.configData.display : '');
     const [checked, setChecked] = useState(scriptData ? scriptData.configData.sticky : false);
     const [isRepeatable, setRepeat] = useState(scriptData ? scriptData.configData.isRepeatable : false);
 
@@ -205,7 +205,7 @@ const Countdown = (props) => {
         setIsWidget(scriptData ? scriptData.configData.isWidget : false);
         setWidgetValue(scriptData ? scriptData.configData.widgetRenderValue : '.product-single__title/append');
         setValue(scriptData ? scriptData.configData.position : 'Top');
-        setRenderValue(scriptData ? scriptData.configData.display : 'all');
+        setRenderValue(scriptData ? scriptData.configData.display : '');
         setChecked(scriptData ? scriptData.configData.sticky : false);
         setRepeat(scriptData ? scriptData.configData.isRepeatable : false);
         setBgColor(scriptData ? scriptData.configData.backGroundColor : {
