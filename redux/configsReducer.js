@@ -198,7 +198,7 @@ export const configsReducer = (state = initState, action) => {
                 };
         }
         case HANDLE_SALE_PRODUCTS: {
-            let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+            let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
                 .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
                 .filter(e => Boolean(e));
             if (arr[0]) return {
@@ -214,7 +214,8 @@ export const configsReducer = (state = initState, action) => {
                     }
                 }
             };
-            else if (!!state.saleConfig.script.filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
+            else if (!!state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
+                .filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
                 ...state,
                 displayWarnings: {
                     ...state.displayWarnings,
