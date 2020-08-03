@@ -81,211 +81,226 @@ export const configsReducer = (state = initState, action) => {
             }
         };
         case HANDLE_COUNTDOWN_DISPLAY: {
-            let arr = state.countdownConfig.script.filter(c => c.id !== state.dispatchedIds.countdownId);
-            if (action.display === 'all' && !!arr.length) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    countdown: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/all',
-                            elements: []
+            if (Boolean(state.countdownConfig.script)) {
+                let arr = state.countdownConfig.script.filter(c => c.id !== state.dispatchedIds.countdownId);
+                if (action.display === 'all' && !!arr.length) return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        countdown: {
+                            isWarning: true,
+                            reason: {
+                                string: 'display/all',
+                                elements: []
+                            }
+                        }
+                    }
+                };
+                else return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        countdown: {
+                            isWarning: false,
+                            reason: {
+                                string: '',
+                                elements: []
+                            }
                         }
                     }
                 }
-            };
-            else return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    countdown: {
-                        isWarning: false,
-                        reason: {
-                            string: '',
-                            elements: []
-                        }
-                    }
-                }
-            };
+            }
+            else return state
         }
         case HANDLE_COUNTDOWN_COLLECTIONS: {
-            let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                .map(s => s.configData.collections.map(c => action.collections.filter(a => c.id === a.id)).map(e => e[0]))[0]
-                .filter(e => Boolean(e));
-            if (arr[0]) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    countdown: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/collections',
-                            elements: arr
-                        }
-                    }
-                }
-            };
-            else if (!!state.countdownConfig.script.filter(s => s.configData.isAllCollection).length && action.isAllCollection) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    countdown: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/allCollections',
-                            elements: []
-                        }
-                    }
-                }
-            };
-            else return {
+            if (Boolean(state.countdownConfig.script)) {
+                let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                    .map(s => s.configData.collections.map(c => action.collections.filter(a => c.id === a.id)).map(e => e[0]))[0]
+                    .filter(e => Boolean(e));
+                if (arr[0]) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
                         countdown: {
-                            isWarning: false,
+                            isWarning: true,
                             reason: {
-                                string: '',
+                                string: 'display/collections',
+                                elements: arr
+                            }
+                        }
+                    }
+                };
+                else if (!!state.countdownConfig.script.filter(s => s.configData.isAllCollection).length && action.isAllCollection) return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        countdown: {
+                            isWarning: true,
+                            reason: {
+                                string: 'display/allCollections',
                                 elements: []
                             }
                         }
                     }
                 };
+                else return {
+                        ...state,
+                        displayWarnings: {
+                            ...state.displayWarnings,
+                            countdown: {
+                                isWarning: false,
+                                reason: {
+                                    string: '',
+                                    elements: []
+                                }
+                            }
+                        }
+                    };
+            }
+            else return state
         }
         case HANDLE_COUNTDOWN_PRODUCTS: {
-            let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
-                .filter(e => Boolean(e));
-            if (arr[0]) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    countdown: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/products',
-                            elements: arr
-                        }
-                    }
-                }
-            };
-            else if (!!state.countdownConfig.script.filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    countdown: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/allProducts',
-                            elements: []
-                        }
-                    }
-                }
-            };
-            else return {
+            if (Boolean(state.countdownConfig.script)) {
+                let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                    .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
+                    .filter(e => Boolean(e));
+                if (arr[0]) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
                         countdown: {
-                            isWarning: false,
+                            isWarning: true,
                             reason: {
-                                string: '',
+                                string: 'display/products',
+                                elements: arr
+                            }
+                        }
+                    }
+                };
+                else if (!!state.countdownConfig.script.filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        countdown: {
+                            isWarning: true,
+                            reason: {
+                                string: 'display/allProducts',
                                 elements: []
                             }
                         }
                     }
                 };
+                else return {
+                        ...state,
+                        displayWarnings: {
+                            ...state.displayWarnings,
+                            countdown: {
+                                isWarning: false,
+                                reason: {
+                                    string: '',
+                                    elements: []
+                                }
+                            }
+                        }
+                    };
+            }
+            else return state
         }
         case HANDLE_SALE_PRODUCTS: {
-            let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
-                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
-                .filter(e => Boolean(e));
-            if (arr[0]) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    sale: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/products',
-                            elements: arr
-                        }
-                    }
-                }
-            };
-            else if (!!state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
-                .filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    sale: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/allProducts',
-                            elements: []
-                        }
-                    }
-                }
-            };
-            else return {
+            if (Boolean(state.saleConfig.script)) {
+                let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
+                    .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
+                    .filter(e => Boolean(e));
+                if (arr[0]) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
                         sale: {
-                            isWarning: false,
+                            isWarning: true,
                             reason: {
-                                string: '',
+                                string: 'display/products',
+                                elements: arr
+                            }
+                        }
+                    }
+                };
+                else if (!!state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
+                    .filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        sale: {
+                            isWarning: true,
+                            reason: {
+                                string: 'display/allProducts',
                                 elements: []
                             }
                         }
                     }
                 };
+                else return {
+                        ...state,
+                        displayWarnings: {
+                            ...state.displayWarnings,
+                            sale: {
+                                isWarning: false,
+                                reason: {
+                                    string: '',
+                                    elements: []
+                                }
+                            }
+                        }
+                    };
+            }
+            else return state
         }
         case HANDLE_POPUP_PRODUCTS: {
-            let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
-                .filter(e => Boolean(e));
-            if (arr[0] && !!action.products.length) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    popup: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/products',
-                            elements: arr
-                        }
-                    }
-                }
-            };
-            else if (!!state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
-                .filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
-                ...state,
-                displayWarnings: {
-                    ...state.displayWarnings,
-                    popup: {
-                        isWarning: true,
-                        reason: {
-                            string: 'display/allProducts',
-                            elements: []
-                        }
-                    }
-                }
-            };
-            else return {
+            if (Boolean(state.popupConfig.script)) {
+                let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                    .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
+                    .filter(e => Boolean(e));
+                if (arr[0] && !!action.products.length) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
                         popup: {
-                            isWarning: false,
+                            isWarning: true,
                             reason: {
-                                string: '',
+                                string: 'display/products',
+                                elements: arr
+                            }
+                        }
+                    }
+                };
+                else if (!!state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
+                    .filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
+                    ...state,
+                    displayWarnings: {
+                        ...state.displayWarnings,
+                        popup: {
+                            isWarning: true,
+                            reason: {
+                                string: 'display/allProducts',
                                 elements: []
                             }
                         }
                     }
                 };
+                else return {
+                        ...state,
+                        displayWarnings: {
+                            ...state.displayWarnings,
+                            popup: {
+                                isWarning: false,
+                                reason: {
+                                    string: '',
+                                    elements: []
+                                }
+                            }
+                        }
+                    };
+            }
+            else return state
         }
         default: return state
     }
