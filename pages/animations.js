@@ -103,7 +103,7 @@ const Animations = (props) => {
     };
 
     useEffect(() => {
-        console.log('dispatched' ,props.warning);
+        console.log('dispatched' ,products);
         props.handlePopupProducts(products, isAllProducts)
     }, [products]);
 
