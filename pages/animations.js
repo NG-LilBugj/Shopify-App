@@ -253,7 +253,7 @@ const Animations = (props) => {
                                 </Button>
                                 <Button
                                     plain
-                                    onClick={() => pickAllProducts(true)}
+                                    onClick={() => pickAllProducts(!isAllProducts)}
                                 >
                                     {props.strings.pickAllProducts}
                                 </Button>
