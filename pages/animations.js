@@ -103,7 +103,7 @@ const Animations = (props) => {
     };
 
     useEffect(() => {
-        console.log(props.warning);
+        console.log('dispatched' ,props.warning);
         props.handlePopupProducts(products, isAllProducts)
     }, [products]);
 
@@ -247,7 +247,7 @@ const Animations = (props) => {
                                     disabled={isAllProducts}
                                     size={"small"}
                                     type={"submit"}
-                                    onClick={() => setProducts(true)}
+                                    onClick={() => setProductsOpen(true)}
                                 >
                                     {props.strings.browseProducts}
                                 </Button>
