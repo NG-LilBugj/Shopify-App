@@ -182,17 +182,14 @@ const Countdown = (props) => {
     }, [renderValue]);
 
     useEffect(() => {
-        console.log('prod changed');
-        console.log(props.warning.reason);
         props.handleCountdownProducts(products, isAllProducts)
     }, [products]);
 
     useEffect(() => {
-        console.log(props.warning)
-    }, [props.warning.reason.string]);
+        props.handleCountdownProducts(collections, isAllCollection)
+    }, [collections]);
 
     useEffect(() => {
-        console.log(scriptData);
         setName(scriptData ? scriptData.configData.name : '');
         setFirstText(scriptData ? scriptData.configData.firstText : 'Hurry up');
         setSecondText(scriptData ? scriptData.configData.secondText : 'Flesh sale!');
@@ -305,19 +302,25 @@ const Countdown = (props) => {
                                 </Button>
                             </div>}
                             {props.warning.isWarning &&
-                                <Banner
+                            <Layout.Section>
+                            <Banner
                                     title={props.strings.warningTitle}
                                     status="critical"
                                 >
-                                    <p>
+                                    <p style={{marginTop: '10px', marginBottom: '10px'}}>
                                         {props.strings.warningMessage}
                                     </p>
-                                    <p>{props.strings.reason} {props.warning.reason.string}</p>
+                                    <p style={{marginTop: '10px', marginBottom: '10px'}}>{props.strings.reason} {props.warning.reason.string}</p>
                                     {(props.warning.reason.string === "display/products") &&
                                     props.warning.reason.elements.map(p => <Product pickProducts={pickProducts}
                                                                      products={products} {...p}/>)
                                     }
-                                </Banner>}
+                                    {(props.warning.reason.string === "display/collections") &&
+                                    props.warning.reason.elements.map(p => <Collection pickCollections={pickCollections}
+                                                                                    collections={collections} {...p}/>)
+                                    }
+                                </Banner>
+                            </Layout.Section>}
                             <PrimaryDesign
                                 name={name}
                                 setName={setName}

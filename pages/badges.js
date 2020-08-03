@@ -1,5 +1,5 @@
 import {
-    Autocomplete,
+    Autocomplete, Banner,
     Button,
     Card,
     Heading,
@@ -20,7 +20,7 @@ import Link from "next/link";
 import {ResourcePicker} from "@shopify/app-bridge-react";
 import Product from "../components/product";
 import {connect} from "react-redux";
-import {setSaleId} from "../redux/configsReducer";
+import {handleSaleProducts, setSaleId} from "../redux/configsReducer";
 
 const categories = [
     'Banners',
@@ -167,6 +167,10 @@ const Badges = (props) => {
     };
 
     useEffect(() => {
+        props.handleSaleProducts(products, isAllProducts)
+    }, [products]);
+
+    useEffect(() => {
         setName(badgeData.id ? badgeData.configData.name : '');
         pickCategory(badgeData.id ? categories[1] : categories[0]);
         pickBadge(badgeData.id ? badgeData.configData.pickedBadge : 0);
@@ -192,6 +196,22 @@ return (
                         onSelection={(resources) => handleProductSelection(resources)}
                         onCancel={() => setProductsOpen(false)}
                     />
+                    {props.warning.isWarning &&
+                    <Layout.Section>
+                        <Banner
+                            title={props.strings.warningTitle}
+                            status="critical"
+                        >
+                            <p style={{marginTop: '10px', marginBottom: '10px'}}>
+                                {props.strings.warningMessage}
+                            </p>
+                            <p style={{marginTop: '10px', marginBottom: '10px'}}>{props.strings.reason} {props.warning.reason.string}</p>
+                            {(props.warning.reason.string === "display/products") &&
+                            props.warning.reason.elements.map(p => <Product pickProducts={pickProducts}
+                                                                            products={products} {...p}/>)
+                            }
+                        </Banner>
+                    </Layout.Section>}
                     <Layout.Section>
                         <div
                             style={{
@@ -332,8 +352,12 @@ return (
 const mapStateToProps = (state) => ({
     config: state.configsReducer.saleConfig,
     dispatchedId: state.configsReducer.dispatchedIds.saleId,
+    warning: state.configsReducer.displayWarnings.sale,
     strings: state.localesReducer.stringsToDisplay.strings.badges,
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
-export default connect(mapStateToProps, {setSaleId})(Badges)
+export default connect(mapStateToProps, {
+    setSaleId,
+    handleSaleProducts
+})(Badges)

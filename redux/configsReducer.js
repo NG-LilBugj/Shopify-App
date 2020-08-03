@@ -111,8 +111,9 @@ export const configsReducer = (state = initState, action) => {
         }
         case HANDLE_COUNTDOWN_COLLECTIONS: {
             let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                .map(s => s.configData.collections.map(c => action.collections.filter(a => c.id === a.id)).map(e => e[0].id))
-            if (arr[0][0]) return {
+                .map(s => s.configData.collections.map(c => action.collections.filter(a => c.id === a.id)).map(e => e[0]))[0]
+                .filter(e => Boolean(e));
+            if (arr[0]) return {
                 ...state,
                 displayWarnings: {
                     ...state.displayWarnings,
@@ -156,7 +157,6 @@ export const configsReducer = (state = initState, action) => {
             let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                 .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
                 .filter(e => Boolean(e));
-            console.log(arr);
             if (arr[0]) return {
                 ...state,
                 displayWarnings: {
@@ -198,9 +198,10 @@ export const configsReducer = (state = initState, action) => {
                 };
         }
         case HANDLE_SALE_PRODUCTS: {
-            let arr = state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
-                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0].id))
-            if (!!arr.length) return {
+            let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
+                .filter(e => Boolean(e));
+            if (arr[0]) return {
                 ...state,
                 displayWarnings: {
                     ...state.displayWarnings,
@@ -241,9 +242,10 @@ export const configsReducer = (state = initState, action) => {
                 };
         }
         case HANDLE_POPUP_PRODUCTS: {
-            let arr = state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
-                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0].id))
-            if (!!arr.length) return {
+            let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
+                .filter(e => Boolean(e));
+            if (arr[0]) return {
                 ...state,
                 displayWarnings: {
                     ...state.displayWarnings,

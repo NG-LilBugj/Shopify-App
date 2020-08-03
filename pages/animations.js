@@ -1,4 +1,16 @@
-import {Autocomplete, Button, Card, Heading, Icon, Layout, Page, Pagination, Select, TextField} from "@shopify/polaris";
+import {
+    Autocomplete,
+    Banner,
+    Button,
+    Card,
+    Heading,
+    Icon,
+    Layout,
+    Page,
+    Pagination,
+    Select,
+    TextField
+} from "@shopify/polaris";
 import {DeleteMajorMonotone, SearchMinor, SettingsMajorMonotone} from "@shopify/polaris-icons";
 import {ResourcePicker} from "@shopify/app-bridge-react";
 import Link from "next/link";
@@ -7,7 +19,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import * as Scroll from "react-scroll";
 import {connect} from "react-redux";
-import {setPopupId} from "../redux/configsReducer";
+import {handlePopupProducts, setPopupId} from "../redux/configsReducer";
 
 const Animations = (props) => {
 
@@ -91,7 +103,10 @@ const Animations = (props) => {
     };
 
     useEffect(() => {
-        console.log(animData);
+        props.handlePopupProducts(products, isAllProducts)
+    }, [products]);
+
+    useEffect(() => {
         setName(animData.id ? animData.configData.name : '');
         setMessageText(animData.id ? animData.configData.message : '');
         pickAnimation(animData.id ? animData.configData.pickedAnimation : 0);
@@ -120,6 +135,22 @@ const Animations = (props) => {
                         onSelection={(resources) => handleProductSelection(resources)}
                         onCancel={() => setProductsOpen(false)}
                     />
+                    {props.warning.isWarning &&
+                    <Layout.Section>
+                        <Banner
+                            title={props.strings.warningTitle}
+                            status="critical"
+                        >
+                            <p style={{marginTop: '10px', marginBottom: '10px'}}>
+                                {props.strings.warningMessage}
+                            </p>
+                            <p style={{marginTop: '10px', marginBottom: '10px'}}>{props.strings.reason} {props.warning.reason.string}</p>
+                            {(props.warning.reason.string === "display/products") &&
+                            props.warning.reason.elements.map(p => <Product pickProducts={pickProducts}
+                                                                            products={products} {...p}/>)
+                            }
+                        </Banner>
+                    </Layout.Section>}
                     <Layout.Section>
                         <div
                             style={{
@@ -250,8 +281,12 @@ const Animations = (props) => {
 const mapStateToProps = (state) => ({
     config: state.configsReducer.popupConfig,
     dispatchedId: state.configsReducer.dispatchedIds.popupId,
+    warning: state.configsReducer.displayWarnings.popup,
     strings: state.localesReducer.stringsToDisplay.strings.animations,
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
-export default connect(mapStateToProps, {setPopupId})(Animations)
+export default connect(mapStateToProps, {
+    setPopupId,
+    handlePopupProducts
+})(Animations)
