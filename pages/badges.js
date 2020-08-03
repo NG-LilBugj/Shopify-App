@@ -196,22 +196,6 @@ return (
                         onSelection={(resources) => handleProductSelection(resources)}
                         onCancel={() => setProductsOpen(false)}
                     />
-                    {props.warning.isWarning &&
-                    <div style={{marginTop: '10px', marginBottom: '30px'}}>
-                        <Banner
-                            title={props.strings.warningTitle}
-                            status="critical"
-                        >
-                            <p style={{marginTop: '10px', marginBottom: '10px'}}>
-                                {props.strings.warningMessage}
-                            </p>
-                            <p style={{marginTop: '10px', marginBottom: '10px'}}>{props.strings.reason} {props.warning.reason.string}</p>
-                            {(props.warning.reason.string === "display/products") &&
-                            props.warning.reason.elements.map(p => <Product pickProducts={pickProducts}
-                                                                            products={products} {...p}/>)
-                            }
-                        </Banner>
-                    </div>}
                     <Layout.Section>
                         <div
                             style={{
@@ -275,6 +259,22 @@ return (
                         </Card>
                     </Layout.Section>
                     <Layout.Section>
+                        {props.warning.isWarning &&
+                        <div style={{marginTop: '10px', marginBottom: '30px'}}>
+                            <Banner
+                                title={props.strings.warningTitle}
+                                status="critical"
+                            >
+                                <p style={{marginTop: '10px', marginBottom: '10px'}}>
+                                    {props.strings.warningMessage}
+                                </p>
+                                <p style={{marginTop: '10px', marginBottom: '10px'}}>{props.strings.reason} {props.warning.reason.string}</p>
+                                {(props.warning.reason.string === "display/products") &&
+                                props.warning.reason.elements.map(p => <Product pickProducts={pickProducts}
+                                                                                products={products} {...p}/>)
+                                }
+                            </Banner>
+                        </div>}
                         <Card sectioned title={'Banner placement'}>
                             <Heading>
                                 {props.strings.productPagesWithBanner}
