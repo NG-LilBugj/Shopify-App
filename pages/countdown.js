@@ -115,7 +115,6 @@ const Countdown = (props) => {
     const [dateError, setDateError] = useState(false);
 
     const dateCheck = () => {
-        console.log((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start)));
         if ((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start)) < 1){
             setDateError(true);
             console.log(Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start))
@@ -126,8 +125,14 @@ const Countdown = (props) => {
     const togglePopoverActive = useCallback(() => setPopoverActive(popoverActive => !popoverActive), []);
     const toggleBorderPopover = useCallback(() => setBorderPopover(popoverActive => !popoverActive), []);
 
-    const toggleStartPopover = useCallback(() => setStartDatePopover(popoverActive => !popoverActive), []);
-    const toggleEndPopover = useCallback(() => setEndDatePopover(popoverActive => !popoverActive), []);
+    const toggleStartPopover = useCallback(() => {
+        setStartDatePopover(popoverActive => !popoverActive);
+        dateCheck()
+    }, []);
+    const toggleEndPopover = useCallback(() => {
+        setEndDatePopover(popoverActive => !popoverActive);
+        dateCheck()
+    }, []);
 
     const activator = <Button onClick={togglePopoverActive} disclosure>
         Background
