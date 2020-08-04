@@ -307,10 +307,14 @@ return (
                                     {props.strings.pickAllProducts}
                                 </Button>
                             </div>
-                            {(!!products.length) && products.map(p => <Product
+                            {(!!products.length) && <div style={{
+                                marginTop: '10px',
+                                marginBottom: '10px'
+                            }}>{products.map(p => <Product
                                 pickProducts={setProducts}
                                 products={products} {...p}/>)}
-                            <div style={{width: '320px'}}>
+                            </div>}
+                            <div style={{width: '320px', marginTop: '20px'}}>
                                 <Select
                                     label={''}
                                     labelInline

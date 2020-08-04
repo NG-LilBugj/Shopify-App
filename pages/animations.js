@@ -256,9 +256,13 @@ const Animations = (props) => {
                                 {props.strings.pickAllProducts}
                             </Button>
                         </div>
-                        {(!!products.length) && products.map(p => <Product
+                        {(!!products.length) && <div style={{
+                            marginTop: '10px',
+                            marginBottom: '10px'
+                        }}>{products.map(p => <Product
                             pickProducts={setProducts}
                             products={products} {...p}/>)}
+                        </div>}
                     </Card>
                 </Layout.Section>
                 <div style={{display: "flex", justifyContent: 'flex-end', width: '100%'}}>
