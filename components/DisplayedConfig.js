@@ -1,4 +1,4 @@
-import {Button, Icon} from "@shopify/polaris";
+import {Button, ButtonGroup, Icon} from "@shopify/polaris";
 import {DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
 import {connect, useSelector} from "react-redux";
 import axios from "axios";
@@ -66,7 +66,7 @@ const DisplayedConfig = (props) => {
             boxShadow: '0 0 1px #666'
         }}>
                 <b style={{fontSize: "20px", color: "#44d"}}>{props.configData ? props.configData.name : configStrings.timer}</b>
-                <div style={{display: 'flex', justifyContent: 'space-between', width: '35%'}}>
+                <ButtonGroup>
                     <Link href={calculatePath()}>
                         <Button
                             plain
@@ -84,7 +84,7 @@ const DisplayedConfig = (props) => {
                         onClick={deleteSubmit}>
                         {configStrings.delete}
                     </Button>
-                </div>
+                </ButtonGroup>
         </div>
     )
 };
