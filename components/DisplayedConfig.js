@@ -58,6 +58,7 @@ const DisplayedConfig = (props) => {
     return(
         <div style={{
             width: "100%",
+            height: "64px",
             display: "flex",
             justifyContent: "space-between",
             padding: '10px',
