@@ -121,7 +121,6 @@ const PrimaryDesign = (props) => {
                         onClick={() => {
                             props.toggleEndPopover;
                             props.dateCheck;
-                            console.log('click')
                         }}
                     >
                         OK
