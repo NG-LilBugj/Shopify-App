@@ -117,7 +117,7 @@ const MainScreen = (props) => {
                                     </ShopifyButton>
                                 </Link>
                             </div> :
-                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%', paddingRight: '2rem'}}>
+                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%', padding: '2rem'}}>
                                 <Link href={'/animations'}>
                                     <Button
                                         primary
