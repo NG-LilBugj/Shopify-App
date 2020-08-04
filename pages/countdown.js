@@ -115,7 +115,7 @@ const Countdown = (props) => {
     const [dateError, setDateError] = useState(false);
 
     const dateCheck = () => {
-        if (Boolean(Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start))){
+        if ((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start)) < 1){
             setDateError(true);
             console.log(Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start))
         }
