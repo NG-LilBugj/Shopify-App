@@ -61,6 +61,7 @@ const DisplayedConfig = (props) => {
             display: "flex",
             justifyContent: "space-between",
             padding: '10px',
+            marginBottom: '25px',
             borderRadius: '5px',
             boxShadow: '0 0 2px #666'
         }}>
