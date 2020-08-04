@@ -115,7 +115,6 @@ const Countdown = (props) => {
     const [dateError, setDateError] = useState(false);
 
     const dateCheck = () => {
-        console.log('init')
         if ((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start)) < 1){
             console.log('in');
             setDateError(true);
@@ -129,11 +128,9 @@ const Countdown = (props) => {
 
     const toggleStartPopover = useCallback(() => {
         setStartDatePopover(popoverActive => !popoverActive);
-        dateCheck()
     }, []);
     const toggleEndPopover = useCallback(() => {
         setEndDatePopover(popoverActive => !popoverActive);
-        dateCheck()
     }, []);
 
     const activator = <Button onClick={togglePopoverActive} disclosure>
@@ -158,7 +155,8 @@ const Countdown = (props) => {
             prefix={<Icon source={CalendarMinor} color="inkLighter" />}
             value={selectedEndDate.end.toLocaleDateString()}
             error={((!(selectedEndDate.end.toLocaleDateString())) && switchTouch) ? 'Please enter date' :
-                (dateError ? 'End date cannot be earlier than start date' : '')}
+                (((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start)) < 1)
+                    ? 'End date cannot be earlier than start date' : '')}
         />
     </div>;
 
