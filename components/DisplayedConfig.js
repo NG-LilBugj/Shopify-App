@@ -73,7 +73,7 @@ const DisplayedConfig = (props) => {
                             size={"medium"}
                             type={"submit"}
                             onClick={handleDispatch}>
-                            {props.strings.edit}
+                            {configStrings.edit}
                         </Button>
                     </Link>
                     <Button
@@ -82,7 +82,7 @@ const DisplayedConfig = (props) => {
                         size={"medium"}
                         type={"submit"}
                         onClick={deleteSubmit}>
-                        {props.strings.delete}
+                        {configStrings.delete}
                     </Button>
                 </div>
         </div>
