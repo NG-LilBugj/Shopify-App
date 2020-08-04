@@ -56,37 +56,35 @@ const DisplayedConfig = (props) => {
     };
 
     return(
-        <div>
-            <div style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                padding: '10px',
-                borderBottom: "1px solid grey"
-            }}>
-                <p>{configStrings.bannerName}</p>
-                <p>{configStrings.actions}</p>
-            </div>
-            <div style={{width: "100%", display: "flex", justifyContent: "space-between", padding: '10px'}}>
-                <b style={{fontSize: "24px"}}>{props.configData ? props.configData.name : configStrings.timer}</b>
-                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <div style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+            padding: '10px',
+            borderRadius: '15px',
+            border: "1px solid grey",
+            boxShadow: '0 0 4px #666'
+        }}>
+                <b style={{fontSize: "20px", color: "#44d"}}>{props.configData ? props.configData.name : configStrings.timer}</b>
+                <div style={{display: 'flex', justifyContent: 'space-between', width: '35%'}}>
                     <Link href={calculatePath()}>
                         <Button
+                            plain
                             size={"medium"}
                             type={"submit"}
                             onClick={handleDispatch}>
-                            <Icon source={SettingsMajorMonotone}/>
+                            {props.strings.edit}
                         </Button>
                     </Link>
                     <Button
+                        plain
                         destructive
                         size={"medium"}
                         type={"submit"}
                         onClick={deleteSubmit}>
-                        <Icon source={DeleteMajorMonotone}/>
+                        {props.strings.delete}
                     </Button>
                 </div>
-            </div>
         </div>
     )
 };

@@ -94,7 +94,9 @@ const initState = {
                 existingAnimationPopup: "Existing Animation Popup:",
                 bannerName: "Banner name:",
                 actions: "Actions:",
-                timer: "Timer"
+                timer: "Timer",
+                edit: "Edit",
+                delete: "Delete"
             },
             animations: {
                 customize: "Customize your special popup!",
@@ -249,7 +251,9 @@ const initState = {
                     existingAnimationPopup: "Existing Animation Popup:",
                     bannerName: "Banner name:",
                     actions: "Actions:",
-                    timer: "Timer"
+                    timer: "Timer",
+                    edit: "Edit",
+                    delete: "Delete"
                 },
                 animations: {
                     customize: "Customize your special popup!",
