@@ -13,6 +13,10 @@ const noCardDisplayStyle = {
     justifyContent: "space-evenly",
     height: "15vh"
 };
+const delimiter = {
+    width: '100%',
+    height: '15px'
+};
 
 const MainScreen = (props) => {
 
@@ -34,6 +38,7 @@ const MainScreen = (props) => {
                 </div>
                 <Layout.Section>
                     <Card title={props.configStrings.existingCountdownTimer}>
+                        <div style={delimiter}/>
                         {countdownTimers}
                         {!countdownTimers[0] ?
                             <div style={noCardDisplayStyle}>
@@ -63,7 +68,8 @@ const MainScreen = (props) => {
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
-                    <Card title={props.configStrings.existingBadgeBanner} sectioned>
+                    <Card title={props.configStrings.existingBadgeBanner}>
+                        <div style={delimiter}/>
                         {saleBanners}
                         {!saleBanners[0] ?
                             <div style={noCardDisplayStyle}>
@@ -93,7 +99,8 @@ const MainScreen = (props) => {
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
-                    <Card title={props.configStrings.existingAnimationPopup} sectioned>
+                    <Card title={props.configStrings.existingAnimationPopup}>
+                        <div style={delimiter}/>
                         {giftPopups}
                         {!giftPopups[0] ?
                             <div style={noCardDisplayStyle}>
