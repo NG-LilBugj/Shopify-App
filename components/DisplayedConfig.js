@@ -61,12 +61,11 @@ const DisplayedConfig = (props) => {
             display: "flex",
             justifyContent: "space-between",
             padding: '10px',
-            fontSize: '16px',
             marginBottom: '25px',
             borderRadius: '1px',
             boxShadow: '0 0 1px #666'
         }}>
-                <b style={{fontSize: "20px", color: "#00F6BB"}}>{props.configData ? props.configData.name : configStrings.timer}</b>
+                <b style={{fontSize: "20px", color: "#006fbb"}}>{props.configData ? props.configData.name : configStrings.timer}</b>
                 <ButtonGroup>
                     <Link href={calculatePath()}>
                         <Button
@@ -74,7 +73,7 @@ const DisplayedConfig = (props) => {
                             size={"medium"}
                             type={"submit"}
                             onClick={handleDispatch}>
-                            {configStrings.edit}
+                            <p style={{fontSize: '16px'}}>{configStrings.edit}</p>
                         </Button>
                     </Link>
                     <Button
@@ -83,7 +82,7 @@ const DisplayedConfig = (props) => {
                         size={"medium"}
                         type={"submit"}
                         onClick={deleteSubmit}>
-                        {configStrings.delete}
+                        <p style={{fontSize: '16px'}}>{configStrings.delete}</p>
                     </Button>
                 </ButtonGroup>
         </div>
