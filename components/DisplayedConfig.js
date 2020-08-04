@@ -73,7 +73,7 @@ const DisplayedConfig = (props) => {
                             size={"medium"}
                             type={"submit"}
                             onClick={handleDispatch}>
-                            <p style={{fontSize: '16px'}}>{configStrings.edit}</p>
+                            <p style={{fontSize: '16px', fontWeight: '200'}}>{configStrings.edit}</p>
                         </Button>
                     </Link>
                     <Button
@@ -82,7 +82,7 @@ const DisplayedConfig = (props) => {
                         size={"medium"}
                         type={"submit"}
                         onClick={deleteSubmit}>
-                        <p style={{fontSize: '16px'}}>{configStrings.delete}</p>
+                        <p style={{fontSize: '16px', fontWeight: '200'}}>{configStrings.delete}</p>
                     </Button>
                 </ButtonGroup>
         </div>
