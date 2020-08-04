@@ -66,7 +66,7 @@ const DisplayedConfig = (props) => {
             borderRadius: '1px',
             boxShadow: '0 0 1px #666'
         }}>
-                <b style={{fontSize: "20px", color: "#006fbb", marginLeft: '1rem'}}>{props.configData ? props.configData.name : configStrings.timer}</b>
+                <b style={{fontSize: "16px", color: "#006fbb", marginLeft: '1rem'}}>{props.configData ? props.configData.name : configStrings.timer}</b>
                 <ButtonGroup>
                     <Link href={calculatePath()}>
                         <Button

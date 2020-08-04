@@ -9,7 +9,7 @@ const initState = {
                 goToConfig: "Go to config",
             },
             bannerVariants: {
-                secondPageMainSign: "Which banner do you want to increase revenue?",
+                secondPageMainSign: "Select the element with which you want to increase your revenue.",
                 countdownTimerBar: "Countdown timer bar",
                 countdownDescription: "Special countdown timer which can render on product or other pages, signs\n" +
                     "that great offer has begun!",
@@ -166,7 +166,7 @@ const initState = {
                     goToConfig: "Go to config",
                 },
                 bannerVariants: {
-                    secondPageMainSign: "Which banner do you want to increase revenue?",
+                    secondPageMainSign: "Select the element with which you want to increase your revenue.",
                     countdownTimerBar: "Countdown timer bar",
                     countdownDescription: "Special countdown timer which can render on product or other pages, signs\n" +
                         "that great offer has begun!",
