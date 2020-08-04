@@ -96,7 +96,6 @@ const PrimaryDesign = (props) => {
                     />
                     <div style={{display: "flex", justifyContent: "center", width: '100%', margin: '5px'}}>
                     <Button
-                        primary
                         onClick={() => {
                             props.toggleStartPopover;
                             props.dateCheck
@@ -121,7 +120,8 @@ const PrimaryDesign = (props) => {
                     <Button
                         onClick={() => {
                             props.toggleEndPopover;
-                            props.dateCheck
+                            props.dateCheck;
+                            console.log('click')
                         }}
                     >
                         OK
