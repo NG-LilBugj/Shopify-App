@@ -33,7 +33,7 @@ const MainScreen = (props) => {
                     </DisplayText>
                 </div>
                 <Layout.Section>
-                    <Card title={props.configStrings.existingCountdownTimer} sectioned>
+                    <Card title={props.configStrings.existingCountdownTimer}>
                         {countdownTimers}
                         {!countdownTimers[0] ?
                             <div style={noCardDisplayStyle}>
