@@ -62,8 +62,8 @@ const DisplayedConfig = (props) => {
             justifyContent: "space-between",
             padding: '10px',
             marginBottom: '25px',
-            borderRadius: '5px',
-            boxShadow: '0 0 2px #666'
+            borderRadius: '1px',
+            boxShadow: '0 0 1px #666'
         }}>
                 <b style={{fontSize: "20px", color: "#44d"}}>{props.configData ? props.configData.name : configStrings.timer}</b>
                 <div style={{display: 'flex', justifyContent: 'space-between', width: '35%'}}>
