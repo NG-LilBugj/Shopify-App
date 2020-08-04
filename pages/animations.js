@@ -265,7 +265,7 @@ const Animations = (props) => {
                         </div>}
                     </Card>
                 </Layout.Section>
-                <div style={{display: "flex", justifyContent: 'flex-end', width: '100%'}}>
+                <div style={{display: "flex", justifyContent: 'flex-end', width: '100%', marginTop: '20px'}}>
                     <Link href={!!name ? '/success' : '/badges'}>
                         <Button
                             primary

@@ -7,7 +7,7 @@ const Product = (props) => {
     const removeProduct = (product) => (product.id !== props.id);
 
     return(
-        <div style={{display: 'flex', justifyContent: 'space-between', height: '40px'}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', height: '40px', marginTop: '5px'}}>
             <Thumbnail
                 source={props.photo}
                 alt={props.title}
