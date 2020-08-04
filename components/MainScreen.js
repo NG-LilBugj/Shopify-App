@@ -55,7 +55,7 @@ const MainScreen = (props) => {
                                     </ShopifyButton>
                                 </Link>
                             </div> :
-                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%', paddingRight: '10px'}}>
+                            <div style={{display: "flex", justifyContent: "flex-end", width: '100%', padding: '10px'}}>
                                 <Link href={'/countdown'}>
                                 <Button
                                     primary
