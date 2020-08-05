@@ -284,7 +284,8 @@ return (
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                width: '520px'
+                                width: '520px',
+                                marginTop: '10px',
                             }}>
                                 <Autocomplete
                                     onSelect={(value) => console.log(value)}
@@ -336,7 +337,7 @@ return (
                         </Card>
                     </Layout.Section>
                     <div style={{display: "flex", justifyContent: 'flex-end', width: '100%', marginTop: '20px'}}>
-                        <Link href={!!name ? '/success' : '/badges'}>
+                        <Link href={!!name ? '/saleSuccess' : '/badges'}>
                         <Button
                             primary
                             disabled={(pickedBadge === 0) || props.warning.isWarning}

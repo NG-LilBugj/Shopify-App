@@ -112,6 +112,7 @@ const initState = {
                 browseProducts: "Browse products",
                 cancel: "Cancel",
                 pickAllProducts: "Pick All Products",
+                preview: "Popup preview"
             },
             badges: {
                 customize: "Customize your special badge banner!",
@@ -146,8 +147,11 @@ const initState = {
                 save: "Save"
             },
             success: {
-                mainHeading: "Banner added successful!",
-                button: "Go to main"
+                mainHeading: "Congratulations!",
+                messageTimer: "You have created Countdown timer bar. Now please wait some days and your revenue will be increased for 25%.",
+                messageBanner: "You have created Sale banner. Now please wait some days and your revenue will be increased for 15%.",
+                messagePopup: "You have created Pop-up. Now please wait some days and your revenue will be increased for 20%.",
+                button: "Home"
             },
             mainScreen: {
                 secondPageMainSign: "Your Banners:",
@@ -270,6 +274,7 @@ const initState = {
                     browseProducts: "Browse products",
                     cancel: "Cancel",
                     pickAllProducts: "Pick All Products",
+                    preview: "Popup preview"
                 },
                 badges: {
                     customize: "Customize your special badge banner!",
@@ -298,6 +303,9 @@ const initState = {
                 },
                 success: {
                     mainHeading: "Banner added successful!",
+                    messageTimer: "You have created Countdown timer bar. Now please wait some days and your revenue will be increased for 25%.",
+                    messageBanner: "You have created Sale banner. Now please wait some days and your revenue will be increased for 15%.",
+                    messagePopup: "You have created Pop-up. Now please wait some days and your revenue will be increased for 20%.",
                     button: "Go to main"
                 },
                 mainScreen: {

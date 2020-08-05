@@ -19,6 +19,23 @@ import * as Scroll from "react-scroll";
 import {connect} from "react-redux";
 import {handlePopupProducts, setPopupId} from "../redux/configsReducer";
 
+const pickSource = (id) => {
+    switch (id) {
+        case 1:
+            return 'https://lil-proxy.herokuapp.com/static/gift.gif';
+        case 2:
+            return 'https://lil-proxy.herokuapp.com/static/gift2.gif';
+        case 3:
+            return 'https://lil-proxy.herokuapp.com/static/gift3.gif';
+        case 4:
+            return 'https://lil-proxy.herokuapp.com/static/gift4.gif';
+        case 5:
+            return 'https://lil-proxy.herokuapp.com/static/gift5.gif';
+        case 6:
+            return 'https://lil-proxy.herokuapp.com/static/gift6.gif';
+    }
+};
+
 const Animations = (props) => {
 
     useEffect(() => { // side effect function to fetch data from main server (get endpoint for animations)
@@ -207,6 +224,20 @@ const Animations = (props) => {
                     </Card>
                 </Layout.Section>
                 <Layout.Section>
+                    <Card title={props.strings.preview} sectioned>
+                        <div className="anim-window">
+                            <div>{messageText}</div>
+                            <div className="animation">
+                                <img style="width: 240px; height: 240px" src={pickSource(pickedAnimation)}
+                                     alt="gift"/>
+                            </div>
+                            <div className="button-container">
+                                <button className="anim-submit">OK</button>
+                            </div>
+                        </div>
+                    </Card>
+                </Layout.Section>
+                <Layout.Section>
                     {props.warning.isWarning &&
                     <div style={{marginTop: '10px', marginBottom: '30px'}}>
                         <Banner
@@ -234,6 +265,7 @@ const Animations = (props) => {
                             justifyContent: 'space-between',
                             alignItems: 'center',
                             width: '520px',
+                            marginTop: '10px',
                         }}>
                             <Autocomplete
                                 onSelect={(value) => console.log(value)}
@@ -266,7 +298,7 @@ const Animations = (props) => {
                     </Card>
                 </Layout.Section>
                 <div style={{display: "flex", justifyContent: 'flex-end', width: '100%', marginTop: '20px'}}>
-                    <Link href={!!name ? '/success' : '/badges'}>
+                    <Link href={!!name ? '/popupSuccess' : '/badges'}>
                         <Button
                             primary
                             size={"medium"}
