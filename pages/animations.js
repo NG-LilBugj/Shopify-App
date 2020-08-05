@@ -265,7 +265,7 @@ const Animations = (props) => {
                             justifyContent: 'space-between',
                             alignItems: 'center',
                             width: '520px',
-                            marginTop: '10px',
+                            marginTop: '15px',
                         }}>
                             <Autocomplete
                                 onSelect={(value) => console.log(value)}
