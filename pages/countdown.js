@@ -1,10 +1,8 @@
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
-import {Banner, Button, Card, Icon, Layout, Page, TextField} from "@shopify/polaris";
-import {CalendarMinor, DeleteMajorMonotone, SettingsMajorMonotone} from "@shopify/polaris-icons";
+import {Banner, Button, Icon, Layout, Page, TextField} from "@shopify/polaris";
+import {CalendarMinor} from "@shopify/polaris-icons";
 import * as Scroll from "react-scroll";
-import BannerVariants from "../components/bannerVariants";
-import InitPage from "../components/initPage";
 import PrimaryDesign from "../components/primary";
 import DesignSection from "../components/design";
 import Link from "next/link";
@@ -113,15 +111,6 @@ const Countdown = (props) => {
     const [endError, setEndError] = useState('');
     const [switchTouch, switchAttempt] = useState(false);
     const [dateError, setDateError] = useState(false);
-
-    const dateCheck = () => {
-        if ((Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start)) < 1){
-            console.log('in');
-            setDateError(true);
-            console.log(Date.parse(selectedEndDate.end) - Date.parse(selectedStartDate.start))
-        }
-        else setDateError(false);
-    };
 
     const togglePopoverActive = useCallback(() => setPopoverActive(popoverActive => !popoverActive), []);
     const toggleBorderPopover = useCallback(() => setBorderPopover(popoverActive => !popoverActive), []);
@@ -365,7 +354,6 @@ const Countdown = (props) => {
                                 pickCollections={pickCollections}
                                 isAllCollection={isAllCollection}
                                 pickAllCollection={pickAllCollection}
-                                dateCheck={dateCheck}
                                 handleRangeSliderChange={handleRangeSliderChange}
                                 setBorderColor={setBorderColor}
                                 isWidget={isWidget}
