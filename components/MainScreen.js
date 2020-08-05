@@ -1,7 +1,7 @@
-import {Button, Card, DisplayText, Layout, Page} from "@shopify/polaris";
+import {Button, Card, DisplayText, Frame, Layout, Page, Toast} from "@shopify/polaris";
 import DisplayedConfig from "./DisplayedConfig";
 import {connect} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {ShopifyButton} from "../utils/ShopifyButton";
 import Link from "next/link";
 import {setCountdownId, setPopupId, setSaleId} from "../redux/configsReducer";
@@ -20,16 +20,20 @@ const delimiter = {
 
 const MainScreen = (props) => {
 
-    let countdownTimers = props.configs.countdownConfig.script.map(s => <DisplayedConfig {...s}/>);
-    let saleBanners = props.configs.saleConfig.script.map(s => <DisplayedConfig {...s}/>);
-    let giftPopups = props.configs.popupConfig.script.map(s => <DisplayedConfig {...s}/>);
+    let countdownTimers = props.configs.countdownConfig.script.map(s => <DisplayedConfig {...s} toggleToast={toggleToast}/>);
+    let saleBanners = props.configs.saleConfig.script.map(s => <DisplayedConfig {...s} toggleToast={toggleToast}/>);
+    let giftPopups = props.configs.popupConfig.script.map(s => <DisplayedConfig {...s} toggleToast={toggleToast}/>);
 
     useEffect(() => {
         console.log(props.configs)
     }, []);
 
+    const [isToast, toggleToast] = useState(false);
+
     return (
+        <Frame>
         <Page>
+            {isToast && <Toast content={props.strings.toastMessage} onDismiss={() => toggleToast(false)}/>}
             <Layout>
                 <div style={{marginBottom: '30px', marginTop: '30px', marginLeft: '2rem', width: '100%'}}>
                     <DisplayText size={'large'} element={'h1'}>
@@ -131,6 +135,7 @@ const MainScreen = (props) => {
                 </Layout.Section>
             </Layout>
         </Page>
+        </Frame>
     )
 };
 

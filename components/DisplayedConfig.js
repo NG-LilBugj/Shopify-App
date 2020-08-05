@@ -19,6 +19,7 @@ const DisplayedConfig = (props) => {
             let saleBadge = axios.get('https://lil-shopify.herokuapp.com/api/badge');
             let countdown = axios.get('https://lil-shopify.herokuapp.com/api/script');
             Promise.all([animation, saleBadge, countdown]).then(values => {
+                props.toggleToast(true);
                 const [animation, saleBadge, countdown] = values;
                 props.setConfigs(countdown.data, saleBadge.data, animation.data);
             })

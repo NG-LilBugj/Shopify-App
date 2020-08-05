@@ -153,7 +153,8 @@ const initState = {
                 secondPageMainSign: "Your Banners:",
                 createNew: "Create new",
                 createBanner: "Create banner",
-                hereIsNo: "No banner of this type has been created yet"
+                hereIsNo: "No banner of this type has been created yet",
+                toastMessage: "Banner deleted"
             }
         }
     },
@@ -303,7 +304,8 @@ const initState = {
                     secondPageMainSign: "Your Banners:",
                     createNew: "Create new",
                     createBanner: "Create banner",
-                    hereIsNo: "No banner of this type has been created yet"
+                    hereIsNo: "No banner of this type has been created yet",
+                    toastMessage: "Banner deleted"
                 }
             }
         },

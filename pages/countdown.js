@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
-import {Banner, Button, Icon, Layout, Page, TextField} from "@shopify/polaris";
+import {Banner, Button, Frame, Icon, Layout, Page, TextField} from "@shopify/polaris";
 import {CalendarMinor} from "@shopify/polaris-icons";
 import * as Scroll from "react-scroll";
 import PrimaryDesign from "../components/primary";
@@ -281,6 +281,7 @@ const Countdown = (props) => {
 
     return (
         <Page>
+
             <Layout>
                 <Layout.Section>
                     {isMainConfig ? <Layout.Section>
