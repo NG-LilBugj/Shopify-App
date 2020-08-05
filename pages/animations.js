@@ -228,7 +228,7 @@ const Animations = (props) => {
                         <div className="anim-window">
                             <div>{messageText}</div>
                             <div className="animation">
-                                <img style="width: 240px; height: 240px" src={pickSource(pickedAnimation)}
+                                <img style={{width: '240px', height: '240px'}} src={pickSource(pickedAnimation)}
                                      alt="gift"/>
                             </div>
                             <div className="button-container">

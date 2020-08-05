@@ -1,6 +1,6 @@
 import {Button, EmptyState, Heading, Page} from "@shopify/polaris";
 import Link from "next/link"
-import { useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 const SaleSuccess = () => {
 
