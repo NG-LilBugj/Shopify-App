@@ -10,7 +10,7 @@ const Success = () => {
         <Page>
         <EmptyState
             heading={strings.mainHeading}
-            image={'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg'}
+            image={'https://lil-proxy.herokuapp.com/static/revenue.jpg'}
         >
             <Heading>{strings.messageTimer}</Heading>
             <Link href={'/'}><Button primary>{strings.button}</Button></Link>

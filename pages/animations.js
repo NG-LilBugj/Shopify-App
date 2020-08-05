@@ -162,7 +162,7 @@ const Animations = (props) => {
                         <div style={{fontSize: '24px', fontWeight: '600'}}>
                             {props.strings.customize}
                         </div>
-                        <Link href={!!name ? '/success' : '/badges'}>
+                        <Link href={!!name ? '/popupSuccess' : '/badges'}>
                             <Button
                                 primary
                                 disabled={(pickedAnimation === 0)}

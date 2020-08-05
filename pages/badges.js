@@ -207,7 +207,7 @@ return (
                             <div style={{fontSize: '24px', fontWeight: '600'}}>
                                 {props.strings.customize}
                             </div>
-                            <Link href={!!name ? '/success' : '/badges'}>
+                            <Link href={!!name ? '/saleSuccess' : '/badges'}>
                             <Button
                                 primary
                                 disabled={(pickedBadge === 0)}
