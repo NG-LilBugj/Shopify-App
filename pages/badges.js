@@ -319,7 +319,7 @@ return (
                                 <Select
                                     label={''}
                                     labelInline
-                                    options={[
+                                    options={(category === 'Badges') ? [
                                         {label: props.strings.aboveTitle, value: '.product-single__title/prepend'},
                                         {label: props.strings.belowTitle, value: '.product-single__title/append'},
                                         {label: props.strings.abovePrice, value: '.product__price/prepend'},
@@ -329,6 +329,12 @@ return (
                                             label: props.strings.belowBuyButton,
                                             value: '.product-form__controls-group product-form__controls-group--submit/append'
                                         },
+                                    ] : [
+                                        {label: props.strings.aboveTitle, value: '.product-single__title/prepend'},
+                                        {label: props.strings.belowTitle, value: '.product-single__title/append'},
+                                        {label: props.strings.abovePrice, value: '.product__price/prepend'},
+                                        {label: props.strings.belowPrice, value: '.product__price/append'},
+                                        {label: props.strings.aboveBuyButton, value: '.product-form__controls-group/append'},
                                     ]}
                                     onChange={(value) => setBannerValue(value)}
                                     value={bannerRenderValue}

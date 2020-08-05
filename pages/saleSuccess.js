@@ -10,9 +10,9 @@ const SaleSuccess = () => {
         <Page>
             <EmptyState
                 heading={strings.mainHeading}
-                image={'https://lil-proxy.herokuapp.com/static/revenue.jpg'}
+                image={'https://lil-proxy.herokuapp.com/static/revenue.gif'}
             >
-                <Heading>{strings.messageBanner}</Heading>
+                <div style={{marginBottom: '25px'}}><Heading>{strings.messageBanner}</Heading></div>
                 <Link href={'/'}><Button primary>{strings.button}</Button></Link>
             </EmptyState>
         </Page>
