@@ -29,7 +29,6 @@ const ShopifyButton = withStyles({
 const BannerVariants = (props) => {
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/amplitude/main')
-            .then(res => console.log(res.data))
             .catch(e => console.log(e));
     }, []);
 

@@ -30,7 +30,6 @@ const InitPage = (props) => {
 
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/amplitude/intro')
-            .then(res => console.log(res.data))
             .catch(e => console.log(e));
     }, []);
 

@@ -118,7 +118,7 @@ const Animations = (props) => {
                 // HTTP Put request to main server
             }
         }
-        let ampRes = axios.get('https://lil-shopify.herokuapp.com/amplitude/popup/created');
+        let ampRes = await axios.get('https://lil-shopify.herokuapp.com/amplitude/popup/created');
         console.log(ampRes);
     };
 

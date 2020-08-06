@@ -167,7 +167,7 @@ const Badges = (props) => {
                 console.log(res.data);
             }
         }
-        let ampRes = axios.get('https://lil-shopify.herokuapp.com/amplitude/banner/created');
+        let ampRes = await axios.get('https://lil-shopify.herokuapp.com/amplitude/banner/created');
         console.log(ampRes);
     };
 

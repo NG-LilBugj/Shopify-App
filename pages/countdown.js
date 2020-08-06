@@ -279,7 +279,7 @@ const Countdown = (props) => {
             let res = await axios.post('https://lil-shopify.herokuapp.com/api/script', bundle);
             console.log(res.data);
         }
-        let ampRes = axios.get('https://lil-shopify.herokuapp.com/amplitude/countdown/created');
+        let ampRes = await axios.get('https://lil-shopify.herokuapp.com/amplitude/countdown/created');
         console.log(ampRes);
     };
 
