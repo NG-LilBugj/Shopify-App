@@ -25,7 +25,6 @@ const Countdown = (props) => {
             fetchData(props.config.script.find(c => c.id === props.dispatchedId))
         }
         axios.get('https://lil-shopify.herokuapp.com/amplitude/countdown/in')
-            .then(res => console.log(res.data))
             .catch(e => console.log(e));
     }, []);
 
@@ -279,8 +278,7 @@ const Countdown = (props) => {
             let res = await axios.post('https://lil-shopify.herokuapp.com/api/script', bundle);
             console.log(res.data);
         }
-        let ampRes = await axios.get('https://lil-shopify.herokuapp.com/amplitude/countdown/created');
-        console.log(ampRes);
+        await axios.get('https://lil-shopify.herokuapp.com/amplitude/countdown/created');
     };
 
     return (
