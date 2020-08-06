@@ -394,6 +394,8 @@ const Countdown = (props) => {
                             setHref={setHref}
                             isWidget={isWidget}
                             setIsWidget={setIsWidget}
+                            startDate={selectedStartDate}
+                            endDate={selectedEndDate}
                         />}
                     <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '25px', marginLeft: '20px'}}>
                         <Button
