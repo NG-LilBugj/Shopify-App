@@ -20,6 +20,8 @@ const delimiter = {
 
 const MainScreen = (props) => {
 
+    const [isToast, toggleToast] = useState(false);
+
     let countdownTimers = props.configs.countdownConfig.script.map(s => <DisplayedConfig {...s} toggleToast={toggleToast}/>);
     let saleBanners = props.configs.saleConfig.script.map(s => <DisplayedConfig {...s} toggleToast={toggleToast}/>);
     let giftPopups = props.configs.popupConfig.script.map(s => <DisplayedConfig {...s} toggleToast={toggleToast}/>);
@@ -27,8 +29,6 @@ const MainScreen = (props) => {
     useEffect(() => {
         console.log(props.configs)
     }, []);
-
-    const [isToast, toggleToast] = useState(false);
 
     return (
         <Frame>
