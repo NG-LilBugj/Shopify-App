@@ -20,6 +20,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 // mongoose client access to DB
 
 const next = require('next');
+
 const {default: createShopifyAuth} = require('@shopify/koa-shopify-auth');
 const {verifyRequest} = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
@@ -50,7 +51,7 @@ const server = new Koa();
 const router = new KoaRouter();
 
 let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
-const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint} = end;
+const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint, amplitudeEvent} = end;
 //server modules
 
 router.get('/api/script', getEndpoint({
@@ -96,6 +97,11 @@ router.delete('/api/animation', koaBody(), deleteEndpoint({
     Config: AnimationConfig,
 }));
 //// server routing
+
+router.get('/amplitude/main', amplitudeEvent({
+    event: 'main_screen',
+}));
+// amplitude endpoints
 
 server.use(router.allowedMethods());
 server.use(router.routes());

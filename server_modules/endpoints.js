@@ -2,7 +2,11 @@ const axios = require('axios');
 const rep = require('./repository');
 const DBAccess = require('./dbAccess');
 
+const Amplitude = require('amplitude');
+const amplitude = new Amplitude(process.env.AMPLITUDE_KEY);
+
 const decoder = rep.decoder;
+const Fabricator = rep.AmplitudeFabricator;
 
 const getEndpoint = (bundle) => async (ctx) => {
     try {
@@ -101,9 +105,24 @@ const deleteEndpoint = (bundle) => async (ctx) => {
     }
 };
 
+
+const amplitudeEvent = (bundle) => async (ctx) => {
+    try {
+        let ampRes = await amplitude.track(new Fabricator({
+            ...bundle,
+            userId: ctx.cookies.get('shopOrigin'),
+            ip: ctx.ip
+        }));
+        ctx.body = {amplitude: ampRes}
+    } catch (e) {
+        console.log(e)
+    }
+};
+
 module.exports = {
     getEndpoint,
     postEndpoint,
     putEndpoint,
-    deleteEndpoint
+    deleteEndpoint,
+    amplitudeEvent
 }; // module exporting
