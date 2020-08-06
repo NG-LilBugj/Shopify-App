@@ -43,6 +43,9 @@ const Animations = (props) => {
             console.log(props.config.script.find(c => c.id === props.dispatchedId));
             fetchData(props.config.script.find(c => c.id === props.dispatchedId))
         }
+        axios.get('https://lil-shopify.herokuapp.com/amplitude/popup/in')
+            .then(res => console.log(res.data))
+            .catch(e => console.log(e));
     }, []);
 
     const [animData, fetchData] = useState({config: false, status: ''});
@@ -115,6 +118,8 @@ const Animations = (props) => {
                 // HTTP Put request to main server
             }
         }
+        let ampRes = axios.get('https://lil-shopify.herokuapp.com/amplitude/popup/created');
+        console.log(ampRes);
     };
 
     useEffect(() => {

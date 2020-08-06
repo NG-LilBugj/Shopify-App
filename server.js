@@ -98,8 +98,29 @@ router.delete('/api/animation', koaBody(), deleteEndpoint({
 }));
 //// server routing
 
+router.get('/amplitude/intro', amplitudeEvent({
+    event: 'intro_screen',
+}));
 router.get('/amplitude/main', amplitudeEvent({
     event: 'main_screen',
+}));
+router.get('/amplitude/countdown/in', amplitudeEvent({
+    event: 'countdown_timer_page',
+}));
+router.get('/amplitude/banner/in', amplitudeEvent({
+    event: 'countdown_banner_page',
+}));
+router.get('/amplitude/popup/in', amplitudeEvent({
+    event: 'countdown_timer_page',
+}));
+router.get('/amplitude/countdown/created', amplitudeEvent({
+    event: 'countdown_timer_created',
+}));
+router.get('/amplitude/banner/created', amplitudeEvent({
+    event: 'sale_banner_created',
+}));
+router.get('/amplitude/popup/created', amplitudeEvent({
+    event: 'popup_animation_created',
 }));
 // amplitude endpoints
 

@@ -101,6 +101,9 @@ const Badges = (props) => {
             console.log(props.config, props.dispatchedId);
             fetchData(props.config.script.find(c => c.id === props.dispatchedId))
         }
+        axios.get('https://lil-shopify.herokuapp.com/amplitude/banner/in')
+            .then(res => console.log(res.data))
+            .catch(e => console.log(e));
     }, []);
 
     const [badgeData, fetchData] = useState({config: false, status: ''});
@@ -164,6 +167,8 @@ const Badges = (props) => {
                 console.log(res.data);
             }
         }
+        let ampRes = axios.get('https://lil-shopify.herokuapp.com/amplitude/banner/created');
+        console.log(ampRes);
     };
 
     useEffect(() => {

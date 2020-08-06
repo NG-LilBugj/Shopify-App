@@ -23,12 +23,15 @@ const getter = () => {
 }; // special testing function
 
 class AmplitudeFabricator {
-
     constructor(bundle) {
         this.event_type = bundle.event;
         this.user_id = bundle.userId;
         this.ip = bundle.ip
     }
+
+    event_type = '';
+    user_id = 'null_id';
+    ip = '127.0.0.1'
 }
 
 module.exports.decoder = modelDecoder;

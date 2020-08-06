@@ -3,6 +3,8 @@ import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import {withStyles} from "@material-ui/core";
 import {connect} from "react-redux";
+import {useEffect} from "react";
+import axios from "axios";
 
 const ShopifyButton = withStyles({
     root: {
@@ -25,6 +27,12 @@ const ShopifyButton = withStyles({
 })(Button);
 
 const InitPage = (props) => {
+
+    useEffect(() => {
+        axios.get('https://lil-shopify.herokuapp.com/amplitude/intro')
+            .then(res => console.log(res.data))
+            .catch(e => console.log(e));
+    }, []);
 
     return(
         <Page>

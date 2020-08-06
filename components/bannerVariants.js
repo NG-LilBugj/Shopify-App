@@ -1,9 +1,10 @@
 import {Card, DisplayText, Heading, Layout, Page, TextStyle} from "@shopify/polaris";
 import {Button, withStyles} from "@material-ui/core"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Link from "next/link";
 import BannerInfo from "./BannerInfo";
 import {connect} from "react-redux";
+import axios from "axios";
 
 const ShopifyButton = withStyles({
     root: {
@@ -26,7 +27,12 @@ const ShopifyButton = withStyles({
 })(Button);
 
 const BannerVariants = (props) => {
-    console.log(props);
+    useEffect(() => {
+        axios.get('https://lil-shopify.herokuapp.com/amplitude/main')
+            .then(res => console.log(res.data))
+            .catch(e => console.log(e));
+    }, []);
+
     const [chosenOption, chooseOption] = useState(1);
 
     return (

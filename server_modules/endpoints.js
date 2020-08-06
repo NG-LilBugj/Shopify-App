@@ -113,7 +113,11 @@ const amplitudeEvent = (bundle) => async (ctx) => {
             userId: ctx.cookies.get('shopOrigin'),
             ip: ctx.ip
         }));
-        ctx.body = {amplitude: ampRes}
+        ctx.body = {amplitude: {...ampRes, ...bundle, fab: new Fabricator({
+                    ...bundle,
+                    userId: ctx.cookies.get('shopOrigin'),
+                    ip: ctx.ip
+                })}}
     } catch (e) {
         console.log(e)
     }

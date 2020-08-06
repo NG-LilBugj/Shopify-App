@@ -10,9 +10,6 @@ import MainScreen from "../components/MainScreen";
 const Initial = (props) => {
     // init page, constructed from first and second pages
     useEffect(() => {
-        axios.get('https://lil-shopify.herokuapp.com/amplitude/main')
-            .then(res => console.log(res.data))
-            .catch(e => console.log(e));
         let animation = axios.get('https://lil-shopify.herokuapp.com/api/animation');
         let saleBadge = axios.get('https://lil-shopify.herokuapp.com/api/badge');
         let countdown = axios.get('https://lil-shopify.herokuapp.com/api/script');
