@@ -243,7 +243,7 @@ const PrimaryDesign = (props) => {
                         onChange={props.handleRenderValueChange}
                     />
                     {(props.renderValue === 'collections') && <Stack vertical>
-                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', width: '420px'}}>
+                        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', width: '520px'}}>
                             <Autocomplete
                                 onSelect={(value) => console.log(value)}
                                 selected={[]}
