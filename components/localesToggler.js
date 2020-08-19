@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 
 const LocalesToggler = (props) => {
 
-    const [localePopoverActive, setLocalePopoverActive] = useState(true);
+    const [localePopoverActive, setLocalePopoverActive] = useState(false);
 
     const toggleLocalePopoverActive = useCallback(
         () => setLocalePopoverActive((popoverActive) => !popoverActive),
@@ -23,7 +23,7 @@ const LocalesToggler = (props) => {
     );
 
     return(
-        <div style={{height: '120px'}}>
+        <div style={{marginTop: '20px'}}>
             <Popover
                 active={localePopoverActive}
                 activator={activator}

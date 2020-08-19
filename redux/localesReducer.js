@@ -451,133 +451,136 @@ const initState = {
             }
         },
         {
-            "bannerInfo": {
-                "bannerName": "Banner Name:",
-                "goToConfig": "Gehe zu Konfiguration"
-            },
-            "bannerVariants": {
-                "secondPageMainSign": "Wählen Sie den Artikel aus, mit dem Sie Ihr Einkommen erhöhen möchten.",
-                "countdownTimerBar": "Countdown-Timer-Panel",
-                "countdownDescription": "Ein spezieller Countdown-Timer, der auf einem Produkt oder anderen Seiten angezeigt werden kann, bedeutet, dass der Verkauf begonnen hat!",
-                "countdownRevenue": "Ca. 20% mehr Umsatz",
-                "saleBanner": "Werbung Schild",
-                "saleBannerDescription": "Ein unglaubliches Zeichen, das die Einzigartigkeit Ihrer Produkte hervorhebt.",
-                "saleBannerRevenue": "Ca. 25% mehr Umsatz",
-                "animationBanner": "Modales Fenster mit Animation",
-                "animationDescription": "Geschenk-Animation für Ihre Kunden!",
-                "animationRevenue": "Ca. 15% mehr Umsatz",
-                "continue": "---"
-            },
-            "design": {
-                "timerDesign": "Timer-Design",
-                "backgroundColor": "Hintergrundfarbe:",
-                "bannerHeight": "Banner-Höhe",
-                "borderWidth": "Begrenzungsbreite:",
-                "borderColor": "Farbe des Rahmens",
-                "bannerTexts": "Banner-Texte:",
-                "firstText": "Erster Text",
-                "pleaseEnterText": "Bitte geben Sie den Text ein",
-                "secondText": "---",
-                "discountLink": "Rabatt-Link",
-                "title": "Schlagzeile",
-                "link": "Referenz:"
-            },
-            "initPage": {
-                "mainHeader": "TopSale Countdown Banner",
-                "subheader": "Steigern Sie den Umsatz mit Countdown-Timer, Animationen und atemberaubenden Banner",
-                "button": "Banner erstellen"
-            },
-            "preview": {
-                "bannerPreview": "Vorschau",
-                "days": "Tage",
-                "hours": "Stunden",
-                "minutes": "Protokoll",
-                "seconds": "Nachschlag"
-            },
-            "primary": {
-                "enterName": "Geben Sie einen Namen ein...",
-                "pleaseEnterName": "Bitte geben Sie den Namen ein",
-                "startDate": "---",
-                "endDate": "---",
-                "timerDisplay": "Timer-Anzeige",
-                "banner": "---",
-                "widget": "Widget",
-                "timerPosition": "Timer-Position auf Seite",
-                "top": "---",
-                "displaysTimerTop": "Zeigt den Timer am oberen Rand des Ladens an.",
-                "bottom": "Unterseite",
-                "displaysTimerBottom": "---",
-                "displaySticky": "---",
-                "pagesShown": "Seiten, auf denen der Timer angezeigt wird",
-                "all": "Alle",
-                "displayAtAll": "---",
-                "collections": "Sammlungen",
-                "displayAtCollections": "---",
-                "browseCollections": "---",
-                "pickAllCollections": "Alle Sammlungen auswählen",
-                "products": "---",
-                "displayAtProducts": "Zeigt einen Timer auf bestimmten Produktseiten an.",
-                "browseProducts": "---",
-                "cancel": "---",
-                "pickAllProducts": "---",
-                "widgetDescription": "---",
-                "widgetDescriptionText": "---",
-                "widgetPlacement": "---",
-                "aboveTitle": "---",
-                "belowTitle": "---",
-                "abovePrice": "---",
-                "belowPrice": "---",
-                "aboveBuyButton": "---",
-                "belowBuyButton": "Unter dem Button „Kaufen“",
-                "productPagesWithTimer": "---",
-                "utils": "Dienstprogramme",
-                "repeat": "---"
-            },
-            "existing_config": {
-                "existingCountdownTimer": "---",
-                "existingBadgeBanner": "---",
-                "existingAnimationPopup": "Vorhandenes modales Animationsfenster:",
-                "actions": "---",
-                "timer": "Zeitschaltuhr",
-                "edit": "Bearbeiten",
-                "delete": "---"
-            },
-            "animations": {
-                "customize": "---",
-                "save": "---",
-                "pickAnimation": "---",
-                "messageText": "---",
-                "enterText": "---",
-                "productPagesWithPopup": "---",
-                "preview": "---"
-            },
-            "badges": {
-                "pickCategory": "---",
-                "category": "---",
-                "pickBadge": "---",
-                "bannerPlacement": "---",
-                "productPagesWithBanner": "---"
-            },
-            "countdown": {
-                "bannerDesign": "---",
-                "warningTitle": "---",
-                "warningMessage": "---",
-                "reason": "Schwachstelle:",
-                "settings": "Einstellungen"
-            },
-            "success": {
-                "mainHeading": "---",
-                "messageTimer": "---",
-                "messageBanner": "---",
-                "messagePopup": "---",
-                "button": "Zuhause"
-            },
-            "mainScreen": {
-                "secondPageMainSign": "---",
-                "createNew": "---",
-                "createBanner": "---",
-                "hereIsNo": "Banner dieses Typs wurde noch nicht erstellt",
-                "toastMessage": "---"
+            locale: "de",
+            strings: {
+                "bannerInfo": {
+                    "bannerName": "Banner Name:",
+                    "goToConfig": "Gehe zu Konfiguration"
+                },
+                "bannerVariants": {
+                    "secondPageMainSign": "Wählen Sie den Artikel aus, mit dem Sie Ihr Einkommen erhöhen möchten.",
+                    "countdownTimerBar": "Countdown-Timer-Panel",
+                    "countdownDescription": "Ein spezieller Countdown-Timer, der auf einem Produkt oder anderen Seiten angezeigt werden kann, bedeutet, dass der Verkauf begonnen hat!",
+                    "countdownRevenue": "Ca. 20% mehr Umsatz",
+                    "saleBanner": "Werbung Schild",
+                    "saleBannerDescription": "Ein unglaubliches Zeichen, das die Einzigartigkeit Ihrer Produkte hervorhebt.",
+                    "saleBannerRevenue": "Ca. 25% mehr Umsatz",
+                    "animationBanner": "Modales Fenster mit Animation",
+                    "animationDescription": "Geschenk-Animation für Ihre Kunden!",
+                    "animationRevenue": "Ca. 15% mehr Umsatz",
+                    "continue": "---"
+                },
+                "design": {
+                    "timerDesign": "Timer-Design",
+                    "backgroundColor": "Hintergrundfarbe:",
+                    "bannerHeight": "Banner-Höhe",
+                    "borderWidth": "Begrenzungsbreite:",
+                    "borderColor": "Farbe des Rahmens",
+                    "bannerTexts": "Banner-Texte:",
+                    "firstText": "Erster Text",
+                    "pleaseEnterText": "Bitte geben Sie den Text ein",
+                    "secondText": "---",
+                    "discountLink": "Rabatt-Link",
+                    "title": "Schlagzeile",
+                    "link": "Referenz:"
+                },
+                "initPage": {
+                    "mainHeader": "TopSale Countdown Banner",
+                    "subheader": "Steigern Sie den Umsatz mit Countdown-Timer, Animationen und atemberaubenden Banner",
+                    "button": "Banner erstellen"
+                },
+                "preview": {
+                    "bannerPreview": "Vorschau",
+                    "days": "Tage",
+                    "hours": "Stunden",
+                    "minutes": "Protokoll",
+                    "seconds": "Nachschlag"
+                },
+                "primary": {
+                    "enterName": "Geben Sie einen Namen ein...",
+                    "pleaseEnterName": "Bitte geben Sie den Namen ein",
+                    "startDate": "---",
+                    "endDate": "---",
+                    "timerDisplay": "Timer-Anzeige",
+                    "banner": "---",
+                    "widget": "Widget",
+                    "timerPosition": "Timer-Position auf Seite",
+                    "top": "---",
+                    "displaysTimerTop": "Zeigt den Timer am oberen Rand des Ladens an.",
+                    "bottom": "Unterseite",
+                    "displaysTimerBottom": "---",
+                    "displaySticky": "---",
+                    "pagesShown": "Seiten, auf denen der Timer angezeigt wird",
+                    "all": "Alle",
+                    "displayAtAll": "---",
+                    "collections": "Sammlungen",
+                    "displayAtCollections": "---",
+                    "browseCollections": "---",
+                    "pickAllCollections": "Alle Sammlungen auswählen",
+                    "products": "---",
+                    "displayAtProducts": "Zeigt einen Timer auf bestimmten Produktseiten an.",
+                    "browseProducts": "---",
+                    "cancel": "---",
+                    "pickAllProducts": "---",
+                    "widgetDescription": "---",
+                    "widgetDescriptionText": "---",
+                    "widgetPlacement": "---",
+                    "aboveTitle": "---",
+                    "belowTitle": "---",
+                    "abovePrice": "---",
+                    "belowPrice": "---",
+                    "aboveBuyButton": "---",
+                    "belowBuyButton": "Unter dem Button „Kaufen“",
+                    "productPagesWithTimer": "---",
+                    "utils": "Dienstprogramme",
+                    "repeat": "---"
+                },
+                "existing_config": {
+                    "existingCountdownTimer": "---",
+                    "existingBadgeBanner": "---",
+                    "existingAnimationPopup": "Vorhandenes modales Animationsfenster:",
+                    "actions": "---",
+                    "timer": "Zeitschaltuhr",
+                    "edit": "Bearbeiten",
+                    "delete": "---"
+                },
+                "animations": {
+                    "customize": "---",
+                    "save": "---",
+                    "pickAnimation": "---",
+                    "messageText": "---",
+                    "enterText": "---",
+                    "productPagesWithPopup": "---",
+                    "preview": "---"
+                },
+                "badges": {
+                    "pickCategory": "---",
+                    "category": "---",
+                    "pickBadge": "---",
+                    "bannerPlacement": "---",
+                    "productPagesWithBanner": "---"
+                },
+                "countdown": {
+                    "bannerDesign": "---",
+                    "warningTitle": "---",
+                    "warningMessage": "---",
+                    "reason": "Schwachstelle:",
+                    "settings": "Einstellungen"
+                },
+                "success": {
+                    "mainHeading": "---",
+                    "messageTimer": "---",
+                    "messageBanner": "---",
+                    "messagePopup": "---",
+                    "button": "Zuhause"
+                },
+                "mainScreen": {
+                    "secondPageMainSign": "---",
+                    "createNew": "---",
+                    "createBanner": "---",
+                    "hereIsNo": "Banner dieses Typs wurde noch nicht erstellt",
+                    "toastMessage": "---"
+                }
             }
         }
         ]
