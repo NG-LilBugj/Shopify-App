@@ -1,4 +1,4 @@
-import {Button, Icon, Popover} from "@shopify/polaris";
+import {ActionList, Button, Icon, Popover} from "@shopify/polaris";
 import {useCallback, useState} from "react";
 import {SettingsMajorMonotone} from "@shopify/polaris-icons";
 import {setLocales} from "../redux/localesReducer";
