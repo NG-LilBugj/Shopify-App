@@ -1,30 +1,31 @@
-import {DisplayText, Heading, Layout, Page} from "@shopify/polaris";
+import {Button, DisplayText, Heading, Icon, Layout, Page} from "@shopify/polaris";
 import Link from "next/link";
-import Button from "@material-ui/core/Button";
 import {withStyles} from "@material-ui/core";
 import {connect} from "react-redux";
 import {useEffect} from "react";
 import axios from "axios";
+import {ShopifyButton} from "../utils/ShopifyButton";
+import LocalesToggler from "./localesToggler";
 
-const ShopifyButton = withStyles({
-    root: {
-        padding: '10px 20px',
-        textTransform: 'none',
-        fontSize: 18,
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(','),
-    }
-})(Button);
+// const ShopifyButton = withStyles({
+//     root: {
+//         padding: '10px 20px',
+//         textTransform: 'none',
+//         fontSize: 18,
+//         fontFamily: [
+//             '-apple-system',
+//             'BlinkMacSystemFont',
+//             '"Segoe UI"',
+//             'Roboto',
+//             '"Helvetica Neue"',
+//             'Arial',
+//             'sans-serif',
+//             '"Apple Color Emoji"',
+//             '"Segoe UI Emoji"',
+//             '"Segoe UI Symbol"',
+//         ].join(','),
+//     }
+// })(Button);
 
 const InitPage = (props) => {
 
@@ -36,6 +37,9 @@ const InitPage = (props) => {
     return(
         <Page>
             <Layout>
+                <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                    <LocalesToggler/>
+                </div>
                 <div style={{display: "flex", justifyContent: "space-evenly", alignItems: "center", width: '100%', height: '100%'}}>
                     <div style={{display: "flex", flexDirection: "column", width: "50%", height: "420px", justifyContent: "space-evenly"}}>
                         <DisplayText size={'extraLarge'}>
