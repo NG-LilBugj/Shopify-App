@@ -588,7 +588,7 @@ export const localesReducer = (state = initState, action) => {
         case SET_LOCALES: return {
             ...state,
             stringsToDisplay: state.localesStorage
-                .filter(l => action.locale === l.locale)
+                .find(l => action.locale === l.locale)
         };
         default: return state
     }
