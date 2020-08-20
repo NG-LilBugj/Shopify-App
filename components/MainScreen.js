@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {ShopifyButton} from "../utils/ShopifyButton";
 import Link from "next/link";
 import {setCountdownId, setPopupId, setSaleId} from "../redux/configsReducer";
+import LocalesToggler from "./localesToggler";
 
 const noCardDisplayStyle = {
     display: "flex",
@@ -35,6 +36,9 @@ const MainScreen = (props) => {
         <Page>
             {isToast && <Toast content={props.strings.toastMessage} onDismiss={() => toggleToast(false)}/>}
             <Layout>
+                <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                    <LocalesToggler/>
+                </div>
                 <div style={{marginBottom: '30px', marginTop: '30px', marginLeft: '2rem', width: '100%'}}>
                     <DisplayText size={'large'} element={'h1'}>
                         {props.strings.secondPageMainSign}
