@@ -28,6 +28,7 @@ const axios = require('axios');
 const DBAccess = require('./server_modules/dbAccess');
 const rep = require('./server_modules/repository');
 const end = require('./server_modules/endpoints');
+const getSubscriptionUrl = require('./server_modules/subscription');
 
 dotenv.config();
 
@@ -151,7 +152,7 @@ app.prepare().then(() => {
                     sameSite: 'none'
                 });
 
-                ctx.redirect('/');
+                await getSubscriptionUrl(ctx, accessToken, shop);
             }
         })
     );
