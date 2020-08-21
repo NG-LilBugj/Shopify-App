@@ -152,7 +152,8 @@ app.prepare().then(() => {
                     sameSite: 'none'
                 });
 
-                await getSubscriptionUrl(ctx, accessToken, shop);
+                //await getSubscriptionUrl(ctx, accessToken, shop);
+                ctx.redirect('/');
             }
         })
     );
