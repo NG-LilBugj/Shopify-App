@@ -207,7 +207,7 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_SALE_PRODUCTS: {
-            if (state.saleConfig.script.length > 1) {
+            if (state.saleConfig.script.length > 0) {
                 let arr = state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
                     .filter(e => Boolean(e));
@@ -225,7 +225,7 @@ export const configsReducer = (state = initState, action) => {
                     }
                 };
                 else if (!!state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
-                    .filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
+                    .length && action.isAllProducts) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
@@ -255,7 +255,7 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_POPUP_PRODUCTS: {
-            if (state.popupConfig.script.length > 1) {
+            if (state.popupConfig.script.length > 0) {
                 console.log(state.popupConfig.script);
                 let arr = state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
@@ -274,7 +274,7 @@ export const configsReducer = (state = initState, action) => {
                     }
                 };
                 else if (!!state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
-                    .filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
+                    .length && action.isAllProducts) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
