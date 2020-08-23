@@ -126,6 +126,10 @@ const Animations = (props) => {
     }, [products]);
 
     useEffect(() => {
+        props.handlePopupProducts(products, isAllProducts)
+    }, [isAllProducts]);
+
+    useEffect(() => {
         setName(animData.id ? animData.configData.name : '');
         setMessageText(animData.id ? animData.configData.message : '');
         pickAnimation(animData.id ? animData.configData.pickedAnimation : 0);
