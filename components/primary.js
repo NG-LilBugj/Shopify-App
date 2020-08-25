@@ -15,6 +15,7 @@ import {useCallback, useEffect, useState} from "react";
 import Product from "./product";
 import {SearchMinor} from "@shopify/polaris-icons";
 import Collection from "./collection";
+import {connect} from "react-redux";
 
 const PrimaryDesign = (props) => {
 
