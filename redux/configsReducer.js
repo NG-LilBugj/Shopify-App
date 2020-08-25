@@ -117,7 +117,8 @@ export const configsReducer = (state = initState, action) => {
                 let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                     .map(s => s.configData.collections.map(c => action.collections.filter(a => c.id === a.id)).map(e => e[0]))[0]
                     .filter(e => Boolean(e));
-                if (arr[0]) return {
+                if (arr[0] || state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                    .filter(s => s.id !== state.dispatchedIds.countdownId).filter(s => s.display === 'all')) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,

@@ -5,6 +5,7 @@ import Link from "next/link";
 import BannerInfo from "./BannerInfo";
 import {connect} from "react-redux";
 import axios from "axios";
+import LocalesToggler from "./localesToggler";
 
 const ShopifyButton = withStyles({
     root: {
@@ -37,6 +38,9 @@ const BannerVariants = (props) => {
     return (
         <Page>
             <Layout>
+                <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
+                    <LocalesToggler/>
+                </div>
                 <div style={{marginBottom: '60px', marginTop: '30px'}}>
                     <DisplayText size={'large'} element={'h1'}>
                         {props.strings.secondPageMainSign}
