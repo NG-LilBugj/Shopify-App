@@ -8,7 +8,7 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
     else {
         //console.log(JSON.parse(data).strings);
 
-        let localization = "ch";
+        let localization = "tr";
 
         let _continue = JSON.parse(data).strings.bannerInfo.continue;
         let _delete = JSON.parse(data).strings.existing_config.delete;

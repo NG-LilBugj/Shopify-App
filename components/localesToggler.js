@@ -32,7 +32,21 @@ const LocalesToggler = (props) => {
                 <ActionList items={[
                     {content: 'English', onAction: () => props.setLocales('en')},
                     {content: 'Russian', onAction: () => props.setLocales('ru')},
-                    {content: 'German', onAction: () => props.setLocales('de')}
+                    {content: 'German', onAction: () => props.setLocales('de')},
+                    {content: 'Czech', onAction: () => props.setLocales('cs')},
+                    {content: 'Danish', onAction: () => props.setLocales('da')},
+                    {content: 'Dutch', onAction: () => props.setLocales('nl')},
+                    {content: 'Spanish', onAction: () => props.setLocales('es')},
+                    {content: 'Finnish', onAction: () => props.setLocales('fi')},
+                    {content: 'French', onAction: () => props.setLocales('fr')},
+                    {content: 'Hindi', onAction: () => props.setLocales('hi')},
+                    {content: 'Italian', onAction: () => props.setLocales('it')},
+                    {content: 'Korean', onAction: () => props.setLocales('ko')},
+                    {content: 'Norwegian', onAction: () => props.setLocales('no')},
+                    {content: 'Portuguese', onAction: () => props.setLocales('pt')},
+                    {content: 'Swedish', onAction: () => props.setLocales('sv')},
+                    {content: 'Thai', onAction: () => props.setLocales('th')},
+                    {content: 'Turkish', onAction: () => props.setLocales('tr')},
                     ]} />
             </Popover>
         </div>
