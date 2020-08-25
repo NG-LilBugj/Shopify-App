@@ -72,19 +72,19 @@ const PrimaryDesign = (props) => {
                         () => setCollections(false) :
                         () => setProducts(false)}
                 />}
-            <Card title={'Banner name:'} sectioned>
+            <Card title={props.strings.bannerName} sectioned>
                 <TextField
                     label={''}
                     onBlur={props.handleNameError}
                     value={props.name}
-                    placeholder={'Enter name...'}
+                    placeholder={props.strings.enterName}
                     onChange={(value) => {
                         props.setName(value)
                     }}
-                    error={((!props.name) && props.switchTouch) ? 'Please enter name' : ''}
+                    error={((!props.name) && props.switchTouch) ? props.strings.pleaseEnterName : ''}
                 />
             </Card>
-            <Card title={'Start date'} sectioned>
+            <Card title={props.strings.startDate} sectioned>
                 <Popover active={props.startDatePopover} activator={props.startDateText} onClose={props.toggleStartPopover}
                          fluidContent={true} sectioned>
                     <DatePicker
@@ -103,7 +103,7 @@ const PrimaryDesign = (props) => {
                     </div>
                 </Popover>
             </Card>
-            <Card title={'End date'} sectioned>
+            <Card title={props.strings.endDate} sectioned>
                 <Popover active={props.endDatePopover} activator={props.endDateText} onClose={props.toggleEndPopover}
                          fluidContent={true} sectioned>
                     <DatePicker
@@ -122,7 +122,7 @@ const PrimaryDesign = (props) => {
                     </div>
                 </Popover>
             </Card>
-            <Card title={'Timer display'} sectioned>
+            <Card title={props.strings.timerDisplay} sectioned>
                 <Stack vertical>
                     <ButtonGroup segmented>
                         <div style={{color: '#3333cc'}}>
@@ -134,7 +134,7 @@ const PrimaryDesign = (props) => {
                                     props.setIsWidget(false);
                                 }}
                             >
-                                Banner
+                                {props.strings.banner}
                             </Button>
                         </div>
                         <div style={{color: '#3333cc'}}>
@@ -151,7 +151,7 @@ const PrimaryDesign = (props) => {
                                 props.setIsWidget(true)
                             }}
                         >
-                            Widget
+                            {props.strings.widget}
                         </Button>
                         </div>
                     </ButtonGroup>
@@ -159,19 +159,19 @@ const PrimaryDesign = (props) => {
                 {!props.isWidget ? <>
                 <Stack vertical>
                     <Heading>
-                        Timer position at the page
+                        {props.strings.timerPosition}
                     </Heading>
                     <RadioButton
-                        label="Top"
-                        helpText="Displays timer at the top of the store."
+                        label={props.strings.top}
+                        helpText={props.strings.displaysTimerTop}
                         checked={props.value === 'Top'}
                         id={'Top'}
                         name="Top"
                         onChange={props.handleChange}
                     />
                     <RadioButton
-                        label="Bottom"
-                        helpText="Displays timer at the bottom of the store."
+                        label={props.strings.bottom}
+                        helpText={props.strings.displaysTimerBottom}
                         id="Bottom"
                         name="Bottom"
                         checked={props.value === 'Bottom'}
@@ -180,7 +180,7 @@ const PrimaryDesign = (props) => {
                 </Stack>
                 <div style={{marginTop: '15px', marginBottom: '15px'}}>
                 <Checkbox
-                    label="Display sticky"
+                    label={props.strings.displaySticky}
                     checked={props.checked}
                     onChange={(newChecked) => {
                         props.setChecked(newChecked)
@@ -189,19 +189,19 @@ const PrimaryDesign = (props) => {
                 </div>
                 <Stack vertical>
                     <Heading>
-                        Pages where timer is shown
+                        {props.strings.pagesShown}
                     </Heading>
                     <RadioButton
-                        label="All"
-                        helpText="Displays timer at all pages."
+                        label={props.strings.all}
+                        helpText={props.strings.displayAtAll}
                         checked={props.renderValue === 'all'}
                         id={'all'}
                         name="all"
                         onChange={props.handleRenderValueChange}
                     />
                     <RadioButton
-                        label="Products"
-                        helpText="Displays timer at certain product pages."
+                        label={props.strings.products}
+                        helpText={props.strings.displayAtProducts}
                         id="products"
                         name="products"
                         checked={props.renderValue === 'products'}
@@ -221,13 +221,13 @@ const PrimaryDesign = (props) => {
                                 disabled={props.isAllProducts}
                                 onClick={() => setProducts(true)}
                             >
-                                Browse products
+                                {props.strings.browseProducts}
                             </Button>
                             <Button
                                 plain
                                 onClick={() => {console.log('pressed'); props.pickAllProducts(!props.isAllProducts)}}
                             >
-                                {props.isAllProducts ? 'Cancel' : 'Pick All Products'}
+                                {props.isAllProducts ? props.strings.cancel : props.strings.pickAllProducts}
                             </Button>
                         </div>
                         {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
@@ -235,8 +235,8 @@ const PrimaryDesign = (props) => {
                         {console.log(props.products)}
                     </Stack>}
                     <RadioButton
-                        label="Collections"
-                        helpText="Displays timer at certain collection pages."
+                        label={props.strings.collections}
+                        helpText={props.strings.displayAtCollections}
                         id="collections"
                         name="collections"
                         checked={props.renderValue === 'collections'}
@@ -256,13 +256,13 @@ const PrimaryDesign = (props) => {
                                 disabled={props.isAllCollection}
                                 onClick={() => setCollections(true)}
                             >
-                                Browse collections
+                                {props.strings.browseCollections}
                             </Button>
                             <Button
                                 plain
                                 onClick={() => props.pickAllCollection(!props.isAllCollection)}
                             >
-                                {props.isAllCollection ? 'Cancel' : 'Pick All Collections'}
+                                {props.isAllCollection ? props.strings.cancel : props.strings.pickAllCollections}
                             </Button>
                         </div>
                         {(props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
@@ -275,28 +275,28 @@ const PrimaryDesign = (props) => {
                         <div style={{marginTop: '15px'}}>
                         <TextContainer>
                         <Heading>
-                            Widget description
+                            {props.widget.widgetDescription}
                         </Heading>
                             <i style={{width: '240px', marginTop: '10px'}}>
-                                Compact timer, available on product pages only. Renders beneath product title
+                                {props.strings.widgetDescriptionText}
                             </i>
                         </TextContainer>
                         </div>
                         <div>
                             <Heading>
-                                Widget placement
+                                {props.strings.widgetPlacement}
                             </Heading>
                             <div style={{width: '240px'}}>
                             <Select
                                 label={''}
                                 labelInline
                                 options={[
-                                    {label: 'Above title', value: '.product-single__title/prepend'},
-                                    {label: 'Below title', value: '.product-single__title/append'},
-                                    {label: 'Above price', value: '.product__price/prepend'},
-                                    {label: 'Below price', value: '.product__price/append'},
-                                    {label: 'Above buy button', value: '.product-form__controls-group/append'},
-                                    {label: 'Below buy button', value: '.product-form__controls-group product-form__controls-group--submit/append'},
+                                    {label: props.strings.aboveTitle, value: '.product-single__title/prepend'},
+                                    {label: props.strings.belowTitle, value: '.product-single__title/append'},
+                                    {label: props.strings.abovePrice, value: '.product__price/prepend'},
+                                    {label: props.strings.belowPrice, value: '.product__price/append'},
+                                    {label: props.strings.aboveBuyButton, value: '.product-form__controls-group/append'},
+                                    {label: props.strings.belowBuyButton, value: '.product-form__controls-group product-form__controls-group--submit/append'},
                                 ]}
                                 onChange={(value) => props.setWidgetValue(value)}
                                 value={props.widgetRenderValue}
@@ -304,7 +304,7 @@ const PrimaryDesign = (props) => {
                             </div>
                         </div>
                         <Heading>
-                            Product pages with timer
+                            {props.strings.productPagesWithTimer}
                         </Heading>
                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' ,width: '520px'}}>
                     <Autocomplete
@@ -319,13 +319,13 @@ const PrimaryDesign = (props) => {
                     disabled={props.isAllProducts}
                     onClick={() => setProducts(true)}
                     >
-                    Browse products
+                        {props.strings.browseProducts}
                     </Button>
                         <Button
                             plain
                             onClick={() => props.pickAllProducts(true)}
                         >
-                            Pick All Products
+                            {props.strings.pickAllProducts}
                         </Button>
                     </div>
                     {(props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
@@ -333,10 +333,10 @@ const PrimaryDesign = (props) => {
                     {console.log(props.products)}
                     </Stack>}
             </Card>
-            <Card title={'Utils'} sectioned>
+            <Card title={props.strings.utils} sectioned>
                 <Stack vertical>
                     <Checkbox
-                        label="Repeat timer when it ends"
+                        label={props.strings.repeat}
                         checked={props.isRepeatable}
                         onChange={(newChecked) => {
                             props.setRepeat(newChecked)
@@ -348,4 +348,8 @@ const PrimaryDesign = (props) => {
     )
 };
 
-export default PrimaryDesign
+const mapStateToProps = (state) => ({
+    strings: state.localesReducer.stringsToDisplay.strings.primary
+});
+
+export default connect(mapStateToProps)(PrimaryDesign)
