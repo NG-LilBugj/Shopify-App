@@ -256,7 +256,7 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_POPUP_PRODUCTS: {
-            if (state.popupConfig.script.length > 0) {
+            if (state.popupConfig.script.length > 1) {
                 console.log(state.popupConfig.script);
                 let arr = state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
