@@ -311,7 +311,7 @@ return (
                                     {props.strings.pickAllProducts}
                                 </Button>
                             </div>
-                            {props.isAllProducts ? <DisplayText>{props.strings.allProductsPicked}</DisplayText> : (!!products.length) && <div style={{
+                            {isAllProducts ? <DisplayText>{props.strings.allProductsPicked}</DisplayText> : (!!products.length) && <div style={{
                                 marginTop: '10px',
                                 marginBottom: '10px'
                             }}>{products.map(p => <Product
