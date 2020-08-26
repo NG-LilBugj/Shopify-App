@@ -43,6 +43,7 @@ const LocalesToggler = (props) => {
                     {content: 'Italian', onAction: () => props.setLocales('it')},
                     {content: 'Korean', onAction: () => props.setLocales('ko')},
                     {content: 'Norwegian', onAction: () => props.setLocales('no')},
+                    {content: 'Polish', onAction: () => props.setLocales('pl')},
                     {content: 'Portuguese', onAction: () => props.setLocales('pt')},
                     {content: 'Swedish', onAction: () => props.setLocales('sv')},
                     {content: 'Thai', onAction: () => props.setLocales('th')},
