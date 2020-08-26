@@ -9,7 +9,7 @@ const Collection = (props) => {
 
     return(
         <div style={{display: 'flex', justifyContent: 'space-between', height: '40px'}}>
-            <div>
+            <div style={{marginLeft: '10px', fontWeight: '700'}}>
                 {props.title}
             </div>
             <Button

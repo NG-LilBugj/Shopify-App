@@ -13,7 +13,7 @@ const Product = (props) => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: 'center',
-            padding: '10px',
+            padding: '10px 10px 10px 4px',
             borderRadius: '1px',
             boxShadow: '0 0 1px #666'
         }}>
@@ -21,7 +21,7 @@ const Product = (props) => {
                 source={props.photo}
                 alt={props.title}
             />
-            <div style={{marginLeft: '10px'}}>
+            <div style={{marginLeft: '10px', fontWeight: '700'}}>
                 {props.title}
             </div>
             <Button

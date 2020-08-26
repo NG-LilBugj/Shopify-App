@@ -224,7 +224,7 @@ return (
                         </div>
                     </Layout.Section>
                     <Layout.Section>
-                        <Card title={props.bannerName} sectioned>
+                        <Card title={props.strings.bannerName} sectioned>
                             <TextField
                                 label={''}
                                 onBlur={() => handleNameTouch(true)}

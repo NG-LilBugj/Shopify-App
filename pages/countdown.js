@@ -296,7 +296,7 @@ const Countdown = (props) => {
                                     type={"submit"}
                                     onClick={designSwitch}
                                 >
-                                    {isMainConfig ? 'Banner design' : 'Settings'}
+                                    {isMainConfig ? props.strings.bannerDesign : props.strings.settings}
                                 </Button>
                             </div>}
                             {props.warning.isWarning &&

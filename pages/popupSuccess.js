@@ -1,4 +1,4 @@
-import {Button, EmptyState, Heading, Page} from "@shopify/polaris";
+import {Button, DisplayText, EmptyState, Heading, Layout, Page} from "@shopify/polaris";
 import Link from "next/link"
 import {useSelector} from "react-redux";
 
@@ -8,13 +8,22 @@ const PopupSuccess = () => {
 
     return (
         <Page>
-            <EmptyState
-                heading={strings.mainHeading}
-                image={'https://lil-proxy.herokuapp.com/static/revenue.gif'}
-            >
-                <div style={{marginBottom: '25px'}}><Heading>{strings.messagePopup}</Heading></div>
-                <Link href={'/'}><Button primary>{strings.button}</Button></Link>
-            </EmptyState>
+            <Layout>
+                <div style={{display: "flex", justifyContent: "space-evenly", alignItems: "center", width: '100%', height: '100%'}}>
+                    <div style={{display: "flex", flexDirection: "column", width: "50%", height: "420px", justifyContent: "space-evenly"}}>
+                        <DisplayText size={'extraLarge'}>
+                            {strings.mainHeading}
+                        </DisplayText>
+                        <DisplayText size="small">
+                            {strings.messagePopup}
+                        </DisplayText>
+                        <div style={{width: '200px'}}>
+                            <Link href={'/'}><Button primary>{strings.button}</Button></Link>
+                        </div>
+                    </div>
+                    <img src={'https://lil-proxy.herokuapp.com/static/revenue.gif'} alt={'sale'}/>
+                </div>
+            </Layout>
         </Page>
     )
 };

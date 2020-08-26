@@ -8,12 +8,14 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
     else {
         //console.log(JSON.parse(data).strings);
 
-        let localization = "tr";
+        let localization = "pl";
 
         let _continue = JSON.parse(data).strings.bannerInfo.continue;
         let _delete = JSON.parse(data).strings.existing_config.delete;
         let homeButton = JSON.parse(data).strings.success.button;
         let mainScreenSign = JSON.parse(data).strings.mainScreen.secondPageMainSign;
+        let customize_count = JSON.parse(data).strings.countdown.customize;
+        let customize_sale = JSON.parse(data).strings.badges.customize;
         let {bannerName, goToConfig} = JSON.parse(data).strings.bannerInfo;
         let {
             secondPageMainSign,
@@ -138,7 +140,8 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
             bannerDesign, warningTitle, warningMessage, reason, settings,
             mainHeading, messageTimer, messageBanner, messagePopup,
             createNew, createBanner, hereIsNo, toastMessage,
-            'Продолжить', _delete, homeButton, mainScreenSign
+            'Продолжить', _delete, homeButton, mainScreenSign,
+            customize_count, customize_sale
         ];
 
         // axios.post('https://yahpv14nl5.execute-api.eu-north-1.amazonaws.com/v1/translate',
@@ -193,108 +196,137 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
                     bannerDesign, warningTitle, warningMessage, reason, settings,
                     mainHeading, messageTimer, messageBanner, messagePopup,
                     createNew, createBanner, hereIsNo, toastMessage,
-                    _continue, _delete, homeButton, mainScreenSign
+                    _continue, _delete, homeButton, mainScreenSign,
+                    customize_count, customize_sale
                 ] = translatedArr;
                 let locale = {
-                    bannerInfo: {bannerName, goToConfig},
-                    bannerVariants: {
-                        secondPageMainSign,
-                        countdownTimerBar,
-                        countdownDescription,
-                        countdownRevenue,
-                        saleBanner,
-                        saleBannerDescription,
-                        saleBannerRevenue,
-                        animationBanner,
-                        animationDescription,
-                        animationRevenue,
-                        continue: _continue
-                    },
-                    design: {
-                        timerDesign,
-                        backgroundColor,
-                        bannerHeight,
-                        borderWidth,
-                        borderColor,
-                        bannerTexts,
-                        firstText,
-                        pleaseEnterText,
-                        secondText,
-                        discountLink,
-                        title,
-                        link,
-                    },
-                    initPage: {
-                        mainHeader,
-                        subheader,
-                        button
-                    },
-                    preview: {
-                        bannerPreview,
-                        days,
-                        hours,
-                        minutes,
-                        seconds
-                    },
-                    primary: {
-                        enterName, pleaseEnterName, startDate,
-                        endDate, timerDisplay, banner,
-                        widget, timerPosition, top,
-                        displaysTimerTop, bottom, displaysTimerBottom,
-                        displaySticky, pagesShown, all,
-                        displayAtAll, collections, displayAtCollections,
-                        browseCollections, pickAllCollections, products,
-                        displayAtProducts, browseProducts, cancel,
-                        pickAllProducts, widgetDescription, widgetDescriptionText,
-                        widgetPlacement, aboveTitle, belowTitle,
-                        abovePrice, belowPrice, aboveBuyButton,
-                        belowBuyButton, productPagesWithTimer, utils, repeat
-                    },
-                    existing_config: {
-                        existingCountdownTimer,
-                        existingBadgeBanner,
-                        existingAnimationPopup,
-                        actions,
-                        timer,
-                        edit,
-                        delete: _delete
-                    },
-                    animations: {
-                        customize,
-                        save,
-                        pickAnimation,
-                        messageText,
-                        enterText,
-                        productPagesWithPopup,
-                        preview
-                    },
-                    badges: {
-                        pickCategory,
-                        category,
-                        pickBadge,
-                        bannerPlacement,
-                        productPagesWithBanner,
-                    },
-                    countdown: {
-                        bannerDesign,
-                        warningTitle,
-                        warningMessage,
-                        reason,
-                        settings,
-                    },
-                    success: {
-                        mainHeading,
-                        messageTimer,
-                        messageBanner,
-                        messagePopup,
-                        button: homeButton
-                    },
-                    mainScreen: {
-                        secondPageMainSign: mainScreenSign,
-                        createNew,
-                        createBanner,
-                        hereIsNo,
-                        toastMessage
+                    locale: localization,
+                    strings: {
+                        bannerInfo: {bannerName, goToConfig},
+                        bannerVariants: {
+                            secondPageMainSign,
+                            countdownTimerBar,
+                            countdownDescription,
+                            countdownRevenue,
+                            saleBanner,
+                            saleBannerDescription,
+                            saleBannerRevenue,
+                            animationBanner,
+                            animationDescription,
+                            animationRevenue,
+                            continue: _continue
+                        },
+                        design: {
+                            timerDesign,
+                            backgroundColor,
+                            bannerHeight,
+                            borderWidth,
+                            borderColor,
+                            bannerTexts,
+                            firstText,
+                            pleaseEnterText,
+                            secondText,
+                            discountLink,
+                            title,
+                            link,
+                        },
+                        initPage: {
+                            mainHeader,
+                            subheader,
+                            button
+                        },
+                        preview: {
+                            bannerPreview,
+                            days,
+                            hours,
+                            minutes,
+                            seconds
+                        },
+                        primary: {
+                            bannerName,
+                            enterName, pleaseEnterName, startDate,
+                            endDate, timerDisplay, banner,
+                            widget, timerPosition, top,
+                            displaysTimerTop, bottom, displaysTimerBottom,
+                            displaySticky, pagesShown, all,
+                            displayAtAll, collections, displayAtCollections,
+                            browseCollections, pickAllCollections, products,
+                            displayAtProducts, browseProducts, cancel,
+                            pickAllProducts, widgetDescription, widgetDescriptionText,
+                            widgetPlacement, aboveTitle, belowTitle,
+                            abovePrice, belowPrice, aboveBuyButton,
+                            belowBuyButton, productPagesWithTimer, utils, repeat
+                        },
+                        existing_config: {
+                            existingCountdownTimer,
+                            existingBadgeBanner,
+                            existingAnimationPopup,
+                            bannerName,
+                            actions,
+                            timer,
+                            edit,
+                            delete: _delete
+                        },
+                        animations: {
+                            customize,
+                            save,
+                            bannerName,
+                            enterName,
+                            pleaseEnterName,
+                            pickAnimation,
+                            messageText,
+                            enterText,
+                            pleaseEnterText,
+                            productPagesWithPopup,
+                            browseProducts,
+                            cancel,
+                            pickAllProducts,
+                            preview
+                        },
+                        badges: {
+                            customize: customize_sale,
+                            save,
+                            bannerName,
+                            enterName,
+                            pleaseEnterName,
+                            pickCategory,
+                            category,
+                            pickBadge,
+                            bannerPlacement,
+                            productPagesWithBanner,
+                            browseProducts,
+                            cancel,
+                            pickAllProducts,
+                            aboveTitle,
+                            belowTitle,
+                            abovePrice,
+                            belowPrice,
+                            aboveBuyButton,
+                            belowBuyButton
+                        },
+                        countdown: {
+                            customize: customize_count,
+                            save,
+                            bannerDesign,
+                            warningTitle,
+                            warningMessage,
+                            reason,
+                            settings,
+                        },
+                        success: {
+                            mainHeading,
+                            messageTimer,
+                            messageBanner,
+                            messagePopup,
+                            button: homeButton
+                        },
+                        mainScreen: {
+                            secondPageMainSign: mainScreenSign,
+                            createNew,
+                            createBanner,
+                            hereIsNo,
+                            toastMessage
+                        }
                     }
                 };
                 fs.writeFile(`./translateStorage/${localization}_locale.json`, JSON.stringify(locale), (err) => {
