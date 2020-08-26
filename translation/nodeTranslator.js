@@ -67,6 +67,7 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
             pickAllProducts, widgetDescription, widgetDescriptionText,
             widgetPlacement, aboveTitle, belowTitle,
             abovePrice, belowPrice, aboveBuyButton,
+            allProductsPicked, allCollectionsPicked,
             belowBuyButton, productPagesWithTimer, utils, repeat
         } = JSON.parse(data).strings.primary;
         let {
@@ -141,7 +142,7 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
             mainHeading, messageTimer, messageBanner, messagePopup,
             createNew, createBanner, hereIsNo, toastMessage,
             'Продолжить', _delete, homeButton, mainScreenSign,
-            customize_count, customize_sale
+            customize_count, customize_sale, allProductsPicked, allCollectionsPicked
         ];
 
         // axios.post('https://yahpv14nl5.execute-api.eu-north-1.amazonaws.com/v1/translate',
@@ -197,7 +198,7 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
                     mainHeading, messageTimer, messageBanner, messagePopup,
                     createNew, createBanner, hereIsNo, toastMessage,
                     _continue, _delete, homeButton, mainScreenSign,
-                    customize_count, customize_sale
+                    customize_count, customize_sale, allProductsPicked, allCollectionsPicked
                 ] = translatedArr;
                 let locale = {
                     locale: localization,
@@ -255,6 +256,7 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
                             pickAllProducts, widgetDescription, widgetDescriptionText,
                             widgetPlacement, aboveTitle, belowTitle,
                             abovePrice, belowPrice, aboveBuyButton,
+                            allProductsPicked, allCollectionsPicked,
                             belowBuyButton, productPagesWithTimer, utils, repeat
                         },
                         existing_config: {
@@ -281,6 +283,7 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
                             browseProducts,
                             cancel,
                             pickAllProducts,
+                            allProductsPicked,
                             preview
                         },
                         badges: {
@@ -297,6 +300,7 @@ fs.readFile("./translateStorage/ru_locale.json", "utf-8", (error, data) => {
                             browseProducts,
                             cancel,
                             pickAllProducts,
+                            allProductsPicked,
                             aboveTitle,
                             belowTitle,
                             abovePrice,

@@ -3,7 +3,7 @@ import {
     Button, ButtonGroup,
     Card,
     Checkbox,
-    DatePicker, Heading, Icon,
+    DatePicker, DisplayText, Heading, Icon,
     Layout,
     Popover,
     RadioButton, Select,
@@ -231,9 +231,9 @@ const PrimaryDesign = (props) => {
                                 {props.isAllProducts ? props.strings.cancel : props.strings.pickAllProducts}
                             </Button>
                         </div>
-                        {(props.products.length) ? props.products.map(p => <Product pickProducts={props.pickProducts}
-                                                                                     products={props.products} {...p}/>)
-                        : <div>{props.strings.allProductsPicked}</div>}
+                        {props.isAllProducts ? <DisplayText>{props.strings.allProductsPicked}</DisplayText> :
+                            (props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
+                                                                                     products={props.products} {...p}/>)}
                         {console.log(props.products)}
                     </Stack>}
                     <RadioButton
@@ -267,9 +267,9 @@ const PrimaryDesign = (props) => {
                                 {props.isAllCollection ? props.strings.cancel : props.strings.pickAllCollections}
                             </Button>
                         </div>
-                        {(props.collections.length) ? props.collections.map(c => <Collection pickCollections={props.pickCollections}
-                                                                                     collections={props.collections} {...c}/>)
-                        : <div>{props.strings.allCollectionsPicked}</div>}
+                        {props.isAllCollection ? <DisplayText>{props.strings.allCollectionsPicked}</DisplayText> :
+                            (props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
+                                                                                     collections={props.collections} {...c}/>)}
                         {console.log(props.products)}
                     </Stack>}
                 </Stack>
@@ -331,9 +331,9 @@ const PrimaryDesign = (props) => {
                             {props.strings.pickAllProducts}
                         </Button>
                     </div>
-                    {(props.products.length) ? props.products.map(p => <Product pickProducts={props.pickProducts}
-                                                                                 products={props.products} {...p}/>)
-                    : <div>{props.strings.allProductsPicked}</div>}
+                    {props.isAllProducts ? <DisplayText>{props.strings.allProductsPicked}</DisplayText> :
+                        (props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
+                                                                                 products={props.products} {...p}/>)}
                     {console.log(props.products)}
                     </Stack>}
             </Card>

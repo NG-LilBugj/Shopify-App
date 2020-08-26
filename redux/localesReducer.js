@@ -2076,8 +2076,8 @@ const initState = {
             }
         },
         {
-            locale: 'pl',
-            strings: {
+            "locale": "pl",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Nazwa banera:",
                     "goToConfig": "Przejdź do konfiguracji"
@@ -2122,6 +2122,7 @@ const initState = {
                     "seconds": "Sekundy"
                 },
                 "primary": {
+                    "bannerName": "Nazwa banera:",
                     "enterName": "Wprowadź nazwę...",
                     "pleaseEnterName": "Podaj nazwę",
                     "startDate": "Data rozpoczęcia",
@@ -2155,6 +2156,8 @@ const initState = {
                     "abovePrice": "Powyżej ceny",
                     "belowPrice": "Poniżej ceny",
                     "aboveBuyButton": "Powyżej przycisku „Kup”",
+                    "allProductsPicked": "Wybrane wszystkie produkty",
+                    "allCollectionsPicked": "Wybrane wszystkie kolekcje",
                     "belowBuyButton": "Pod przyciskiem „Kup”",
                     "productPagesWithTimer": "Strony produktów z timerem",
                     "utils": "Narzędzia",
@@ -2164,6 +2167,7 @@ const initState = {
                     "existingCountdownTimer": "Istniejący licznik odliczania:",
                     "existingBadgeBanner": "Istniejący baner",
                     "existingAnimationPopup": "Istniejące okno animacji modalnej:",
+                    "bannerName": "Nazwa banera:",
                     "actions": "Działania:",
                     "timer": "Zegar",
                     "edit": "Edytuj",
@@ -2172,20 +2176,45 @@ const initState = {
                 "animations": {
                     "customize": "Dostosuj swoje okno modalne!",
                     "save": "Zapisz",
+                    "bannerName": "Nazwa banera:",
+                    "enterName": "Wprowadź nazwę...",
+                    "pleaseEnterName": "Podaj nazwę",
                     "pickAnimation": "Wybierz animację",
                     "messageText": "Twoja wiadomość:",
                     "enterText": "Wprowadź tekst...",
+                    "pleaseEnterText": "Wprowadź tekst",
                     "productPagesWithPopup": "Strony produktów z modalnym oknem:",
+                    "browseProducts": "Pobierz produkty",
+                    "cancel": "Odwołaj",
+                    "pickAllProducts": "Wybierz wszystkie produkty",
+                    "allProductsPicked": "Wybrane wszystkie produkty",
                     "preview": "Podgląd okna modalnego"
                 },
                 "badges": {
+                    "customize": "Dostosuj swój znak reklamowy!",
+                    "save": "Zapisz",
+                    "bannerName": "Nazwa banera:",
+                    "enterName": "Wprowadź nazwę...",
+                    "pleaseEnterName": "Podaj nazwę",
                     "pickCategory": "Wybierz kategorię",
                     "category": "Kategoria:",
                     "pickBadge": "Wybierz ikonę",
                     "bannerPlacement": "Umieszczenie banerów",
-                    "productPagesWithBanner": "Strony produktów z banerem"
+                    "productPagesWithBanner": "Strony produktów z banerem",
+                    "browseProducts": "Pobierz produkty",
+                    "cancel": "Odwołaj",
+                    "pickAllProducts": "Wybierz wszystkie produkty",
+                    "allProductsPicked": "Wybrane wszystkie produkty",
+                    "aboveTitle": "Powyżej nagłówka",
+                    "belowTitle": "Pod nagłówkiem",
+                    "abovePrice": "Powyżej ceny",
+                    "belowPrice": "Poniżej ceny",
+                    "aboveBuyButton": "Powyżej przycisku „Kup”",
+                    "belowBuyButton": "Pod przyciskiem „Kup”"
                 },
                 "countdown": {
+                    "customize": "Ustaw zegar odliczania!",
+                    "save": "Zapisz",
                     "bannerDesign": "Projekt banera",
                     "warningTitle": "Wykryto nakładkę banerów",
                     "warningMessage": "Ten baner zostanie wyświetlony na stronie, na której znajduje się już baner tego typu. Spowoduje to naruszenia w pracy banerów. Przejrzyj luki w zabezpieczeniach i napraw je",

@@ -2,7 +2,7 @@ import {
     Autocomplete,
     Banner,
     Button,
-    Card,
+    Card, DisplayText,
     Heading,
     Icon,
     Layout,
@@ -295,7 +295,7 @@ const Animations = (props) => {
                                 {props.strings.pickAllProducts}
                             </Button>
                         </div>
-                        {(!!products.length) && <div style={{
+                        {props.isAllProducts ? <DisplayText>{props.strings.allProductsPicked}</DisplayText> : (!!products.length) && <div style={{
                             marginTop: '10px',
                             marginBottom: '10px'
                         }}>{products.map(p => <Product
