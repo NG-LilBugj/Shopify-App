@@ -21,6 +21,7 @@ import {ResourcePicker} from "@shopify/app-bridge-react";
 import Product from "../components/product";
 import {connect} from "react-redux";
 import {handleSaleProducts, setSaleId} from "../redux/configsReducer";
+import AllDisplay from "../components/AllDisplay";
 
 const categories = [
     'Banners',
@@ -311,9 +312,8 @@ return (
                                     {props.strings.pickAllProducts}
                                 </Button>
                             </div>
-                            {isAllProducts ? <div style={{color: "#006fbb"}}>
-                                    <DisplayText>{props.strings.allProductsPicked}</DisplayText>
-                            </div>: (!!products.length) && <div style={{
+                            {isAllProducts ? <AllDisplay string={props.strings.allProductsPicked} cancel={props.strings.cancel} setAllItems={pickAllProducts}/>
+                            : (!!products.length) && <div style={{
                                 marginTop: '10px',
                                 marginBottom: '10px'
                             }}>{products.map(p => <Product

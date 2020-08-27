@@ -16,6 +16,7 @@ import Product from "./product";
 import {SearchMinor} from "@shopify/polaris-icons";
 import Collection from "./collection";
 import {connect} from "react-redux";
+import AllDisplay from "./AllDisplay";
 
 const PrimaryDesign = (props) => {
 
@@ -231,9 +232,7 @@ const PrimaryDesign = (props) => {
                                 {props.isAllProducts ? props.strings.cancel : props.strings.pickAllProducts}
                             </Button>
                         </div>
-                        {props.isAllProducts ? <div style={{color: "#006fbb"}}>
-                            <DisplayText>{props.strings.allProductsPicked}</DisplayText>
-                            </div>:
+                        {props.isAllProducts ? <AllDisplay string={props.strings.allProductsPicked} cancel={props.strings.cancel} setAllItems={props.pickAllProducts}/>:
                             (props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                      products={props.products} {...p}/>)}
                         {console.log(props.products)}
@@ -269,9 +268,7 @@ const PrimaryDesign = (props) => {
                                 {props.isAllCollection ? props.strings.cancel : props.strings.pickAllCollections}
                             </Button>
                         </div>
-                        {props.isAllCollection ? <div style={{color: "#006fbb"}}>
-                            <DisplayText>{props.strings.allCollectionsPicked}</DisplayText>
-                            </div>:
+                        {props.isAllCollection ? <AllDisplay string={props.strings.allCollectionsPicked} cancel={props.strings.cancel} setAllItems={props.pickAllCollection}/>:
                             (props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
                                                                                      collections={props.collections} {...c}/>)}
                         {console.log(props.products)}
@@ -335,9 +332,7 @@ const PrimaryDesign = (props) => {
                             {props.strings.pickAllProducts}
                         </Button>
                     </div>
-                    {props.isAllProducts ? <div style={{color: "#006fbb"}}>
-                        <DisplayText>{props.strings.allProductsPicked}</DisplayText>
-                        </div>:
+                    {props.isAllProducts ? <AllDisplay string={props.strings.allProductsPicked} cancel={props.strings.cancel} setAllItems={props.pickAllProducts}/> :
                         (props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                  products={props.products} {...p}/>)}
                     {console.log(props.products)}

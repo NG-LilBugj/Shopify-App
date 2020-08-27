@@ -19,6 +19,7 @@ import axios from "axios";
 import * as Scroll from "react-scroll";
 import {connect} from "react-redux";
 import {handlePopupProducts, setPopupId} from "../redux/configsReducer";
+import AllDisplay from "../components/AllDisplay";
 
 const pickSource = (id) => {
     switch (id) {
@@ -296,7 +297,8 @@ const Animations = (props) => {
                                 {props.strings.pickAllProducts}
                             </Button>
                         </div>
-                        {isAllProducts ? <div style={{color: "#006fbb"}}><DisplayText>{props.strings.allProductsPicked}</DisplayText></div> : (!!products.length) && <div style={{
+                        {isAllProducts ? <AllDisplay string={props.strings.allProductsPicked} cancel={props.strings.cancel} setAllItems={pickAllProducts}/>
+                        : (!!products.length) && <div style={{
                             marginTop: '10px',
                             marginBottom: '10px'
                         }}>{products.map(p => <Product
