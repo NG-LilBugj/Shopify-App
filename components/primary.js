@@ -231,7 +231,9 @@ const PrimaryDesign = (props) => {
                                 {props.isAllProducts ? props.strings.cancel : props.strings.pickAllProducts}
                             </Button>
                         </div>
-                        {props.isAllProducts ? <DisplayText>{props.strings.allProductsPicked}</DisplayText> :
+                        {props.isAllProducts ? <div style={{color: "#006fbb"}}>
+                            <DisplayText>{props.strings.allProductsPicked}</DisplayText>
+                            </div>:
                             (props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                      products={props.products} {...p}/>)}
                         {console.log(props.products)}
@@ -267,7 +269,9 @@ const PrimaryDesign = (props) => {
                                 {props.isAllCollection ? props.strings.cancel : props.strings.pickAllCollections}
                             </Button>
                         </div>
-                        {props.isAllCollection ? <DisplayText>{props.strings.allCollectionsPicked}</DisplayText> :
+                        {props.isAllCollection ? <div style={{color: "#006fbb"}}>
+                            <DisplayText>{props.strings.allCollectionsPicked}</DisplayText>
+                            </div>:
                             (props.collections.length) && props.collections.map(c => <Collection pickCollections={props.pickCollections}
                                                                                      collections={props.collections} {...c}/>)}
                         {console.log(props.products)}
@@ -331,7 +335,9 @@ const PrimaryDesign = (props) => {
                             {props.strings.pickAllProducts}
                         </Button>
                     </div>
-                    {props.isAllProducts ? <DisplayText>{props.strings.allProductsPicked}</DisplayText> :
+                    {props.isAllProducts ? <div style={{color: "#006fbb"}}>
+                        <DisplayText>{props.strings.allProductsPicked}</DisplayText>
+                        </div>:
                         (props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                  products={props.products} {...p}/>)}
                     {console.log(props.products)}

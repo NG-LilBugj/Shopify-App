@@ -296,7 +296,7 @@ const Animations = (props) => {
                                 {props.strings.pickAllProducts}
                             </Button>
                         </div>
-                        {isAllProducts ? <DisplayText>{props.strings.allProductsPicked}</DisplayText> : (!!products.length) && <div style={{
+                        {isAllProducts ? <div style={{color: "#006fbb"}}><DisplayText>{props.strings.allProductsPicked}</DisplayText></div> : (!!products.length) && <div style={{
                             marginTop: '10px',
                             marginBottom: '10px'
                         }}>{products.map(p => <Product
