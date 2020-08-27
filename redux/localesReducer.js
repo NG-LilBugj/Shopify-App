@@ -480,8 +480,8 @@ const initState = {
             }
         },
         {
-            locale: "de",
-            strings: {
+            "locale": "de",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Banner Name:",
                     "goToConfig": "Gehe zu Konfiguration"
@@ -526,6 +526,7 @@ const initState = {
                     "seconds": "Nachschlag"
                 },
                 "primary": {
+                    "bannerName": "Banner Name:",
                     "enterName": "Geben Sie einen Namen ein...",
                     "pleaseEnterName": "Bitte geben Sie den Namen ein",
                     "startDate": "Startdatum",
@@ -559,6 +560,8 @@ const initState = {
                     "abovePrice": "Oben Preis",
                     "belowPrice": "Unter dem Preis",
                     "aboveBuyButton": "Über der Schaltfläche „Kaufen“",
+                    "allProductsPicked": "Alle Produkte ausgewählt",
+                    "allCollectionsPicked": "Alle ausgewählten Sammlungen",
                     "belowBuyButton": "Unter dem Button „Kaufen“",
                     "productPagesWithTimer": "Produktseiten mit Timer",
                     "utils": "Dienstprogramme",
@@ -568,6 +571,7 @@ const initState = {
                     "existingCountdownTimer": "Vorhandener Countdown-Timer:",
                     "existingBadgeBanner": "Vorhandenes Banner",
                     "existingAnimationPopup": "Vorhandenes modales Animationsfenster:",
+                    "bannerName": "Banner Name:",
                     "actions": "Aktionen:",
                     "timer": "Zeitschaltuhr",
                     "edit": "Bearbeiten",
@@ -576,20 +580,45 @@ const initState = {
                 "animations": {
                     "customize": "Passen Sie Ihr modales Fenster an!",
                     "save": "sparen",
+                    "bannerName": "Banner Name:",
+                    "enterName": "Geben Sie einen Namen ein...",
+                    "pleaseEnterName": "Bitte geben Sie den Namen ein",
                     "pickAnimation": "Animation auswählen",
                     "messageText": "Ihre Nachricht:",
                     "enterText": "Text eingeben...",
+                    "pleaseEnterText": "Bitte geben Sie den Text ein",
                     "productPagesWithPopup": "Produktseiten mit modalem Fenster:",
+                    "browseProducts": "Produkte herunterladen",
+                    "cancel": "Stornieren",
+                    "pickAllProducts": "Alle Produkte auswählen",
+                    "allProductsPicked": "Alle Produkte ausgewählt",
                     "preview": "Modale Fenstervorschau"
                 },
                 "badges": {
+                    "customize": "Passen Sie Ihr Werbeschild an!",
+                    "save": "sparen",
+                    "bannerName": "Banner Name:",
+                    "enterName": "Geben Sie einen Namen ein...",
+                    "pleaseEnterName": "Bitte geben Sie den Namen ein",
                     "pickCategory": "Wählen Sie eine Kategorie aus",
                     "category": "Kategorie:",
                     "pickBadge": "Wählen Sie ein Symbol aus",
                     "bannerPlacement": "Banner-Platzierung",
-                    "productPagesWithBanner": "Produktseiten mit Banner"
+                    "productPagesWithBanner": "Produktseiten mit Banner",
+                    "browseProducts": "Produkte herunterladen",
+                    "cancel": "Stornieren",
+                    "pickAllProducts": "Alle Produkte auswählen",
+                    "allProductsPicked": "Alle Produkte ausgewählt",
+                    "aboveTitle": "Über der Überschrift",
+                    "belowTitle": "Unter der Überschrift",
+                    "abovePrice": "Oben Preis",
+                    "belowPrice": "Unter dem Preis",
+                    "aboveBuyButton": "Über der Schaltfläche „Kaufen“",
+                    "belowBuyButton": "Unter dem Button „Kaufen“"
                 },
                 "countdown": {
+                    "customize": "Richten Sie Ihren Countdown-Timer ein!",
+                    "save": "sparen",
                     "bannerDesign": "Banner-Design",
                     "warningTitle": "Banner Overlay erkannt",
                     "warningMessage": "Dieses Banner wird auf einer Seite angezeigt, auf der bereits ein Banner dieses Typs vorhanden ist. Dies wird Verletzungen in der Arbeit der Banner verursachen. Bitte überprüfen Sie die Sicherheitsanfälligkeiten und beheben Sie sie",
@@ -613,8 +642,8 @@ const initState = {
             }
         },
         {
-            locale: "zh",
-            strings: {
+            "locale": "zh",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "横幅名称：",
                     "goToConfig": "转到配置"
@@ -659,6 +688,7 @@ const initState = {
                     "seconds": "秒"
                 },
                 "primary": {
+                    "bannerName": "横幅名称：",
                     "enterName": "输入名称...",
                     "pleaseEnterName": "请输入名称",
                     "startDate": "开始日期",
@@ -692,6 +722,8 @@ const initState = {
                     "abovePrice": "以上价格",
                     "belowPrice": "低于价格",
                     "aboveBuyButton": "在 “购买” 按钮上方",
+                    "allProductsPicked": "已选择所有产品",
+                    "allCollectionsPicked": "选定的所有收藏",
                     "belowBuyButton": "在 “购买” 按钮下方",
                     "productPagesWithTimer": "带计时器的产品页面",
                     "utils": "公用事业",
@@ -701,6 +733,7 @@ const initState = {
                     "existingCountdownTimer": "现有倒计时器：",
                     "existingBadgeBanner": "现有横幅",
                     "existingAnimationPopup": "现有模态动画窗口：",
+                    "bannerName": "横幅名称：",
                     "actions": "操作：",
                     "timer": "计时器",
                     "edit": "编辑",
@@ -709,20 +742,45 @@ const initState = {
                 "animations": {
                     "customize": "自定义您的模态窗口！",
                     "save": "保存",
+                    "bannerName": "横幅名称：",
+                    "enterName": "输入名称...",
+                    "pleaseEnterName": "请输入名称",
                     "pickAnimation": "选择动画",
                     "messageText": "您的消息：",
                     "enterText": "输入文本...",
+                    "pleaseEnterText": "请输入文本",
                     "productPagesWithPopup": "带模态窗口的产品页面：",
+                    "browseProducts": "下载产品",
+                    "cancel": "取消",
+                    "pickAllProducts": "选择所有产品",
+                    "allProductsPicked": "已选择所有产品",
                     "preview": "模态窗口预览"
                 },
                 "badges": {
+                    "customize": "自定义您的广告标志！",
+                    "save": "保存",
+                    "bannerName": "横幅名称：",
+                    "enterName": "输入名称...",
+                    "pleaseEnterName": "请输入名称",
                     "pickCategory": "选择一个类别",
                     "category": "类别：",
                     "pickBadge": "选择图标",
                     "bannerPlacement": "横幅放置",
-                    "productPagesWithBanner": "带横幅的产品页面"
+                    "productPagesWithBanner": "带横幅的产品页面",
+                    "browseProducts": "下载产品",
+                    "cancel": "取消",
+                    "pickAllProducts": "选择所有产品",
+                    "allProductsPicked": "已选择所有产品",
+                    "aboveTitle": "标题上方",
+                    "belowTitle": "在标题下",
+                    "abovePrice": "以上价格",
+                    "belowPrice": "低于价格",
+                    "aboveBuyButton": "在 “购买” 按钮上方",
+                    "belowBuyButton": "在 “购买” 按钮下方"
                 },
                 "countdown": {
+                    "customize": "设置您的倒计时器！",
+                    "save": "保存",
                     "bannerDesign": "横幅设计",
                     "warningTitle": "检测到横幅叠加",
                     "warningMessage": "此横幅将显示在已有此类横幅的页面上。这将导致违反横幅的工作。请查看这些漏洞并修复它们",
@@ -746,8 +804,8 @@ const initState = {
             }
         },
         {
-            locale: "cs",
-            strings: {
+            "locale": "cs",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Název banneru:",
                     "goToConfig": "Přejít na konfiguraci"
@@ -792,6 +850,7 @@ const initState = {
                     "seconds": "Sekundy"
                 },
                 "primary": {
+                    "bannerName": "Název banneru:",
                     "enterName": "Zadejte název...",
                     "pleaseEnterName": "Zadejte prosím jméno",
                     "startDate": "Datum zahájení",
@@ -825,6 +884,8 @@ const initState = {
                     "abovePrice": "Nad cenou",
                     "belowPrice": "Pod cenou",
                     "aboveBuyButton": "Nad tlačítkem „Koupit“",
+                    "allProductsPicked": "Vybrané všechny produkty",
+                    "allCollectionsPicked": "Vybrané všechny kolekce",
                     "belowBuyButton": "Pod tlačítkem „Koupit“",
                     "productPagesWithTimer": "Stránky produktu s časovačem",
                     "utils": "Pomůcky",
@@ -834,6 +895,7 @@ const initState = {
                     "existingCountdownTimer": "Existující časovač odpočítávání:",
                     "existingBadgeBanner": "Stávající banner",
                     "existingAnimationPopup": "Existující modální okno animace:",
+                    "bannerName": "Název banneru:",
                     "actions": "Akce:",
                     "timer": "Časovač",
                     "edit": "Upravit",
@@ -842,20 +904,45 @@ const initState = {
                 "animations": {
                     "customize": "Přizpůsobte si modální okno!",
                     "save": "Uložit",
+                    "bannerName": "Název banneru:",
+                    "enterName": "Zadejte název...",
+                    "pleaseEnterName": "Zadejte prosím jméno",
                     "pickAnimation": "Vybrat animaci",
                     "messageText": "Vaše zpráva:",
                     "enterText": "Zadejte text...",
+                    "pleaseEnterText": "Zadejte prosím text",
                     "productPagesWithPopup": "Produktové stránky s modálním oknem:",
+                    "browseProducts": "Stáhněte si produkty",
+                    "cancel": "Zrušit",
+                    "pickAllProducts": "Vybrat všechny produkty",
+                    "allProductsPicked": "Vybrané všechny produkty",
                     "preview": "Náhled modálního okna"
                 },
                 "badges": {
+                    "customize": "Přizpůsobte si reklamní značku!",
+                    "save": "Uložit",
+                    "bannerName": "Název banneru:",
+                    "enterName": "Zadejte název...",
+                    "pleaseEnterName": "Zadejte prosím jméno",
                     "pickCategory": "Vyberte kategorii",
                     "category": "Kategorie:",
                     "pickBadge": "Vyberte ikonu",
                     "bannerPlacement": "Umístění banneru",
-                    "productPagesWithBanner": "Produktové stránky s bannerem"
+                    "productPagesWithBanner": "Produktové stránky s bannerem",
+                    "browseProducts": "Stáhněte si produkty",
+                    "cancel": "Zrušit",
+                    "pickAllProducts": "Vybrat všechny produkty",
+                    "allProductsPicked": "Vybrané všechny produkty",
+                    "aboveTitle": "Nad nadpis",
+                    "belowTitle": "Pod nadpisem",
+                    "abovePrice": "Nad cenou",
+                    "belowPrice": "Pod cenou",
+                    "aboveBuyButton": "Nad tlačítkem „Koupit“",
+                    "belowBuyButton": "Pod tlačítkem „Koupit“"
                 },
                 "countdown": {
+                    "customize": "Nastavte časovač odpočítávání!",
+                    "save": "Uložit",
                     "bannerDesign": "Návrh bannerů",
                     "warningTitle": "Detekováno překrytí banneru",
                     "warningMessage": "Tento banner se zobrazí na stránce, kde již existuje banner tohoto typu. To způsobí porušení práce bannerů. Zkontrolujte chyby zabezpečení a opravte je",
@@ -879,8 +966,8 @@ const initState = {
             }
         },
         {
-            locale: 'da',
-            strings: {
+            "locale": "da",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Bannernavn:",
                     "goToConfig": "Gå til Konfiguration"
@@ -925,6 +1012,7 @@ const initState = {
                     "seconds": "Sekunder"
                 },
                 "primary": {
+                    "bannerName": "Bannernavn:",
                     "enterName": "Indtast et navn...",
                     "pleaseEnterName": "Indtast venligst navnet",
                     "startDate": "Startdato",
@@ -958,6 +1046,8 @@ const initState = {
                     "abovePrice": "Over pris",
                     "belowPrice": "Under prisen",
                     "aboveBuyButton": "Over knappen „Køb“",
+                    "allProductsPicked": "Udvalgte alle produkter",
+                    "allCollectionsPicked": "Alle samlinger markerede",
                     "belowBuyButton": "Under knappen „Køb“",
                     "productPagesWithTimer": "Produktsider med timer",
                     "utils": "Hjælpeprogrammer",
@@ -967,6 +1057,7 @@ const initState = {
                     "existingCountdownTimer": "Eksisterende nedtællingstimer:",
                     "existingBadgeBanner": "Eksisterende banner",
                     "existingAnimationPopup": "Eksisterende modal animation vindue:",
+                    "bannerName": "Bannernavn:",
                     "actions": "Handlinger:",
                     "timer": "Timer",
                     "edit": "Rediger",
@@ -975,20 +1066,45 @@ const initState = {
                 "animations": {
                     "customize": "Tilpas din modal vindue!",
                     "save": "Gem",
+                    "bannerName": "Bannernavn:",
+                    "enterName": "Indtast et navn...",
+                    "pleaseEnterName": "Indtast venligst navnet",
                     "pickAnimation": "Vælg animation",
                     "messageText": "Din besked:",
                     "enterText": "Indtast tekst...",
+                    "pleaseEnterText": "Indtast venligst teksten",
                     "productPagesWithPopup": "Produktsider med modal vindue:",
+                    "browseProducts": "Download produkter",
+                    "cancel": "Aflys",
+                    "pickAllProducts": "Vælg alle produkter",
+                    "allProductsPicked": "Udvalgte alle produkter",
                     "preview": "Eksempel på modal vindue"
                 },
                 "badges": {
+                    "customize": "Tilpas dit reklameskilt!",
+                    "save": "Gem",
+                    "bannerName": "Bannernavn:",
+                    "enterName": "Indtast et navn...",
+                    "pleaseEnterName": "Indtast venligst navnet",
                     "pickCategory": "Vælg en kategori",
                     "category": "Kategori:",
                     "pickBadge": "Vælg et ikon",
                     "bannerPlacement": "Placering af banner",
-                    "productPagesWithBanner": "Produktsider med banner"
+                    "productPagesWithBanner": "Produktsider med banner",
+                    "browseProducts": "Download produkter",
+                    "cancel": "Aflys",
+                    "pickAllProducts": "Vælg alle produkter",
+                    "allProductsPicked": "Udvalgte alle produkter",
+                    "aboveTitle": "Over overskriften",
+                    "belowTitle": "Under overskriften",
+                    "abovePrice": "Over pris",
+                    "belowPrice": "Under prisen",
+                    "aboveBuyButton": "Over knappen „Køb“",
+                    "belowBuyButton": "Under knappen „Køb“"
                 },
                 "countdown": {
+                    "customize": "Indstil din nedtællingstimer!",
+                    "save": "Gem",
                     "bannerDesign": "Design af banner",
                     "warningTitle": "Banner-overlejring fundet",
                     "warningMessage": "Dette banner vises på en side, hvor der allerede er et banner af denne type. Dette vil medføre krænkelser i bannernes arbejde. Gennemgå sårbarhederne, og reparer dem",
@@ -1010,10 +1126,10 @@ const initState = {
                     "toastMessage": "Banner fjernet"
                 }
             }
-            },
+        },
         {
-            locale: 'es',
-            strings: {
+            "locale": "es",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Nombre del banner:",
                     "goToConfig": "Ir a Configuración"
@@ -1058,6 +1174,7 @@ const initState = {
                     "seconds": "Segundos"
                 },
                 "primary": {
+                    "bannerName": "Nombre del banner:",
                     "enterName": "Escriba un nombre...",
                     "pleaseEnterName": "Por favor, introduzca el nombre",
                     "startDate": "Fecha de inicio",
@@ -1091,6 +1208,8 @@ const initState = {
                     "abovePrice": "Por encima del precio",
                     "belowPrice": "Por debajo del precio",
                     "aboveBuyButton": "Encima del botón «Comprar»",
+                    "allProductsPicked": "Todos los productos seleccionados",
+                    "allCollectionsPicked": "Todas las colecciones seleccionadas",
                     "belowBuyButton": "Bajo el botón «Comprar»",
                     "productPagesWithTimer": "Páginas de productos con temporizador",
                     "utils": "Servicios públicos",
@@ -1100,6 +1219,7 @@ const initState = {
                     "existingCountdownTimer": "Temporizador de cuenta atrás existente:",
                     "existingBadgeBanner": "Banner existente",
                     "existingAnimationPopup": "Ventana de animación modal existente:",
+                    "bannerName": "Nombre del banner:",
                     "actions": "Acciones:",
                     "timer": "Temporizador",
                     "edit": "Editar",
@@ -1108,20 +1228,45 @@ const initState = {
                 "animations": {
                     "customize": "Personaliza tu ventana modal!",
                     "save": "Guardar",
+                    "bannerName": "Nombre del banner:",
+                    "enterName": "Escriba un nombre...",
+                    "pleaseEnterName": "Por favor, introduzca el nombre",
                     "pickAnimation": "Seleccionar animación",
                     "messageText": "Su mensaje:",
                     "enterText": "Introducir texto...",
+                    "pleaseEnterText": "Por favor, introduzca el texto",
                     "productPagesWithPopup": "Páginas de productos con ventana modal:",
+                    "browseProducts": "Descargar productos",
+                    "cancel": "Cancelar",
+                    "pickAllProducts": "Seleccionar todos los productos",
+                    "allProductsPicked": "Todos los productos seleccionados",
                     "preview": "Vista previa de ventana modal"
                 },
                 "badges": {
+                    "customize": "Personaliza tu cartel publicitario!",
+                    "save": "Guardar",
+                    "bannerName": "Nombre del banner:",
+                    "enterName": "Escriba un nombre...",
+                    "pleaseEnterName": "Por favor, introduzca el nombre",
                     "pickCategory": "Seleccione una categoría",
                     "category": "Categoría:",
                     "pickBadge": "Seleccione un icono",
                     "bannerPlacement": "Colocación de banners",
-                    "productPagesWithBanner": "Páginas de productos con banner"
+                    "productPagesWithBanner": "Páginas de productos con banner",
+                    "browseProducts": "Descargar productos",
+                    "cancel": "Cancelar",
+                    "pickAllProducts": "Seleccionar todos los productos",
+                    "allProductsPicked": "Todos los productos seleccionados",
+                    "aboveTitle": "Por encima del titular",
+                    "belowTitle": "Bajo el epígrafe",
+                    "abovePrice": "Por encima del precio",
+                    "belowPrice": "Por debajo del precio",
+                    "aboveBuyButton": "Encima del botón «Comprar»",
+                    "belowBuyButton": "Bajo el botón «Comprar»"
                 },
                 "countdown": {
+                    "customize": "¡Configura tu temporizador de cuenta atrás!",
+                    "save": "Guardar",
                     "bannerDesign": "Diseño de banner",
                     "warningTitle": "Superposición de banner detectada",
                     "warningMessage": "Este banner se mostrará en una página donde ya hay un banner de este tipo. Esto causará violaciones en el trabajo de los banners. Revise las vulnerabilidades y repararlas",
@@ -1145,8 +1290,8 @@ const initState = {
             }
         },
         {
-            locale: 'fi',
-            strings: {
+            "locale": "fi",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Bannerin nimi:",
                     "goToConfig": "Siirry Kokoonpanoon"
@@ -1191,6 +1336,7 @@ const initState = {
                     "seconds": "Sekuntia"
                 },
                 "primary": {
+                    "bannerName": "Bannerin nimi:",
                     "enterName": "Kirjoita nimi...",
                     "pleaseEnterName": "Ole hyvä ja anna nimi",
                     "startDate": "Aloituspäivä",
@@ -1224,6 +1370,8 @@ const initState = {
                     "abovePrice": "Yllä hinta",
                     "belowPrice": "Alle hinnan",
                     "aboveBuyButton": "”Osta” -painikkeen yläpuolella",
+                    "allProductsPicked": "Valitut kaikki tuotteet",
+                    "allCollectionsPicked": "Kaikki kokoelmat valittu",
                     "belowBuyButton": "Painikkeen alla ”Osta”",
                     "productPagesWithTimer": "Tuotesivut ajastimella",
                     "utils": "Apuohjelmat",
@@ -1233,6 +1381,7 @@ const initState = {
                     "existingCountdownTimer": "Olemassa oleva lähtölaskentaajastin:",
                     "existingBadgeBanner": "Olemassa oleva banneri",
                     "existingAnimationPopup": "Olemassa oleva modaalisen animaation ikkuna:",
+                    "bannerName": "Bannerin nimi:",
                     "actions": "Toimet:",
                     "timer": "Ajastin",
                     "edit": "Edit",
@@ -1241,20 +1390,45 @@ const initState = {
                 "animations": {
                     "customize": "Muokkaa modaali-ikkunaa!",
                     "save": "Säästä",
+                    "bannerName": "Bannerin nimi:",
+                    "enterName": "Kirjoita nimi...",
+                    "pleaseEnterName": "Ole hyvä ja anna nimi",
                     "pickAnimation": "Valitse animaatio",
                     "messageText": "Viestisi:",
                     "enterText": "Kirjoita teksti...",
+                    "pleaseEnterText": "Ole hyvä ja kirjoita teksti",
                     "productPagesWithPopup": "Tuotesivut, joissa on modaali-ikkuna:",
+                    "browseProducts": "Lataa tuotteita",
+                    "cancel": "Peruuta",
+                    "pickAllProducts": "Valitse kaikki tuotteet",
+                    "allProductsPicked": "Valitut kaikki tuotteet",
                     "preview": "Modaalisen ikkunan esikatsel"
                 },
                 "badges": {
+                    "customize": "Mukauta mainoskylttiäsi!",
+                    "save": "Säästä",
+                    "bannerName": "Bannerin nimi:",
+                    "enterName": "Kirjoita nimi...",
+                    "pleaseEnterName": "Ole hyvä ja anna nimi",
                     "pickCategory": "Valitse kategoria",
                     "category": "Luokka:",
                     "pickBadge": "Valitse kuvake",
                     "bannerPlacement": "Bannerin sijoitus",
-                    "productPagesWithBanner": "Tuotesivut bannerilla"
+                    "productPagesWithBanner": "Tuotesivut bannerilla",
+                    "browseProducts": "Lataa tuotteita",
+                    "cancel": "Peruuta",
+                    "pickAllProducts": "Valitse kaikki tuotteet",
+                    "allProductsPicked": "Valitut kaikki tuotteet",
+                    "aboveTitle": "Otsikon yläpuolella",
+                    "belowTitle": "Otsikon alla",
+                    "abovePrice": "Yllä hinta",
+                    "belowPrice": "Alle hinnan",
+                    "aboveBuyButton": "”Osta” -painikkeen yläpuolella",
+                    "belowBuyButton": "Painikkeen alla ”Osta”"
                 },
                 "countdown": {
+                    "customize": "Aseta lähtölaskenta ajastin!",
+                    "save": "Säästä",
                     "bannerDesign": "Bannerin suunnittelu",
                     "warningTitle": "Bannerin peitto havaittu",
                     "warningMessage": "Tämä banneri näkyy sivulla, jossa on jo tämäntyyppinen banneri. Tämä aiheuttaa rikkomuksia bannereiden työssä. Tarkista haavoittuvuudet ja korjaa ne",
@@ -1278,8 +1452,8 @@ const initState = {
             }
         },
         {
-            locale: 'fr',
-            strings: {
+            "locale": "fr",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Nom de la bannière :",
                     "goToConfig": "Aller à la configuration"
@@ -1324,6 +1498,7 @@ const initState = {
                     "seconds": "Secondes"
                 },
                 "primary": {
+                    "bannerName": "Nom de la bannière :",
                     "enterName": "Entrez un nom...",
                     "pleaseEnterName": "Veuillez saisir le nom",
                     "startDate": "Date de début",
@@ -1357,6 +1532,8 @@ const initState = {
                     "abovePrice": "Prix supérieur",
                     "belowPrice": "En dessous du prix",
                     "aboveBuyButton": "Au-dessus du bouton « Acheter »",
+                    "allProductsPicked": "Sélectionné tous les produits",
+                    "allCollectionsPicked": "Toutes les collections sélectionnées",
                     "belowBuyButton": "Sous le bouton « Acheter »",
                     "productPagesWithTimer": "Pages produit avec minuterie",
                     "utils": "Services publics",
@@ -1366,6 +1543,7 @@ const initState = {
                     "existingCountdownTimer": "Minuteur de compte à rebours existant :",
                     "existingBadgeBanner": "Bannière existante",
                     "existingAnimationPopup": "Fenêtre d'animation modale existante :",
+                    "bannerName": "Nom de la bannière :",
                     "actions": "Actions :",
                     "timer": "Minuteur",
                     "edit": "Éditer",
@@ -1374,20 +1552,45 @@ const initState = {
                 "animations": {
                     "customize": "Personnalisez votre fenêtre modale !",
                     "save": "Sauvegarder",
+                    "bannerName": "Nom de la bannière :",
+                    "enterName": "Entrez un nom...",
+                    "pleaseEnterName": "Veuillez saisir le nom",
                     "pickAnimation": "Sélectionner l'animation",
                     "messageText": "Votre message :",
                     "enterText": "Saisir du texte...",
+                    "pleaseEnterText": "S'il vous plaît entrer le texte",
                     "productPagesWithPopup": "Pages produit avec fenêtre modale :",
+                    "browseProducts": "Télécharger des produits",
+                    "cancel": "Annuler",
+                    "pickAllProducts": "Sélectionnez tous les produits",
+                    "allProductsPicked": "Sélectionné tous les produits",
                     "preview": "Aperçu de la fenêtre modale"
                 },
                 "badges": {
+                    "customize": "Personnalisez votre panneau publicitaire !",
+                    "save": "Sauvegarder",
+                    "bannerName": "Nom de la bannière :",
+                    "enterName": "Entrez un nom...",
+                    "pleaseEnterName": "Veuillez saisir le nom",
                     "pickCategory": "Sélectionner une catégorie",
                     "category": "Catégorie :",
                     "pickBadge": "Sélectionner une icône",
                     "bannerPlacement": "Placement des bannières",
-                    "productPagesWithBanner": "Pages produit avec bannière"
+                    "productPagesWithBanner": "Pages produit avec bannière",
+                    "browseProducts": "Télécharger des produits",
+                    "cancel": "Annuler",
+                    "pickAllProducts": "Sélectionnez tous les produits",
+                    "allProductsPicked": "Sélectionné tous les produits",
+                    "aboveTitle": "Au-dessus du titre",
+                    "belowTitle": "Sous la rubrique",
+                    "abovePrice": "Prix supérieur",
+                    "belowPrice": "En dessous du prix",
+                    "aboveBuyButton": "Au-dessus du bouton « Acheter »",
+                    "belowBuyButton": "Sous le bouton « Acheter »"
                 },
                 "countdown": {
+                    "customize": "Configurez votre compte à rebours !",
+                    "save": "Sauvegarder",
                     "bannerDesign": "Conception de bannière",
                     "warningTitle": "Superposition de bannière détectée",
                     "warningMessage": "Cette bannière sera affichée sur une page où il y a déjà une bannière de ce type. Cela provoquera des violations dans le travail des bannières. Veuillez vérifier les vulnérabilités et les corriger",
@@ -1411,8 +1614,8 @@ const initState = {
             }
         },
         {
-            locale: 'hi',
-            strings: {
+            "locale": "hi",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "बैनर नामः",
                     "goToConfig": "कॉन्फ़िगरेशन पर जाएँ"
@@ -1457,6 +1660,7 @@ const initState = {
                     "seconds": "सेकंड्स"
                 },
                 "primary": {
+                    "bannerName": "बैनर नामः",
                     "enterName": "एक नाम भरें...",
                     "pleaseEnterName": "कृपया नाम भरें",
                     "startDate": "प्रारंभ तारीख़",
@@ -1490,6 +1694,8 @@ const initState = {
                     "abovePrice": "ऊपर की कीमत",
                     "belowPrice": "कीमत के नीचे",
                     "aboveBuyButton": "“खरीदें” बटन के ऊपर",
+                    "allProductsPicked": "सभी उत्पादों का चयन किया",
+                    "allCollectionsPicked": "सभी संग्रहों का चयन",
                     "belowBuyButton": "बटन के तहत “खरीदें”",
                     "productPagesWithTimer": "टाइमर के साथ उत्पाद पेज",
                     "utils": "उपयोगिताएँ",
@@ -1499,6 +1705,7 @@ const initState = {
                     "existingCountdownTimer": "मौजूदा उलटी गिनती टाइमर:",
                     "existingBadgeBanner": "मौजूदा बैनर",
                     "existingAnimationPopup": "मौजूदा मोडल एनीमेशन विंडो:",
+                    "bannerName": "बैनर नामः",
                     "actions": "क्रियाएँ:",
                     "timer": "टाइमर",
                     "edit": "संपादित करें",
@@ -1507,20 +1714,45 @@ const initState = {
                 "animations": {
                     "customize": "अपनी मोडल विंडो को अनुकूलित करें!",
                     "save": "बचाना",
+                    "bannerName": "बैनर नामः",
+                    "enterName": "एक नाम भरें...",
+                    "pleaseEnterName": "कृपया नाम भरें",
                     "pickAnimation": "ऐनिमेशन चुनें",
                     "messageText": "आपका संदेश:",
                     "enterText": "पाठ भरें...",
+                    "pleaseEnterText": "कृपया पाठ दर्ज करें",
                     "productPagesWithPopup": "मोडल विंडो के साथ उत्पाद पृष्ठ:",
+                    "browseProducts": "उत्पादों को डाउनलोड करें",
+                    "cancel": "रद्द करें",
+                    "pickAllProducts": "सभी उत्पादों का चयन करें",
+                    "allProductsPicked": "सभी उत्पादों का चयन किया",
                     "preview": "मॉडल विंडो पूर्वावलोकन"
                 },
                 "badges": {
+                    "customize": "अपने विज्ञापन चिह्न को अनुकूलित करें!",
+                    "save": "बचाना",
+                    "bannerName": "बैनर नामः",
+                    "enterName": "एक नाम भरें...",
+                    "pleaseEnterName": "कृपया नाम भरें",
                     "pickCategory": "एक श्रेणी का चयन करें",
                     "category": "श्रेणी:",
                     "pickBadge": "एक आइकन चुनें",
                     "bannerPlacement": "बैनर प्लेसमेंट",
-                    "productPagesWithBanner": "बैनर के साथ उत्पाद पेज"
+                    "productPagesWithBanner": "बैनर के साथ उत्पाद पेज",
+                    "browseProducts": "उत्पादों को डाउनलोड करें",
+                    "cancel": "रद्द करें",
+                    "pickAllProducts": "सभी उत्पादों का चयन करें",
+                    "allProductsPicked": "सभी उत्पादों का चयन किया",
+                    "aboveTitle": "शीर्षक के ऊपर",
+                    "belowTitle": "शीर्षक के तहत",
+                    "abovePrice": "ऊपर की कीमत",
+                    "belowPrice": "कीमत के नीचे",
+                    "aboveBuyButton": "“खरीदें” बटन के ऊपर",
+                    "belowBuyButton": "बटन के तहत “खरीदें”"
                 },
                 "countdown": {
+                    "customize": "अपनी उलटी गिनती टाइमर सेट करें!",
+                    "save": "बचाना",
                     "bannerDesign": "बैनर डिजाइन",
                     "warningTitle": "बैनर ओवरले का पता चला",
                     "warningMessage": "यह बैनर उस पृष्ठ पर प्रदर्शित किया जाएगा जहां पहले से ही इस प्रकार का बैनर है। इससे बैनर के काम में उल्लंघन होगा। कृपया कमजोरियों की समीक्षा करें और उन्हें ठीक करें",
@@ -1544,8 +1776,8 @@ const initState = {
             }
         },
         {
-            locale: 'it',
-            strings: {
+            "locale": "it",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Nome banner:",
                     "goToConfig": "Vai alla configurazione"
@@ -1590,6 +1822,7 @@ const initState = {
                     "seconds": "Secondi"
                 },
                 "primary": {
+                    "bannerName": "Nome banner:",
                     "enterName": "Inserisci un nome...",
                     "pleaseEnterName": "Inserisci il nome",
                     "startDate": "Data di inizio",
@@ -1623,6 +1856,8 @@ const initState = {
                     "abovePrice": "Sopra il prezzo",
                     "belowPrice": "Sotto il prezzo",
                     "aboveBuyButton": "Sopra il pulsante «Acquista»",
+                    "allProductsPicked": "Tutti i prodotti selezionati",
+                    "allCollectionsPicked": "Tutte le collezioni selezionate",
                     "belowBuyButton": "Sotto il pulsante «Acquista»",
                     "productPagesWithTimer": "Pagine prodotto con timer",
                     "utils": "Utilità",
@@ -1632,6 +1867,7 @@ const initState = {
                     "existingCountdownTimer": "Timer conto alla rovescia esistente:",
                     "existingBadgeBanner": "Banner esistente",
                     "existingAnimationPopup": "Finestra di animazione modale esistente:",
+                    "bannerName": "Nome banner:",
                     "actions": "Azioni:",
                     "timer": "Timer",
                     "edit": "Modifica",
@@ -1640,20 +1876,45 @@ const initState = {
                 "animations": {
                     "customize": "Personalizza la tua finestra modale!",
                     "save": "Salvare",
+                    "bannerName": "Nome banner:",
+                    "enterName": "Inserisci un nome...",
+                    "pleaseEnterName": "Inserisci il nome",
                     "pickAnimation": "Seleziona animazione",
                     "messageText": "Il tuo messaggio:",
                     "enterText": "Inserisci testo...",
+                    "pleaseEnterText": "Inserisci il testo",
                     "productPagesWithPopup": "Pagine prodotto con finestra modale:",
+                    "browseProducts": "Scarica i prodotti",
+                    "cancel": "Annulla",
+                    "pickAllProducts": "Seleziona tutti i prodotti",
+                    "allProductsPicked": "Tutti i prodotti selezionati",
                     "preview": "Anteprima finestra modale"
                 },
                 "badges": {
+                    "customize": "Personalizza il tuo segno pubblicitario!",
+                    "save": "Salvare",
+                    "bannerName": "Nome banner:",
+                    "enterName": "Inserisci un nome...",
+                    "pleaseEnterName": "Inserisci il nome",
                     "pickCategory": "Seleziona una categoria",
                     "category": "Categoria:",
                     "pickBadge": "Seleziona un'icona",
                     "bannerPlacement": "Posizionamento banner",
-                    "productPagesWithBanner": "Pagine prodotto con banner"
+                    "productPagesWithBanner": "Pagine prodotto con banner",
+                    "browseProducts": "Scarica i prodotti",
+                    "cancel": "Annulla",
+                    "pickAllProducts": "Seleziona tutti i prodotti",
+                    "allProductsPicked": "Tutti i prodotti selezionati",
+                    "aboveTitle": "Sopra il titolo",
+                    "belowTitle": "Sotto il titolo",
+                    "abovePrice": "Sopra il prezzo",
+                    "belowPrice": "Sotto il prezzo",
+                    "aboveBuyButton": "Sopra il pulsante «Acquista»",
+                    "belowBuyButton": "Sotto il pulsante «Acquista»"
                 },
                 "countdown": {
+                    "customize": "Imposta il tuo conto alla rovescia!",
+                    "save": "Salvare",
                     "bannerDesign": "Design Banner",
                     "warningTitle": "Sovrapposizione banner rilevata",
                     "warningMessage": "Questo banner verrà visualizzato su una pagina in cui è già presente un banner di questo tipo. Ciò causerà violazioni nel lavoro degli striscioni. Esaminare le vulnerabilità e correggerle",
@@ -1677,8 +1938,8 @@ const initState = {
             }
         },
         {
-            locale: 'ko',
-            strings: {
+            "locale": "ko",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "배너 이름:",
                     "goToConfig": "구성으로 이동"
@@ -1723,6 +1984,7 @@ const initState = {
                     "seconds": "초"
                 },
                 "primary": {
+                    "bannerName": "배너 이름:",
                     "enterName": "이름 입력...",
                     "pleaseEnterName": "이름을 입력하십시오",
                     "startDate": "시작 날짜",
@@ -1756,6 +2018,8 @@ const initState = {
                     "abovePrice": "이상 가격",
                     "belowPrice": "가격 아래",
                     "aboveBuyButton": "“구매” 버튼 위",
+                    "allProductsPicked": "모든 제품 선택",
+                    "allCollectionsPicked": "선택한 모든 모음",
                     "belowBuyButton": "버튼 아래 “구매”",
                     "productPagesWithTimer": "타이머가 있는 상품 페이지",
                     "utils": "유틸리티",
@@ -1765,6 +2029,7 @@ const initState = {
                     "existingCountdownTimer": "기존 카운트다운 타이머:",
                     "existingBadgeBanner": "기존 배너",
                     "existingAnimationPopup": "기존 모달 애니메이션 창:",
+                    "bannerName": "배너 이름:",
                     "actions": "작업:",
                     "timer": "타이머",
                     "edit": "편집",
@@ -1773,20 +2038,45 @@ const initState = {
                 "animations": {
                     "customize": "모달 창을 사용자 정의하십시오!",
                     "save": "저장합니다",
+                    "bannerName": "배너 이름:",
+                    "enterName": "이름 입력...",
+                    "pleaseEnterName": "이름을 입력하십시오",
                     "pickAnimation": "애니메이션 선택",
                     "messageText": "귀하의 메시지:",
                     "enterText": "텍스트 입력...",
+                    "pleaseEnterText": "텍스트를 입력하십시오",
                     "productPagesWithPopup": "모달 창이 있는 제품 페이지:",
+                    "browseProducts": "제품 다운로드",
+                    "cancel": "취소",
+                    "pickAllProducts": "모든 제품 선택",
+                    "allProductsPicked": "모든 제품 선택",
                     "preview": "모달 창 미리보기"
                 },
                 "badges": {
+                    "customize": "광고 표지판을 사용자 정의하세요!",
+                    "save": "저장합니다",
+                    "bannerName": "배너 이름:",
+                    "enterName": "이름 입력...",
+                    "pleaseEnterName": "이름을 입력하십시오",
                     "pickCategory": "카테고리 선택",
                     "category": "카테고리:",
                     "pickBadge": "아이콘을 선택합니다.",
                     "bannerPlacement": "배너 배치",
-                    "productPagesWithBanner": "배너가 있는 상품 페이지"
+                    "productPagesWithBanner": "배너가 있는 상품 페이지",
+                    "browseProducts": "제품 다운로드",
+                    "cancel": "취소",
+                    "pickAllProducts": "모든 제품 선택",
+                    "allProductsPicked": "모든 제품 선택",
+                    "aboveTitle": "헤드라인 위",
+                    "belowTitle": "제목 아래",
+                    "abovePrice": "이상 가격",
+                    "belowPrice": "가격 아래",
+                    "aboveBuyButton": "“구매” 버튼 위",
+                    "belowBuyButton": "버튼 아래 “구매”"
                 },
                 "countdown": {
+                    "customize": "카운트다운 타이머를 설정하세요!",
+                    "save": "저장합니다",
                     "bannerDesign": "배너 디자인",
                     "warningTitle": "배너 오버레이 감지",
                     "warningMessage": "이 배너는 이미이 유형의 배너가있는 페이지에 표시됩니다.이렇게하면 배너 작업에 위반이 발생합니다.취약성을 검토하고 수정하십시오.",
@@ -1810,8 +2100,8 @@ const initState = {
             }
         },
         {
-            locale: 'nl',
-            strings: {
+            "locale": "nl",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Banner naam:",
                     "goToConfig": "Ga naar Configuratie"
@@ -1856,6 +2146,7 @@ const initState = {
                     "seconds": "- Seconden"
                 },
                 "primary": {
+                    "bannerName": "Banner naam:",
                     "enterName": "Voer een naam in...",
                     "pleaseEnterName": "Voer de naam in",
                     "startDate": "Begindatum",
@@ -1889,6 +2180,8 @@ const initState = {
                     "abovePrice": "Boven prijs",
                     "belowPrice": "Onder de prijs",
                     "aboveBuyButton": "Boven de knop „Kopen”",
+                    "allProductsPicked": "Alle producten geselecteerd",
+                    "allCollectionsPicked": "Alle Collecties geselecteerd",
                     "belowBuyButton": "Onder de knop „Kopen”",
                     "productPagesWithTimer": "Productpagina's met timer",
                     "utils": "Hulpprogramma's",
@@ -1898,6 +2191,7 @@ const initState = {
                     "existingCountdownTimer": "Bestaande afteltimer:",
                     "existingBadgeBanner": "Bestaande banner",
                     "existingAnimationPopup": "Bestaande modale animatie venster:",
+                    "bannerName": "Banner naam:",
                     "actions": "Acties:",
                     "timer": "Timer",
                     "edit": "Bewerken",
@@ -1906,20 +2200,45 @@ const initState = {
                 "animations": {
                     "customize": "Pas uw modale venster aan!",
                     "save": "Opslaan",
+                    "bannerName": "Banner naam:",
+                    "enterName": "Voer een naam in...",
+                    "pleaseEnterName": "Voer de naam in",
                     "pickAnimation": "Animatie selecteren",
                     "messageText": "Uw bericht:",
                     "enterText": "Tekst invoeren...",
+                    "pleaseEnterText": "Voer de tekst in",
                     "productPagesWithPopup": "Productpagina's met modaal venster:",
+                    "browseProducts": "Download producten",
+                    "cancel": "Annuleren",
+                    "pickAllProducts": "Selecteer alle producten",
+                    "allProductsPicked": "Alle producten geselecteerd",
                     "preview": "Voorbeeld modaal venster"
                 },
                 "badges": {
+                    "customize": "Pas uw reclamebord aan!",
+                    "save": "Opslaan",
+                    "bannerName": "Banner naam:",
+                    "enterName": "Voer een naam in...",
+                    "pleaseEnterName": "Voer de naam in",
                     "pickCategory": "Selecteer een categorie",
                     "category": "Categorie:",
                     "pickBadge": "Selecteer een pictogram",
                     "bannerPlacement": "Banner plaatsing",
-                    "productPagesWithBanner": "Productpagina's met banner"
+                    "productPagesWithBanner": "Productpagina's met banner",
+                    "browseProducts": "Download producten",
+                    "cancel": "Annuleren",
+                    "pickAllProducts": "Selecteer alle producten",
+                    "allProductsPicked": "Alle producten geselecteerd",
+                    "aboveTitle": "Boven de kop",
+                    "belowTitle": "Onder de rubriek",
+                    "abovePrice": "Boven prijs",
+                    "belowPrice": "Onder de prijs",
+                    "aboveBuyButton": "Boven de knop „Kopen”",
+                    "belowBuyButton": "Onder de knop „Kopen”"
                 },
                 "countdown": {
+                    "customize": "Stel uw afteltimer in!",
+                    "save": "Opslaan",
                     "bannerDesign": "Banner Ontwerp",
                     "warningTitle": "Banner overlay gedetecteerd",
                     "warningMessage": "Deze banner wordt weergegeven op een pagina waar al een banner van dit type is. Dit veroorzaakt schendingen in het werk van de banners. Controleer de kwetsbaarheden en verhelp ze",
@@ -1943,8 +2262,8 @@ const initState = {
             }
         },
         {
-            locale: 'no',
-            strings: {
+            "locale": "no",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Banner navn:",
                     "goToConfig": "Gå til Konfigurasjon"
@@ -1989,6 +2308,7 @@ const initState = {
                     "seconds": "Sekunder"
                 },
                 "primary": {
+                    "bannerName": "Banner navn:",
                     "enterName": "Skriv inn et navn...",
                     "pleaseEnterName": "Vennligst skriv inn navnet",
                     "startDate": "Startdato",
@@ -2022,6 +2342,8 @@ const initState = {
                     "abovePrice": "Ovenfor pris",
                     "belowPrice": "Under prisen",
                     "aboveBuyButton": "Over «Kjøp» -knappen",
+                    "allProductsPicked": "Valgt alle produkter",
+                    "allCollectionsPicked": "Alle samlinger valgt",
                     "belowBuyButton": "Under knappen «Kjøp»",
                     "productPagesWithTimer": "Produktsider med timer",
                     "utils": "Verktøy",
@@ -2031,6 +2353,7 @@ const initState = {
                     "existingCountdownTimer": "Eksisterende nedtelling Timer:",
                     "existingBadgeBanner": "Eksisterende banner",
                     "existingAnimationPopup": "Eksisterende modal animasjonsvindu:",
+                    "bannerName": "Banner navn:",
                     "actions": "Handlinger:",
                     "timer": "Tidtaker",
                     "edit": "Rediger",
@@ -2039,20 +2362,45 @@ const initState = {
                 "animations": {
                     "customize": "Tilpass ditt modale vindu!",
                     "save": "Lagre",
+                    "bannerName": "Banner navn:",
+                    "enterName": "Skriv inn et navn...",
+                    "pleaseEnterName": "Vennligst skriv inn navnet",
                     "pickAnimation": "Velg animasjon",
                     "messageText": "Din melding:",
                     "enterText": "Skriv inn tekst...",
+                    "pleaseEnterText": "Vennligst skriv inn teksten",
                     "productPagesWithPopup": "Produktsider med modalt vindu:",
+                    "browseProducts": "Last ned produkter",
+                    "cancel": "Avbryt",
+                    "pickAllProducts": "Velg alle produkter",
+                    "allProductsPicked": "Valgt alle produkter",
                     "preview": "Modal vindu forhåndsvisning"
                 },
                 "badges": {
+                    "customize": "Tilpass annonsering tegn!",
+                    "save": "Lagre",
+                    "bannerName": "Banner navn:",
+                    "enterName": "Skriv inn et navn...",
+                    "pleaseEnterName": "Vennligst skriv inn navnet",
                     "pickCategory": "Velg en kategori",
                     "category": "Kategori:",
                     "pickBadge": "Velg et ikon",
                     "bannerPlacement": "Banner plassering",
-                    "productPagesWithBanner": "Produktsider med banner"
+                    "productPagesWithBanner": "Produktsider med banner",
+                    "browseProducts": "Last ned produkter",
+                    "cancel": "Avbryt",
+                    "pickAllProducts": "Velg alle produkter",
+                    "allProductsPicked": "Valgt alle produkter",
+                    "aboveTitle": "Over overskriften",
+                    "belowTitle": "Under overskriften",
+                    "abovePrice": "Ovenfor pris",
+                    "belowPrice": "Under prisen",
+                    "aboveBuyButton": "Over «Kjøp» -knappen",
+                    "belowBuyButton": "Under knappen «Kjøp»"
                 },
                 "countdown": {
+                    "customize": "Sett opp nedtellingstidtakeren!",
+                    "save": "Lagre",
                     "bannerDesign": "Banner Design",
                     "warningTitle": "Banneroverlegg oppdaget",
                     "warningMessage": "Dette banneret vil bli vist på en side der det allerede er et banner av denne typen. Dette vil føre til brudd på bannernes arbeid. Se gjennom sikkerhetsproblemene og reparer dem",
@@ -2238,8 +2586,8 @@ const initState = {
             }
         },
         {
-            locale: 'pt',
-            strings: {
+            "locale": "pt",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Nome do banner:",
                     "goToConfig": "Ir para Configuração"
@@ -2284,6 +2632,7 @@ const initState = {
                     "seconds": "Segundos"
                 },
                 "primary": {
+                    "bannerName": "Nome do banner:",
                     "enterName": "Digite um nome...",
                     "pleaseEnterName": "Introduza o nome",
                     "startDate": "Data de início",
@@ -2317,6 +2666,8 @@ const initState = {
                     "abovePrice": "Preço acima",
                     "belowPrice": "Abaixo do preço",
                     "aboveBuyButton": "Acima do botão “Comprar”",
+                    "allProductsPicked": "Todos os produtos selecionados",
+                    "allCollectionsPicked": "Todas as coleções selecionadas",
                     "belowBuyButton": "Sob o botão “Comprar”",
                     "productPagesWithTimer": "Páginas de produtos com temporizador",
                     "utils": "Utilitários",
@@ -2326,6 +2677,7 @@ const initState = {
                     "existingCountdownTimer": "Temporizador de contagem regressiva existente:",
                     "existingBadgeBanner": "Banner existente",
                     "existingAnimationPopup": "Janela de animação modal existente:",
+                    "bannerName": "Nome do banner:",
                     "actions": "Ações:",
                     "timer": "Temporizador",
                     "edit": "Editar",
@@ -2334,20 +2686,45 @@ const initState = {
                 "animations": {
                     "customize": "Personalize sua janela modal!",
                     "save": "Salvar",
+                    "bannerName": "Nome do banner:",
+                    "enterName": "Digite um nome...",
+                    "pleaseEnterName": "Introduza o nome",
                     "pickAnimation": "Selecionar animação",
                     "messageText": "Sua mensagem:",
                     "enterText": "Digite o texto...",
+                    "pleaseEnterText": "Introduza o texto",
                     "productPagesWithPopup": "Páginas de produtos com janela modal:",
+                    "browseProducts": "Fazer download de produtos",
+                    "cancel": "Cancelar",
+                    "pickAllProducts": "Selecionar todos os produtos",
+                    "allProductsPicked": "Todos os produtos selecionados",
                     "preview": "Visualização da janela modal"
                 },
                 "badges": {
+                    "customize": "Personalize o seu sinal de publicidade!",
+                    "save": "Salvar",
+                    "bannerName": "Nome do banner:",
+                    "enterName": "Digite um nome...",
+                    "pleaseEnterName": "Introduza o nome",
                     "pickCategory": "Selecione uma categoria",
                     "category": "Categoria:",
                     "pickBadge": "Selecionar um ícone",
                     "bannerPlacement": "Colocação de banner",
-                    "productPagesWithBanner": "Páginas de produtos com banner"
+                    "productPagesWithBanner": "Páginas de produtos com banner",
+                    "browseProducts": "Fazer download de produtos",
+                    "cancel": "Cancelar",
+                    "pickAllProducts": "Selecionar todos os produtos",
+                    "allProductsPicked": "Todos os produtos selecionados",
+                    "aboveTitle": "Acima da manchete",
+                    "belowTitle": "Sob o título",
+                    "abovePrice": "Preço acima",
+                    "belowPrice": "Abaixo do preço",
+                    "aboveBuyButton": "Acima do botão “Comprar”",
+                    "belowBuyButton": "Sob o botão “Comprar”"
                 },
                 "countdown": {
+                    "customize": "Configure o seu temporizador de contagem regressiva!",
+                    "save": "Salvar",
                     "bannerDesign": "Design de Banners",
                     "warningTitle": "Sobreposição de banner detectada",
                     "warningMessage": "Este banner será exibido em uma página onde já existe um banner desse tipo. Isso causará violações no trabalho dos banners. Revise as vulnerabilidades e corrija-as",
@@ -2371,8 +2748,8 @@ const initState = {
             }
         },
         {
-            locale: 'sv',
-            strings: {
+            "locale": "sv",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Banderollens namn:",
                     "goToConfig": "Gå till Konfiguration"
@@ -2417,6 +2794,7 @@ const initState = {
                     "seconds": "- Sekunder"
                 },
                 "primary": {
+                    "bannerName": "Banderollens namn:",
                     "enterName": "Skriv in ett namn...",
                     "pleaseEnterName": "Ange namnet",
                     "startDate": "Startdatum",
@@ -2450,6 +2828,8 @@ const initState = {
                     "abovePrice": "Ovanför pris",
                     "belowPrice": "Under priset",
                     "aboveBuyButton": "Ovanför ”Köp” -knappen",
+                    "allProductsPicked": "Valda alla produkter",
+                    "allCollectionsPicked": "Alla samlingar valda",
                     "belowBuyButton": "Under knappen ”Köp”",
                     "productPagesWithTimer": "Produktsidor med timer",
                     "utils": "Verktyg",
@@ -2459,6 +2839,7 @@ const initState = {
                     "existingCountdownTimer": "Befintlig nedräkningstimer:",
                     "existingBadgeBanner": "Befintlig banner",
                     "existingAnimationPopup": "Befintligt fönster för modal animation:",
+                    "bannerName": "Banderollens namn:",
                     "actions": "Åtgärder:",
                     "timer": "Timer",
                     "edit": "Redigera",
@@ -2467,20 +2848,45 @@ const initState = {
                 "animations": {
                     "customize": "Anpassa ditt modala fönster!",
                     "save": "Rädda",
+                    "bannerName": "Banderollens namn:",
+                    "enterName": "Skriv in ett namn...",
+                    "pleaseEnterName": "Ange namnet",
                     "pickAnimation": "Välj animering",
                     "messageText": "Ditt meddelande:",
                     "enterText": "Skriv in text...",
+                    "pleaseEnterText": "Skriv in texten",
                     "productPagesWithPopup": "Produktsidor med modalt fönster:",
+                    "browseProducts": "Ladda ner produkter",
+                    "cancel": "Avbryt",
+                    "pickAllProducts": "Välj alla produkter",
+                    "allProductsPicked": "Valda alla produkter",
                     "preview": "Förhandsgranskning av modal"
                 },
                 "badges": {
+                    "customize": "Anpassa din reklam skylt!",
+                    "save": "Rädda",
+                    "bannerName": "Banderollens namn:",
+                    "enterName": "Skriv in ett namn...",
+                    "pleaseEnterName": "Ange namnet",
                     "pickCategory": "Välj en kategori",
                     "category": "Kategori:",
                     "pickBadge": "Välj en ikon",
                     "bannerPlacement": "Banner Placering",
-                    "productPagesWithBanner": "Produktsidor med banner"
+                    "productPagesWithBanner": "Produktsidor med banner",
+                    "browseProducts": "Ladda ner produkter",
+                    "cancel": "Avbryt",
+                    "pickAllProducts": "Välj alla produkter",
+                    "allProductsPicked": "Valda alla produkter",
+                    "aboveTitle": "Ovanför rubriken",
+                    "belowTitle": "Under rubriken",
+                    "abovePrice": "Ovanför pris",
+                    "belowPrice": "Under priset",
+                    "aboveBuyButton": "Ovanför ”Köp” -knappen",
+                    "belowBuyButton": "Under knappen ”Köp”"
                 },
                 "countdown": {
+                    "customize": "Ställ in din nedräkningstimer!",
+                    "save": "Rädda",
                     "bannerDesign": "Banderoll Design",
                     "warningTitle": "Banderollöverlägg upptäcktes",
                     "warningMessage": "Denna banner visas på en sida där det redan finns en banner av denna typ. Detta kommer att orsaka överträdelser i banderollernas arbete. Granska sårbarheterna och åtgärda dem",
@@ -2504,8 +2910,8 @@ const initState = {
             }
         },
         {
-            locale: 'th',
-            strings: {
+            "locale": "th",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "ชื่อแบนเนอร์:",
                     "goToConfig": "ไปที่การตั้งค่าคอนฟิก"
@@ -2550,6 +2956,7 @@ const initState = {
                     "seconds": "วินาที"
                 },
                 "primary": {
+                    "bannerName": "ชื่อแบนเนอร์:",
                     "enterName": "ใส่ชื่อ...",
                     "pleaseEnterName": "กรุณากรอกชื่อ",
                     "startDate": "วันที่เริ่มต้น",
@@ -2583,6 +2990,8 @@ const initState = {
                     "abovePrice": "ราคาข้างต้น",
                     "belowPrice": "ราคาต่ำกว่าราคา",
                     "aboveBuyButton": "เหนือปุ่ม “ซื้อ”",
+                    "allProductsPicked": "เลือกผลิตภัณฑ์ทั้งหมด",
+                    "allCollectionsPicked": "คอลเลกชันทั้งหมดที่เลือก",
                     "belowBuyButton": "ภายใต้ปุ่ม “ซื้อ”",
                     "productPagesWithTimer": "หน้าผลิตภัณฑ์ที่มีตัวจับเวลา",
                     "utils": "สาธารณูปโภค",
@@ -2592,6 +3001,7 @@ const initState = {
                     "existingCountdownTimer": "ตัวนับถอยหลังที่มีอยู่:",
                     "existingBadgeBanner": "แบนเนอร์ที่มีอยู่",
                     "existingAnimationPopup": "หน้าต่างภาพเคลื่อนไหวกิริยาที่มีอยู่:",
+                    "bannerName": "ชื่อแบนเนอร์:",
                     "actions": "การดำเนินการ:",
                     "timer": "จับเวลา",
                     "edit": "แก้ไข",
@@ -2600,20 +3010,45 @@ const initState = {
                 "animations": {
                     "customize": "ปรับแต่งหน้าต่างกิริยาของคุณ!",
                     "save": "บันทึก",
+                    "bannerName": "ชื่อแบนเนอร์:",
+                    "enterName": "ใส่ชื่อ...",
+                    "pleaseEnterName": "กรุณากรอกชื่อ",
                     "pickAnimation": "เลือกภาพเคลื่อนไหว",
                     "messageText": "ข้อความของคุณ:",
                     "enterText": "ป้อนข้อความ...",
+                    "pleaseEnterText": "กรุณากรอกข้อความ",
                     "productPagesWithPopup": "หน้าผลิตภัณฑ์ที่มีหน้าต่างกิริยา:",
+                    "browseProducts": "ดาวน์โหลดผลิตภัณฑ์",
+                    "cancel": "ยกเลิก",
+                    "pickAllProducts": "เลือกผลิตภัณฑ์ทั้งหมด",
+                    "allProductsPicked": "เลือกผลิตภัณฑ์ทั้งหมด",
                     "preview": "การแสดงตัวอย่างหน้าต่างแบบโมดัล"
                 },
                 "badges": {
+                    "customize": "ปรับแต่งป้ายโฆษณาของคุณ!",
+                    "save": "บันทึก",
+                    "bannerName": "ชื่อแบนเนอร์:",
+                    "enterName": "ใส่ชื่อ...",
+                    "pleaseEnterName": "กรุณากรอกชื่อ",
                     "pickCategory": "เลือกหมวดหมู่",
                     "category": "หมวดหมู่:",
                     "pickBadge": "เลือกไอคอน",
                     "bannerPlacement": "ตำแหน่งแบนเนอร์",
-                    "productPagesWithBanner": "หน้าผลิตภัณฑ์ที่มีแบนเนอร์"
+                    "productPagesWithBanner": "หน้าผลิตภัณฑ์ที่มีแบนเนอร์",
+                    "browseProducts": "ดาวน์โหลดผลิตภัณฑ์",
+                    "cancel": "ยกเลิก",
+                    "pickAllProducts": "เลือกผลิตภัณฑ์ทั้งหมด",
+                    "allProductsPicked": "เลือกผลิตภัณฑ์ทั้งหมด",
+                    "aboveTitle": "เหนือพาดหัว",
+                    "belowTitle": "ใต้หัวข้อ",
+                    "abovePrice": "ราคาข้างต้น",
+                    "belowPrice": "ราคาต่ำกว่าราคา",
+                    "aboveBuyButton": "เหนือปุ่ม “ซื้อ”",
+                    "belowBuyButton": "ภายใต้ปุ่ม “ซื้อ”"
                 },
                 "countdown": {
+                    "customize": "ตั้งเวลานับถอยหลังของคุณ!",
+                    "save": "บันทึก",
                     "bannerDesign": "การออกแบบแบนเนอร์",
                     "warningTitle": "ตรวจพบการซ้อนทับแบนเนอร์",
                     "warningMessage": "แบนเนอร์นี้จะปรากฏบนหน้าเว็บที่มีแบนเนอร์ประเภทนี้อยู่แล้วซึ่งจะทำให้เกิดการละเมิดในการทำงานของแบนเนอร์โปรดตรวจสอบช่องโหว่และแก้ไขปัญหา",
@@ -2637,8 +3072,8 @@ const initState = {
             }
         },
         {
-            locale: 'tr',
-            strings: {
+            "locale": "tr",
+            "strings": {
                 "bannerInfo": {
                     "bannerName": "Afiş adı:",
                     "goToConfig": "Yapılandırmaya Git"
@@ -2654,7 +3089,7 @@ const initState = {
                     "animationBanner": "Animasyonlu modal pencere",
                     "animationDescription": "Müşterilerinize hediye animasyon!",
                     "animationRevenue": "Yaklaşık%15 daha fazla gelir",
-                    "continue": "Devam edin"
+                    "continue": "Devam et"
                 },
                 "design": {
                     "timerDesign": "Zamanlayıcı Tasarımı",
@@ -2667,7 +3102,7 @@ const initState = {
                     "pleaseEnterText": "Lütfen metni girin",
                     "secondText": "İkinci metin",
                     "discountLink": "İndirim bağlantısı",
-                    "title": "Manşet",
+                    "title": "Başlık",
                     "link": "Referans:"
                 },
                 "initPage": {
@@ -2683,6 +3118,7 @@ const initState = {
                     "seconds": "Saniye"
                 },
                 "primary": {
+                    "bannerName": "Afiş adı:",
                     "enterName": "Bir isim girin...",
                     "pleaseEnterName": "Lütfen adı girin",
                     "startDate": "Başlangıç tarihi",
@@ -2703,7 +3139,7 @@ const initState = {
                     "displayAtCollections": "Belirli koleksiyon sayfalarında bir zamanlayıcı görüntüler.",
                     "browseCollections": "Koleksiyonları İndirin",
                     "pickAllCollections": "Tüm Koleksiyonları Seç",
-                    "products": "Mallar",
+                    "products": "Mal",
                     "displayAtProducts": "Belirli ürün sayfalarında bir zamanlayıcı görüntüler.",
                     "browseProducts": "Ürünleri indirin",
                     "cancel": "İptal",
@@ -2716,37 +3152,65 @@ const initState = {
                     "abovePrice": "Fiyatın üstünde",
                     "belowPrice": "Fiyatın altında",
                     "aboveBuyButton": "“Satın Al” düğmesinin üstünde",
+                    "allProductsPicked": "Seçilen tüm ürünler",
+                    "allCollectionsPicked": "Seçilen Tüm Koleksiyonlar",
                     "belowBuyButton": "Düğmesinin altında “Satın al”",
                     "productPagesWithTimer": "Zamanlayıcılı ürün sayfaları",
-                    "utils": "Yardımcı programlar",
+                    "utils": "Yardımcı Programlar",
                     "repeat": "Bittiğinde zamanlayıcıyı tekrarlayın"
                 },
                 "existing_config": {
                     "existingCountdownTimer": "Mevcut Geri Sayım Zamanlayıcı:",
                     "existingBadgeBanner": "Mevcut afiş",
                     "existingAnimationPopup": "Mevcut modal animasyon penceresi:",
+                    "bannerName": "Afiş adı:",
                     "actions": "Eylemler:",
                     "timer": "Zamanlayıcı",
                     "edit": "Düzenle",
-                    "delete": "Kaldır"
+                    "delete": "Kaldır'"
                 },
                 "animations": {
                     "customize": "Modal pencerenizi özelleştirin!",
                     "save": "Kayıt etmek",
+                    "bannerName": "Afiş adı:",
+                    "enterName": "Bir isim girin...",
+                    "pleaseEnterName": "Lütfen adı girin",
                     "pickAnimation": "Animasyonu Seç",
                     "messageText": "Mesajınız:",
                     "enterText": "Metin girin...",
+                    "pleaseEnterText": "Lütfen metni girin",
                     "productPagesWithPopup": "Modal pencereli ürün sayfaları:",
+                    "browseProducts": "Ürünleri indirin",
+                    "cancel": "İptal",
+                    "pickAllProducts": "Tüm ürünleri seç",
+                    "allProductsPicked": "Seçilen tüm ürünler",
                     "preview": "Modal pencere önizlemesi"
                 },
                 "badges": {
+                    "customize": "Reklam işaretinizi özelleştirin!",
+                    "save": "Kayıt etmek",
+                    "bannerName": "Afiş adı:",
+                    "enterName": "Bir isim girin...",
+                    "pleaseEnterName": "Lütfen adı girin",
                     "pickCategory": "Bir kategori seçin",
                     "category": "Kategori:",
                     "pickBadge": "Bir simge seçin",
                     "bannerPlacement": "Banner Yerleştirme",
-                    "productPagesWithBanner": "Afiş içeren ürün sayfaları"
+                    "productPagesWithBanner": "Afiş içeren ürün sayfaları",
+                    "browseProducts": "Ürünleri indirin",
+                    "cancel": "İptal",
+                    "pickAllProducts": "Tüm ürünleri seç",
+                    "allProductsPicked": "Seçilen tüm ürünler",
+                    "aboveTitle": "Başlığın üstünde",
+                    "belowTitle": "Başlığın altında",
+                    "abovePrice": "Fiyatın üstünde",
+                    "belowPrice": "Fiyatın altında",
+                    "aboveBuyButton": "“Satın Al” düğmesinin üstünde",
+                    "belowBuyButton": "Düğmesinin altında “Satın al”"
                 },
                 "countdown": {
+                    "customize": "Geri sayım zamanlayıcınızı ayarlayın!",
+                    "save": "Kayıt etmek",
                     "bannerDesign": "Banner Tasarımı",
                     "warningTitle": "Afiş bindirme algılandı",
                     "warningMessage": "Bu afiş, zaten bu türde bir banner'ın bulunduğu bir sayfada görüntülenecektir. Bu, afişlerin çalışmalarında ihlallere neden olacaktır. Lütfen güvenlik açıklarını gözden geçirin ve düzeltin",
