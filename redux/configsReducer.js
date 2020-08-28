@@ -115,10 +115,9 @@ export const configsReducer = (state = initState, action) => {
         case HANDLE_COUNTDOWN_COLLECTIONS: {
             if (state.countdownConfig.script.length > 1) {
                 let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                    .map(s => s.configData.collections.map(c => action.collections.filter(a => c.id === a.id)).map(e => e[0]))[0]
-                    .filter(e => Boolean(e));
-                if (arr[0] || state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                    .filter(s => s.id !== state.dispatchedIds.countdownId).filter(s => s.display === 'all')) return {
+                    .map(s => s.configData.collections.map(c => action.collections.filter(a => c.id === a.id)).map(e => e[0]))[0];
+                arr = arr ? arr.filter(e => Boolean(e)) : [];
+                if (arr[0] && !!action.products.length) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
@@ -166,8 +165,8 @@ export const configsReducer = (state = initState, action) => {
             if (state.countdownConfig.script.length > 1) {
                 let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
-                    .filter(e => Boolean(e));
-                if (arr[0]) return {
+                arr = arr ? arr.filter(e => Boolean(e)) : [];
+                if (arr[0] && !!action.products.length) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
@@ -214,9 +213,9 @@ export const configsReducer = (state = initState, action) => {
         case HANDLE_SALE_PRODUCTS: {
             if (state.saleConfig.script.length > 1) {
                 let arr = state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
-                    .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
-                    .filter(e => Boolean(e));
-                if (arr[0]) return {
+                    .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0];
+                arr = arr ? arr.filter(e => Boolean(e)) : [];
+                if (arr[0] && !!action.products.length) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
