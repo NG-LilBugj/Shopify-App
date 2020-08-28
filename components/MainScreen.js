@@ -68,6 +68,7 @@ const MainScreen = (props) => {
                                 <Button
                                     primary
                                     onClick={() => props.setCountdownId(0)}
+                                    disabled={props.configs.countdownConfig.script.map(s => s.configData.display).includes('all')}
                                 >
                                     {props.strings.createNew}
                                 </Button>
@@ -99,6 +100,7 @@ const MainScreen = (props) => {
                                     <Button
                                         primary
                                         onClick={() => props.setSaleId(0)}
+                                        disabled={props.configs.saleConfig.script.map(s => s.configData.isAllProducts).includes(true)}
                                     >
                                         {props.strings.createNew}
                                     </Button>
@@ -130,6 +132,7 @@ const MainScreen = (props) => {
                                     <Button
                                         primary
                                         onClick={() => props.setPopupId(0)}
+                                        disabled={props.configs.popupConfig.script.map(s => s.configData.isAllProducts).includes(true)}
                                     >
                                         {props.strings.createNew}
                                     </Button>
