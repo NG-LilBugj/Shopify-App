@@ -263,7 +263,7 @@ const Animations = (props) => {
                             }
                         </Banner>
                     </div>}
-                    {console.log(props.warning.isWarning)}
+                    {console.log(props.strings)}
                     <Card sectioned title={props.strings.bannerPlacement}>
                         <Heading>
                             {props.strings.productPagesWithPopup}
