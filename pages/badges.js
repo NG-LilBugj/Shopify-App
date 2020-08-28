@@ -267,11 +267,11 @@ return (
                         {props.warning.isWarning &&
                         <div style={{marginTop: '10px', marginBottom: '30px'}}>
                             <Banner
-                                title={props.strings.warningTitle}
+                                title={props.warningStrings.warningTitle}
                                 status="critical"
                             >
                                 <p style={{marginTop: '10px', marginBottom: '10px'}}>
-                                    {props.strings.warningMessage}
+                                    {props.warningStrings.warningMessage}
                                 </p>
                                 <p style={{marginTop: '10px', marginBottom: '10px'}}>{props.strings.reason} {props.warning.reason.string}</p>
                                 {(props.warning.reason.string === "display/products") &&
@@ -371,6 +371,7 @@ const mapStateToProps = (state) => ({
     dispatchedId: state.configsReducer.dispatchedIds.saleId,
     warning: state.configsReducer.displayWarnings.sale,
     strings: state.localesReducer.stringsToDisplay.strings.badges,
+    warningStrings: state.localesReducer.stringsToDisplay.strings.countdown,
     configStrings: state.localesReducer.stringsToDisplay.strings.existing_config
 });
 
