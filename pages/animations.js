@@ -174,9 +174,9 @@ const Animations = (props) => {
                         <Link href={!!name ? '/popupSuccess' : '/badges'}>
                             <Button
                                 primary
-                                disabled={(pickedAnimation === 0)}
                                 size={"medium"}
                                 type={"submit"}
+                                disabled={props.warning.isWarning || (pickedAnimation === 0)}
                                 onClick={handleSubmit}
                             >
                                 {props.strings.save}
@@ -308,11 +308,12 @@ const Animations = (props) => {
                     </Card>
                 </Layout.Section>
                 <div style={{display: "flex", justifyContent: 'flex-end', width: '100%', marginTop: '20px'}}>
-                    <Link href={!!name ? '/popupSuccess' : '/badges'}>
+                    <Link href={!!name ? '/popupSuccess' : '/animations'}>
                         <Button
                             primary
                             size={"medium"}
                             type={"submit"}
+                            disabled={props.warning.isWarning || (pickedAnimation === 0)}
                             onClick={handleSubmit}
                         >
                             {props.strings.save}

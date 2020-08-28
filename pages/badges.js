@@ -215,7 +215,7 @@ return (
                             <Link href={!!name ? '/saleSuccess' : '/badges'}>
                             <Button
                                 primary
-                                disabled={(pickedBadge === 0)}
+                                disabled={props.warning.isWarning || (pickedBadge === 0)}
                                 size={"medium"}
                                 type={"submit"}
                                 onClick={handleSubmit}
