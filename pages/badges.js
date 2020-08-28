@@ -275,7 +275,7 @@ return (
                                 </p>
                                 <p style={{marginTop: '10px', marginBottom: '10px'}}>{props.strings.reason} {props.warning.reason.string}</p>
                                 {(props.warning.reason.string === "display/products") &&
-                                props.warning.reason.elements.map(p => <Product pickProducts={pickProducts}
+                                props.warning.reason.elements.map(p => <Product pickProducts={setProducts}
                                                                                 products={products} {...p}/>)
                                 }
                             </Banner>
