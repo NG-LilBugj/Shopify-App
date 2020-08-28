@@ -131,7 +131,8 @@ export const configsReducer = (state = initState, action) => {
                         }
                     }
                 };
-                else if (!!state.countdownConfig.script.filter(s => s.configData.isAllCollection).length && action.isAllCollection) return {
+                else if (!!state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                    .filter(s => s.configData.isAllCollection).length) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
@@ -178,7 +179,8 @@ export const configsReducer = (state = initState, action) => {
                         }
                     }
                 };
-                else if (!!state.countdownConfig.script.filter(s => s.configData.isAllProducts).length && action.isAllProducts) return {
+                else if (!!state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                    .filter(s => s.configData.isAllProducts).length) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
@@ -226,7 +228,7 @@ export const configsReducer = (state = initState, action) => {
                     }
                 };
                 else if (!!state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
-                    .length && action.isAllProducts) return {
+                    .filter(s => s.id !== state.dispatchedIds.saleId).length) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
@@ -257,7 +259,6 @@ export const configsReducer = (state = initState, action) => {
         }
         case HANDLE_POPUP_PRODUCTS: {
             if (state.popupConfig.script.length > 1) {
-                console.log(state.popupConfig.script);
                 let arr = state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
                     .filter(e => Boolean(e));
@@ -275,6 +276,7 @@ export const configsReducer = (state = initState, action) => {
                     }
                 };
                 else if (!!state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
+                    .filter(s => s.id !== state.dispatchedIds.popupId)
                     .length && action.isAllProducts) return {
                     ...state,
                     displayWarnings: {

@@ -179,7 +179,8 @@ const Badges = (props) => {
         pickCategory(badgeData.id ? categories[1] : categories[0]);
         pickBadge(badgeData.id ? badgeData.configData.pickedBadge : 0);
         setBannerValue(badgeData.id ? badgeData.configData.bannerRenderValue : '.product-single__title/append');
-        setProducts(badgeData.id ? badgeData.configData.products : [])
+        setProducts(badgeData.id ? badgeData.configData.products : []);
+        pickAllProducts(badgeData.id ? badgeData.configData.isAllProducts : false);
     }, [badgeData]);
 
     const searchField = (
