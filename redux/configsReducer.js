@@ -131,8 +131,9 @@ export const configsReducer = (state = initState, action) => {
                         }
                     }
                 };
-                else if (!!state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                    .filter(s => s.configData.isAllCollection).length) return {
+                else if ((!!state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                    .filter(s => s.configData.isAllCollection).length) || (!!state.countdownConfig.script
+                    .filter(s => s.id !== state.dispatchedIds.countdownId).length && action.isAllCollection)) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
@@ -179,8 +180,9 @@ export const configsReducer = (state = initState, action) => {
                         }
                     }
                 };
-                else if (!!state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                    .filter(s => s.configData.isAllProducts).length) return {
+                else if ((!!state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
+                    .filter(s => s.configData.isAllProducts).length) || (!!state.countdownConfig.script
+                    .filter(s => s.id !== state.dispatchedIds.countdownId).length && action.isAllProducts)) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
@@ -228,7 +230,7 @@ export const configsReducer = (state = initState, action) => {
                     }
                 };
                 else if (!!state.saleConfig.script.filter(s => s.id !== state.dispatchedIds.saleId)
-                    .filter(s => s.id !== state.dispatchedIds.saleId).length) return {
+                    .length && action.isAllProducts) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
@@ -276,7 +278,6 @@ export const configsReducer = (state = initState, action) => {
                     }
                 };
                 else if (!!state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
-                    .filter(s => s.id !== state.dispatchedIds.popupId)
                     .length && action.isAllProducts) return {
                     ...state,
                     displayWarnings: {
