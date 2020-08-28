@@ -263,6 +263,7 @@ export const configsReducer = (state = initState, action) => {
             if (state.popupConfig.script.length > 0) {
                 let arr = state.popupConfig.script.filter(s => s.id !== state.dispatchedIds.popupId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
+                arr = arr ? arr.filter(e => Boolean(e)) : arr;
                 if (arr && !!action.products.length) return {
                     ...state,
                     displayWarnings: {
