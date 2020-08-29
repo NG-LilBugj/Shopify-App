@@ -180,9 +180,9 @@ export const configsReducer = (state = initState, action) => {
                     }
                 };
                 else if ((!!state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
-                    .filter(s => s.configData.isAllProducts).length && !!action.products.length) || (!!state.countdownConfig.script
+                    .filter(s => s.configData.isAllProducts).length && !!action.products.length) || ((!!state.countdownConfig.script
                     .filter(s => s.id !== state.dispatchedIds.countdownId)
-                    .filter(s => !!s.configData.products.length).length && action.isAllProducts)) return {
+                    .filter(s => !!s.configData.products.length || s.configData.isAllProducts).length) && action.isAllProducts)) return {
                     ...state,
                     displayWarnings: {
                         ...state.displayWarnings,
