@@ -162,6 +162,9 @@ export const configsReducer = (state = initState, action) => {
             else return state
         }
         case HANDLE_COUNTDOWN_PRODUCTS: {
+            console.log(state.countdownConfig.script
+                .filter(s => s.id !== state.dispatchedIds.countdownId)
+                .filter(s => !!s.configData.products.length || s.configData.isAllProducts));
             if (state.countdownConfig.script.length > 0) {
                 let arr = state.countdownConfig.script.filter(s => s.id !== state.dispatchedIds.countdownId)
                     .map(s => s.configData.products.map(c => action.products.filter(a => c.id === a.id)).map(e => e[0]))[0]
