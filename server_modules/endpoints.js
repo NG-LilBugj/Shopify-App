@@ -18,7 +18,6 @@ const getEndpoint = (bundle) => async (ctx) => {
                 }
             }); // HTTP Get request to Shopify ScriptTag API
         let confData = await decoder(ctx, bundle.Config); //Request to mongoose model (in repository file)
-        console.log(res.data);
         ctx.body = { //response to front with data about script tags and special config
             status: 'success',
             config: res.data.script_tags.some(t => (t.src === `https://lil-storage.herokuapp.com/static/${bundle.file}`) ||

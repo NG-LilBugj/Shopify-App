@@ -153,8 +153,8 @@ app.prepare().then(() => {
                 });
 
                 const registration = await registerWebhook({
-                    address: `${HOST}/webhooks/app/uninstall`,
-                    topic: 'APP_UNINSTALL',
+                    address: `${HOST}/webhooks/app/uninstalled`,
+                    topic: 'APP_UNINSTALLED',
                     accessToken,
                     shop,
                     apiVersion: ApiVersion.January20
@@ -187,7 +187,7 @@ app.prepare().then(() => {
         console.log('received webhook:', ctx.state.webhook)
     });
 
-    router.post('/webhooks/app/unistall', webhook, (ctx) => {
+    router.post('/webhooks/app/unistalled', webhook, (ctx) => {
         console.log(ctx.state.webhook)
     });
     //idling webhooks
