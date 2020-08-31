@@ -23,8 +23,10 @@ const getEndpoint = (bundle) => async (ctx) => {
             status: 'success',
             config: res.data.script_tags.some(t => t.src === `https://lil-storage.herokuapp.com/static/${bundle.file}`),
             script: (!!res.data.script_tags
-                .filter(t => t.src === `https://lil-storage.herokuapp.com/static/${bundle.file}`).length) ? res.data.script_tags
-                .filter(t => t.src === `https://lil-storage.herokuapp.com/static/${bundle.file}`)
+                .filter(t => (t.src === `https://lil-storage.herokuapp.com/static/${bundle.file}`) ||
+                    (t.src === `https://lil-proxy.herokuapp.com/static/${bundle.file}`)).length) ? res.data.script_tags
+                .filter(t => (t.src === `https://lil-storage.herokuapp.com/static/${bundle.file}`) ||
+                    (t.src === `https://lil-proxy.herokuapp.com/static/${bundle.file}`))
                 //analysing script tags for matches with our scripts
                 .map(t => {
                     return {
@@ -46,7 +48,7 @@ const postEndpoint = (bundle) => (ctx) => {
         axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-04/script_tags.json`, {
             "script_tag": {
                 "event": "onload",
-                "src": `https://lil-storage.herokuapp.com/static/${bundle.file}`,
+                "src": `https://lil-proxy.herokuapp.com/static/${bundle.file}`,
                 "display_scope": "all"
             } // HTTP Post request to Shopify ScriptTag API
         }, {
