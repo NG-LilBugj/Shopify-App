@@ -57,10 +57,6 @@ const PrimaryDesign = (props) => {
         />
     );
 
-    useEffect(() => {
-        console.log(props)
-    }, [props.isAllProducts]);
-
     return(
         <>
             {(props.renderValue === 'collections' || props.renderValue === 'products' || props.isWidget) && <ResourcePicker
@@ -227,7 +223,7 @@ const PrimaryDesign = (props) => {
                             </Button>
                             <Button
                                 plain
-                                onClick={() => {console.log('pressed'); props.pickAllProducts(!props.isAllProducts)}}
+                                onClick={() => props.pickAllProducts(!props.isAllProducts)}
                             >
                                 {props.isAllProducts ? props.strings.cancel : props.strings.pickAllProducts}
                             </Button>
@@ -235,7 +231,6 @@ const PrimaryDesign = (props) => {
                         {props.isAllProducts ? <AllDisplay string={props.strings.allProductsPicked} cancel={props.strings.cancel} setAllItems={props.pickAllProducts}/>:
                             (props.products.length) && props.products.map(p => <Product pickProducts={props.pickProducts}
                                                                                      products={props.products} {...p}/>)}
-                        {console.log(props.products)}
                     </Stack>}
                     <RadioButton
                         label={props.strings.collections}

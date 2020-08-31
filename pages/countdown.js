@@ -183,8 +183,16 @@ const Countdown = (props) => {
     }, [products]);
 
     useEffect(() => {
+        props.handleCountdownProducts(products, isAllProducts)
+    }, [isAllProducts]);
+
+    useEffect(() => {
         props.handleCountdownProducts(collections, isAllCollection)
     }, [collections]);
+
+    useEffect(() => {
+        props.handleCountdownProducts(collections, isAllCollection)
+    }, [isAllCollection]);
 
     useEffect(() => {
         setName(scriptData ? scriptData.configData.name : '');
