@@ -125,26 +125,26 @@ router.get('/amplitude/popup/created', amplitudeEvent({
 }));
 // amplitude endpoints
 
-// router.get('/', async (ctx) => {
-//     axios.get(`https://${ctx.get.shopOrigin}/admin/api/2020-07/webhooks/count.json?topic=app/uninstall`)
-//         .then(res => {
-//             console.log(res.data);
-//             if (res.data.count === 0) {
-//                 axios.post(`https://${ctx.get.shopOrigin}/admin/api/2020-07/webhooks/count.json?topic=app/uninstall`, {
-//                     "webhook": {
-//                         "topic": "app/uninstall",
-//                         "address": `${HOST}/webhooks/app/uninstall`,
-//                         "format": "json"
-//                     }
-//                 }).then(res => {ctx.body = res.data})
-//                     .catch(e => {ctx.body = {error: e}})
-//             }
-//             else ctx.body = 'webhook exists'
-//         })
-//         .catch(e => {
-//             ctx.body = {errorGet: e}
-//         })
-// });
+router.get('*', async (ctx) => {
+    axios.get(`https://${ctx.get.shopOrigin}/admin/api/2020-07/webhooks/count.json?topic=app/uninstall`)
+        .then(res => {
+            console.log(res.data);
+            if (res.data.count === 0) {
+                axios.post(`https://${ctx.get.shopOrigin}/admin/api/2020-07/webhooks/count.json?topic=app/uninstall`, {
+                    "webhook": {
+                        "topic": "app/uninstall",
+                        "address": `${HOST}/webhooks/app/uninstall`,
+                        "format": "json"
+                    }
+                }).then(res => {ctx.body = res.data})
+                    .catch(e => {ctx.body = {error: e}})
+            }
+            else ctx.body = 'webhook exists'
+        })
+        .catch(e => {
+            ctx.body = {errorGet: e}
+        })
+});
 
 server.use(router.allowedMethods());
 server.use(router.routes());
@@ -200,8 +200,8 @@ app.prepare().then(() => {
     //idling webhooks
 
     server.use(graphQLProxy({version: ApiVersion.January20}));
-    //server.use(verifyRequest());
-    router.get('*', verifyRequest(), async (ctx) => {
+    server.use(verifyRequest());
+    server.use(async (ctx) => {
        await handle(ctx.req, ctx.res);
        ctx.respond = false;
        ctx.res.statusCode = 200;
