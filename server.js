@@ -175,8 +175,8 @@ app.prepare().then(() => {
     //idling webhooks
 
     server.use(graphQLProxy({version: ApiVersion.January20}));
-    server.use(verifyRequest());
-    server.use(async (ctx) => {
+    //server.use(verifyRequest());
+    router.get('*', verifyRequest(), async (ctx) => {
        await handle(ctx.req, ctx.res);
        ctx.respond = false;
        ctx.res.statusCode = 200;
