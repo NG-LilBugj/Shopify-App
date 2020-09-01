@@ -9,8 +9,8 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
           {
             plan: {
               appUsagePricingDetails: {
-                  cappedAmount: { amount: 10, currencyCode: USD }
-                  terms: "$1 for 1000 emails"
+                  cappedAmount: { amount: 0, currencyCode: USD }
+                  terms: "Free trial"
               }
             }
           }
