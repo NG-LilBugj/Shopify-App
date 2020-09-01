@@ -32,7 +32,7 @@ const InitPage = (props) => {
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/amplitude/intro')
             .catch(e => console.log(e));
-        axios.get('https://cors-anywhere.herokuapp.com/https://lil-shopify.herokuapp.com/billing/check')
+        axios.get('https://lil-shopify.herokuapp.com/billing/check')
             .then(res => console.log(res.data))
     }, []);
 
