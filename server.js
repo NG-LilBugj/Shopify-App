@@ -140,7 +140,7 @@ router.get('/billing/check', async (ctx) => {
         if (res.data) {
             //await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
         }
-        ctx.body = {body: res.data}
+        ctx.body = {body: res.data.recurring_application_charges[0]}
     }
     catch (e) {
         ctx.body = {error: e}
