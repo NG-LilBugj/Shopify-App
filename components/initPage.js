@@ -34,6 +34,7 @@ const InitPage = (props) => {
             .catch(e => console.log(e));
         axios.get('https://lil-shopify.herokuapp.com/billing/check')
             .then(res => console.log(res.data))
+            .catch(e => console.log(e))
     }, []);
 
     return(
