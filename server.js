@@ -233,6 +233,23 @@ app.prepare().then(() => {
                 AnimationConfig.delete(res, err => console.log(err))
             }
         });
+
+        axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
+            headers: {
+                "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
+            },
+        })
+            .then(res => {
+                res.data.recurring_application_charges.forEach(e => {
+                    axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges/${e.id}.json`, {
+                        headers: {
+                            "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
+                        },
+                    })
+                })
+            })
+            .catch(e => console.log(e));
+
         ctx.body = {web: ctx.state.webhook}
     });
     //idling webhooks
