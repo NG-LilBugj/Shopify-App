@@ -241,11 +241,13 @@ app.prepare().then(() => {
         })
             .then(res => {
                 res.data.recurring_application_charges.forEach(e => {
-                    axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges/${e.id}.json`, {
-                        headers: {
-                            "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
-                        },
-                    })
+                    if (e.return_url === "https://lil-shopify.herokuapp.com/") {
+                        axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges/${e.id}.json`, {
+                            headers: {
+                                "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
+                            },
+                        }).catch(e => console.log(e))
+                    }
                 })
             })
             .catch(e => console.log(e));
