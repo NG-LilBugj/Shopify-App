@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const getSubscriptionUrl = async (ctx, accessToken, shop) => {
 
-    const response = await axios.post(`https://${shop}/admin/api/2019-10/graphql.json`, {
+    const response = await axios.post(`https://${shop}/admin/api/2020-01/recurring_application_charges.json`, {
         "recurring_application_charge": {
             "name": "Super Duper Plan",
             "price": 10.0,
