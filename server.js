@@ -173,7 +173,7 @@ app.prepare().then(() => {
                 });
 
                 const registration = await registerWebhook({
-                    address: `${HOST}/webhooks/app/uninstalled`,
+                    address: `${HOST}webhooks/app/uninstalled`,
                     topic: 'APP_UNINSTALLED',
                     accessToken,
                     shop,
