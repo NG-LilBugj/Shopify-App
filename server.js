@@ -149,6 +149,10 @@ router.get('/billing/check', async (ctx) => {
         ctx.body = {error: e}
     }
 });  // endpoint for billing check
+router.get('/redirect', async (ctx) => {
+    ctx.body = {message: 'redirect'};
+    ctx.redirect(`/`)
+});
 
 app.prepare().then(() => {
 

@@ -37,12 +37,12 @@ const Countdown = (props) => {
     const [secondText, setSecondText] = useState(scriptData ? scriptData.configData.secondText : 'Flash Sale');
 
     const [{month, year}, setDate] = useState({
-        month: 6,
+        month: 7,
         year: 2020,
     });
 
     const [{endMonth, endYear}, setSecondDate] = useState({
-        endMonth: 7,
+        endMonth: 8,
         endYear: 2020
     });
 
