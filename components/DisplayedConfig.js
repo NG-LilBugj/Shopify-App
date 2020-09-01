@@ -33,16 +33,30 @@ const DisplayedConfig = (props) => {
                 props.setCountdownId(props.id)
             }
             break;
+            case 'https://lil-proxy.herokuapp.com/static/script.js': {
+                props.setCountdownId(props.id)
+            }
+                break;
             case 'https://lil-storage.herokuapp.com/static/badge.js': {
                 console.log(props.id);
                 props.setSaleId(props.id)
             }
             break;
+            case 'https://lil-proxy.herokuapp.com/static/badge.js': {
+                console.log(props.id);
+                props.setSaleId(props.id)
+            }
+                break;
             case 'https://lil-storage.herokuapp.com/static/animation.js': {
                 console.log(props.id);
                 props.setPopupId(props.id)
             }
             break;
+            case 'https://lil-proxy.herokuapp.com/static/animation.js': {
+                console.log(props.id);
+                props.setPopupId(props.id)
+            }
+                break;
             default: console.log('id dispatching error')
         }
     };
