@@ -88,6 +88,7 @@ const putEndpoint = (bundle) => async (ctx) => {
 };
 
 const deleteEndpoint = (bundle) => async (ctx) => {
+    console.log({...bundle, query: ctx.query.id});
     try {
         const id = ctx.query.id;
         bundle.Config.findOne({shop: ctx.cookies.get('shopOrigin'), id}, (err, res) => { // searching for a matching document
