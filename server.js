@@ -221,7 +221,7 @@ app.prepare().then(() => {
         //         AnimationConfig.delete(res, err => console.log(err))
         //     }
         // });
-        // ctx.body = {web: ctx.state.webhook}
+        ctx.body = {web: ctx.state.webhook}
     });
     //idling webhooks
 
