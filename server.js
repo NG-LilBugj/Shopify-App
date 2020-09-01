@@ -140,10 +140,9 @@ router.get('/billing/check', async (ctx) => {
         });
         if (res.data.recurring_application_charges
             .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "declined") {
-            ctx.body = {...res.data};
-            await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
+            ctx.body = {onPlan: false};
         }
-        else ctx.body = {...res.data};
+        else ctx.body = {onPlan: true};
     }
     catch (e) {
         ctx.body = {error: e}
