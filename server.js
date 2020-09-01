@@ -131,7 +131,6 @@ server.use(cors());
 // server route tools
 
 router.get('/billing/check', async (ctx) => {
-    console.log('billing check!');
     try {
         let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
             headers: {

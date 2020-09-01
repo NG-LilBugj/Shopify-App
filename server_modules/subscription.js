@@ -8,7 +8,6 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
             "price": 10.0,
             "return_url": process.env.HOST,
             "trial_days": 2,
-            "test": true
         }
     },{
         headers: {

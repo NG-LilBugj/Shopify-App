@@ -11,8 +11,10 @@ const DisplayedConfig = (props) => {
     const configStrings = useSelector(state => state.localesReducer.stringsToDisplay.strings.existing_config);
 
     const deleteSubmit = () => {
-        let path = (props.src === 'https://lil-storage.herokuapp.com/static/script.js') ? 'script' :
-            (props.src === 'https://lil-storage.herokuapp.com/static/badge.js') ? 'badge' : 'animation';
+        let path = (props.src === 'https://lil-storage.herokuapp.com/static/script.js' ||
+            props.src === 'https://lil-proxy.herokuapp.com/static/script.js') ? 'script' :
+            (props.src === 'https://lil-storage.herokuapp.com/static/badge.js' ||
+                props.src === 'https://lil-storage.herokuapp.com/static/badge.js') ? 'badge' : 'animation';
         axios.delete(`https://lil-shopify.herokuapp.com/api/${path}?id=${props.id}`).then(res => {
             props.toggleToast(true);
             let animation = axios.get('https://lil-shopify.herokuapp.com/api/animation');
