@@ -137,14 +137,16 @@ router.get('/billing/check', async (ctx) => {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
             },
         });
-        if (res.data) {
-            //await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
+        if (res.data.recurring_application_charges
+            .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "declined") {
+            await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
         }
-        ctx.body = {body: res.data.recurring_application_charges
-                .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status}
     }
     catch (e) {
         ctx.body = {error: e}
+    }
+    finally {
+        ctx.body = {received: true}
     }
 });  // endpoint for billing check
 
