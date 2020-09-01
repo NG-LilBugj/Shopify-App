@@ -132,7 +132,7 @@ server.use(cors());
 
 router.get('/billing/check', async (ctx) => {
     try {
-        let res = await axios.get(`https://cors-anywhere.herokuapp.com/https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
+        let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
             },
