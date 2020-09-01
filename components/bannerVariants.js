@@ -31,7 +31,15 @@ const BannerVariants = (props) => {
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/amplitude/main')
             .catch(e => console.log(e));
+        axios.get('https://lil-shopify.herokuapp.com/billing/check')
+            .then(res => {
+                console.log(res.data);
+                setOnPlan(res.data.onPlan)
+            })
+            .catch(e => console.log(e))
     }, []);
+
+    const [isOnPlan, setOnPlan] = useState(false);
 
     const [chosenOption, chooseOption] = useState(1);
 
@@ -169,6 +177,7 @@ const BannerVariants = (props) => {
                             variant="contained"
                             color="primary"
                             size={'large'}
+                            disabled={!isOnPlan}
                         >
                             {props.strings.continue}
                         </ShopifyButton>
