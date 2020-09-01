@@ -130,13 +130,13 @@ server.use(router.routes());
 server.use(cors());
 // server route tools
 
-// router.get('/billing/check', async (ctx) => {
-//     let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2019-10/graphql.json`);
-//     if (res.data) {
-//         //await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
-//     }
-//     ctx.body = {body: res.data}
-// });  // endpoint for billing check
+router.get('/billing/check', async (ctx) => {
+    let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2019-10/graphql.json`);
+    if (res.data) {
+        //await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
+    }
+    ctx.body = {body: res.data}
+});  // endpoint for billing check
 
 app.prepare().then(() => {
 
@@ -197,30 +197,30 @@ app.prepare().then(() => {
 
     router.post('/webhooks/app/unistalled', webhook, (ctx) => {
         console.log(ctx.state.webhook);
-        // BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-        //     if (err) {
-        //         console.log(err)
-        //     }
-        //     else {
-        //         BannerConfig.delete(res, err => console.log(err))
-        //     }
-        // });
-        // BadgeConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-        //     if (err) {
-        //         console.log(err)
-        //     }
-        //     else {
-        //         BadgeConfig.delete(res, err => console.log(err))
-        //     }
-        // });
-        // AnimationConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-        //     if (err) {
-        //         console.log(err)
-        //     }
-        //     else {
-        //         AnimationConfig.delete(res, err => console.log(err))
-        //     }
-        // });
+        BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                BannerConfig.delete(res, err => console.log(err))
+            }
+        });
+        BadgeConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                BadgeConfig.delete(res, err => console.log(err))
+            }
+        });
+        AnimationConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                AnimationConfig.delete(res, err => console.log(err))
+            }
+        });
         ctx.body = {web: ctx.state.webhook}
     });
     //idling webhooks
