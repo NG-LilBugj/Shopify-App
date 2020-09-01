@@ -197,31 +197,31 @@ app.prepare().then(() => {
 
     router.post('/webhooks/app/unistalled', webhook, (ctx) => {
         console.log(ctx.state.webhook);
-        BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                BannerConfig.delete(res, err => console.log(err))
-            }
-        });
-        BadgeConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                BadgeConfig.delete(res, err => console.log(err))
-            }
-        });
-        AnimationConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                AnimationConfig.delete(res, err => console.log(err))
-            }
-        });
-        ctx.body = {web: ctx.state.webhook}
+        // BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+        //     if (err) {
+        //         console.log(err)
+        //     }
+        //     else {
+        //         BannerConfig.delete(res, err => console.log(err))
+        //     }
+        // });
+        // BadgeConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+        //     if (err) {
+        //         console.log(err)
+        //     }
+        //     else {
+        //         BadgeConfig.delete(res, err => console.log(err))
+        //     }
+        // });
+        // AnimationConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+        //     if (err) {
+        //         console.log(err)
+        //     }
+        //     else {
+        //         AnimationConfig.delete(res, err => console.log(err))
+        //     }
+        // });
+        // ctx.body = {web: ctx.state.webhook}
     });
     //idling webhooks
 
