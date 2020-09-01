@@ -16,7 +16,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
     });
 
     const responseJson = await response;
-    const confirmationUrl = responseJson.data.recurring_application_charge.confirmationUrl;
+    const confirmationUrl = responseJson.data.recurring_application_charge.confirmation_url;
     console.log(confirmationUrl);
     return ctx.redirect(confirmationUrl)
 };
