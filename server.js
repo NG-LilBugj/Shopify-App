@@ -138,8 +138,7 @@ router.get('/billing/check', async (ctx) => {
                 'Content-Type': 'application/json',
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
             },
-            body: `{
-    currentAppInstallation {
+            body: `currentAppInstallation {
         allSubscriptions(first: 10) {
             edges {
                 node {
@@ -151,8 +150,7 @@ router.get('/billing/check', async (ctx) => {
                 }
             }
         }
-    }
-}`
+    }`
         });
         if (res.data) {
             //await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
