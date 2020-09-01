@@ -11,7 +11,6 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
         }
     },{
         headers: {
-            'Content-Type': 'application/json',
             "X-Shopify-Access-Token": accessToken,
         },
     });
