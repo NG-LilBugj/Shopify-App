@@ -52,7 +52,7 @@ const server = new Koa();
 const router = new KoaRouter();
 
 let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
-const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint, amplitudeEvent} = end;
+const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint, amplitudeEvent, amplitudeUninstallEvent} = end;
 //server modules
 
 router.get('/api/script', getEndpoint({
@@ -232,6 +232,8 @@ app.prepare().then(() => {
                 AnimationConfig.delete(res, err => console.log(err))
             }
         });
+
+        amplitudeUninstallEvent(ctx);
 
         axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
             headers: {

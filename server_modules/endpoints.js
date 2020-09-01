@@ -124,6 +124,21 @@ const amplitudeEvent = (bundle) => async (ctx) => {
         console.log(e)
     }
 };
+const amplitudeUninstallEvent = async (ctx) => {
+    try {
+        let ampRes = await amplitude.track(new Fabricator({
+            event: "app_uninstalled",
+            userId: ctx.cookies.get('shopOrigin'),
+            ip: ctx.ip
+        }));
+        ctx.body = {amplitude: {...ampRes, fab: new Fabricator({
+                    userId: ctx.cookies.get('shopOrigin'),
+                    ip: ctx.ip
+                })}}
+    } catch (e) {
+        console.log(e)
+    }
+} ;
 
 // axios.get(`https://${ctx.get.shopOrigin}/admin/api/2020-07/webhooks/count.json?topic=app/uninstall`)
 //     .then(res => {
@@ -149,5 +164,6 @@ module.exports = {
     postEndpoint,
     putEndpoint,
     deleteEndpoint,
-    amplitudeEvent
+    amplitudeEvent,
+    amplitudeUninstallEvent
 }; // module exporting
