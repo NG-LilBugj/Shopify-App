@@ -64,8 +64,11 @@ const DisplayedConfig = (props) => {
     const calculatePath = () => {
         switch (props.src) {
             case 'https://lil-storage.herokuapp.com/static/script.js': return '/countdown';
+            case 'https://lil-proxy.herokuapp.com/static/script.js': return '/countdown';
             case 'https://lil-storage.herokuapp.com/static/badge.js': return '/badges';
+            case 'https://lil-proxy.herokuapp.com/static/badge.js': return '/badges';
             case 'https://lil-storage.herokuapp.com/static/animation.js': return '/animations';
+            case 'https://lil-proxy.herokuapp.com/static/animation.js': return '/animations';
             default:
                 console.log('id dispatching error')
         }
