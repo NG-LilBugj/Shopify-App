@@ -132,7 +132,23 @@ server.use(cors());
 
 router.get('/billing/check', async (ctx) => {
     try {
-        let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2019-10/graphql.json`, {
+        let res = await axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2019-10/graphql.json`, {
+            body: `{
+    currentAppInstallation {
+        allSubscriptions(first: 10) {
+            edges {
+                node {
+                    createdAt
+                    id
+                    name
+                    status
+                    test
+                }
+            }
+        }
+    }
+}`
+        }, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken')
             }
