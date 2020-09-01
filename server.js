@@ -132,25 +132,12 @@ server.use(cors());
 
 router.get('/billing/check', async (ctx) => {
     try {
-        let res = await fetch(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2019-10/graphql.json`, {
-            method: 'POST',
+        let res = await fetch(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
             },
-            body: `currentAppInstallation {
-        allSubscriptions(first: 10) {
-            edges {
-                node {
-                    createdAt
-                    id
-                    name
-                    status
-                    test
-                }
-            }
-        }
-    }`
         });
         if (res.data) {
             //await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
