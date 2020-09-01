@@ -130,13 +130,13 @@ server.use(router.routes());
 server.use(cors());
 // server route tools
 
-router.get('/billing/check', async (ctx) => {
-    let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2019-10/graphql.json`);
-    if (res.data) {
-        //await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
-    }
-    ctx.body = {body: res.data}
-});  // endpoint for billing check
+// router.get('/billing/check', async (ctx) => {
+//     let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2019-10/graphql.json`);
+//     if (res.data) {
+//         //await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
+//     }
+//     ctx.body = {body: res.data}
+// });  // endpoint for billing check
 
 app.prepare().then(() => {
 
