@@ -7,7 +7,8 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
             "name": "Super Duper Plan",
             "price": 10.0,
             "return_url": process.env.HOST,
-            "trial_days": 2
+            "trial_days": 2,
+            "test": true
         }
     },{
         headers: {
