@@ -14,7 +14,7 @@ const DisplayedConfig = (props) => {
         let path = (props.src === 'https://lil-storage.herokuapp.com/static/script.js' ||
             props.src === 'https://lil-proxy.herokuapp.com/static/script.js') ? 'script' :
             (props.src === 'https://lil-storage.herokuapp.com/static/badge.js' ||
-                props.src === 'https://lil-storage.herokuapp.com/static/badge.js') ? 'badge' : 'animation';
+                props.src === 'https://lil-proxy.herokuapp.com/static/badge.js') ? 'badge' : 'animation';
         axios.delete(`https://lil-shopify.herokuapp.com/api/${path}?id=${props.id}`).then(res => {
             props.toggleToast(true);
             let animation = axios.get('https://lil-shopify.herokuapp.com/api/animation');
