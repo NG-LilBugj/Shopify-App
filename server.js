@@ -183,19 +183,16 @@ app.prepare().then(() => {
 
     const webhook = receiveWebhook({secret: SHOPIFY_API_SECRET_KEY});
 
-    router.post('/webhooks/customers/redact', webhook, (ctx) => {
+    router.post('webhooks/customers/redact', webhook, (ctx) => {
         console.log('received webhook:', ctx.state.webhook);
-        ctx.body = {web: ctx.state.webhook}
     });
 
-    router.post('/webhooks/shop/redact', webhook, (ctx) => {
+    router.post('webhooks/shop/redact', webhook, (ctx) => {
         console.log('received webhook:', ctx.state.webhook);
-        ctx.body = {web: ctx.state.webhook}
     });
 
-    router.post('/webhooks/customers/data_request', webhook, (ctx) => {
+    router.post('webhooks/customers/data_request', webhook, (ctx) => {
         console.log('received webhook:', ctx.state.webhook);
-        ctx.body = {web: ctx.state.webhook}
     });
 
     router.post('/webhooks/app/unistalled', webhook, (ctx) => {
