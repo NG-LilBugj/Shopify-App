@@ -117,10 +117,10 @@ const billingCheck = async (ctx) => {
             },
         });
         if (res.data.recurring_application_charges
-            .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "declined") {
-            ctx.body = {onPlan: false, plans: res.data.recurring_application_charges};
+            .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "accepted") {
+            ctx.body = {onPlan: true, plans: res.data.recurring_application_charges};
         }
-        else ctx.body = {onPlan: true, plans: res.data.recurring_application_charges};
+        else ctx.body = {onPlan: false, plans: res.data.recurring_application_charges};
     }
     catch (e) {
         ctx.body = {error: e}
