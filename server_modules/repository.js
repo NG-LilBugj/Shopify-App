@@ -1,4 +1,6 @@
 const DBAccess = require('./dbAccess');
+const getSubscriptionUrl = require('./subscription');
+const {registerWebhook} = require('@shopify/koa-shopify-webhooks');
 const BannerConfig = DBAccess.BannerConfig;
 const BadgeConfig = DBAccess.BadgeConfig;
 
@@ -34,6 +36,45 @@ class AmplitudeFabricator {
     ip = '127.0.0.1'
 }
 
-module.exports.decoder = modelDecoder;
-module.exports.getter = getter;
-module.exports.AmplitudeFabricator = AmplitudeFabricator;
+const authOptions = {
+    apiKey: process.env.SHOPIFY_API_KEY,
+    secret: process.env.SHOPIFY_API_SECRET_KEY,
+    scopes: ['read_script_tags', 'write_script_tags'],
+    async afterAuth(ctx) {
+        const {shop, accessToken} = ctx.session;
+        ctx.cookies.set('shopOrigin', shop, {
+            httpOnly: false,
+            secure: true,
+            sameSite: 'none'
+        });
+        ctx.cookies.set('accessToken', accessToken, {
+            httpOnly: false,
+            secure: true,
+            sameSite: 'none'
+        });
+
+        const registration = await registerWebhook({
+            address: `${process.env.HOST}webhooks/app/uninstalled`,
+            topic: 'APP_UNINSTALLED',
+            accessToken,
+            shop,
+            apiVersion: ApiVersion.January20
+        });
+
+        if (registration.success) {
+            console.log('Successfully registered webhook!');
+        } else {
+            console.log('Failed to register webhook', registration.result);
+        }
+
+        await getSubscriptionUrl(ctx, accessToken, shop);
+        //ctx.redirect('/');
+    }
+};
+
+module.exports = {
+    decoder: modelDecoder,
+    getter,
+    AmplitudeFabricator,
+    authOptions
+};

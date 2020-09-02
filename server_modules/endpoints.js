@@ -109,6 +109,24 @@ const deleteEndpoint = (bundle) => async (ctx) => {
 };
 
 
+const billingCheck = async (ctx) => {
+    try {
+        let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
+            headers: {
+                "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
+            },
+        });
+        if (res.data.recurring_application_charges
+            .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "declined") {
+            ctx.body = {onPlan: false, plans: res.data.recurring_application_charges};
+        }
+        else ctx.body = {onPlan: true, plans: res.data.recurring_application_charges};
+    }
+    catch (e) {
+        ctx.body = {error: e}
+    }
+};
+
 const amplitudeEvent = (bundle) => async (ctx) => {
     try {
         let ampRes = await amplitude.track(new Fabricator({
@@ -165,6 +183,7 @@ module.exports = {
     postEndpoint,
     putEndpoint,
     deleteEndpoint,
+    billingCheck,
     amplitudeEvent,
     amplitudeUninstallEvent
 }; // module exporting

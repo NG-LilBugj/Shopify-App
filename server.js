@@ -29,6 +29,7 @@ const DBAccess = require('./server_modules/dbAccess');
 const rep = require('./server_modules/repository');
 const end = require('./server_modules/endpoints');
 const getSubscriptionUrl = require('./server_modules/subscription');
+const uninstallWebhook = require('./server_modules/uninstallWebhook');
 
 dotenv.config();
 
@@ -52,7 +53,8 @@ const server = new Koa();
 const router = new KoaRouter();
 
 let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
-const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint, amplitudeEvent, amplitudeUninstallEvent} = end;
+const {getEndpoint, postEndpoint, putEndpoint, deleteEndpoint,
+    billingCheck, amplitudeEvent, amplitudeUninstallEvent} = end;
 //server modules
 
 router.get('/api/script', getEndpoint({
@@ -130,65 +132,14 @@ server.use(router.routes());
 server.use(cors());
 // server route tools
 
-router.get('/billing/check', async (ctx) => {
-    try {
-        let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
-            headers: {
-                "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
-            },
-        });
-        if (res.data.recurring_application_charges
-            .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "declined") {
-            ctx.body = {onPlan: false, plans: res.data.recurring_application_charges};
-        }
-        else ctx.body = {onPlan: true, plans: res.data.recurring_application_charges};
-    }
-    catch (e) {
-        ctx.body = {error: e}
-    }
-});  // endpoint for billing check
-
+router.get('/billing/check', billingCheck);  // endpoint for billing check
 
 app.prepare().then(() => {
 
     server.use(session({secure: true, sameSite: 'none'}, server));
     server.keys = [SHOPIFY_API_SECRET_KEY];
     server.use(
-        createShopifyAuth({
-            apiKey: SHOPIFY_API_KEY,
-            secret: SHOPIFY_API_SECRET_KEY,
-            scopes: ['read_script_tags', 'write_script_tags'],
-            async afterAuth(ctx) {
-                const {shop, accessToken} = ctx.session;
-                ctx.cookies.set('shopOrigin', shop, {
-                    httpOnly: false,
-                    secure: true,
-                    sameSite: 'none'
-                });
-                ctx.cookies.set('accessToken', accessToken, {
-                    httpOnly: false,
-                    secure: true,
-                    sameSite: 'none'
-                });
-
-                const registration = await registerWebhook({
-                    address: `${HOST}webhooks/app/uninstalled`,
-                    topic: 'APP_UNINSTALLED',
-                    accessToken,
-                    shop,
-                    apiVersion: ApiVersion.January20
-                });
-
-                if (registration.success) {
-                    console.log('Successfully registered webhook!');
-                } else {
-                    console.log('Failed to register webhook', registration.result);
-                }
-
-                await getSubscriptionUrl(ctx, accessToken, shop);
-                //ctx.redirect('/');
-            }
-        })
+        createShopifyAuth(rep.authOptions)
     );
     // shopify app connection/registration
 
@@ -206,55 +157,7 @@ app.prepare().then(() => {
         console.log('received webhook:', ctx.state.webhook);
     });
 
-    router.post('/webhooks/app/unistalled', webhook, (ctx) => {
-        console.log(ctx.state.webhook);
-        BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                BannerConfig.delete(res, err => console.log(err))
-            }
-        });
-        BadgeConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                BadgeConfig.delete(res, err => console.log(err))
-            }
-        });
-        AnimationConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                AnimationConfig.delete(res, err => console.log(err))
-            }
-        });
-
-        amplitudeUninstallEvent(ctx);
-
-        axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
-            headers: {
-                "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
-            },
-        })
-            .then(res => {
-                res.data.recurring_application_charges.forEach(e => {
-                    if (e.return_url === "https://lil-shopify.herokuapp.com/") {
-                        axios.delete(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges/${e.id}.json`, {
-                            headers: {
-                                "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
-                            },
-                        }).catch(e => console.log(e))
-                    }
-                })
-            })
-            .catch(e => console.log(e));
-
-        ctx.body = {web: ctx.state.webhook}
-    });
+    router.post('/webhooks/app/unistalled', webhook, uninstallWebhook);
     //idling webhooks
 
     server.use(graphQLProxy({version: ApiVersion.January20}));
