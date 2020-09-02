@@ -1,6 +1,7 @@
 const DBAccess = require('./dbAccess');
 const getSubscriptionUrl = require('./subscription');
 const {registerWebhook} = require('@shopify/koa-shopify-webhooks');
+const {ApiVersion} = require('@shopify/koa-shopify-graphql-proxy');
 const BannerConfig = DBAccess.BannerConfig;
 const BadgeConfig = DBAccess.BadgeConfig;
 
