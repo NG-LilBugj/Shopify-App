@@ -19,7 +19,8 @@ const initState = {
                 "animationBanner": "Discount popups",
                 "animationDescription": "Gift animation to your customers!",
                 "animationRevenue": "About 15% more revenue",
-                "continue": "Continue"
+                "continue": "Continue",
+                "planWarning": "Please, upgrade your plan to use full functionality!"
             },
             "design": {
                 "timerDesign": "Timer design",
@@ -182,7 +183,8 @@ const initState = {
                     "animationBanner": "Discount popups",
                     "animationDescription": "Gift animation to your customers!",
                     "animationRevenue": "About 15% more revenue",
-                    "continue": "Continue"
+                    "continue": "Continue",
+                    "planWarning": "Please, upgrade your plan to use full functionality!"
                 },
                 "design": {
                     "timerDesign": "Timer design",
@@ -344,7 +346,8 @@ const initState = {
                     "animationBanner": "Модальное окно с анимацией",
                     "animationDescription": "Подарочная анимация Вашим клиентам!",
                     "animationRevenue": "Примерно на 15% больше выручки",
-                    "continue": "Продолжить"
+                    "continue": "Продолжить",
+                    "planWarning": "Пожалуйста, улучшите свой план, чтобы дальше использовать весь функционал!"
                 },
                 "design": {
                     "timerDesign": "Дизайн таймера",
@@ -506,7 +509,8 @@ const initState = {
                     "animationBanner": "Modales Fenster mit Animation",
                     "animationDescription": "Geschenk-Animation für Ihre Kunden!",
                     "animationRevenue": "Ca. 15% mehr Umsatz",
-                    "continue": "Weiterhin"
+                    "continue": "Weiterhin",
+                    "planWarning": "Bitte aktualisieren Sie Ihren Plan, um weiterhin alle Funktionen nutzen zu können!"
                 },
                 "design": {
                     "timerDesign": "Timer-Design",

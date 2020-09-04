@@ -164,6 +164,13 @@ const BannerVariants = (props) => {
                     </Card>
                 </div>
                 <Layout.Section>
+                    {!isOnPlan && <div style={{
+                        color: "red"
+                    }}>
+                        <DisplayText>
+                            {props.strings.planWarning}
+                        </DisplayText>
+                    </div>}
                 <div style={{
                     display: "flex",
                     justifyContent: "space-evenly",
