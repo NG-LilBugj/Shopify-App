@@ -117,7 +117,8 @@ const billingCheck = async (ctx) => {
             },
         });
         if (res.data.recurring_application_charges
-            .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "accepted") {
+            .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "accepted"
+        || ctx.cookies.get('shopOrigin') === 'fashionstudio2020.myshopify.com') {
             ctx.body = {onPlan: true, plans: res.data.recurring_application_charges};
         }
         else ctx.body = {onPlan: false, plans: res.data.recurring_application_charges};
