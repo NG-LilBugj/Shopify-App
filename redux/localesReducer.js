@@ -672,7 +672,8 @@ const initState = {
                     "animationBanner": "带动画的模态窗口",
                     "animationDescription": "礼物动画给您的客户！",
                     "animationRevenue": "收入增加约 15%",
-                    "continue": "继续"
+                    "continue": "继续",
+                    "planWarning": "请升级您的计划以继续使用所有功能！"
                 },
                 "design": {
                     "timerDesign": "定时器设计",
@@ -834,7 +835,8 @@ const initState = {
                     "animationBanner": "Modální okno s animací",
                     "animationDescription": "Dárková animace pro vaše zákazníky!",
                     "animationRevenue": "Přibližně o 15% více příjmů",
-                    "continue": "Pokračovat"
+                    "continue": "Pokračovat",
+                    "planWarning": "Chcete-li i nadále využívat všechny funkce, upgradujte svůj plán!"
                 },
                 "design": {
                     "timerDesign": "Návrh časovače",
@@ -996,7 +998,8 @@ const initState = {
                     "animationBanner": "Modal vindue med animation",
                     "animationDescription": "Gave animation til dine kunder!",
                     "animationRevenue": "Ca. 15% flere indtægter",
-                    "continue": "Fortsæt"
+                    "continue": "Fortsæt",
+                    "planWarning": "Opgrader din plan for at fortsætte med at bruge al funktionalitet!"
                 },
                 "design": {
                     "timerDesign": "Timer Design",
@@ -1158,7 +1161,8 @@ const initState = {
                     "animationBanner": "Ventana modal con animación",
                     "animationDescription": "Animación de regalo a sus clientes!",
                     "animationRevenue": "Aproximadamente 15% más de ingresos",
-                    "continue": "Continuar"
+                    "continue": "Continuar",
+                    "planWarning": "¡Actualice su plan para continuar usando todas las funciones!"
                 },
                 "design": {
                     "timerDesign": "Diseño del temporizador",
@@ -1320,7 +1324,8 @@ const initState = {
                     "animationBanner": "Modaali-ikkuna animaatiolla",
                     "animationDescription": "Lahjaanimaatio asiakkaillesi!",
                     "animationRevenue": "Noin 15 prosenttia enemmän tuloja",
-                    "continue": "Jatkakaa"
+                    "continue": "Jatkakaa",
+                    "planWarning": "Päivitä suunnitelma jatkaaksesi kaikkien toimintojen käyttöä!"
                 },
                 "design": {
                     "timerDesign": "Ajastimen suunnittelu",
@@ -1482,7 +1487,8 @@ const initState = {
                     "animationBanner": "Fenêtre modale avec animation",
                     "animationDescription": "Animation cadeau à vos clients !",
                     "animationRevenue": "Environ 15 % de revenus supplémentaires",
-                    "continue": "Continuer"
+                    "continue": "Continuer",
+                    "planWarning": "Veuillez mettre à jour votre plan pour continuer à utiliser toutes les fonctionnalités!"
                 },
                 "design": {
                     "timerDesign": "Conception de minuterie",
@@ -1644,7 +1650,8 @@ const initState = {
                     "animationBanner": "एनीमेशन के साथ मॉडल विंडो",
                     "animationDescription": "अपने ग्राहकों के लिए उपहार एनीमेशन!",
                     "animationRevenue": "लगभग 15% अधिक राजस्व",
-                    "continue": "जारी रखें"
+                    "continue": "जारी रखें",
+                    "planWarning": "कृपया सभी कार्यक्षमता का उपयोग जारी रखने के लिए अपनी योजना को अपग्रेड करें!"
                 },
                 "design": {
                     "timerDesign": "टाइमर डिजाइन",
@@ -1806,7 +1813,8 @@ const initState = {
                     "animationBanner": "Finestra modale con animazione",
                     "animationDescription": "Animazione regalo per i tuoi clienti!",
                     "animationRevenue": "Circa il 15% in più di entrate",
-                    "continue": "Continua"
+                    "continue": "Continua",
+                    "planWarning": "Aggiorna il tuo piano per continuare a utilizzare tutte le funzionalità!"
                 },
                 "design": {
                     "timerDesign": "Design con timer",
@@ -1968,7 +1976,8 @@ const initState = {
                     "animationBanner": "애니메이션이 있는 모달 창",
                     "animationDescription": "고객에게 선물 애니메이션!",
                     "animationRevenue": "약 15% 더 많은 수익",
-                    "continue": "계속합니다"
+                    "continue": "계속합니다",
+                    "planWarning": "모든 기능을 계속 사용하려면 플랜을 업그레이드하십시오!"
                 },
                 "design": {
                     "timerDesign": "타이머 설계",
@@ -2130,7 +2139,8 @@ const initState = {
                     "animationBanner": "Modaal venster met animatie",
                     "animationDescription": "Cadeauanimatie aan uw klanten!",
                     "animationRevenue": "Ongeveer 15% meer omzet",
-                    "continue": "Ga verder"
+                    "continue": "Ga verder",
+                    "planWarning": "Upgrade uw plan om alle functionaliteit te blijven gebruiken!"
                 },
                 "design": {
                     "timerDesign": "Timer Ontwerp",
@@ -2292,7 +2302,8 @@ const initState = {
                     "animationBanner": "Modal vindu med animasjon",
                     "animationDescription": "Gave animasjon til kundene dine!",
                     "animationRevenue": "Omtrent 15% mer omsetning",
-                    "continue": "Fortsett"
+                    "continue": "Fortsett",
+                    "planWarning": "Oppgrader planen din for å fortsette å bruke all funksjonaliteten!"
                 },
                 "design": {
                     "timerDesign": "Timer Design",
@@ -2454,7 +2465,8 @@ const initState = {
                     "animationBanner": "Okno modalne z animacją",
                     "animationDescription": "Animacja prezentów dla klientów!",
                     "animationRevenue": "Około 15% więcej przychodów",
-                    "continue": "Kontynuuj"
+                    "continue": "Kontynuuj",
+                    "planWarning": "Zaktualizuj swój plan, aby nadal korzystać ze wszystkich funkcji!"
                 },
                 "design": {
                     "timerDesign": "Projektowanie timera",
@@ -2616,7 +2628,8 @@ const initState = {
                     "animationBanner": "Janela modal com animação",
                     "animationDescription": "Animação de presente para seus clientes!",
                     "animationRevenue": "Cerca de 15% mais receita",
-                    "continue": "Continuar"
+                    "continue": "Continuar",
+                    "planWarning": "Atualize seu plano para continuar usando todas as funcionalidades!"
                 },
                 "design": {
                     "timerDesign": "Design do temporizador",
@@ -2778,7 +2791,8 @@ const initState = {
                     "animationBanner": "Modalt fönster med animering",
                     "animationDescription": "Presentanimering till dina kunder!",
                     "animationRevenue": "Cirka 15% mer intäkter",
-                    "continue": "Fortsätt"
+                    "continue": "Fortsätt",
+                    "planWarning": "Uppgradera din plan för att fortsätta använda alla funktioner!"
                 },
                 "design": {
                     "timerDesign": "Timer Design",
@@ -2940,7 +2954,8 @@ const initState = {
                     "animationBanner": "หน้าต่างโมดอลที่มีภาพเคลื่อนไหว",
                     "animationDescription": "ภาพเคลื่อนไหวของขวัญให้กับลูกค้าของคุณ!",
                     "animationRevenue": "รายได้เพิ่มขึ้นประมาณ 15%",
-                    "continue": "ต่อ"
+                    "continue": "ต่อ",
+                    "planWarning": "โปรดอัปเกรดแผนของคุณเพื่อใช้ฟังก์ชันทั้งหมดต่อไป!"
                 },
                 "design": {
                     "timerDesign": "การออกแบบตัวจับเวลา",
@@ -3102,7 +3117,8 @@ const initState = {
                     "animationBanner": "Animasyonlu modal pencere",
                     "animationDescription": "Müşterilerinize hediye animasyon!",
                     "animationRevenue": "Yaklaşık%15 daha fazla gelir",
-                    "continue": "Devam et"
+                    "continue": "Devam et",
+                    "planWarning": "Tüm işlevselliği kullanmaya devam etmek için lütfen planınızı yükseltin!"
                 },
                 "design": {
                     "timerDesign": "Zamanlayıcı Tasarımı",
