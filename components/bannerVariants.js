@@ -165,6 +165,8 @@ const BannerVariants = (props) => {
                 </div>
                 <Layout.Section>
                     {!isOnPlan && <div style={{
+                        display: "flex",
+                        justifyContent: "center",
                         color: "red"
                     }}>
                         <DisplayText>
