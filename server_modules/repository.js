@@ -63,7 +63,7 @@ const authOptions = {
         });
 
         if (registration.success) {
-            console.log('Successfully registered webhook!');
+            console.log('Successfully registered uninstall-webhook!');
         } else {
             console.log('Failed to register webhook', registration.result);
         }

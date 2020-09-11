@@ -114,7 +114,7 @@ router.get('/amplitude/banner/in', amplitudeEvent({
     event: 'countdown_banner_page',
 }));
 router.get('/amplitude/popup/in', amplitudeEvent({
-    event: 'countdown_timer_page',
+    event: 'countdown_popup_page',
 }));
 router.get('/amplitude/countdown/created', amplitudeEvent({
     event: 'countdown_timer_created',
