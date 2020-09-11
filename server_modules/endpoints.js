@@ -108,7 +108,6 @@ const deleteEndpoint = (bundle) => async (ctx) => {
     }
 };
 
-
 const billingCheck = async (ctx) => {
     try {
         let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {

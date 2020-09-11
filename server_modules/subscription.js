@@ -7,7 +7,6 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
             "name": "TopSale Banners Plan",
             "price": 10.0,
             "return_url": process.env.HOST,
-            "trial_days": 2,
         }
     },{
         headers: {
