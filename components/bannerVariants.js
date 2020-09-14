@@ -33,8 +33,7 @@ const BannerVariants = (props) => {
             .catch(e => console.log(e));
         axios.get('https://lil-shopify.herokuapp.com/billing/check')
             .then(res => {
-                console.log(res.data);
-                setOnPlan(res.data.onPlan)
+                setOnPlan(true)
             })
             .catch(e => console.log(e))
     }, []);

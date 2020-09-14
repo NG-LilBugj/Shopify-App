@@ -68,8 +68,8 @@ const authOptions = {
             console.log('Failed to register webhook', registration.result);
         }
 
-        await getSubscriptionUrl(ctx, accessToken, shop);
-        //ctx.redirect('/');
+        //await getSubscriptionUrl(ctx, accessToken, shop);
+        ctx.redirect('/');
     }
 };
 
