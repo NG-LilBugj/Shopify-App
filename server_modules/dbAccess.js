@@ -66,6 +66,6 @@ const AnimationConfig = mongoose.model('animationConfig', animationSchema);
 module.exports = {
     BannerConfig,
     BadgeConfig,
-    AnimationConfig
+    AnimationConfig,
 }; // module exported
 
