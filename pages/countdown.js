@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {Banner, Button, Frame, Icon, Layout, Page, TextField} from "@shopify/polaris";
-import {CalendarMinor} from "@shopify/polaris-icons";
+import {CalendarMinor, MobileBackArrowMajorMonotone} from "@shopify/polaris-icons";
 import * as Scroll from "react-scroll";
 import PrimaryDesign from "../components/primary";
 import DesignSection from "../components/design";
@@ -299,13 +299,22 @@ const Countdown = (props) => {
                                 <div style={{fontSize: '24px', fontWeight: '600'}}>
                                     {props.strings.customize}
                                 </div>
-                                <Button
-                                    size={"medium"}
-                                    type={"submit"}
-                                    onClick={designSwitch}
-                                >
-                                    {isMainConfig ? props.strings.bannerDesign : props.strings.settings}
-                                </Button>
+                                <div style={{display: 'flex', alignItems: 'center', }}>
+                                    <Link href={'/'}>
+                                        <Button
+                                            size={"medium"}
+                                        >
+                                            <Icon source={MobileBackArrowMajorMonotone}/>
+                                        </Button>
+                                    </Link>
+                                    <Button
+                                        size={"medium"}
+                                        type={"submit"}
+                                        onClick={designSwitch}
+                                    >
+                                        {isMainConfig ? props.strings.bannerDesign : props.strings.settings}
+                                    </Button>
+                                </div>
                             </div>}
                             {props.warning.isWarning &&
                             <div style={{marginTop: '10px', marginBottom: '30px'}}>

@@ -10,7 +10,12 @@ import {
     Page,
     TextField
 } from "@shopify/polaris";
-import {DeleteMajorMonotone, SearchMinor, SettingsMajorMonotone} from "@shopify/polaris-icons";
+import {
+    DeleteMajorMonotone,
+    MobileBackArrowMajorMonotone,
+    SearchMinor,
+    SettingsMajorMonotone
+} from "@shopify/polaris-icons";
 import {ResourcePicker} from "@shopify/app-bridge-react";
 import Link from "next/link";
 import Product from "../components/product";
@@ -307,7 +312,14 @@ const Animations = (props) => {
                         </div>}
                     </Card>
                 </Layout.Section>
-                <div style={{display: "flex", justifyContent: 'flex-end', width: '100%', marginTop: '20px'}}>
+                <div style={{display: "flex", justifyContent: 'space-between', width: '100%', marginTop: '20px'}}>
+                    <Link href={'/'}>
+                        <Button
+                            size={"medium"}
+                        >
+                            <Icon source={MobileBackArrowMajorMonotone}/>
+                        </Button>
+                    </Link>
                     <Link href={!!name ? '/popupSuccess' : '/animations'}>
                         <Button
                             primary

@@ -1,4 +1,4 @@
-import {Button, Card, DisplayText, Frame, Layout, Page, Toast} from "@shopify/polaris";
+import {Banner, Button, Card, DisplayText, Frame, Layout, Page, Toast} from "@shopify/polaris";
 import DisplayedConfig from "./DisplayedConfig";
 import {connect} from "react-redux";
 import {useEffect, useState} from "react";
@@ -39,6 +39,22 @@ const MainScreen = (props) => {
                 <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
                     <LocalesToggler/>
                 </div>
+                <Banner
+                    title={"Dear merchant!"}
+                    status={"success"}
+
+                >
+                    <p>
+                        Please write  a quick review on Shopify, that would be awesome.
+                    </p>
+                    <a href={"https://apps.shopify.com/sale-banner"}>
+                        <Button
+                            outline
+                        >
+                            App store page
+                        </Button>
+                    </a>
+                </Banner>
                 <div style={{marginBottom: '30px', marginTop: '30px', marginLeft: '2rem', width: '100%'}}>
                     <DisplayText size={'large'} element={'h1'}>
                         {props.strings.secondPageMainSign}

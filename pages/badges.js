@@ -15,7 +15,12 @@ import {useEffect, useState} from "react";
 import "../public/index.css"
 import axios from "axios";
 import * as Scroll from "react-scroll";
-import {DeleteMajorMonotone, SearchMinor, SettingsMajorMonotone} from "@shopify/polaris-icons";
+import {
+    DeleteMajorMonotone,
+    MobileBackArrowMajorMonotone,
+    SearchMinor,
+    SettingsMajorMonotone
+} from "@shopify/polaris-icons";
 import Link from "next/link";
 import {ResourcePicker} from "@shopify/app-bridge-react";
 import Product from "../components/product";
@@ -348,7 +353,14 @@ return (
                             </div>
                         </Card>
                     </Layout.Section>
-                    <div style={{display: "flex", justifyContent: 'flex-end', width: '100%', marginTop: '20px'}}>
+                    <div style={{display: "flex", justifyContent: 'space-between', width: '100%', marginTop: '20px'}}>
+                        <Link href={'/'}>
+                            <Button
+                                size={"medium"}
+                            >
+                                <Icon source={MobileBackArrowMajorMonotone}/>
+                            </Button>
+                        </Link>
                         <Link href={!!name ? '/saleSuccess' : '/badges'}>
                         <Button
                             primary
