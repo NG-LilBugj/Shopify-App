@@ -312,7 +312,7 @@ const Animations = (props) => {
                         </div>}
                     </Card>
                 </Layout.Section>
-                <div style={{display: "flex", justifyContent: 'space-between', width: '100%', marginTop: '20px'}}>
+                <div style={{display: "flex", justifyContent: 'space-between', width: '100%', marginTop: '20px', marginLeft: '2rem'}}>
                     <Link href={'/'}>
                         <Button
                             size={"medium"}

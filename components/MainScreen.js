@@ -39,12 +39,17 @@ const MainScreen = (props) => {
                 <div style={{display: "flex", justifyContent: "flex-end", width: '100%'}}>
                     <LocalesToggler/>
                 </div>
+                <div style={{marginBottom: '30px', marginTop: '30px', marginLeft: '2rem', width: '100%'}}>
+                    <DisplayText size={'large'} element={'h1'}>
+                        {props.strings.secondPageMainSign}
+                    </DisplayText>
+                </div>
                 <Banner
                     title={"Dear merchant!"}
                     status={"success"}
 
                 >
-                    <p>
+                    <p style={{width: '100%', marginBottom: '15px'}}>
                         Please write  a quick review on Shopify, that would be awesome.
                     </p>
                     <a href={"https://apps.shopify.com/sale-banner"}>
@@ -55,11 +60,6 @@ const MainScreen = (props) => {
                         </Button>
                     </a>
                 </Banner>
-                <div style={{marginBottom: '30px', marginTop: '30px', marginLeft: '2rem', width: '100%'}}>
-                    <DisplayText size={'large'} element={'h1'}>
-                        {props.strings.secondPageMainSign}
-                    </DisplayText>
-                </div>
                 <Layout.Section>
                     <Card title={props.configStrings.existingCountdownTimer}>
                         <div style={delimiter}/>
