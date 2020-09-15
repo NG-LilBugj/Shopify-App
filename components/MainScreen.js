@@ -44,22 +44,23 @@ const MainScreen = (props) => {
                         {props.strings.secondPageMainSign}
                     </DisplayText>
                 </div>
-                <Banner
-                    title={"Dear merchant!"}
-                    status={"success"}
-
-                >
-                    <p style={{width: '100%', marginBottom: '15px'}}>
-                        Please write  a quick review on Shopify, that would be awesome.
-                    </p>
-                    <a href={"https://apps.shopify.com/sale-banner"}>
-                        <Button
-                            outline
-                        >
-                            App store page
-                        </Button>
-                    </a>
-                </Banner>
+                <div style={{display: 'flex', justifyContent: 'flex-start', marginLeft: '2rem', width: '100%'}}>
+                    <Banner
+                        title={"Dear merchant!"}
+                        status={"success"}
+                    >
+                        <p style={{width: '100%', marginBottom: '15px'}}>
+                            Please write  a quick review on Shopify, that would be awesome.
+                        </p>
+                        <a href={"https://apps.shopify.com/sale-banner"}>
+                            <Button
+                                outline
+                            >
+                                App store page
+                            </Button>
+                        </a>
+                    </Banner>
+                </div>
                 <Layout.Section>
                     <Card title={props.configStrings.existingCountdownTimer}>
                         <div style={delimiter}/>
