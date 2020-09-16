@@ -656,7 +656,9 @@ const initState = {
                     "createNew": "Erstellen Sie eine neue",
                     "createBanner": "Banner erstellen",
                     "hereIsNo": "Banner dieses Typs wurde noch nicht erstellt",
-                    "toastMessage": "Banner entfernt"
+                    "toastMessage": "Banner entfernt",
+                    "dearMerchant": "Lieber Kaufmann",
+                    "pleaseWrite": "Bitte schreiben Sie eine kurze Bewertung zu Shopify, das wäre großartig."
                 }
             }
         },
@@ -819,7 +821,9 @@ const initState = {
                     "createNew": "创建新的",
                     "createBanner": "创建横幅",
                     "hereIsNo": "此类型的横幅尚未创建",
-                    "toastMessage": "已删除横幅"
+                    "toastMessage": "已删除横幅",
+                    "dearMerchant": "亲爱的商人！",
+                    "pleaseWrite": "请在Shopify上做一个简短的评论，那太棒了。"
                 }
             }
         },
@@ -982,7 +986,9 @@ const initState = {
                     "createNew": "Vytvořit nový",
                     "createBanner": "Vytvořit banner",
                     "hereIsNo": "Banner tohoto typu ještě nebyl vytvořen",
-                    "toastMessage": "Banner odstraněn"
+                    "toastMessage": "Banner odstraněn",
+                    "dearMerchant": "Vážený obchodníku!",
+                    "pleaseWrite": "Napište prosím krátkou recenzi na Shopify, to by bylo úžasné."
                 }
             }
         },
@@ -1145,7 +1151,9 @@ const initState = {
                     "createNew": "Opret en ny",
                     "createBanner": "Opret banner",
                     "hereIsNo": "Banner af denne type er endnu ikke oprettet",
-                    "toastMessage": "Banner fjernet"
+                    "toastMessage": "Banner fjernet",
+                    "dearMerchant": "Kære købmand!",
+                    "pleaseWrite": "Skriv en hurtig anmeldelse på Shopify, det ville være fantastisk."
                 }
             }
         },
@@ -1308,7 +1316,9 @@ const initState = {
                     "createNew": "Crear un nuevo",
                     "createBanner": "Crear banner",
                     "hereIsNo": "El banner de este tipo aún no se ha creado",
-                    "toastMessage": "Banner eliminado"
+                    "toastMessage": "Banner eliminado",
+                    "dearMerchant": "¡Estimado comerciante!",
+                    "pleaseWrite": "Escribe una reseña rápida en Shopify, sería genial."
                 }
             }
         },
@@ -1471,7 +1481,9 @@ const initState = {
                     "createNew": "Luo uusi",
                     "createBanner": "Luo banneri",
                     "hereIsNo": "Tämän tyyppistä banneria ei ole vielä luotu",
-                    "toastMessage": "Banneri poistettu"
+                    "toastMessage": "Banneri poistettu",
+                    "dearMerchant": "Hyvä kauppias!",
+                    "pleaseWrite": "Kirjoita nopea arvostelu Shopifysta, se olisi mahtavaa."
                 }
             }
         },
@@ -1634,7 +1646,9 @@ const initState = {
                     "createNew": "Créer un nouveau",
                     "createBanner": "Créer une bannière",
                     "hereIsNo": "Bannière de ce type n'a pas encore été créée",
-                    "toastMessage": "Bannière supprimée"
+                    "toastMessage": "Bannière supprimée",
+                    "dearMerchant": "Cher marchand!",
+                    "pleaseWrite": "S'il vous plaît écrivez une critique rapide sur Shopify, ce serait génial."
                 }
             }
         },
@@ -1797,7 +1811,9 @@ const initState = {
                     "createNew": "एक नया बनाएँ",
                     "createBanner": "बैनर बनाएँ",
                     "hereIsNo": "इस प्रकार का बैनर अभी तक नहीं बनाया गया है",
-                    "toastMessage": "बैनर हटाया"
+                    "toastMessage": "बैनर हटाया",
+                    "dearMerchant": "प्रिय व्यापारी!",
+                    "pleaseWrite": "कृपया Shopify पर एक त्वरित समीक्षा लिखें, यह भयानक होगा।"
                 }
             }
         },
@@ -1960,7 +1976,9 @@ const initState = {
                     "createNew": "Crea un nuovo",
                     "createBanner": "Crea banner",
                     "hereIsNo": "Banner di questo tipo non è ancora stato creato",
-                    "toastMessage": "Banner rimosso"
+                    "toastMessage": "Banner rimosso",
+                    "dearMerchant": "Caro mercante!",
+                    "pleaseWrite": "Per favore scrivi una rapida recensione su Shopify, sarebbe fantastico."
                 }
             }
         },
@@ -2123,7 +2141,9 @@ const initState = {
                     "createNew": "새로 만들기",
                     "createBanner": "배너 만들기",
                     "hereIsNo": "이 유형의 배너가 아직 생성되지 않았습니다.",
-                    "toastMessage": "배너가 제거됨"
+                    "toastMessage": "배너가 제거됨",
+                    "dearMerchant": "판매자 여러분!",
+                    "pleaseWrite": "Shopify에 대한 빠른 리뷰를 작성하십시오."
                 }
             }
         },
@@ -2286,7 +2306,9 @@ const initState = {
                     "createNew": "Maak een nieuwe",
                     "createBanner": "Banner maken",
                     "hereIsNo": "Banner van dit type is nog niet aangemaakt",
-                    "toastMessage": "Banner verwijderd"
+                    "toastMessage": "Banner verwijderd",
+                    "dearMerchant": "Beste handelaar!",
+                    "pleaseWrite": "Schrijf alstublieft een korte recensie over Shopify, dat zou geweldig zijn."
                 }
             }
         },
@@ -2449,7 +2471,9 @@ const initState = {
                     "createNew": "Opprett en ny",
                     "createBanner": "Opprett banner",
                     "hereIsNo": "Banner av denne typen er ennå ikke opprettet",
-                    "toastMessage": "Banner fjernet"
+                    "toastMessage": "Banner fjernet",
+                    "dearMerchant": "Kjære kjøpmann!",
+                    "pleaseWrite": "Vennligst skriv en rask anmeldelse på Shopify, det ville vært fantastisk."
                 }
             }
         },
@@ -2612,7 +2636,9 @@ const initState = {
                     "createNew": "Utwórz nowy",
                     "createBanner": "Utwórz baner",
                     "hereIsNo": "Baner tego typu nie został jeszcze utworzony",
-                    "toastMessage": "Usunięto baner"
+                    "toastMessage": "Usunięto baner",
+                    "dearMerchant": "Drogi Kupcu!",
+                    "pleaseWrite": "Napisz szybką recenzję Shopify, byłoby wspaniale."
                 }
             }
         },
@@ -2775,7 +2801,9 @@ const initState = {
                     "createNew": "Criar um novo",
                     "createBanner": "Criar Banner",
                     "hereIsNo": "Banner deste tipo ainda não foi criado",
-                    "toastMessage": "Banner removido"
+                    "toastMessage": "Banner removido",
+                    "dearMerchant": "Caro comerciante!",
+                    "pleaseWrite": "Escreva um comentário rápido no Shopify, seria incrível."
                 }
             }
         },
@@ -2938,7 +2966,9 @@ const initState = {
                     "createNew": "Skapa en ny",
                     "createBanner": "Skapa banderoll",
                     "hereIsNo": "Banner av den här typen har ännu inte skapats",
-                    "toastMessage": "Banner borttagen"
+                    "toastMessage": "Banner borttagen",
+                    "dearMerchant": "Kära köpman!",
+                    "pleaseWrite": "Skriv en snabb recension på Shopify, det skulle vara fantastiskt."
                 }
             }
         },
@@ -3101,7 +3131,9 @@ const initState = {
                     "createNew": "สร้างใหม่",
                     "createBanner": "สร้างแบนเนอร์",
                     "hereIsNo": "แบนเนอร์ประเภทนี้ยังไม่ได้รับการสร้างขึ้น",
-                    "toastMessage": "ลบแบนเนอร์ออก"
+                    "toastMessage": "ลบแบนเนอร์ออก",
+                    "dearMerchant": "เรียนพ่อค้า!",
+                    "pleaseWrite": "โปรดเขียนบทวิจารณ์สั้น ๆ เกี่ยวกับ Shopify ซึ่งจะยอดเยี่ยมมาก"
                 }
             }
         },
@@ -3264,7 +3296,9 @@ const initState = {
                     "createNew": "Yeni bir oluştur",
                     "createBanner": "Banner Oluştur",
                     "hereIsNo": "Bu türden afiş henüz oluşturulmadı",
-                    "toastMessage": "Afiş kaldırıldı"
+                    "toastMessage": "Afiş kaldırıldı",
+                    "dearMerchant": "Sevgili tüccar!",
+                    "pleaseWrite": "Lütfen Shopify'da hızlı bir inceleme yazın, bu harika olurdu."
                 }
             }
         },
