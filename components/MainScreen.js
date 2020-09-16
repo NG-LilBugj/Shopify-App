@@ -46,11 +46,11 @@ const MainScreen = (props) => {
                 </div>
                 <div style={{display: 'flex', justifyContent: 'flex-start', marginLeft: '2rem', width: '100%'}}>
                     <Banner
-                        title={"Dear merchant!"}
+                        title={props.strings.dearMerchant}
                         status={"success"}
                     >
                         <p style={{width: '100%', marginBottom: '15px'}}>
-                            Please write  a quick review on Shopify, that would be awesome.
+                            {props.strings.pleaseWrite}
                         </p>
                         <a href={"https://apps.shopify.com/sale-banner"} target={"blank"} style={{textDecoration: 'none'}}>
                             <Button

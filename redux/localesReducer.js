@@ -160,7 +160,9 @@ const initState = {
                 "createNew": "Create new",
                 "createBanner": "Create banner",
                 "hereIsNo": "No banner of this type has been created yet",
-                "toastMessage": "Banner deleted"
+                "toastMessage": "Banner deleted",
+                "dearMerchant": "Dear merchant!",
+                "pleaseWrite": "Please write  a quick review on Shopify, that would be awesome."
             }
         }
     },
@@ -324,7 +326,9 @@ const initState = {
                     "createNew": "Create new",
                     "createBanner": "Create banner",
                     "hereIsNo": "No banner of this type has been created yet",
-                    "toastMessage": "Banner deleted"
+                    "toastMessage": "Banner deleted",
+                    "dearMerchant": "Dear merchant!",
+                    "pleaseWrite": "Please write  a quick review on Shopify, that would be awesome."
                 }
             }
         },
@@ -487,7 +491,9 @@ const initState = {
                     "createNew": "Создать новый",
                     "createBanner": "Создать баннер",
                     "hereIsNo": "Баннер этого типа еще не создан",
-                    "toastMessage": "Баннер удален"
+                    "toastMessage": "Баннер удален",
+                    "dearMerchant": "Уважаемый продавец!",
+                    "pleaseWrite": "Пожалуйста, оставьте быстрый отзыв в магазине приложении Shopify, это было бы здорово!"
                 }
             }
         },
