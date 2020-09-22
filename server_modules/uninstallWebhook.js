@@ -5,28 +5,28 @@ let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
 
 const uninstallWebhook = async (ctx) => {
         console.log('webhook fetched!:', ctx.state.webhook);
-        BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+        BannerConfig.find({shop: ctx.state.webhook.domain}, (err, res) => {
             if (err) {
                 console.log(err)
             }
             else {
-                BannerConfig.delete(res, err => console.log(err))
+                BannerConfig.deleteOne(res, err => console.log(err))
             }
         });
-        BadgeConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+        BadgeConfig.find({shop: ctx.state.webhook.domain}, (err, res) => {
             if (err) {
                 console.log(err)
             }
             else {
-                BadgeConfig.delete(res, err => console.log(err))
+                BadgeConfig.deleteOne(res, err => console.log(err))
             }
         });
-        AnimationConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
+        AnimationConfig.find({shop: ctx.state.webhook.domain}, (err, res) => {
             if (err) {
                 console.log(err)
             }
             else {
-                AnimationConfig.delete(res, err => console.log(err))
+                AnimationConfig.deleteOne(res, err => console.log(err))
             }
         });
 
