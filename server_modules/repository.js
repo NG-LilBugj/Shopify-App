@@ -82,7 +82,7 @@ const authOptions = {
             console.log('traditional webhooking', webHooking.data);
         }
         catch (e) {
-            console.log(e.data)
+            console.log(e)
         }
         // const registration = await registerWebhook({
         //     address: `${process.env.HOST}webhooks/app/uninstalled`,
