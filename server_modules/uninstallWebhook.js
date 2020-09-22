@@ -9,7 +9,9 @@ const uninstallWebhook = async (ctx) => {
                 console.log(err)
             }
             else {
-                BannerConfig.deleteOne(res, err => console.log(err))
+                res.forEach(d => {
+                    BannerConfig.deleteOne(res, err => console.log(err))
+                })
             }
         });
         BadgeConfig.find({shop: ctx.state.webhook.domain}, (err, res) => {
@@ -17,7 +19,9 @@ const uninstallWebhook = async (ctx) => {
                 console.log(err)
             }
             else {
-                BadgeConfig.deleteOne(res, err => console.log(err))
+                res.forEach(d => {
+                    BadgeConfig.deleteOne(res, err => console.log(err))
+                })
             }
         });
         AnimationConfig.find({shop: ctx.state.webhook.domain}, (err, res) => {
@@ -25,7 +29,9 @@ const uninstallWebhook = async (ctx) => {
                 console.log(err)
             }
             else {
-                AnimationConfig.deleteOne(res, err => console.log(err))
+                res.forEach(d => {
+                    AnimationConfig.deleteOne(res, err => console.log(err))
+                })
             }
         });
 
