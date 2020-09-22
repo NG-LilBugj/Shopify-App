@@ -81,7 +81,7 @@ const authOptions = {
         if (registration.success) {
             console.log('Successfully registered uninstall-webhook!');
         } else {
-            console.log('Failed to register webhook', registration.result);
+            console.log('Failed to register webhook', registration.result.data.webhookSubscriptionCreate);
         }
 
         //await getSubscriptionUrl(ctx, accessToken, shop);
