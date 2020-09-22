@@ -5,7 +5,7 @@ import axios from "axios";
 const BillingPage = () => {
 
     const preBilling = () => {
-        axios.get('https://lil-shopify.herokuapp.com').catch(e => console.log(e))
+        axios.get('https://lil-shopify.herokuapp.com/prebill').catch(e => console.log(e))
     };
 
     return (

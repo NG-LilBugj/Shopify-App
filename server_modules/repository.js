@@ -105,7 +105,7 @@ const authOptions = {
         // }
 
         //await getSubscriptionUrl(ctx, accessToken, shop);
-        ctx.redirect('/success');
+        ctx.redirect('/billingPage');
     }
 };
 
