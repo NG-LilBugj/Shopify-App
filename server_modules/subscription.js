@@ -18,7 +18,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
           }
           {
             plan: {
-              appRecurringPricingDetails: {
+              appUsagePricingDetails: {
                   price: { amount: 0, currencyCode: USD }
               }
             }
