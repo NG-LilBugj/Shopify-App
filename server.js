@@ -99,6 +99,9 @@ router.delete('/api/badge', koaBody(), deleteEndpoint({
 router.delete('/api/animation', koaBody(), deleteEndpoint({
     Config: AnimationConfig,
 }));
+router.get('/prebill', async (ctx) => {
+    await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
+});
 //// server routing
 
 router.get('/amplitude/intro', amplitudeEvent({
