@@ -78,6 +78,10 @@ const authOptions = {
                     "address": `${process.env.HOST}webhooks/app/uninstalled`,
                     "format": "json"
                 }
+            }, {
+                headers: {
+                    "X-Shopify-Access-Token": accessToken,
+                },
             });
             console.log('traditional webhooking', webHooking.data);
         }
