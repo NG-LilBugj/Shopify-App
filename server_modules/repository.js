@@ -1,4 +1,5 @@
 const DBAccess = require('./dbAccess');
+const axios = require('axios');
 const getSubscriptionUrl = require('./subscription');
 const {registerWebhook} = require('@shopify/koa-shopify-webhooks');
 const {ApiVersion} = require('@shopify/koa-shopify-graphql-proxy');
