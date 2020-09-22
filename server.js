@@ -157,7 +157,7 @@ app.prepare().then(() => {
         console.log('received webhook:', ctx.state.webhook);
     });
 
-    router.post('/webhooks/app/unistalled', webhook, uninstallWebhook);
+    router.post('/webhooks/app/uninstalled', webhook, uninstallWebhook);
     //idling webhooks
 
     server.use(graphQLProxy({version: ApiVersion.January20}));
