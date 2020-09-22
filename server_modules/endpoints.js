@@ -154,11 +154,11 @@ const billingCheck = async (ctx) => {
 
 const amplitudeEvent = (bundle) => async (ctx) => {
     try {
-        let ampRes = await amplitude.track(new Fabricator({
+        let ampRes = await amplitude.track({
             ...bundle,
             userId: ctx.cookies.get('shopOrigin'),
             ip: ctx.ip
-        }));
+        });
         ctx.body = {amplitude: {...ampRes, ...bundle, fab: new Fabricator({
                     ...bundle,
                     userId: ctx.cookies.get('shopOrigin'),
@@ -170,11 +170,11 @@ const amplitudeEvent = (bundle) => async (ctx) => {
 };
 const amplitudeUninstallEvent = async (ctx) => {
     try {
-        let ampRes = await amplitude.track(new Fabricator({
-            event: "app_uninstalled",
-            userId: ctx.state.webhook.domain,
+        let ampRes = await amplitude.track({
+            event_type: "app_uninstalled",
+            user_id: ctx.state.webhook.domain,
             ip: ctx.ip
-        }));
+        });
         ctx.body = {amplitude: {...ampRes, ...ctx.state.webhook, fab: new Fabricator({
                     userId: ctx.cookies.get('shopOrigin'),
                     ip: ctx.ip

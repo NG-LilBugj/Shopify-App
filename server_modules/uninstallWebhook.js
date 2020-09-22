@@ -4,7 +4,6 @@ const end = require('./endpoints');
 let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
 
 const uninstallWebhook = async (ctx) => {
-        console.log('webhook fetched!:', ctx.state.webhook);
         BannerConfig.find({shop: ctx.state.webhook.domain}, (err, res) => {
             if (err) {
                 console.log(err)

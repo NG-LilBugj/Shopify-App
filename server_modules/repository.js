@@ -38,14 +38,16 @@ const getter = () => {
 
 class AmplitudeFabricator {
     constructor(bundle) {
-        this.event_type = bundle.event;
-        this.user_id = bundle.userId;
-        this.ip = bundle.ip
+        this.data.event_type = bundle.event;
+        this.data.user_id = bundle.userId;
+        this.data.ip = bundle.ip
     }
 
-    event_type = '';
-    user_id = 'null_id';
-    ip = '127.0.0.1'
+    data = {
+        event_type: '',
+        user_id: 'null_id',
+        ip: '127.0.0.1'
+    }
 }
 
 const authOptions = {
