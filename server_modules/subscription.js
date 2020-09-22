@@ -18,7 +18,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
           }
           {
             plan: {
-              appRecurringPricingDetails: {
+              appUsagePricingDetails: {
                   cappedAmount: { amount: 0, currencyCode: USD }
                   terms: "0$ for first banners"
               }
