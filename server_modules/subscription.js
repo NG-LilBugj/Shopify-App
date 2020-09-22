@@ -37,16 +37,21 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
     }`
     });
 
-    const response = await axios.post(`https://${shop}/admin/api/2020-01/graphql.json`, query,{
-        headers: {
-            "X-Shopify-Access-Token": accessToken,
-        },
-    });
+    try {
+        const response = await axios.post(`https://${shop}/admin/api/2019-10/graphql.json`, query, {
+            headers: {
+                "X-Shopify-Access-Token": accessToken,
+            },
+        });
 
-    const responseJson = await response;
-    const confirmationUrl = responseJson.data.appSubscriptionCreate.confirmationUrl;
-    console.log(confirmationUrl);
-    return ctx.redirect(confirmationUrl)
+        const responseJson = await response;
+        const confirmationUrl = responseJson.data.appSubscriptionCreate.confirmationUrl;
+        console.log(confirmationUrl);
+        return ctx.redirect(confirmationUrl)
+    }
+    catch (e) {
+        console.log(e)
+    }
 };
 
 module.exports = getSubscriptionUrl;
