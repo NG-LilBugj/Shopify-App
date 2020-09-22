@@ -101,6 +101,7 @@ router.delete('/api/animation', koaBody(), deleteEndpoint({
 }));
 router.get('/prebill', async (ctx) => {
     await getSubscriptionUrl(ctx, ctx.cookies.get('accessToken'), ctx.cookies.get('shopOrigin'))
+    ctx.body = {message: 'calc'}
 });
 //// server routing
 
