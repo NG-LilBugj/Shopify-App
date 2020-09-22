@@ -24,6 +24,13 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
               }
             }
           }
+          {
+            plan: {
+              appRecurringPricingDetails: {
+                  price: { amount: 0, currencyCode: USD }
+              }
+            }
+          }
           ]
         ) {
             userErrors {
