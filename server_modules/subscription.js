@@ -48,6 +48,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
         });
 
         const responseJson = await response.json();
+        console.log(responseJson.data);
         const confirmationUrl = responseJson.data.appSubscriptionCreate.confirmationUrl;
         console.log(responseJson.data.appSubscriptionCreate);
         return ctx.redirect(confirmationUrl)
