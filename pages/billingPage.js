@@ -13,16 +13,13 @@ const BillingPage = () => {
             <Layout>
                 <div style={{display: "flex", justifyContent: "space-evenly", alignItems: "center", width: '100%', height: '100%'}}>
                     <div style={{display: "flex", flexDirection: "column", width: "50%", height: "420px", justifyContent: "space-evenly"}}>
-                        <DisplayText size={'extraLarge'}>
-                            {strings.mainHeading}
-                        </DisplayText>
                         <DisplayText size="small">
-                            {strings.messageTimer}
+                            TeseTest
                         </DisplayText>
                         <div style={{width: '200px'}}>
                             <Button primary
                                     onClick={preBilling}
-                            >{strings.button}</Button>
+                            >Redirect</Button>
                         </div>
                     </div>
                 </div>
