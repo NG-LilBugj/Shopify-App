@@ -4,7 +4,7 @@ const end = require('./endpoints');
 let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
 
 const uninstallWebhook = (ctx) => {
-        console.log(ctx.state.webhook);
+        console.log('webhook fetched!:', ctx.state.webhook);
         BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
             if (err) {
                 console.log(err)
