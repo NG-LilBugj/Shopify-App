@@ -59,7 +59,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
         // const confirmationUrl = responseJson.data.appSubscriptionCreate.confirmationUrl;
         // return ctx.redirect(confirmationUrl)
 
-    let awaiter = Promise((res, rej) => {
+    let awaiter = new Promise((res, rej) => {
         setTimeout(() => {
             res('/success')
         }, 1000)
