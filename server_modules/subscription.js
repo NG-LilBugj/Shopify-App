@@ -37,7 +37,6 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
     }`
     });
 
-    try {
         const response = await fetch(`https://${shop}/admin/api/2019-10/graphql.json`, {
             method: 'POST',
             headers: {
@@ -51,10 +50,6 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
         const responseJson = await response.json();
         const confirmationUrl = responseJson.data.appSubscriptionCreate.confirmationUrl;
         return ctx.redirect(confirmationUrl)
-    }
-    catch (e) {
-        console.log(e)
-    }
 };
 
 module.exports = getSubscriptionUrl;
