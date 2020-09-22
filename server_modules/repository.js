@@ -71,14 +71,19 @@ const authOptions = {
         });
         newCredentials.save().catch(e => console.log(e));
 
-        const webHooking = await axios.post(`https://${shop}/admin/api/2020-07/webhooks.json`,{
-            "webhook": {
-                "topic": "app/uninstalled",
-                "address": `${process.env.HOST}webhooks/app/uninstalled`,
-                "format": "json"
-            }
-        });
-        console.log('traditional webhooking', webHooking.data);
+        try {
+            const webHooking = await axios.post(`https://${shop}/admin/api/2020-07/webhooks.json`, {
+                "webhook": {
+                    "topic": "app/uninstalled",
+                    "address": `${process.env.HOST}webhooks/app/uninstalled`,
+                    "format": "json"
+                }
+            });
+            console.log('traditional webhooking', webHooking.data);
+        }
+        catch (e) {
+            console.log(e.data)
+        }
         // const registration = await registerWebhook({
         //     address: `${process.env.HOST}webhooks/app/uninstalled`,
         //     topic: 'APP_UNINSTALLED',
