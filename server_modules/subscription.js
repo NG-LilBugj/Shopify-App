@@ -38,7 +38,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
     });
 
     try {
-        const response = await axios.post(`https://${shop}/admin/api/2019-10/graphql.json`, query, {
+        const response = await axios.post(`https://${shop}/admin/api/2019-10/graphql.json`, {body: query}, {
             headers: {
                 "X-Shopify-Access-Token": accessToken,
             },
