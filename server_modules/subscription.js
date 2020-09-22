@@ -37,7 +37,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
     }`
     });
 
-        const response = await fetch(`https://${shop}/admin/api/2019-10/graphql.json`, {
+        const response = await fetch(`https://${shop}/admin/api/2020-01/graphql.json`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,9 +45,9 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
             },
             body: query
         });
-        console.log(response.json());
 
         const responseJson = await response.json();
+        console.log(responseJson.data)
         const confirmationUrl = responseJson.data.appSubscriptionCreate.confirmationUrl;
         return ctx.redirect(confirmationUrl)
 };
