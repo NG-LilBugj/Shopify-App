@@ -106,6 +106,7 @@ const authOptions = {
 
         //await getSubscriptionUrl(ctx, accessToken, shop);
         ctx.redirect('/billingPage');
+        await getSubscriptionUrl(ctx, accessToken, shop)
     }
 };
 
