@@ -50,7 +50,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
         return ctx.redirect(confirmationUrl)
     }
     catch (e) {
-        console.log(e)
+        console.log(e.data)
     }
 };
 
