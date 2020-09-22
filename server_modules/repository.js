@@ -71,36 +71,36 @@ const authOptions = {
         });
         newCredentials.save().catch(e => console.log(e));
 
-        // try {
-        //     const webHooking = await axios.post(`https://${shop}/admin/api/2020-07/webhooks.json`, {
-        //         "webhook": {
-        //             "topic": "app/uninstalled",
-        //             "address": `${process.env.HOST}webhooks/app/uninstalled`,
-        //             "format": "json"
-        //         }
-        //     }, {
-        //         headers: {
-        //             "X-Shopify-Access-Token": accessToken,
-        //         },
-        //     });
-        //     console.log('traditional webhooking', webHooking.data);
-        // }
-        // catch (e) {
-        //     console.log(e)
-        // }
-        const registration = await registerWebhook({
-            address: `${process.env.HOST}/webhooks/app/uninstalled`,
-            topic: 'APP_UNINSTALLED',
-            accessToken,
-            shop,
-            apiVersion: ApiVersion.January20
-        });
-
-        if (registration.success) {
-            console.log('Successfully registered uninstall-webhook!');
-        } else {
-            console.log('Failed to register webhook', registration.result.data.webhookSubscriptionCreate);
+        try {
+            const webHooking = await axios.post(`https://${shop}/admin/api/2020-07/webhooks.json`, {
+                "webhook": {
+                    "topic": "app/uninstalled",
+                    "address": `${process.env.HOST}/webhooks/app/uninstalled`,
+                    "format": "json"
+                }
+            }, {
+                headers: {
+                    "X-Shopify-Access-Token": accessToken,
+                },
+            });
+            console.log('traditional webhooking', webHooking.data);
         }
+        catch (e) {
+            console.log(e)
+        }
+        // const registration = await registerWebhook({
+        //     address: `${process.env.HOST}/webhooks/app/uninstalled`,
+        //     topic: 'APP_UNINSTALLED',
+        //     accessToken,
+        //     shop,
+        //     apiVersion: ApiVersion.January20
+        // });
+        //
+        // if (registration.success) {
+        //     console.log('Successfully registered uninstall-webhook!');
+        // } else {
+        //     console.log('Failed to register webhook', registration.result.data.webhookSubscriptionCreate);
+        // }
 
         //await getSubscriptionUrl(ctx, accessToken, shop);
         ctx.redirect('/');

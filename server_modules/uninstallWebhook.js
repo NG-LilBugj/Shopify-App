@@ -3,7 +3,7 @@ const DBAccess = require('./dbAccess');
 const end = require('./endpoints');
 let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
 
-const uninstallWebhook = (ctx) => {
+const uninstallWebhook = async (ctx) => {
         console.log('webhook fetched!:', ctx.state.webhook);
         BannerConfig.find({shop: ctx.cookies.get('shopOrigin')}, (err, res) => {
             if (err) {
@@ -30,8 +30,7 @@ const uninstallWebhook = (ctx) => {
             }
         });
 
-        end.amplitudeUninstallEvent(ctx)
-            .catch(e => console.log(e));
+        await end.amplitudeUninstallEvent(ctx);
 
         axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
             headers: {
@@ -47,11 +46,10 @@ const uninstallWebhook = (ctx) => {
                             },
                         }).catch(e => console.log(e))
                     }
-                })
+                });
+                ctx.body = {web: ctx.state.webhook}
             })
             .catch(e => console.log(e));
-
-        ctx.body = {web: ctx.state.webhook}
 };
 
 module.exports = uninstallWebhook;
