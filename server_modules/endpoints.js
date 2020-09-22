@@ -6,7 +6,9 @@ const Amplitude = require('amplitude');
 const amplitude = new Amplitude(process.env.AMPLITUDE_KEY);
 
 const decoder = rep.decoder;
+const credentialDecoder = rep.credentialDecoder;
 const Fabricator = rep.AmplitudeFabricator;
+const ShopCredentials = DBAccess.ShopCredentials;
 
 const getEndpoint = (bundle) => async (ctx) => {
     try {
@@ -110,6 +112,21 @@ const deleteEndpoint = (bundle) => async (ctx) => {
 
 const billingCheck = async (ctx) => {
     try {
+        let credentials = await credentialDecoder(ctx, ShopCredentials);
+        if (!ctx.cookies.get('accessToken')) {
+            ctx.cookies.set('accessToken', credentials.accessToken, {
+                httpOnly: false,
+                secure: true,
+                sameSite: 'none'
+            });
+        }
+        if (!ctx.cookies.get('shopOrigin')) {
+            ctx.cookies.set('shopOrigin', credentials.shopOrigin, {
+                httpOnly: false,
+                secure: true,
+                sameSite: 'none'
+            });
+        }
         let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),

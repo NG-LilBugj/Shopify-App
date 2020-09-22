@@ -63,9 +63,17 @@ const BadgeConfig = mongoose.model('badgeConfig', badgeSchema);
 const AnimationConfig = mongoose.model('animationConfig', animationSchema);
 // mongoose model creation
 
+const shopCredentialsSchema = new mongoose.Schema({
+    accessToken: String,
+    shopOrigin: String
+});
+
+const ShopCredentials = mongoose.model('shopCredentialsSchema', shopCredentialsSchema);
+
 module.exports = {
     BannerConfig,
     BadgeConfig,
     AnimationConfig,
+    ShopCredentials
 }; // module exported
 

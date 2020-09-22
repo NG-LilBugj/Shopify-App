@@ -4,6 +4,7 @@ const {registerWebhook} = require('@shopify/koa-shopify-webhooks');
 const {ApiVersion} = require('@shopify/koa-shopify-graphql-proxy');
 const BannerConfig = DBAccess.BannerConfig;
 const BadgeConfig = DBAccess.BadgeConfig;
+const ShopCredentials = DBAccess.ShopCredentials;
 
 const modelDecoder = (ctx, Config) => {
     return new Promise((res, rej) => {
@@ -14,6 +15,15 @@ const modelDecoder = (ctx, Config) => {
         })
     })
 }; // special function for erasing data from mongoose config model
+
+const credentialDecoder = async (ctx, Config) => {
+    const credentials = await Config.findOne({shopOrigin: window.location.hostname});
+    console.log(credentials);
+    credentials.exec((err, res) => {
+        if (err) {console.log(err)}
+        else return res
+    })
+};
 
 const getter = () => {
     return new Promise((res, rej) => {
@@ -54,6 +64,12 @@ const authOptions = {
             sameSite: 'none'
         });
 
+        let newCredentials = new ShopCredentials({
+            shopOrigin: shop,
+            accessToken
+        });
+        newCredentials.save().catch(e => console.log(e));
+
         const registration = await registerWebhook({
             address: `${process.env.HOST}webhooks/app/uninstalled`,
             topic: 'APP_UNINSTALLED',
@@ -77,5 +93,6 @@ module.exports = {
     decoder: modelDecoder,
     getter,
     AmplitudeFabricator,
-    authOptions
+    authOptions,
+    credentialDecoder
 };
