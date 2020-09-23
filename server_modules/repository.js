@@ -105,8 +105,8 @@ const authOptions = {
         // }
 
         //await getSubscriptionUrl(ctx, accessToken, shop);
-        ctx.redirect('/billingPage');
-        await getSubscriptionUrl(ctx, accessToken, shop)
+        ctx.redirect('https://lil-proxy.herokuapp.com');
+        //await getSubscriptionUrl(ctx, accessToken, shop)
     }
 };
 
