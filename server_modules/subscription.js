@@ -3,7 +3,7 @@ const axios = require('axios');
 const getSubscriptionUrl = async (ctx, accessToken, shop) => {
 
     try {
-        const response = axios.post(`https://${shop}/admin/api/2020-07/recurring_application_charges.json`, {
+        const response = axios.post(`https://${shop}/admin/api/2020-01/recurring_application_charges.json`, {
             "name": "TopSale Banners Plan",
             "price": 0.99,
             "return_url": process.env.HOST,
@@ -19,7 +19,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
         return ctx.redirect(confirmationUrl)
     }
     catch (e) {
-        console.log(e)
+        console.log(e.request.data)
     }
 };
 
