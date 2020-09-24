@@ -2,70 +2,20 @@ const axios = require('axios');
 
 const getSubscriptionUrl = async (ctx, accessToken, shop) => {
 
-    const query = JSON.stringify({
-        query: `mutation {
-      appSubscriptionCreate(
-          name: "Free plan with priority"
-          returnUrl: "${process.env.HOST}"
-          test: true
-          lineItems: [
-          {
-            plan: {
-              appRecurringPricingDetails: {
-                  price: { amount: 0.99, currencyCode: USD }
-              }
-            }
-          }
-          {
-            plan: {
-              appUsagePricingDetails: {
-                  cappedAmount: { amount: 0.99, currencyCode: USD }
-                  terms: "0$ for first banners"
-              }
-            }
-          }
-          {
-            plan: {
-              appRecurringPricingDetails: {
-                  price: { amount: 6.99, currencyCode: USD }
-              }
-            }
-          }
-          ]
-        ) {
-            userErrors {
-              field
-              message
-            }
-            confirmationUrl
-            appSubscription {
-              id
-            }
-        }
-    }`
-    });
+        const response = axios.post(`https://${shop}/admin/api/2020-07/recurring_application_charges.json`, {
+            "name": "Super Duper Plan",
+            "price": 0.99,
+            "return_url": process.env.HOST,
+            "trial_days": 7
+            }, {
+            headers: {
+                "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
+            },
+        });
+        const responseJson = await response;
+        const confirmationUrl = responseJson.data.recurring_application_charge.confirmation_url;
+        return ctx.redirect(confirmationUrl)
 
-        // const response = await fetch(`https://${shop}/admin/api/2020-01/graphql.json`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         "X-Shopify-Access-Token": accessToken,
-        //     },
-        //     body: query
-        // });
-        //
-        // const responseJson = await response.json();
-        // console.log(responseJson.data.appSubscriptionCreate);
-        // const confirmationUrl = responseJson.data.appSubscriptionCreate.confirmationUrl;
-        // return ctx.redirect(confirmationUrl)
-
-    let awaiter = new Promise((res, rej) => {
-        setTimeout(() => {
-            res('/success')
-        }, 1000)
-    });
-    let res = await awaiter;
-    return ctx.redirect(res)
 };
 
 module.exports = getSubscriptionUrl;

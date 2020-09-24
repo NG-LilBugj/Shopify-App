@@ -90,23 +90,9 @@ const authOptions = {
         catch (e) {
             console.log(e)
         }
-        // const registration = await registerWebhook({
-        //     address: `${process.env.HOST}/webhooks/app/uninstalled`,
-        //     topic: 'APP_UNINSTALLED',
-        //     accessToken,
-        //     shop,
-        //     apiVersion: ApiVersion.January20
-        // });
-        //
-        // if (registration.success) {
-        //     console.log('Successfully registered uninstall-webhook!');
-        // } else {
-        //     console.log('Failed to register webhook', registration.result.data.webhookSubscriptionCreate);
-        // }
 
-        //await getSubscriptionUrl(ctx, accessToken, shop);
-        ctx.redirect('https://lil-proxy.herokuapp.com');
-        //await getSubscriptionUrl(ctx, accessToken, shop)
+        //ctx.redirect('https://lil-proxy.herokuapp.com');
+        await getSubscriptionUrl(ctx, accessToken, shop)
     }
 };
 
