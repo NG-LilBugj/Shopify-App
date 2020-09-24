@@ -9,7 +9,7 @@ const getSubscriptionUrl = async (ctx, accessToken, shop) => {
             "trial_days": 7
             }, {
             headers: {
-                "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
+                "X-Shopify-Access-Token": accessToken,
             },
         });
         const responseJson = await response;
