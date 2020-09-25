@@ -111,7 +111,6 @@ const deleteEndpoint = (bundle) => async (ctx) => {
 };
 
 const billingCheck = async (ctx) => {
-    try {
         let credentials = await credentialDecoder(ctx, ShopCredentials);
         if (!ctx.cookies.get('accessToken')) {
             ctx.cookies.set('accessToken', credentials.accessToken, {
@@ -144,10 +143,7 @@ const billingCheck = async (ctx) => {
             ctx.body = {onPlan: true, plans: res.data.recurring_application_charges, activation: activation.data};
         }
         else ctx.body = {onPlan: false, plans: res.data.recurring_application_charges, activation: 'none'};
-    }
-    catch (e) {
-        ctx.body = {error: e}
-    }
+
 };
 
 const amplitudeEvent = (bundle) => async (ctx) => {

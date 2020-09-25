@@ -88,7 +88,7 @@ const authOptions = {
             console.log('traditional webhooking', webHooking.data);
         }
         catch (e) {
-            console.log(e)
+            console.log('webhook error:', e.statusText)
         }
 
         //ctx.redirect('https://lil-proxy.herokuapp.com');
