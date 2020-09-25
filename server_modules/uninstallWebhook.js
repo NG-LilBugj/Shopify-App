@@ -3,19 +3,18 @@ const DBAccess = require('./dbAccess');
 const end = require('./endpoints');
 let {BannerConfig, BadgeConfig, AnimationConfig, ShopCredentials} = DBAccess;
 
+const consoleCallback = (err) => {
+    if(err) {
+        console.log(err)
+    }
+    else console.log('success mongoose deleting')
+};
+
 const uninstallWebhook = async (ctx) => {
-        BannerConfig.deleteMany({shop: ctx.state.webhook.domain}, (err) => {
-            console.log(err)
-        });
-        BadgeConfig.deleteMany({shop: ctx.state.webhook.domain}, (err) => {
-            console.log(err)
-        });
-        AnimationConfig.find({shop: ctx.state.webhook.domain}, (err) => {
-            console.log(err)
-        });
-        ShopCredentials.find({shop: ctx.state.webhook.domain}, (err) => {
-            console.log(err)
-        });
+        BannerConfig.deleteMany({shop: ctx.state.webhook.domain}, consoleCallback);
+        BadgeConfig.deleteMany({shop: ctx.state.webhook.domain}, consoleCallback);
+        AnimationConfig.find({shop: ctx.state.webhook.domain}, consoleCallback);
+        ShopCredentials.find({shop: ctx.state.webhook.domain}, consoleCallback);
 
         await end.amplitudeUninstallEvent(ctx);
         ctx.body = {web: ctx.state.webhook}
