@@ -113,14 +113,14 @@ const deleteEndpoint = (bundle) => async (ctx) => {
 const billingCheck = async (ctx) => {
         let credentials = await credentialDecoder(ctx, ShopCredentials);
         if (!ctx.cookies.get('accessToken')) {
-            ctx.cookies.set('accessToken', credentials.accessToken, {
+            ctx.cookies.set('accessToken', credentials[0].accessToken, {
                 httpOnly: false,
                 secure: true,
                 sameSite: 'none'
             });
         }
         if (!ctx.cookies.get('shopOrigin')) {
-            ctx.cookies.set('shopOrigin', credentials.shopOrigin, {
+            ctx.cookies.set('shopOrigin', credentials[0].shopOrigin, {
                 httpOnly: false,
                 secure: true,
                 sameSite: 'none'

@@ -18,7 +18,7 @@ const modelDecoder = (ctx, Config) => {
 }; // special function for erasing data from mongoose config model
 
 const credentialDecoder = async (ctx, Config) => {
-    const credentials = await Config.findOne({shopOrigin: ctx.cookies.get('shopOrigin')});
+    const credentials = await Config.find({shopOrigin: ctx.cookies.get('shopOrigin')});
     console.log(credentials);
     if (credentials) {
         credentials.exec((err, res) => {
