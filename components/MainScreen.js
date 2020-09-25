@@ -49,7 +49,7 @@ const MainScreen = (props) => {
                         title={props.strings.dearMerchant}
                         status={"success"}
                     >
-                        <p style={{maxWidth: '100vw', marginBottom: '15px'}}>
+                        <p style={{maxWidth: '100%', marginBottom: '15px'}}>
                             {props.strings.pleaseWrite}
                         </p>
                         <a href={"https://apps.shopify.com/sale-banner"} target={"blank"} style={{textDecoration: 'none'}}>
