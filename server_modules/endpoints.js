@@ -111,21 +111,21 @@ const deleteEndpoint = (bundle) => async (ctx) => {
 };
 
 const billingCheck = async (ctx) => {
-        // let credentials = await credentialDecoder(ctx, ShopCredentials);
-        // if (!ctx.cookies.get('accessToken')) {
-        //     ctx.cookies.set('accessToken', credentials.accessToken, {
-        //         httpOnly: false,
-        //         secure: true,
-        //         sameSite: 'none'
-        //     });
-        // }
-        // if (!ctx.cookies.get('shopOrigin')) {
-        //     ctx.cookies.set('shopOrigin', credentials.shopOrigin, {
-        //         httpOnly: false,
-        //         secure: true,
-        //         sameSite: 'none'
-        //     });
-        // }
+        let credentials = await credentialDecoder(ctx, ShopCredentials);
+        if (!ctx.cookies.get('accessToken')) {
+            ctx.cookies.set('accessToken', credentials.accessToken, {
+                httpOnly: false,
+                secure: true,
+                sameSite: 'none'
+            });
+        }
+        if (!ctx.cookies.get('shopOrigin')) {
+            ctx.cookies.set('shopOrigin', credentials.shopOrigin, {
+                httpOnly: false,
+                secure: true,
+                sameSite: 'none'
+            });
+        }
         let res = await axios.get(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges.json`, {
             headers: {
                 "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),

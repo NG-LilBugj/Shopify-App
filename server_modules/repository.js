@@ -20,10 +20,13 @@ const modelDecoder = (ctx, Config) => {
 const credentialDecoder = async (ctx, Config) => {
     const credentials = await Config.findOne({shopOrigin: ctx.query.shop});
     console.log(credentials);
-    credentials.exec((err, res) => {
-        if (err) {console.log(err)}
-        else return res
-    })
+    if (credentials) {
+        credentials.exec((err, res) => {
+            if (err) {
+                console.log(err)
+            } else return res
+        })
+    }
 };
 
 const getter = () => {

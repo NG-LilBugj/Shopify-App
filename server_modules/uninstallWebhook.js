@@ -1,7 +1,7 @@
 const axios = require('axios');
 const DBAccess = require('./dbAccess');
 const end = require('./endpoints');
-let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
+let {BannerConfig, BadgeConfig, AnimationConfig, ShopCredentials} = DBAccess;
 
 const uninstallWebhook = async (ctx) => {
         BannerConfig.deleteMany({shop: ctx.state.webhook.domain}, (err) => {
@@ -11,6 +11,9 @@ const uninstallWebhook = async (ctx) => {
             console.log(err)
         });
         AnimationConfig.find({shop: ctx.state.webhook.domain}, (err) => {
+            console.log(err)
+        });
+        ShopCredentials.find({shop: ctx.state.webhook.domain}, (err) => {
             console.log(err)
         });
 
