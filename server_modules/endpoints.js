@@ -134,7 +134,7 @@ const billingCheck = async (ctx) => {
         if (res.data.recurring_application_charges
             .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "accepted"
         || ctx.cookies.get('shopOrigin') === 'fashionstudio2020.myshopify.com') {
-            let billBundle = res.data.recurring_application_charges.find(e => e.status === "accepted");
+            let billBundle = res.data.recurring_application_charges.find(e => e.status === "accepted" || e.status === "active");
             let activation = await axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges/${billBundle.id}/activate.json`,
                 {"recurring_application_charge": billBundle},
                 {headers: {
