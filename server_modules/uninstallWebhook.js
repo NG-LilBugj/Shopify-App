@@ -4,35 +4,14 @@ const end = require('./endpoints');
 let {BannerConfig, BadgeConfig, AnimationConfig} = DBAccess;
 
 const uninstallWebhook = async (ctx) => {
-        BannerConfig.find({shop: ctx.state.webhook.domain}, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                res.forEach(d => {
-                    BannerConfig.deleteOne(res, err => console.log(err))
-                })
-            }
+        BannerConfig.deleteMany({shop: ctx.state.webhook.domain}, (err) => {
+            console.log(err)
         });
-        BadgeConfig.find({shop: ctx.state.webhook.domain}, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                res.forEach(d => {
-                    BadgeConfig.deleteOne(res, err => console.log(err))
-                })
-            }
+        BadgeConfig.deleteMany({shop: ctx.state.webhook.domain}, (err) => {
+            console.log(err)
         });
-        AnimationConfig.find({shop: ctx.state.webhook.domain}, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                res.forEach(d => {
-                    AnimationConfig.deleteOne(res, err => console.log(err))
-                })
-            }
+        AnimationConfig.find({shop: ctx.state.webhook.domain}, (err) => {
+            console.log(err)
         });
 
         await end.amplitudeUninstallEvent(ctx);

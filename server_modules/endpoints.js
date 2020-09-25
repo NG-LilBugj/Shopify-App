@@ -135,17 +135,15 @@ const billingCheck = async (ctx) => {
         if (res.data.recurring_application_charges
             .find(e => e.return_url === "https://lil-shopify.herokuapp.com/").status === "accepted"
         || ctx.cookies.get('shopOrigin') === 'fashionstudio2020.myshopify.com') {
-            ctx.body = {onPlan: true, plans: res.data.recurring_application_charges};
             let billBundle = res.data.recurring_application_charges.find(e => e.status === "accepted");
-            axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges/${billBundle.id}/activate.json`,
+            let activation = await axios.post(`https://${ctx.cookies.get('shopOrigin')}/admin/api/2020-01/recurring_application_charges/${billBundle.id}/activate.json`,
                 {"recurring_application_charge": billBundle},
                 {headers: {
                         "X-Shopify-Access-Token": ctx.cookies.get('accessToken'),
-                    }})
-                .then(resolve => console.log('activated!', resolve.data))
-                .catch(e => console.log('activation error!', e))
+                    }});
+            ctx.body = {onPlan: true, plans: res.data.recurring_application_charges, activation: activation.data};
         }
-        else ctx.body = {onPlan: false, plans: res.data.recurring_application_charges};
+        else ctx.body = {onPlan: false, plans: res.data.recurring_application_charges, activation: 'none'};
     }
     catch (e) {
         ctx.body = {error: e}
