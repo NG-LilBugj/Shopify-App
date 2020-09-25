@@ -13,8 +13,8 @@ const consoleCallback = (err) => {
 const uninstallWebhook = async (ctx) => {
         BannerConfig.deleteMany({shop: ctx.state.webhook.domain}, consoleCallback);
         BadgeConfig.deleteMany({shop: ctx.state.webhook.domain}, consoleCallback);
-        AnimationConfig.find({shop: ctx.state.webhook.domain}, consoleCallback);
-        ShopCredentials.find({shop: ctx.state.webhook.domain}, consoleCallback);
+        AnimationConfig.deleteMany({shop: ctx.state.webhook.domain}, consoleCallback);
+        ShopCredentials.deleteMany({shop: ctx.state.webhook.domain}, consoleCallback);
 
         await end.amplitudeUninstallEvent(ctx);
         ctx.body = {web: ctx.state.webhook}
