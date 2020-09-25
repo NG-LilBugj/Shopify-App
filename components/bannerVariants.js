@@ -31,7 +31,7 @@ const BannerVariants = (props) => {
     useEffect(() => {
         axios.get('https://lil-shopify.herokuapp.com/amplitude/main')
             .catch(e => console.log(e));
-        axios.get('https://lil-shopify.herokuapp.com/billing/check')
+        axios.get(`https://lil-shopify.herokuapp.com/billing/check?shop=${window.location.hostname}`)
             .then(res => {
                 console.log(res.data);
                 setOnPlan(true)
