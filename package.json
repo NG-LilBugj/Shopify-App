@@ -29,7 +29,7 @@
     "@zeit/next-css": "^1.0.1",
     "amplitude": "^5.1.2",
     "apollo-boost": "^0.4.7",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "flameguard": "^1.0.9",
